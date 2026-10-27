@@ -1,0 +1,10 @@
+# 行尾策略：一律按磁盘原样存储，git 不做任何 CRLF/LF 转换。
+#
+# 原因（2026-10-27 实测）：本机到 github.com 的 HTTPS 推送通道不通，
+# 首版内容是通过 Git Data API 按二进制原始字节上传的，仓库中存的是 CRLF；
+# 而本地首次 git add 时 core.autocrlf 尚为默认 true，把 CRLF 规范化成了 LF，
+# 导致两侧内容「看起来一样、sha 不一样」，diff 显示上百文件全量增删。
+#
+# 用 -text 显式禁用转换后，仓库自带该策略，换任何机器 clone 都不会再漂移，
+# 不再依赖本地 core.autocrlf 的取值。
+* -text
