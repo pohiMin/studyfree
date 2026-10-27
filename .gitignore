@@ -1,0 +1,23 @@
+# ── 第三方开源项目：1.1GB，自带独立 .git 与 LICENSE，不纳入本仓库 ──
+/ChinaStudyFree/
+# 该启动脚本依赖上面被排除的目录，推上去是死链，一并不入库
+/start-chinastudyfree.bat
+
+# ── 工作区私有数据（配额、会话、临时文件）──
+/.workbuddy/
+/personal/
+
+# ── 历史方案归档：保留在本地，不入库 ──
+/demo/_archive/
+
+# ── Python 与 Node 缓存 ──
+__pycache__/
+*.py[cod]
+node_modules/
+.next/
+.cache/
+
+# ── 系统文件 ──
+.DS_Store
+Thumbs.db
+desktop.ini
