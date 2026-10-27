@@ -101,6 +101,7 @@
   <footer id="foot"></footer>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = /*__BOOK__*/; const UNITS = /*__UNITS__*/;</script>
 <script>
 (function(){
@@ -114,7 +115,7 @@
 
   /* 用户条 */
   (function(){
-    const KEY = "math3.profile.v1";
+    const KEY = "math3.profile.v1" + (__USER ? "." + __USER : "");
     const COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
     let p = {};
     try{ p = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ p = {}; }

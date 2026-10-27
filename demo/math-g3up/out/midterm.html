@@ -18,6 +18,17 @@
     --r-lg:22px; --r-md:14px; --r-sm:10px;
   }
   html{font-size:17px}
+  /* ── 平板适配：字号与触控 ── */
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){
+    .opt{padding:14px 16px}
+    .inp-row input{padding:13px 15px}
+    .btn{padding:12px 24px}
+    .startbtn{padding:14px 34px}
+    .mtab,.kptab{padding-top:12px;padding-bottom:12px}
+    .sitem{padding:11px 12px}
+  }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -427,6 +438,7 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 0, "unitTitle": "期中阶段检测", "unitSubtitle": "第一至第四单元", "sections": [], "note": "覆盖第一至第四单元", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "期中阶段检测", "subtitle": "第一单元至第四单元（混合运算 · 乘法 · 统计 · 长度单位）", "duration": 45, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、直接写出答案", "perScore": 2, "questions": [{"type": "input", "question": "5×6+18 =（  ）", "answer": "48", "explanation": "5×6=30，30+18=48。"}, {"type": "input", "question": "72-9×7 =（  ）", "answer": "9", "explanation": "9×7=63，72-63=9。"}, {"type": "input", "question": "45÷5+12 =（  ）", "answer": "21", "explanation": "45÷5=9，9+12=21。"}, {"type": "input", "question": "63-42÷6 =（  ）", "answer": "56", "explanation": "42÷6=7，63-7=56。"}, {"type": "input", "question": "(30+18)÷6 =（  ）", "answer": "8", "explanation": "30+18=48，48÷6=8。"}, {"type": "input", "question": "4×(25-17) =（  ）", "answer": "32", "explanation": "25-17=8，4×8=32。"}, {"type": "input", "question": "320×2 =（  ）", "answer": "640", "explanation": "32×2=64，末尾补 1 个 0，得 640。"}, {"type": "input", "question": "205×4 =（  ）", "answer": "820", "explanation": "4×5=20 写 0 进 2；4×0=0，0+2=2；4×2=8。得 820。"}, {"type": "input", "question": "260×3 =（  ）", "answer": "780", "explanation": "26×3=78，末尾补 1 个 0，得 780。"}, {"type": "input", "question": "48×5 =（  ）", "answer": "240", "explanation": "5×8=40 写 0 进 4；5×4=20，20+4=24。得 240。"}]}, {"name": "二、填空", "perScore": 2, "questions": [{"type": "input", "question": "6+4×8 =（  ）", "answer": "38", "explanation": "先算乘法 4×8=32，再算 6+32=38。"}, {"type": "input", "question": "下午 2 时用 24 时记时法表示是（  ）时。", "answer": "14", "unit": "时", "explanation": "2+12=14，所以是 14 时。"}, {"type": "input", "question": "20 时是晚上（  ）时。", "answer": "8", "explanation": "20-12=8，是晚上 8 时。"}, {"type": "input", "question": "从 8:00 到 11:30，经过了（  ）分钟。", "answer": "210", "unit": "分钟", "explanation": "8:00 到 11:00 是 3 小时即 180 分钟，再加 30 分钟，共 210 分钟。"}, {"type": "input", "question": "1 吨 =（  ）千克", "answer": "1000", "explanation": "1 吨 = 1000 千克。"}, {"type": "input", "question": "3000 克 =（  ）千克", "answer": "3", "explanation": "1000 克是 1 千克，3000 克是 3 千克。"}, {"type": "input", "question": "5 千米 =（  ）米", "answer": "5000", "explanation": "1 千米 = 1000 米，5 千米 = 5000 米。"}, {"type": "input", "question": "24 时是这一天的结束，也是第二天的（  ）时。", "answer": "0", "explanation": "一天从 0 时开始到 24 时结束，首尾相接。"}]}, {"name": "三、选择", "perScore": 3, "questions": [{"type": "choice", "question": "80-6×9 的得数是（  ）", "options": ["666", "26", "36"], "answer": "B", "explanation": "6×9=54，80-54=26。"}, {"type": "choice", "question": "下面算式中，先算减法的是（  ）", "options": ["45-5×6", "(45-5)×6", "45÷5-6"], "answer": "B", "explanation": "只有 B 有括号，括号里是减法，所以先算减法。"}, {"type": "choice", "question": "一个鸡蛋大约重 50（  ）", "options": ["克", "千克", "吨"], "answer": "A", "explanation": "鸡蛋很轻，用克。50 千克比人还重，明显不对。"}, {"type": "choice", "question": "下午 4 时 30 分用 24 时记时法表示是（  ）", "options": ["4 时 30 分", "14 时 30 分", "16 时 30 分"], "answer": "C", "explanation": "4+12=16，所以是 16 时 30 分。"}, {"type": "choice", "question": "一场电影 18:40 开始，20:10 结束，放映了（  ）", "options": ["1 小时 30 分", "2 小时 30 分", "1 小时 40 分"], "answer": "A", "explanation": "18:40 到 19:40 是 1 小时，19:40 到 20:10 是 30 分钟，共 1 小时 30 分。"}, {"type": "choice", "question": "下面哪个算式的积最大？", "options": ["305×3", "350×3", "300×3"], "answer": "B", "explanation": "305×3=915，350×3=1050，300×3=900。最大的是 350×3。"}]}, {"name": "四、计算（写出过程）", "perScore": 3, "questions": [{"type": "input", "question": "36+7×8 =（  ）", "answer": "92", "explanation": "7×8=56，36+56=92。"}, {"type": "input", "question": "90-6×9 =（  ）", "answer": "36", "explanation": "6×9=54，90-54=36。"}, {"type": "input", "question": "(28+44)÷8 =（  ）", "answer": "9", "explanation": "28+44=72，72÷8=9。"}, {"type": "input", "question": "5×(63-55) =（  ）", "answer": "40", "explanation": "63-55=8，5×8=40。"}, {"type": "input", "question": "407×6 =（  ）", "answer": "2442", "explanation": "6×7=42 写 2 进 4；6×0=0，0+4=4；6×4=24。得 2442。"}, {"type": "input", "question": "280×5 =（  ）", "answer": "1400", "explanation": "28×5=140，末尾补 1 个 0，得 1400。"}]}, {"name": "五、解决问题", "perScore": 7, "questions": [{"type": "input", "question": "学校买了 4 箱书，每箱 25 本，分给三年级 60 本。还剩多少本？（只填数字，单位：本）", "answer": "40", "unit": "本", "explanation": "中间量是总数：4×25=100（本）；再算 100-60=40（本）。"}, {"type": "input", "question": "一本书共 96 页，小明看了 5 天，每天看 12 页。还剩多少页？（只填数字，单位：页）", "answer": "36", "unit": "页", "explanation": "中间量是已看页数：5×12=60（页）；再算 96-60=36（页）。"}, {"type": "input", "question": "一袋大米重 25 千克，8 袋一共重多少千克？（只填数字，单位：千克）", "answer": "200", "unit": "千克", "explanation": "25×8=200（千克）。8×5=40 写 0 进 4；8×2=16，16+4=20。"}, {"type": "input", "question": "三年级 3 个班，每班 42 人，每 9 人一组。可以分成多少组？（只填数字，单位：组）", "answer": "14", "unit": "组", "explanation": "中间量是总人数：3×42=126（人）；再算 126÷9=14（组）。"}]}]}};</script>
 <script>
 (function(){
@@ -436,7 +448,7 @@
   let TOTAL = 0;
 
   /* ───── 易错题本：localStorage 持久化 ───── */
-  const WB_KEY = "math3.wrongbook.v1";
+  const WB_KEY = "math3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){
@@ -551,7 +563,7 @@
   }
 
   /* ───── 用户资料与星星（取最好成绩，不累加） ───── */
-  const PF_KEY = "math3.profile.v1";
+  const PF_KEY = "math3.profile.v1" + (__USER ? "." + __USER : "");
   const AV_COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
 
   function pfAll(){
@@ -723,6 +735,9 @@
     rv.innerHTML = '<span class="dot"></span><span class="t">易错题本</span><span class="wb" id="wbcount"></span>';
     if(/review\.html$/.test(location.pathname)) rv.className = "sitem on";
     nav.appendChild(rv);
+    const lg = el("a","sback","切换使用者 →");
+    lg.href = "../login.html";
+    nav.appendChild(lg);
     wbBadge();
   })();
 

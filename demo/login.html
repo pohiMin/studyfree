@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>登录 · 三年级学习台</title>
+<style>
+  :root{
+    --paper:#F6F4EF; --card:#FFFDF9;
+    --ink:#20242E; --ink2:#4C5262; --ink3:#8D93A3;
+    --line:#E6E2D8; --soft:#F5F3ED;
+    --hero1:#1C2230; --hero2:#2A3247;
+    --gold:#D9B87C;
+    --ok:#2E7D64; --no:#C43C3C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);min-height:100vh;
+    display:flex;align-items:center;justify-content:center;padding:30px 18px;
+    -webkit-font-smoothing:antialiased;line-height:1.8;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .box{
+    width:100%;max-width:480px;background:var(--card);
+    border:1px solid rgba(32,36,46,.07);border-radius:26px;
+    padding:38px 36px 34px;position:relative;overflow:hidden;
+    box-shadow:0 1px 2px rgba(32,36,46,.04), 0 18px 44px -14px rgba(28,34,48,.22);
+  }
+  .box::before{
+    content:"记";position:absolute;right:-10px;top:-46px;font-size:9rem;line-height:1;
+    font-family:"Songti SC","STSong","SimSun",serif;color:rgba(176,141,87,.08);pointer-events:none;
+  }
+  .k{font-size:.72rem;letter-spacing:.4em;color:var(--gold2,#B08D57);font-weight:700;margin-bottom:10px}
+  h1{font-family:"Songti SC","STSong","SimSun",serif;font-size:1.7rem;font-weight:800;letter-spacing:.05em}
+  .lead{font-size:.86rem;color:var(--ink2);margin:10px 0 22px}
+  .lead b{color:var(--ink)}
+  .sec{font-size:.78rem;font-weight:700;color:var(--ink3);letter-spacing:.15em;margin:20px 0 10px}
+  .ulist{display:flex;flex-direction:column;gap:9px}
+  .uitem{
+    display:flex;align-items:center;gap:13px;width:100%;text-align:left;
+    font:inherit;font-size:1rem;color:var(--ink);cursor:pointer;
+    background:var(--soft);border:1.5px solid var(--line);border-radius:15px;padding:13px 16px;
+    transition:.15s;
+  }
+  .uitem:hover{border-color:#B08D57;background:#FBF6E9;transform:translateY(-1px)}
+  .uitem .av{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:1.05rem;background:linear-gradient(150deg,#4A7FB5,#2F5D8C)}
+  .uitem .nm{flex:1;font-weight:700}
+  .uitem .info{font-size:.74rem;color:var(--ink3)}
+  .new{display:flex;gap:10px;margin-top:4px}
+  .new input{
+    flex:1;font:inherit;font-size:1.02rem;padding:13px 16px;border-radius:14px;
+    border:1.5px solid var(--line2,#CBD3E1);background:#fff;color:var(--ink);outline:none;min-width:0;
+  }
+  .new input:focus{border-color:#B08D57;box-shadow:0 0 0 4px rgba(176,141,87,.15)}
+  .go{
+    font:inherit;font-size:.95rem;font-weight:700;padding:13px 22px;border-radius:14px;
+    border:none;background:linear-gradient(150deg,#2E3648,#1C2230);color:var(--gold);
+    cursor:pointer;white-space:nowrap;transition:.15s;
+  }
+  .go:hover{transform:translateY(-1px)}
+  .err{color:var(--no);font-size:.82rem;margin-top:8px;display:none}
+  .err.show{display:block}
+  .cur{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);font-size:.85rem;color:var(--ink2)}
+  .cur b{color:var(--ink)}
+  .actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  .act{font:inherit;font-size:.85rem;padding:10px 18px;border-radius:12px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:var(--ink2);transition:.15s}
+  .act:hover{border-color:var(--no);color:var(--no)}
+  .hint{margin-top:18px;font-size:.78rem;color:var(--ink3);line-height:1.9;border-top:1px dashed var(--line);padding-top:14px}
+  .hint b{color:var(--ink2)}
+  a.back{display:inline-block;margin-bottom:16px;color:var(--gold2,#B08D57);text-decoration:none;font-size:.85rem;font-weight:600}
+</style>
+</head>
+<body>
+<div class="box">
+  <a class="back" href="首页.html">← 返回三科入口</a>
+  <div class="k">SIGN IN · 使用记录</div>
+  <h1>登录学习台</h1>
+  <p class="lead">每个使用者有<b>独立的错题本、星星和背单词进度</b>。同一台平板上，选好自己的名字再开始学习。</p>
+
+  <div class="sec">已有使用者</div>
+  <div class="ulist" id="ulist"></div>
+
+  <div class="sec">新使用者</div>
+  <div class="new">
+    <input id="nm" maxlength="12" placeholder="输入姓名，如：小明" autocomplete="off">
+    <button class="go" id="create" type="button">创建并登录</button>
+  </div>
+  <div class="err" id="err"></div>
+
+  <div class="cur" id="cur" style="display:none">
+    当前登录：<b id="curnm"></b>
+    <div class="actions">
+      <button class="act" id="logout" type="button">退出登录（回到游客）</button>
+    </div>
+  </div>
+
+  <div class="hint">
+    <b>说明：</b>登录后，你的记录保存在<b>这台设备</b>的浏览器里，按姓名互相隔离、互不干扰。
+    换一台设备或清除浏览器数据后记录不会跟过去——这是纯离线工具台的设计边界。
+  </div>
+</div>
+
+<script>
+(function(){
+  var U_KEY = "studyfree.users.v1";
+  var S_KEY = "studyfree.session.v1";
+  function users(){ try{ return JSON.parse(localStorage.getItem(U_KEY)||"[]"); }catch(e){ return []; } }
+  function saveUsers(a){ try{ localStorage.setItem(U_KEY, JSON.stringify(a)); }catch(e){} }
+  function session(){ try{ return JSON.parse(localStorage.getItem(S_KEY)||"null"); }catch(e){ return null; } }
+  function setSession(n){
+    if(n){ try{ localStorage.setItem(S_KEY, JSON.stringify({name:n, ts:Date.now()})); }catch(e){} }
+    else{ try{ localStorage.removeItem(S_KEY); }catch(e){} }
+  }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  var COLORS=["#A8432F","#2F5D8C","#2E7D64","#B08D57","#6B4E8E","#B4762A"];
+
+  function render(){
+    var ul = users();
+    var cur = session();
+    var list = document.getElementById("ulist");
+    list.innerHTML = "";
+    if(!ul.length){
+      list.innerHTML = '<div style="font-size:.85rem;color:#8D93A3">还没有使用者，在下面创建第一个名字。</div>';
+    }
+    ul.forEach(function(name){
+      var b = document.createElement("button");
+      b.className = "uitem"; b.type = "button";
+      var color = COLORS[Math.abs(hash(name)) % COLORS.length];
+      b.innerHTML = '<span class="av" style="background:'+color+'">'+ esc(name.charAt(0)) +'</span>' +
+                    '<span class="nm">'+ esc(name) +'</span>' +
+                    (cur && cur.name===name ? '<span class="info">当前登录</span>' : '<span class="info">点击登录</span>');
+      b.onclick = function(){ setSession(name); location.href = "首页.html"; };
+      list.appendChild(b);
+    });
+    var curBox = document.getElementById("cur");
+    if(cur && cur.name){ curBox.style.display=""; document.getElementById("curnm").textContent = cur.name; }
+    else curBox.style.display = "none";
+  }
+  function hash(s){ var h=0; for(var i=0;i<s.length;i++){ h=(h*31+s.charCodeAt(i))>>>0; } return h; }
+
+  function err(msg){
+    var e = document.getElementById("err");
+    e.textContent = msg; e.className = "err show";
+  }
+  document.getElementById("create").onclick = function(){
+    var nm = document.getElementById("nm").value.trim();
+    if(!nm){ err("请先输入姓名。"); return; }
+    if(nm.length < 2){ err("名字至少 2 个字。"); return; }
+    var ul = users();
+    if(ul.indexOf(nm) > -1){ err("这个名字已经存在，直接在上方点击登录即可。"); return; }
+    ul.push(nm); saveUsers(ul);
+    setSession(nm);
+    location.href = "首页.html";
+  };
+  document.getElementById("nm").addEventListener("keydown", function(e){
+    if(e.key === "Enter") document.getElementById("create").click();
+  });
+  document.getElementById("logout").onclick = function(){
+    setSession(null);
+    render();
+  };
+  render();
+})();
+</script>
+</body>
+</html>

@@ -101,6 +101,7 @@
   <footer id="foot"></footer>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true}; const UNITS = [{"n": 1, "title": "混合运算与数量关系（一）", "kp": 7, "q": 137, "adv": 27, "v": 8, "hasPaper": true, "sections": "混合运算 1、混合运算 2、练习一、混合运算 3", "ready": true}, {"n": 2, "title": "两、三位数乘一位数", "kp": 7, "q": 128, "adv": 21, "v": 11, "hasPaper": true, "sections": "整十、整百数乘一位数口算和估算、一位数乘两、三位数的笔算、连续进位乘、乘数中间或末尾有零的乘法", "ready": true}, {"n": 3, "title": "数据的收集与整理", "kp": 5, "q": 98, "adv": 15, "v": 4, "hasPaper": true, "sections": "数据的收集与整理、练习五、了解你的好朋友、设计与调查", "ready": true}, {"n": 4, "title": "毫米、分米和千米", "kp": 5, "q": 101, "adv": 15, "v": 3, "hasPaper": true, "sections": "认识毫米、认识分米、认识千米、练习六", "ready": true}, {"n": 5, "title": "平移、旋转和轴对称", "kp": 4, "q": 88, "adv": 12, "v": 3, "hasPaper": true, "sections": "平移和旋转、轴对称、练习七", "ready": true}, {"n": 6, "title": "两、三位数除以一位数", "kp": 7, "q": 125, "adv": 21, "v": 6, "hasPaper": true, "sections": "整十、整百数除以一位数口算、笔算两位数除以一位数、三位数除以一位数（首位够除）、三位数除以一位数（首位不够除）", "ready": true}, {"n": 7, "title": "数量关系的分析（一）", "kp": 4, "q": 88, "adv": 12, "v": 2, "hasPaper": true, "sections": "数量关系的分析、练习十一", "ready": true}, {"n": 8, "title": "观察物体（二）", "kp": 4, "q": 87, "adv": 12, "v": 3, "hasPaper": true, "sections": "观察物体、练习十二", "ready": true}, {"n": 9, "title": "期末复习", "kp": 7, "q": 112, "adv": 21, "v": 7, "hasPaper": true, "sections": "数与运算、时间单位、质量单位、数量关系、图形的认识与测量", "ready": true}];</script>
 <script>
 (function(){
@@ -114,7 +115,7 @@
 
   /* 用户条 */
   (function(){
-    const KEY = "math3.profile.v1";
+    const KEY = "math3.profile.v1" + (__USER ? "." + __USER : "");
     const COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
     let p = {};
     try{ p = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ p = {}; }

@@ -152,6 +152,18 @@
   footer p{font-size:.78rem;color:var(--ink3);line-height:2}
   footer b{color:var(--ink2);font-weight:700}
 
+  /* 平板：字号提升 + 两列卡片 */
+  @media(min-width:761px) and (max-width:1120px){
+    body{font-size:17.5px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .grid a.card:last-child{grid-column:1/-1}
+  }
+  /* 触屏：可点击区域加大 */
+  @media(pointer:coarse){
+    .chip{padding:10px 18px;font-size:.85rem}
+  }
+  .userchip{color:var(--gold)!important;border-color:rgba(217,184,124,.45)!important;font-weight:700}
+
   @media(max-width:760px){
     .hero{padding:60px 20px 80px;border-radius:0 0 28px 28px}
     .hero .seal{display:none}
@@ -171,6 +183,7 @@
       <span class="chip">基础 · 提高 · 挑战 三层难度</span>
       <span class="chip">错题连对三次自动出册</span>
       <span class="chip">测验限时 · 时间到自动交卷</span>
+      <a class="chip userchip" id="userchip" href="demo/login.html"></a>
     </div>
   </div>
 </header>
@@ -230,5 +243,14 @@
   <p style="margin-top:10px;font-size:.72rem">本页托管于 GitHub Pages · 学习记录仅存本机浏览器</p>
 </footer>
 
+<script>
+(function(){
+  var cur = null;
+  try{ cur = JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  var chip = document.getElementById("userchip");
+  if(cur && cur.name){ chip.textContent = "当前使用者：" + cur.name + "（点此切换）"; }
+  else{ chip.textContent = "登录使用者 · 记录我的学习进度"; }
+})();
+</script>
 </body>
 </html>

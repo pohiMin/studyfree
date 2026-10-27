@@ -18,6 +18,17 @@
     --r-lg:22px; --r-md:14px; --r-sm:10px;
   }
   html{font-size:17px}
+  /* ── 平板适配：字号与触控 ── */
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){
+    .opt{padding:14px 16px}
+    .inp-row input{padding:13px 15px}
+    .btn{padding:12px 24px}
+    .startbtn{padding:14px 34px}
+    .mtab,.kptab{padding-top:12px;padding-bottom:12px}
+    .sitem{padding:11px 12px}
+  }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -427,6 +438,7 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = /*__BOOK__*/; const DATA = /*__DATA__*/;</script>
 <script>
 (function(){
@@ -436,7 +448,7 @@
   let TOTAL = 0;
 
   /* ───── 易错题本：localStorage 持久化 ───── */
-  const WB_KEY = "math3.wrongbook.v1";
+  const WB_KEY = "math3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){
@@ -551,7 +563,7 @@
   }
 
   /* ───── 用户资料与星星（取最好成绩，不累加） ───── */
-  const PF_KEY = "math3.profile.v1";
+  const PF_KEY = "math3.profile.v1" + (__USER ? "." + __USER : "");
   const AV_COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
 
   function pfAll(){
@@ -723,6 +735,9 @@
     rv.innerHTML = '<span class="dot"></span><span class="t">易错题本</span><span class="wb" id="wbcount"></span>';
     if(/review\.html$/.test(location.pathname)) rv.className = "sitem on";
     nav.appendChild(rv);
+    const lg = el("a","sback","切换使用者 →");
+    lg.href = "../login.html";
+    nav.appendChild(lg);
     wbBadge();
   })();
 

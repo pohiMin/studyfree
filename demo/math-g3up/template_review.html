@@ -16,6 +16,9 @@
     --warn:#C27803; --warn-l:#FFF7E6; --warn-b:#FBE3B0;
   }
   html{font-size:17px}
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){ .opt{padding:14px 16px} .btn{padding:12px 24px} .sitem{padding:11px 12px} }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -141,10 +144,11 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = /*__BOOK__*/;</script>
 <script>
 (function(){
-  const WB_KEY = "math3.wrongbook.v1";
+  const WB_KEY = "math3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){

@@ -18,6 +18,17 @@
     --r-lg:22px; --r-md:14px; --r-sm:10px;
   }
   html{font-size:17px}
+  /* ── 平板适配：字号与触控 ── */
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){
+    .opt{padding:14px 16px}
+    .inp-row input{padding:13px 15px}
+    .btn{padding:12px 24px}
+    .startbtn{padding:14px 34px}
+    .mtab,.kptab{padding-top:12px;padding-bottom:12px}
+    .sitem{padding:11px 12px}
+  }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -427,6 +438,7 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": -1, "unitTitle": "期末检测卷", "unitSubtitle": "全册 · 难度递进", "sections": [], "note": "全册综合", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "期末检测卷", "subtitle": "三年级上册全册（第一单元至第九单元）", "duration": 70, "totalScore": 110, "note": "满分 100 + 附加题 10 · 自主检测 · 不计排名", "sections": [{"name": "一、直接写出得数", "perScore": 1, "questions": [{"type": "input", "question": "40×7 =（  ）", "answer": "280", "explanation": "4×7=28，末尾补 1 个 0，得 280。"}, {"type": "input", "question": "500×8 =（  ）", "answer": "4000", "explanation": "5×8=40，末尾补 2 个 0，得 4000。"}, {"type": "input", "question": "63÷7 =（  ）", "answer": "9", "explanation": "七九六十三，63÷7=9。"}, {"type": "input", "question": "480÷6 =（  ）", "answer": "80", "explanation": "48÷6=8，末尾补 1 个 0，得 80。"}, {"type": "input", "question": "306×3 =（  ）", "answer": "918", "explanation": "3×6=18 写 8 进 1；3×0=0，0+1=1；3×3=9。得 918。"}, {"type": "input", "question": "720÷9 =（  ）", "answer": "80", "explanation": "72÷9=8，末尾补 1 个 0，得 80。"}, {"type": "input", "question": "84÷4 =（  ）", "answer": "21", "explanation": "8÷4=2，4÷4=1，得 21。"}, {"type": "input", "question": "360-80 =（  ）", "answer": "280", "explanation": "360-80=280。"}]}, {"name": "二、用竖式计算", "perScore": 3, "questions": [{"type": "input", "question": "265×4 =（  ）", "answer": "1060", "explanation": "4×5=20 写 0 进 2；4×6=24，24+2=26 写 6 进 2；4×2=8，8+2=10。得 1060。"}, {"type": "input", "question": "480×3 =（  ）", "answer": "1440", "explanation": "48×3=144，末尾补 1 个 0，得 1440。"}, {"type": "input", "question": "436÷4 =（  ）", "answer": "109", "explanation": "4÷4=1；十位 3 比 4 小，商 0；36÷4=9。得 109。"}, {"type": "input", "question": "654÷3 =（  ）", "answer": "218", "explanation": "6÷3=2；5÷3=1 余 2，2 和 4 合成 24，24÷3=8。得 218。"}]}, {"name": "三、脱式计算", "perScore": 3, "questions": [{"type": "input", "question": "560-120×4 =（  ）", "answer": "80", "explanation": "先算乘法 120×4=480，再算 560-480=80。"}, {"type": "input", "question": "(450+150)÷5 =（  ）", "answer": "120", "explanation": "450+150=600，600÷5=120。"}, {"type": "input", "question": "32×3+280 =（  ）", "answer": "376", "explanation": "32×3=96，96+280=376。"}, {"type": "input", "question": "810÷(3×3) =（  ）", "answer": "90", "explanation": "3×3=9，810÷9=90。"}]}, {"name": "四、填空", "perScore": 2, "questions": [{"type": "input", "question": "计算 3×192+47 时，要先算乘法，结果是（  ）。", "answer": "623", "explanation": "3×192=576，576+47=623。"}, {"type": "choice", "question": "一张身份证的厚度约为 1（  ）", "options": ["毫米", "厘米", "分米"], "answer": "A", "explanation": "身份证很薄，约 1 毫米。1 厘米相当于手指宽，太厚了。"}, {"type": "choice", "question": "一台电视机重约 23（  ）", "options": ["克", "千克", "吨"], "answer": "B", "explanation": "电视机约 23 千克。23 克太轻（不如一个鸡蛋），23 吨比卡车还重。"}, {"type": "choice", "question": "课桌高约 7（  ）", "options": ["毫米", "厘米", "分米"], "answer": "C", "explanation": "7 分米 = 70 厘米，正是课桌高度。"}, {"type": "input", "question": "1 吨 =（  ）千克", "answer": "1000", "explanation": "1 吨 = 1000 千克。"}, {"type": "input", "question": "一个数的 8 倍是 560，这个数是（  ）。", "answer": "70", "explanation": "求这个数要用除法：560÷8=70。看到「几倍是」不要急着乘。"}, {"type": "input", "question": "36 是 3 的（  ）倍。", "answer": "12", "explanation": "36÷3=12，所以 36 是 3 的 12 倍。"}, {"type": "input", "question": "小明家到学校 800 米，他每天上学要往返两个来回，一天一共走（  ）米。", "answer": "3200", "explanation": "一个来回是 800×2=1600（米），两个来回是 1600×2=3200（米）。这题的坑在「两个来回」——不是两趟，是四个单程。"}, {"type": "input", "question": "要使 6□7÷3 的商中间有 0，□里最大填（  ）。", "answer": "2", "explanation": "百位 6÷3=2，十位要不够商 1 才会商 0，也就是 □ 必须比 3 小。能填 0、1、2，最大是 2。"}, {"type": "input", "question": "体育课上同学们排成一排，从左数丽丽是第 8 个，从右数她是第 10 个。这一排共有（  ）人。", "answer": "17", "explanation": "8+10=18，但丽丽被数了两次，要减 1，所以是 17 人。这类题的关键是「重叠的那个人只算一次」。"}]}, {"name": "五、选择", "perScore": 2, "questions": [{"type": "choice", "question": "下面算式中，商是三位数的是（  ）", "options": ["360÷3", "400÷5", "630÷7"], "answer": "A", "explanation": "360÷3=120（三位数）；400÷5=80、630÷7=90 都是两位数。看图先看百位够不够除。"}, {"type": "choice", "question": "下面属于轴对称现象的是（  ）", "options": ["风车转动", "国旗上升", "对折后两边完全重合的汉字「中」"], "answer": "C", "explanation": "轴对称是沿一条线对折后两边完全重合。「中」字符合；风车转动是旋转，国旗上升是平移。"}, {"type": "choice", "question": "三年级 240 人，平均分成 4 个班，每个班再平均分成 6 组。每组多少人？列式正确的是（  ）", "options": ["240÷4×6", "240÷(4×6)", "240×4÷6"], "answer": "B", "explanation": "总组数是 4×6=24 组，240÷24=10 人。写成 240÷(4×6) 就对了。"}, {"type": "choice", "question": "一辆卡车一次能运 3 吨货物，现有 28 吨货物。至少需要运（  ）次才能运完。", "options": ["9", "10", "11"], "answer": "B", "explanation": "28÷3=9 余 1，运 9 次还剩 1 吨，还得再运 1 次，所以至少 10 次。「至少」这类题有余数就要多算一次。"}, {"type": "choice", "question": "用几个小正方体摆成一个物体，从不同方向看到的形状（  ）", "options": ["一定相同", "一定不同", "可能不同"], "answer": "C", "explanation": "同一个物体，从前面、右面、上面看到的形状可能不同，也可能恰好相同。所以要几个方向一起看才能确定。"}, {"type": "choice", "question": "靠墙围一块长方形菜地，长 8 米，宽 5 米。至少需要（  ）米篱笆。", "options": ["26", "21", "18"], "answer": "C", "explanation": "靠墙那一面不用围。让长边靠墙，只需 8+5+5=18 米；让宽边靠墙则要 5+8+8=21 米。求「至少」应选短的，18 米。"}]}, {"name": "六、根据数据填空", "perScore": 3, "questions": [{"type": "input", "question": "某班参加兴趣小组的情况：书法 5 人、绘画 7 人、音乐 4 人。三个小组一共有（  ）人。", "answer": "16", "explanation": "5+7+4=16（人）。"}, {"type": "input", "question": "接上题，参加人数最多的小组比最少的多（  ）人。", "answer": "3", "explanation": "最多是绘画 7 人，最少是音乐 4 人，7-4=3（人）。"}]}, {"name": "七、解决问题", "perScore": 6, "questions": [{"type": "input", "question": "一列高铁每小时行驶 280 千米，从甲地到乙地行驶了 3 小时。甲、乙两地相距多少千米？（只填数字，单位：千米）", "answer": "840", "unit": "千米", "explanation": "280×3=840（千米）。28×3=84，末尾补 1 个 0。"}, {"type": "input", "question": "爸爸准备买 5 盒碧螺春，每盒 98 元。他带了 450 元，还差多少元？（只填数字，单位：元）", "answer": "40", "unit": "元", "explanation": "先求一共要多少：98×5=490（元）；再算 490-450=40（元）。注意问的是「还差」，不是「够不够」。"}, {"type": "input", "question": "小华准备写 120 个毛笔字，计划 5 天写完，实际比计划推迟了 3 天。他实际平均每天写多少个？（只填数字，单位：个）", "answer": "15", "unit": "个", "explanation": "实际用了 5+3=8（天），120÷8=15（个）。坑在「推迟了 3 天」——实际天数是 8 天，不是 3 天，也不是 5 天。"}, {"type": "input", "question": "同学们排队做操，从前数小明是第 5 个，从后数他是第 8 个。这一排一共有多少人？（只填数字，单位：人）", "answer": "12", "unit": "人", "explanation": "5+8=13，小明被数了两次要减 1，13-1=12（人）。"}, {"type": "input", "question": "果园里有梨树 126 棵，苹果树的棵数比梨树的 4 倍少 98 棵。苹果树有多少棵？（只填数字，单位：棵）", "answer": "406", "unit": "棵", "explanation": "先求 4 倍：126×4=504（棵）；再减 98：504-98=406（棵）。"}]}, {"name": "八、附加题（不计入 100 分）", "perScore": 5, "questions": [{"type": "input", "question": "3 千克苹果和 4 千克梨一共 40 元，苹果的单价是梨的 2 倍。每千克苹果多少元？（只填数字，单位：元）", "answer": "8", "unit": "元", "explanation": "把苹果换成梨来想：1 千克苹果 = 2 千克梨的价钱，那 3 千克苹果 = 6 千克梨。于是一共相当于 6+4=10 千克梨，40÷10=4（元）是梨的单价，苹果就是 4×2=8（元）。"}, {"type": "input", "question": "一根绳子，第一次剪去一半，第二次剪去剩下的一半，最后还剩 5 米。这根绳子原来长多少米？（只填数字，单位：米）", "answer": "20", "unit": "米", "explanation": "倒着想：最后剩 5 米，是第二次剪之前的 5×2=10（米）；这 10 米又是第一次剪之前的一半，10×2=20（米）。两次「一半」要乘两次 2，只乘一次是最常见的错法。"}]}]}};</script>
 <script>
 (function(){
@@ -436,7 +448,7 @@
   let TOTAL = 0;
 
   /* ───── 易错题本：localStorage 持久化 ───── */
-  const WB_KEY = "math3.wrongbook.v1";
+  const WB_KEY = "math3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){
@@ -551,7 +563,7 @@
   }
 
   /* ───── 用户资料与星星（取最好成绩，不累加） ───── */
-  const PF_KEY = "math3.profile.v1";
+  const PF_KEY = "math3.profile.v1" + (__USER ? "." + __USER : "");
   const AV_COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
 
   function pfAll(){
@@ -723,6 +735,9 @@
     rv.innerHTML = '<span class="dot"></span><span class="t">易错题本</span><span class="wb" id="wbcount"></span>';
     if(/review\.html$/.test(location.pathname)) rv.className = "sitem on";
     nav.appendChild(rv);
+    const lg = el("a","sback","切换使用者 →");
+    lg.href = "../login.html";
+    nav.appendChild(lg);
     wbBadge();
   })();
 

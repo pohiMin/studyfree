@@ -16,6 +16,9 @@
     --warn:#C27803; --warn-l:#FFF7E6; --warn-b:#FBE3B0;
   }
   html{font-size:17px}
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){ .opt{padding:14px 16px} .btn{padding:12px 24px} .sitem{padding:11px 12px} }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -141,10 +144,11 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true};</script>
 <script>
 (function(){
-  const WB_KEY = "math3.wrongbook.v1";
+  const WB_KEY = "math3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){

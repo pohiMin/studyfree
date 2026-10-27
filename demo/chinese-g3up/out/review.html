@@ -16,6 +16,9 @@
     --warn:#C27803; --warn-l:#FFF7E6; --warn-b:#FBE3B0;
   }
   html{font-size:17px}
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){ .opt{padding:14px 16px} .btn{padding:12px 24px} .sitem{padding:11px 12px} }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -141,10 +144,11 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "统编版 · 语文 · 三年级上册", "edition": "2025 年 6 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-107-39754-7", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点讲解，再做题。答错的题会立刻给出解析，错的字要动手写一遍，不要只看。<br><b>顺序建议：</b>第二、七单元（六首古诗）要背熟默对；第三单元是阅读策略单元，练的是“预测要有依据”，不是背故事；第六、七单元的“找关键句、围绕一个意思写”是习作地基；第八单元第一次学文言文，先读通再理解。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "学校生活"}, {"n": 2, "t": "金秋时节"}, {"n": 3, "t": "预测"}, {"n": 4, "t": "童话世界"}, {"n": 5, "t": "留心观察"}, {"n": 6, "t": "祖国山河"}, {"n": 7, "t": "自然之美"}, {"n": 8, "t": "美好品质"}], "totalQ": 664, "hasMidterm": true, "hasFinal": true};</script>
 <script>
 (function(){
-  const WB_KEY = "chinese3.wrongbook.v1";
+  const WB_KEY = "chinese3.wrongbook.v1" + (__USER ? "." + __USER : "");
   const WB_NEED = 3;
 
   function wbAll(){

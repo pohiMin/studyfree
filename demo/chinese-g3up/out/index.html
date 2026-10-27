@@ -101,6 +101,7 @@
   <footer id="foot"></footer>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "统编版 · 语文 · 三年级上册", "edition": "2025 年 6 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-107-39754-7", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点讲解，再做题。答错的题会立刻给出解析，错的字要动手写一遍，不要只看。<br><b>顺序建议：</b>第二、七单元（六首古诗）要背熟默对；第三单元是阅读策略单元，练的是“预测要有依据”，不是背故事；第六、七单元的“找关键句、围绕一个意思写”是习作地基；第八单元第一次学文言文，先读通再理解。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "学校生活"}, {"n": 2, "t": "金秋时节"}, {"n": 3, "t": "预测"}, {"n": 4, "t": "童话世界"}, {"n": 5, "t": "留心观察"}, {"n": 6, "t": "祖国山河"}, {"n": 7, "t": "自然之美"}, {"n": 8, "t": "美好品质"}], "totalQ": 664, "hasMidterm": true, "hasFinal": true}; const UNITS = [{"n": 1, "title": "学校生活", "kp": 5, "q": 92, "adv": 10, "v": 0, "hasPaper": true, "sections": "大青树下的小学、花的学校、不懂就要问、口语交际：我的暑假生活", "ready": true}, {"n": 2, "title": "金秋时节", "kp": 5, "q": 92, "adv": 10, "v": 0, "hasPaper": true, "sections": "古诗三首、铺满金色巴掌的水泥道、秋天的雨、听听，秋的声音", "ready": true}, {"n": 3, "title": "预测", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "总也倒不了的老屋、犟龟、小狗学叫、口语交际：名字里的故事", "ready": true}, {"n": 4, "title": "童话世界", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "宝葫芦的秘密、在牛肚子里旅行、一块奶酪、习作：我来编童话", "ready": true}, {"n": 5, "title": "留心观察", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "搭船的鸟、金色的草地、习作例文、初试身手", "ready": true}, {"n": 6, "title": "祖国山河", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "富饶的西沙群岛、海滨小城、美丽的小兴安岭、香港，璀璨的明珠", "ready": true}, {"n": 7, "title": "自然之美", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "古诗三首、大自然的声音、读不完的大书、口语交际：身边的『小事』", "ready": true}, {"n": 8, "title": "美好品质", "kp": 4, "q": 80, "adv": 8, "v": 0, "hasPaper": true, "sections": "司马光、一定要争气、手术台就是阵地、一个粗瓷大碗", "ready": true}];</script>
 <script>
 (function(){
@@ -114,7 +115,7 @@
 
   /* 用户条 */
   (function(){
-    const KEY = "chinese3.profile.v1";
+    const KEY = "chinese3.profile.v1" + (__USER ? "." + __USER : "");
     const COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
     let p = {};
     try{ p = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ p = {}; }

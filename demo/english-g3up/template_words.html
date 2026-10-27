@@ -15,6 +15,9 @@
     --no:#E02424; --no-l:#FDECEC;
   }
   html{font-size:17px}
+  @media(min-width:761px) and (max-width:1120px){ html{font-size:18.5px} }
+  @media(max-width:900px){ html{font-size:18px} }
+  @media(pointer:coarse){ .qopt{padding:15px 16px} .wcard{min-height:150px} .sitem{padding:11px 12px} }
   body{background:var(--bg);color:var(--ink);line-height:1.75;
     font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased}
@@ -151,10 +154,11 @@
   </main>
 </div>
 
+<script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = /*__BOOK__*/; const WORDS = /*__WORDS__*/;</script>
 <script>
 (function(){
-  const KEY = "english3.words.v1";
+  const KEY = "english3.words.v1" + (__USER ? "." + __USER : "");
   const NEED = 3;
 
   function stAll(){
