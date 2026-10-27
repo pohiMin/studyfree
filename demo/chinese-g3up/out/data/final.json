@@ -1,0 +1,395 @@
+{
+  "unitNumber": -1,
+  "unitTitle": "语文期末检测卷",
+  "unitSubtitle": "全册八个单元",
+  "sections": [],
+  "note": "覆盖全册八个单元",
+  "knowledgePoints": [],
+  "videos": [],
+  "exam": null,
+  "paper": {
+    "title": "语文期末检测卷",
+    "subtitle": "全册八个单元（含六首必背古诗）",
+    "duration": 70,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选择正确读音",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "汉族的『汉』读：",
+            "options": [
+              "hàn",
+              "háng",
+              "fàn"
+            ],
+            "answer": "A",
+            "explanation": "汉读 hàn。"
+          },
+          {
+            "type": "choice",
+            "question": "海报的『铺』（店铺）：",
+            "options": [
+              "pù",
+              "pū",
+              "pǔ"
+            ],
+            "answer": "A",
+            "explanation": "店铺读 pù。"
+          },
+          {
+            "type": "choice",
+            "question": "《鹿柴》的『柴』读：",
+            "options": [
+              "zhài",
+              "chái",
+              "cài"
+            ],
+            "answer": "A",
+            "explanation": "鹿柴的柴读 zhài。"
+          },
+          {
+            "type": "choice",
+            "question": "海参的『参』读：",
+            "options": [
+              "shēn",
+              "cān",
+              "sēn"
+            ],
+            "answer": "A",
+            "explanation": "海参读 shēn。"
+          },
+          {
+            "type": "choice",
+            "question": "栖息的『栖』读：",
+            "options": [
+              "qī",
+              "xī",
+              "qì"
+            ],
+            "answer": "A",
+            "explanation": "栖读 qī。"
+          },
+          {
+            "type": "choice",
+            "question": "战斗的『斗』读：",
+            "options": [
+              "dòu",
+              "dǒu",
+              "dōu"
+            ],
+            "answer": "A",
+            "explanation": "战斗读 dòu。"
+          },
+          {
+            "type": "choice",
+            "question": "几乎的『几』读：",
+            "options": [
+              "jī",
+              "jǐ",
+              "jì"
+            ],
+            "answer": "A",
+            "explanation": "几乎读 jī。"
+          },
+          {
+            "type": "choice",
+            "question": "音乐的『乐』读：",
+            "options": [
+              "yuè",
+              "lè",
+              "yuē"
+            ],
+            "answer": "A",
+            "explanation": "音乐读 yuè。"
+          }
+        ]
+      },
+      {
+        "name": "二、选择正确的字",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "校园里十分安______。",
+            "options": [
+              "静",
+              "清",
+              "睛"
+            ],
+            "answer": "A",
+            "explanation": "安静。"
+          },
+          {
+            "type": "choice",
+            "question": "我____察了绿豆发芽。",
+            "options": [
+              "观",
+              "关",
+              "官"
+            ],
+            "answer": "A",
+            "explanation": "观察。"
+          },
+          {
+            "type": "choice",
+            "question": "翠鸟____起小鱼飞走了。",
+            "options": [
+              "衔",
+              "街",
+              "衍"
+            ],
+            "answer": "A",
+            "explanation": "衔：用嘴叼。"
+          },
+          {
+            "type": "choice",
+            "question": "他____不犹豫地冲上去。",
+            "options": [
+              "毫",
+              "豪",
+              "亳"
+            ],
+            "answer": "A",
+            "explanation": "毫不犹豫的毫下面是毛；豪下面是豕（自豪）；亳读 bó，是地名用字（安徽亳州），下面比毫少一横。"
+          },
+          {
+            "type": "choice",
+            "question": "那里非常____险。",
+            "options": [
+              "危",
+              "威",
+              "微"
+            ],
+            "answer": "A",
+            "explanation": "危险。"
+          }
+        ]
+      },
+      {
+        "name": "三、把词语补充完整",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "input",
+            "question": "五彩____纷",
+            "answer": "缤",
+            "explanation": "五彩缤纷。"
+          },
+          {
+            "type": "input",
+            "question": "秋高____爽",
+            "answer": "气",
+            "explanation": "秋高气爽。"
+          },
+          {
+            "type": "input",
+            "question": "五____十色",
+            "answer": "光",
+            "explanation": "五光十色。"
+          },
+          {
+            "type": "input",
+            "question": "争分____秒",
+            "answer": "夺",
+            "explanation": "争分夺秒。"
+          },
+          {
+            "type": "input",
+            "question": "引人____目",
+            "answer": "注",
+            "explanation": "引人注目。"
+          }
+        ]
+      },
+      {
+        "name": "四、判断对错",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "true_false",
+            "question": "『秋天的雨，吹起了金色的小喇叭』是拟人句。",
+            "answer": "对",
+            "explanation": "把秋雨当成人写。"
+          },
+          {
+            "type": "true_false",
+            "question": "预测课文时，猜错了就没有意义。",
+            "answer": "错",
+            "explanation": "预测重在依据，猜错可修正。"
+          },
+          {
+            "type": "true_false",
+            "question": "牛有四个胃，会反刍。",
+            "answer": "对",
+            "explanation": "红头脱险的科学依据。"
+          },
+          {
+            "type": "true_false",
+            "question": "草地中午变金色是因为草枯了。",
+            "answer": "错",
+            "explanation": "是蒲公英花朵张开。"
+          },
+          {
+            "type": "true_false",
+            "question": "默读时要出声读。",
+            "answer": "错",
+            "explanation": "默读不出声、不指读。"
+          }
+        ]
+      },
+      {
+        "name": "五、按课文内容填空",
+        "perScore": 4,
+        "questions": [
+          {
+            "type": "input",
+            "question": "《大青树下的小学》：最有趣的是，跑来了____只猴子。",
+            "answer": "两",
+            "explanation": "课文原句。"
+          },
+          {
+            "type": "input",
+            "question": "秋天的雨，是一把____。（两个字）",
+            "answer": "钥匙",
+            "explanation": "课文把秋雨比作钥匙。"
+          },
+          {
+            "type": "input",
+            "question": "原来，蒲公英的花就像我们的____，可以张开、合上。",
+            "answer": "手掌",
+            "explanation": "课文原句。"
+          },
+          {
+            "type": "input",
+            "question": "西沙群岛的海里一半是水，一半是____。",
+            "answer": "鱼",
+            "explanation": "夸张写鱼多。"
+          },
+          {
+            "type": "input",
+            "question": "群儿戏于庭，一儿登瓮，足跌____水中。（填一个字）",
+            "answer": "没",
+            "explanation": "没读 mò，淹没。"
+          },
+          {
+            "type": "input",
+            "question": "《大自然的声音》：____是大自然的音乐家。（填一个事物）",
+            "answer": "风",
+            "explanation": "风是大自然的音乐家。"
+          }
+        ]
+      },
+      {
+        "name": "六、古诗默写与理解",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "input",
+            "question": "《山行》：停车坐爱枫林晚，____红于二月花。（填三个字）",
+            "answer": "霜叶",
+            "explanation": "霜叶红于二月花。"
+          },
+          {
+            "type": "input",
+            "question": "《望天门山》：天门中断楚江开，____东流至此回。（填两个字）",
+            "answer": "碧水",
+            "explanation": "碧水东流至此回。"
+          },
+          {
+            "type": "input",
+            "question": "《饮湖上初晴后雨》：欲把西湖比西子，____总相宜。（填四个字）",
+            "answer": "淡妆浓抹",
+            "explanation": "淡妆浓抹总相宜。"
+          },
+          {
+            "type": "choice",
+            "question": "『一年好景君须记，最是橙黄橘绿时』出自：",
+            "options": [
+              "《赠刘景文》",
+              "《山行》",
+              "《鹿柴》"
+            ],
+            "answer": "A",
+            "explanation": "苏轼的《赠刘景文》。"
+          }
+        ]
+      },
+      {
+        "name": "七、阅读与表达",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "『西沙群岛的海里一半是水，一半是鱼』的作用是：",
+            "options": [
+              "概括说明鱼非常多",
+              "教算术",
+              "说明水清"
+            ],
+            "answer": "A",
+            "explanation": "中心句，夸张写鱼多。"
+          },
+          {
+            "type": "choice",
+            "question": "司马光救人的办法说明他：",
+            "options": [
+              "遇事冷静、肯动脑筋",
+              "力气很大",
+              "爱砸东西"
+            ],
+            "answer": "A",
+            "explanation": "别人跑了他不跑，想出砸瓮放水。"
+          },
+          {
+            "type": "choice",
+            "question": "写『那次经历真难忘』，经过部分要：",
+            "options": [
+              "一步一步写具体",
+              "一句话带过",
+              "只写感受"
+            ],
+            "answer": "A",
+            "explanation": "经过是核心。"
+          },
+          {
+            "type": "choice",
+            "question": "『围绕一个意思写』的意思是：",
+            "options": [
+              "一段话只讲一个意思，句句为中心服务",
+              "只能写一句话",
+              "不许举例"
+            ],
+            "answer": "A",
+            "explanation": "段落的写法规矩。"
+          },
+          {
+            "type": "choice",
+            "question": "提『我有一个想法』最重要的部分是：",
+            "options": [
+              "具体的建议和理由",
+              "抱怨",
+              "抄新闻"
+            ],
+            "answer": "A",
+            "explanation": "有建议的想法才有用。"
+          },
+          {
+            "type": "choice",
+            "question": "本学期学过的文言文是：",
+            "options": [
+              "《司马光》",
+              "《花的学校》",
+              "《秋天的雨》"
+            ],
+            "answer": "A",
+            "explanation": "第一篇文言文。"
+          }
+        ]
+      }
+    ]
+  }
+}

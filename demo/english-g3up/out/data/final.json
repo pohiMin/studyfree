@@ -1,0 +1,372 @@
+{
+  "unitNumber": -1,
+  "unitTitle": "英语期末检测卷",
+  "unitSubtitle": "全册八个单元",
+  "sections": [],
+  "note": "覆盖全册八个单元",
+  "knowledgePoints": [],
+  "videos": [],
+  "exam": null,
+  "paper": {
+    "title": "英语期末检测卷",
+    "subtitle": "全册八个单元（含 26 个字母）",
+    "duration": 70,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选出不同类的单词",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "father",
+              "mother",
+              "hello"
+            ],
+            "answer": "C",
+            "explanation": "hello 是问候语。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "one",
+              "two",
+              "she"
+            ],
+            "answer": "C",
+            "explanation": "she 是代词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "run",
+              "sing",
+              "table"
+            ],
+            "answer": "C",
+            "explanation": "table 是家具。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "uncle",
+              "aunt",
+              "old"
+            ],
+            "answer": "C",
+            "explanation": "old 是形容词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "Z",
+              "Y",
+              "sorry"
+            ],
+            "answer": "C",
+            "explanation": "sorry 是道歉语。"
+          }
+        ]
+      },
+      {
+        "name": "二、单项选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "早上问好：",
+            "options": [
+              "Good morning.",
+              "Good night.",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "早上用 Good morning.。"
+          },
+          {
+            "type": "choice",
+            "question": "问名字：",
+            "options": [
+              "What's your name?",
+              "Who's he?",
+              "How old are you?"
+            ],
+            "answer": "A",
+            "explanation": "What's your name?。"
+          },
+          {
+            "type": "choice",
+            "question": "—Are you Su Hai? —Yes, I ______.",
+            "options": [
+              "am",
+              "is",
+              "are"
+            ],
+            "answer": "A",
+            "explanation": "完整形式。"
+          },
+          {
+            "type": "choice",
+            "question": "介绍朋友：",
+            "options": [
+              "This is my friend Mike.",
+              "This my Mike.",
+              "I friend Mike."
+            ],
+            "answer": "A",
+            "explanation": "This is…。"
+          },
+          {
+            "type": "choice",
+            "question": "—Who's she? —______（指你的妈妈）",
+            "options": [
+              "She's my mother.",
+              "He's my father.",
+              "I'm nine."
+            ],
+            "answer": "A",
+            "explanation": "问 she 答 she。"
+          },
+          {
+            "type": "choice",
+            "question": "—Is he your grandpa? —______（是的）",
+            "options": [
+              "Yes, he is.",
+              "Yes, he's.",
+              "Yes, he are."
+            ],
+            "answer": "A",
+            "explanation": "完整形式。"
+          },
+          {
+            "type": "choice",
+            "question": "生日祝福：",
+            "options": [
+              "Happy Birthday!",
+              "Happy New Year!",
+              "Goodbye!"
+            ],
+            "answer": "A",
+            "explanation": "Happy Birthday!。"
+          },
+          {
+            "type": "choice",
+            "question": "—How old are you? —______",
+            "options": [
+              "I'm nine.",
+              "My name is Sam.",
+              "Yes, I am."
+            ],
+            "answer": "A",
+            "explanation": "回答年龄。"
+          },
+          {
+            "type": "choice",
+            "question": "我会游泳：",
+            "options": [
+              "I can swim.",
+              "I can to swim.",
+              "I swim can."
+            ],
+            "answer": "A",
+            "explanation": "can + 动词原形。"
+          },
+          {
+            "type": "choice",
+            "question": "帮朋友做事：",
+            "options": [
+              "I can do this for you.",
+              "I can do this for I.",
+              "I for you."
+            ],
+            "answer": "A",
+            "explanation": "for you：为你。"
+          }
+        ]
+      },
+      {
+        "name": "三、情景选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "新同学来了，你说：",
+            "options": [
+              "Welcome to our class!",
+              "Bye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "欢迎。"
+          },
+          {
+            "type": "choice",
+            "question": "—Nice to meet you. —______",
+            "options": [
+              "Nice to meet you, too.",
+              "Fine.",
+              "OK."
+            ],
+            "answer": "A",
+            "explanation": "回答加 too。"
+          },
+          {
+            "type": "choice",
+            "question": "收到礼物：",
+            "options": [
+              "Thank you!",
+              "OK!",
+              "Give me."
+            ],
+            "answer": "A",
+            "explanation": "道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "猜错名字说：",
+            "options": [
+              "Sorry!",
+              "OK!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "道歉。"
+          },
+          {
+            "type": "choice",
+            "question": "鼓励朋友：",
+            "options": [
+              "You can do it!",
+              "You can't!",
+              "Go away!"
+            ],
+            "answer": "A",
+            "explanation": "最好的鼓励。"
+          }
+        ]
+      },
+      {
+        "name": "四、判断对错",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "true_false",
+            "question": "I'm = I am。",
+            "answer": "对",
+            "explanation": "缩写。"
+          },
+          {
+            "type": "true_false",
+            "question": "he 指男生，she 指女生。",
+            "answer": "对",
+            "explanation": "基本分工。"
+          },
+          {
+            "type": "true_false",
+            "question": "can 后面要加 to。",
+            "answer": "错",
+            "explanation": "can + 动词原形。"
+          },
+          {
+            "type": "true_false",
+            "question": "肯定回答可以用缩写 Yes, I'm.",
+            "answer": "错",
+            "explanation": "完整形式 Yes, I am.。"
+          }
+        ]
+      },
+      {
+        "name": "五、写出单词",
+        "perScore": 4,
+        "questions": [
+          {
+            "type": "input",
+            "question": "写词：妈妈",
+            "answer": "mother",
+            "explanation": "mother。"
+          },
+          {
+            "type": "input",
+            "question": "写词：朋友",
+            "answer": "friend",
+            "explanation": "friend。"
+          },
+          {
+            "type": "input",
+            "question": "写词：九",
+            "answer": "nine",
+            "explanation": "nine：九。"
+          }
+        ]
+      },
+      {
+        "name": "六、读对话，选答案",
+        "perScore": 5,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "—Hello! What's your name? —My name is Mike. —______",
+            "options": [
+              "Hi, Mike! Nice to meet you.",
+              "Goodbye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "认识新朋友的标准三步。"
+          },
+          {
+            "type": "choice",
+            "question": "—Who's she? —She's my mother. —______",
+            "options": [
+              "Nice to meet you, Auntie.",
+              "Goodbye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "认识了问好。"
+          },
+          {
+            "type": "choice",
+            "question": "—Happy Birthday! —Thank you! —This is for you. —______",
+            "options": [
+              "Thank you! How nice!",
+              "Bye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "收礼物道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "—I can't open the door. —______",
+            "options": [
+              "I can do this for you.",
+              "Bye!",
+              "OK."
+            ],
+            "answer": "A",
+            "explanation": "主动帮忙。"
+          },
+          {
+            "type": "choice",
+            "question": "字母接龙：X Y ____",
+            "options": [
+              "Z",
+              "W",
+              "A"
+            ],
+            "answer": "A",
+            "explanation": "X Y Z。"
+          }
+        ]
+      }
+    ]
+  }
+}

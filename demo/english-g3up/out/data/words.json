@@ -1,0 +1,470 @@
+[
+  {
+    "u": 1,
+    "ut": "Hello!",
+    "words": [
+      {
+        "w": "hello",
+        "zh": "你好",
+        "ex": "Hello!",
+        "type": "word"
+      },
+      {
+        "w": "hi",
+        "zh": "嗨（更随意）",
+        "ex": "Hi, I'm Bobby.",
+        "type": "word"
+      },
+      {
+        "w": "morning",
+        "zh": "早上",
+        "ex": "Good morning.",
+        "type": "word"
+      },
+      {
+        "w": "goodbye",
+        "zh": "再见",
+        "ex": "Goodbye!",
+        "type": "word"
+      },
+      {
+        "w": "name",
+        "zh": "名字",
+        "ex": "What's your name?",
+        "type": "word"
+      },
+      {
+        "w": "I'm",
+        "zh": "我是（I am 的缩写）",
+        "ex": "Hi, I'm Bobby.",
+        "type": "phrase"
+      },
+      {
+        "w": "my name is",
+        "zh": "我的名字叫",
+        "ex": "My name is Beibei.",
+        "type": "phrase"
+      }
+    ]
+  },
+  {
+    "u": 2,
+    "ut": "What's your name?",
+    "words": [
+      {
+        "w": "what's",
+        "zh": "是什么（What is 的缩写）",
+        "ex": "What's your name?",
+        "type": "phrase"
+      },
+      {
+        "w": "your",
+        "zh": "你的",
+        "ex": "What's your name?",
+        "type": "word"
+      },
+      {
+        "w": "welcome",
+        "zh": "欢迎",
+        "ex": "Welcome to our class!",
+        "type": "word"
+      },
+      {
+        "w": "our",
+        "zh": "我们的",
+        "ex": "Welcome to our class!",
+        "type": "word"
+      },
+      {
+        "w": "class",
+        "zh": "班级",
+        "ex": "Welcome to our class!",
+        "type": "word"
+      },
+      {
+        "w": "new",
+        "zh": "新的",
+        "ex": "A new classmate.",
+        "type": "word"
+      },
+      {
+        "w": "play",
+        "zh": "玩",
+        "ex": "Let's play!",
+        "type": "word"
+      },
+      {
+        "w": "let's",
+        "zh": "让我们（Let us 的缩写）",
+        "ex": "Let's play!",
+        "type": "phrase"
+      }
+    ]
+  },
+  {
+    "u": 3,
+    "ut": "Are you Su Hai?",
+    "words": [
+      {
+        "w": "are",
+        "zh": "是（你/你们）",
+        "ex": "Are you Jake?",
+        "type": "word"
+      },
+      {
+        "w": "you",
+        "zh": "你；你们",
+        "ex": "Are you Jake?",
+        "type": "word"
+      },
+      {
+        "w": "yes",
+        "zh": "是的",
+        "ex": "Yes, I am.",
+        "type": "word"
+      },
+      {
+        "w": "no",
+        "zh": "不是",
+        "ex": "No, I'm not.",
+        "type": "word"
+      },
+      {
+        "w": "sorry",
+        "zh": "对不起",
+        "ex": "Sorry!",
+        "type": "word"
+      },
+      {
+        "w": "twins",
+        "zh": "双胞胎",
+        "ex": "You're twins!",
+        "type": "word"
+      },
+      {
+        "w": "he",
+        "zh": "他",
+        "ex": "He's my friend.",
+        "type": "word"
+      },
+      {
+        "w": "she",
+        "zh": "她",
+        "ex": "She's my friend.",
+        "type": "word"
+      }
+    ]
+  },
+  {
+    "u": 4,
+    "ut": "This is my friend",
+    "words": [
+      {
+        "w": "this",
+        "zh": "这；这位",
+        "ex": "This is Sam.",
+        "type": "word"
+      },
+      {
+        "w": "my",
+        "zh": "我的",
+        "ex": "This is my friend.",
+        "type": "word"
+      },
+      {
+        "w": "friend",
+        "zh": "朋友",
+        "ex": "This is my friend Zhang Hua.",
+        "type": "word"
+      },
+      {
+        "w": "teacher",
+        "zh": "老师",
+        "ex": "This is my teacher.",
+        "type": "word"
+      },
+      {
+        "w": "nice",
+        "zh": "高兴的；好的",
+        "ex": "Nice to meet you.",
+        "type": "word"
+      },
+      {
+        "w": "meet",
+        "zh": "遇见",
+        "ex": "Nice to meet you.",
+        "type": "word"
+      },
+      {
+        "w": "too",
+        "zh": "也",
+        "ex": "Nice to meet you, too.",
+        "type": "word"
+      }
+    ]
+  },
+  {
+    "u": 5,
+    "ut": "She's my mother",
+    "words": [
+      {
+        "w": "family",
+        "zh": "家庭",
+        "ex": "This is my family.",
+        "type": "word"
+      },
+      {
+        "w": "father",
+        "zh": "爸爸",
+        "ex": "He's my father.",
+        "type": "word"
+      },
+      {
+        "w": "mother",
+        "zh": "妈妈",
+        "ex": "She's my mother.",
+        "type": "word"
+      },
+      {
+        "w": "brother",
+        "zh": "哥哥或弟弟",
+        "ex": "He's my brother.",
+        "type": "word"
+      },
+      {
+        "w": "sister",
+        "zh": "姐姐或妹妹",
+        "ex": "She's my sister.",
+        "type": "word"
+      },
+      {
+        "w": "grandpa",
+        "zh": "爷爷或外公",
+        "ex": "He's my grandpa.",
+        "type": "word"
+      },
+      {
+        "w": "grandma",
+        "zh": "奶奶或外婆",
+        "ex": "She's my grandma.",
+        "type": "word"
+      },
+      {
+        "w": "look",
+        "zh": "看",
+        "ex": "Look!",
+        "type": "word"
+      }
+    ]
+  },
+  {
+    "u": 6,
+    "ut": "Is he your grandpa?",
+    "words": [
+      {
+        "w": "uncle",
+        "zh": "叔叔或舅舅",
+        "ex": "He's my uncle.",
+        "type": "word"
+      },
+      {
+        "w": "aunt",
+        "zh": "阿姨或姑姑",
+        "ex": "She's my aunt.",
+        "type": "word"
+      },
+      {
+        "w": "me",
+        "zh": "我",
+        "ex": "This is me.",
+        "type": "word"
+      },
+      {
+        "w": "he's",
+        "zh": "他是（He is 的缩写）",
+        "ex": "He's my father.",
+        "type": "phrase"
+      },
+      {
+        "w": "she's",
+        "zh": "她是（She is 的缩写）",
+        "ex": "She's my mother.",
+        "type": "phrase"
+      },
+      {
+        "w": "isn't",
+        "zh": "不是（is not 的缩写）",
+        "ex": "No, he isn't.",
+        "type": "phrase"
+      }
+    ]
+  },
+  {
+    "u": 7,
+    "ut": "Happy Birthday!",
+    "words": [
+      {
+        "w": "birthday",
+        "zh": "生日",
+        "ex": "Happy Birthday!",
+        "type": "word"
+      },
+      {
+        "w": "happy",
+        "zh": "快乐的",
+        "ex": "Happy Birthday!",
+        "type": "word"
+      },
+      {
+        "w": "old",
+        "zh": "……岁的",
+        "ex": "How old are you?",
+        "type": "word"
+      },
+      {
+        "w": "how",
+        "zh": "怎样",
+        "ex": "How old are you?",
+        "type": "word"
+      },
+      {
+        "w": "for",
+        "zh": "给；为",
+        "ex": "This is for you.",
+        "type": "word"
+      },
+      {
+        "w": "thank",
+        "zh": "谢谢",
+        "ex": "Thank you.",
+        "type": "word"
+      },
+      {
+        "w": "one",
+        "zh": "一",
+        "ex": "I'm one.",
+        "type": "word"
+      },
+      {
+        "w": "two",
+        "zh": "二",
+        "ex": "I'm two.",
+        "type": "word"
+      },
+      {
+        "w": "three",
+        "zh": "三",
+        "ex": "I'm three.",
+        "type": "word"
+      },
+      {
+        "w": "four",
+        "zh": "四",
+        "ex": "I'm four.",
+        "type": "word"
+      },
+      {
+        "w": "five",
+        "zh": "五",
+        "ex": "I'm five.",
+        "type": "word"
+      },
+      {
+        "w": "six",
+        "zh": "六",
+        "ex": "I'm six.",
+        "type": "word"
+      },
+      {
+        "w": "seven",
+        "zh": "七",
+        "ex": "I'm seven.",
+        "type": "word"
+      },
+      {
+        "w": "eight",
+        "zh": "八",
+        "ex": "I'm eight.",
+        "type": "word"
+      },
+      {
+        "w": "nine",
+        "zh": "九",
+        "ex": "I'm nine.",
+        "type": "word"
+      },
+      {
+        "w": "ten",
+        "zh": "十",
+        "ex": "I'm ten.",
+        "type": "word"
+      }
+    ]
+  },
+  {
+    "u": 8,
+    "ut": "I can do this for you",
+    "words": [
+      {
+        "w": "can",
+        "zh": "能；会",
+        "ex": "I can swim.",
+        "type": "word"
+      },
+      {
+        "w": "can't",
+        "zh": "不会（cannot 的缩写）",
+        "ex": "No, I can't.",
+        "type": "phrase"
+      },
+      {
+        "w": "run",
+        "zh": "跑",
+        "ex": "I can run.",
+        "type": "word"
+      },
+      {
+        "w": "jump",
+        "zh": "跳",
+        "ex": "I can jump.",
+        "type": "word"
+      },
+      {
+        "w": "swim",
+        "zh": "游泳",
+        "ex": "I can swim.",
+        "type": "word"
+      },
+      {
+        "w": "dance",
+        "zh": "跳舞",
+        "ex": "I can dance.",
+        "type": "word"
+      },
+      {
+        "w": "sing",
+        "zh": "唱歌",
+        "ex": "I can sing.",
+        "type": "word"
+      },
+      {
+        "w": "fly",
+        "zh": "飞",
+        "ex": "I can't fly.",
+        "type": "word"
+      },
+      {
+        "w": "table",
+        "zh": "桌子",
+        "ex": "I can clean the table.",
+        "type": "word"
+      },
+      {
+        "w": "clean",
+        "zh": "擦干净；打扫",
+        "ex": "I can clean the table.",
+        "type": "word"
+      }
+    ]
+  }
+]

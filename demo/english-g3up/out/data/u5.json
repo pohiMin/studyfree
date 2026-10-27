@@ -1,0 +1,897 @@
+{
+  "unitNumber": 5,
+  "unitTitle": "She's my mother",
+  "sections": [
+    "Who's she?",
+    "家庭词汇",
+    "介绍家人",
+    "Assessment time"
+  ],
+  "note": "核心句型：Who's she? — She's my mother.（她是谁？她是我的妈妈。）",
+  "knowledgePoints": [
+    {
+      "id": "english-yilin-3a-u5-kp1",
+      "title": "家庭成员的单词",
+      "short": "father·mother·brother·sister",
+      "difficulty": 1,
+      "sections": [
+        "家庭词汇"
+      ],
+      "core_concept": "家庭成员：father（爸爸）mother（妈妈）brother（哥哥或弟弟）sister（姐姐或妹妹）grandpa（爷爷或外公）grandma（奶奶或外婆）。英语里哥哥弟弟都是 brother，姐姐妹妹都是 sister，不像中文分得那么细。",
+      "key_formula": "family＝father and mother, I love you（这句话的六个字母正好是 family 的由来，帮你记单词）",
+      "common_mistakes": [
+        "mother 拼成 mather",
+        "brother 和 mother 混（都是 ther 结尾）",
+        "grandpa 写成 granpa（少一个 d）"
+      ],
+      "tips": "family 这个词拆开记：f-a-m-i-l-y，顺手念一句 Father And Mother, I Love You.",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "mother 的意思是：",
+          "options": [
+            "妈妈",
+            "爸爸",
+            "哥哥"
+          ],
+          "answer": "A",
+          "explanation": "mother：妈妈；father：爸爸。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "爸爸的英语是：",
+          "options": [
+            "father",
+            "mother",
+            "sister"
+          ],
+          "answer": "A",
+          "explanation": "father：爸爸。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "哥哥或弟弟都叫：",
+          "options": [
+            "brother",
+            "sister",
+            "grandpa"
+          ],
+          "answer": "A",
+          "explanation": "英语 brother 不分哥哥弟弟。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "写词：奶奶或外婆（一个词）",
+          "answer": "grandma",
+          "explanation": "grandma：奶奶／外婆。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "family 的意思是：",
+          "options": [
+            "家庭",
+            "朋友",
+            "学校"
+          ],
+          "answer": "A",
+          "explanation": "family：家庭。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "英语里姐姐和妹妹都用 sister。",
+          "answer": "对",
+          "explanation": "sister 不分大小。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "father 和 mother 的合称（父母的英语）是：",
+          "options": [
+            "parents",
+            "parent",
+            "friend"
+          ],
+          "answer": "A",
+          "explanation": "parents：父母两人。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "写出你家的三口（按「词、词、词」格式填：father、mother 和 我）",
+          "answer": "father、mother、me",
+          "explanation": "答案因人而异：介绍家人用 father/mother/brother/sister/me。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u5-kp2",
+      "title": "问家人是谁：Who's she/he?",
+      "short": "指着照片问",
+      "difficulty": 2,
+      "sections": [
+        "Who's she?",
+        "介绍家人"
+      ],
+      "core_concept": "指着照片问：Who's she?（她是谁？）Who's he?（他是谁？）回答用 She's my mother. / He's my father.。Who's 是 Who is 的缩写。问女生用 she，问男生用 he。",
+      "key_formula": "Who's she? → She's my … ／ Who's he? → He's my …",
+      "common_mistakes": [
+        "Who's 写成 Whos",
+        "he/she 指反",
+        "回答漏掉 my：She's mother 不对，要说 She's my mother."
+      ],
+      "tips": "拿一张全家福，用英语把每个人介绍一遍：Who's he? He's my grandpa.",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "—Who's she? —______",
+          "options": [
+            "She's my mother.",
+            "He's my father.",
+            "I'm nine."
+          ],
+          "answer": "A",
+          "explanation": "问 she 答 she。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "指着爸爸的照片问：",
+          "options": [
+            "Who's he?",
+            "Who's she?",
+            "What's he?"
+          ],
+          "answer": "A",
+          "explanation": "问男生用 Who's he?。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：______ she?（她是谁，用缩写两词）",
+          "answer": "who's",
+          "explanation": "Who's she? = Who is she?（大小写不限）。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：She's ______ mother.（我的）",
+          "answer": "my",
+          "explanation": "She's my mother. 她是我的妈妈。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "Who's 是哪两个词的缩写？",
+          "options": [
+            "Who is",
+            "Who are",
+            "Who was"
+          ],
+          "answer": "A",
+          "explanation": "Who's = Who is。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "看照片：一位女生牵着一位男生，女生是姐姐。问男生：",
+          "options": [
+            "Who's he? —He's my brother.",
+            "Who's she? —She's my brother.",
+            "Who's he? —She's my brother."
+          ],
+          "answer": "A",
+          "explanation": "问男生用 he，答也用 he；brother 是男生。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "—Who's he? —____（指你的哥哥）",
+          "options": [
+            "He's my brother.",
+            "She's my sister.",
+            "I'm nine."
+          ],
+          "answer": "A",
+          "explanation": "问 he 答 he。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "填对话：—Who's she? —____ my grandma.（填两个词的缩写）",
+          "answer": "she's",
+          "explanation": "She's my grandma. 她是我的奶奶。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u5-kp3",
+      "title": "介绍我的家人",
+      "short": "把家人带来认识",
+      "difficulty": 2,
+      "sections": [
+        "介绍家人"
+      ],
+      "core_concept": "把家人介绍给朋友，还是用 This is…：This is my father. This is my mother. 介绍完，朋友会说 Nice to meet you.，家人回答 Nice to meet you, too.",
+      "key_formula": "介绍：This is my father. → 朋友：Nice to meet you. → 家人：Nice to meet you, too.",
+      "common_mistakes": [
+        "介绍家人用 He is…（当面介绍要用 This is…）",
+        "忘了 my",
+        "家人忘了回答 too"
+      ],
+      "tips": "在家演一遍：把爸爸、妈妈挨个介绍给玩具熊。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "把爸爸介绍给同学：",
+          "options": [
+            "This is my father.",
+            "This is I father.",
+            "He is I father."
+          ],
+          "answer": "A",
+          "explanation": "介绍人用 This is my…。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "同学对你的妈妈说 Nice to meet you.，妈妈回答：",
+          "options": [
+            "Nice to meet you, too.",
+            "Goodbye!",
+            "How old are you?"
+          ],
+          "answer": "A",
+          "explanation": "回答加 too。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：This is my ______.（介绍妈妈，填一个词）",
+          "answer": "mother",
+          "explanation": "This is my mother. 这是我的妈妈。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "介绍家人和朋友都可以用 This is…",
+          "answer": "对",
+          "explanation": "This is… 是万能介绍句。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "完整顺序：① Nice to meet you, too. ② This is my mother. ③ Nice to meet you.",
+          "options": [
+            "②③①",
+            "①②③",
+            "③②①"
+          ],
+          "answer": "A",
+          "explanation": "先介绍，再问好，最后回礼。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "写词：家庭",
+          "answer": "family",
+          "explanation": "family：家庭。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "介绍全家的正确顺序是：",
+          "options": [
+            "先说 This is my family.，再逐个介绍，最后说 This is me.",
+            "先说 This is me.",
+            "没有顺序"
+          ],
+          "answer": "A",
+          "explanation": "总起 → 分说 → 收尾。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "把介绍全家的四句连起来（第一句已给）：This is my family. → He's my father. → She's my mother. → ______",
+          "answer": "This is me.",
+          "explanation": "最后介绍自己。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u5-kp4",
+      "title": "字母复习：Aa—Nn 与 O 开头",
+      "short": "半程检查站",
+      "difficulty": 2,
+      "sections": [
+        "Letters in focus"
+      ],
+      "core_concept": "Module 1 学完了 Aa—Nn 共 14 个字母。从这里起，新的字母以 Oo 开头往 Zz 走。先做一次半程检查：倒着背 A 到 N，看会不会卡住。Oo 是一个大圆圈，Nn 后面就是它。",
+      "key_formula": "字母表：…L M N O P…（N 的后面是 O）",
+      "common_mistakes": [
+        "倒背卡壳（会正背不会倒背）",
+        "N 和 O 混",
+        "大小写配错对"
+      ],
+      "tips": "倒着背一遍：N M L K J I H G F E D C B A，练两次就熟。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "N 的后面一个字母是：",
+          "options": [
+            "O",
+            "P",
+            "M"
+          ],
+          "answer": "A",
+          "explanation": "N O P。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填字母：L M ____ O（填大写）",
+          "answer": "N",
+          "explanation": "L M N O。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "倒着数：O 的前面一个字母是：",
+          "options": [
+            "N",
+            "M",
+            "P"
+          ],
+          "answer": "A",
+          "explanation": "N O：O 的前面是 N。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "下面哪个是大写 O？",
+          "options": [
+            "O",
+            "o",
+            "Q"
+          ],
+          "answer": "A",
+          "explanation": "大写 O 是一个大圆圈。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "A 到 N 一共 14 个字母。",
+          "answer": "对",
+          "explanation": "数一数：A B C D E F G H I J K L M N。"
+        },
+        {
+          "type": "input",
+          "difficulty": 3,
+          "question": "填字母：M N ____（填大写，往后接两个中的一个即可）",
+          "answer": "O",
+          "explanation": "M N O。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "从 N 往后数第三个字母是：",
+          "options": [
+            "Q",
+            "O",
+            "M"
+          ],
+          "answer": "A",
+          "explanation": "N O P Q：Q 是 N 后面第三个。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "倒背 A 到 N 的最后三个：____、____、____（按「字母1和字母2和字母3」格式填）",
+          "answer": "N、M、L",
+          "explanation": "倒序：N M L K…最后三个是 N、M、L（从 N 往回数）。"
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "w": "family",
+      "zh": "家庭",
+      "ex": "This is my family.",
+      "type": "word"
+    },
+    {
+      "w": "father",
+      "zh": "爸爸",
+      "ex": "He's my father.",
+      "type": "word"
+    },
+    {
+      "w": "mother",
+      "zh": "妈妈",
+      "ex": "She's my mother.",
+      "type": "word"
+    },
+    {
+      "w": "brother",
+      "zh": "哥哥或弟弟",
+      "ex": "He's my brother.",
+      "type": "word"
+    },
+    {
+      "w": "sister",
+      "zh": "姐姐或妹妹",
+      "ex": "She's my sister.",
+      "type": "word"
+    },
+    {
+      "w": "grandpa",
+      "zh": "爷爷或外公",
+      "ex": "He's my grandpa.",
+      "type": "word"
+    },
+    {
+      "w": "grandma",
+      "zh": "奶奶或外婆",
+      "ex": "She's my grandma.",
+      "type": "word"
+    },
+    {
+      "w": "look",
+      "zh": "看",
+      "ex": "Look!",
+      "type": "word"
+    }
+  ],
+  "exam": {
+    "title": "Unit 5 随堂自测",
+    "duration": 10,
+    "scorePerQuestion": 5,
+    "note": "限时 10 分钟 · 时间到自动交卷",
+    "questions": [
+      {
+        "type": "choice",
+        "question": "—Who's she? —______",
+        "options": [
+          "She's my mother.",
+          "He's my father.",
+          "I'm fine."
+        ],
+        "answer": "A",
+        "explanation": "问 she 答 she。"
+      },
+      {
+        "type": "choice",
+        "question": "mother 的意思是：",
+        "options": [
+          "妈妈",
+          "爸爸",
+          "姐姐"
+        ],
+        "answer": "A",
+        "explanation": "mother：妈妈。"
+      },
+      {
+        "type": "input",
+        "question": "写词：爸爸",
+        "answer": "father",
+        "explanation": "father。"
+      },
+      {
+        "type": "input",
+        "question": "填空：______ he?（他是谁，用缩写）",
+        "answer": "who's",
+        "explanation": "Who's he?"
+      },
+      {
+        "type": "choice",
+        "question": "介绍妈妈：",
+        "options": [
+          "This is my mother.",
+          "This is I mother.",
+          "She I mother."
+        ],
+        "answer": "A",
+        "explanation": "This is my…。"
+      },
+      {
+        "type": "input",
+        "question": "填字母：L M ____ O（大写）",
+        "answer": "N",
+        "explanation": "L M N O。"
+      },
+      {
+        "type": "true_false",
+        "question": "英语里姐姐妹妹都用 sister。",
+        "answer": "对",
+        "explanation": "sister 不分大小。"
+      },
+      {
+        "type": "choice",
+        "question": "N 后面一个字母：",
+        "options": [
+          "O",
+          "P",
+          "M"
+        ],
+        "answer": "A",
+        "explanation": "N O。"
+      },
+      {
+        "type": "input",
+        "question": "写词：家庭",
+        "answer": "family",
+        "explanation": "family。"
+      },
+      {
+        "type": "true_false",
+        "question": "Who's = Who is。",
+        "answer": "对",
+        "explanation": "缩写。"
+      }
+    ]
+  },
+  "paper": {
+    "title": "Unit 5 检测卷",
+    "subtitle": "She's my mother",
+    "duration": 40,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选出不同类的单词",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "father",
+              "mother",
+              "pencil"
+            ],
+            "answer": "C",
+            "explanation": "pencil 是文具。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "brother",
+              "sister",
+              "red"
+            ],
+            "answer": "C",
+            "explanation": "red 是颜色。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "she",
+              "he",
+              "family"
+            ],
+            "answer": "C",
+            "explanation": "family 是名词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "grandpa",
+              "grandma",
+              "this"
+            ],
+            "answer": "C",
+            "explanation": "this 是指示代词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "O",
+              "P",
+              "mother"
+            ],
+            "answer": "C",
+            "explanation": "mother 是单词。"
+          }
+        ]
+      },
+      {
+        "name": "二、单项选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "—Who's she? —______",
+            "options": [
+              "She's my mother.",
+              "He's my brother.",
+              "I'm Su Hai."
+            ],
+            "answer": "A",
+            "explanation": "问 she 答 she。"
+          },
+          {
+            "type": "choice",
+            "question": "—Who's he? —______",
+            "options": [
+              "He's my father.",
+              "She's my sister.",
+              "Yes, I am."
+            ],
+            "answer": "A",
+            "explanation": "问 he 答 he。"
+          },
+          {
+            "type": "choice",
+            "question": "妈妈的英语：",
+            "options": [
+              "mother",
+              "father",
+              "grandma"
+            ],
+            "answer": "A",
+            "explanation": "mother。"
+          },
+          {
+            "type": "choice",
+            "question": "哥哥或弟弟：",
+            "options": [
+              "brother",
+              "sister",
+              "grandpa"
+            ],
+            "answer": "A",
+            "explanation": "brother。"
+          },
+          {
+            "type": "choice",
+            "question": "Who's = ",
+            "options": [
+              "Who is",
+              "Who are",
+              "Whom"
+            ],
+            "answer": "A",
+            "explanation": "缩写。"
+          },
+          {
+            "type": "choice",
+            "question": "介绍妈妈：",
+            "options": [
+              "This is my mother.",
+              "This is I mother.",
+              "She my mother."
+            ],
+            "answer": "A",
+            "explanation": "This is my…。"
+          },
+          {
+            "type": "choice",
+            "question": "O 前面一个字母：",
+            "options": [
+              "N",
+              "M",
+              "P"
+            ],
+            "answer": "A",
+            "explanation": "N O。"
+          },
+          {
+            "type": "choice",
+            "question": "family 的意思是：",
+            "options": [
+              "家庭",
+              "朋友",
+              "教室"
+            ],
+            "answer": "A",
+            "explanation": "family：家庭。"
+          }
+        ]
+      },
+      {
+        "name": "三、情景选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "指着奶奶的照片问：",
+            "options": [
+              "Who's she?",
+              "Who's he?",
+              "What's she?"
+            ],
+            "answer": "A",
+            "explanation": "奶奶是女生，用 Who's she?。"
+          },
+          {
+            "type": "choice",
+            "question": "把爷爷介绍给朋友：",
+            "options": [
+              "This is my grandpa.",
+              "This is I grandpa.",
+              "He I grandpa."
+            ],
+            "answer": "A",
+            "explanation": "This is my…。"
+          },
+          {
+            "type": "choice",
+            "question": "朋友对爷爷说 Nice to meet you. 爷爷回答：",
+            "options": [
+              "Nice to meet you, too.",
+              "Goodbye!",
+              "OK."
+            ],
+            "answer": "A",
+            "explanation": "回答加 too。"
+          },
+          {
+            "type": "choice",
+            "question": "全家福里女生多，先问最年轻的：",
+            "options": [
+              "Who's she?",
+              "Who's he?",
+              "How are you?"
+            ],
+            "answer": "A",
+            "explanation": "女生用 she。"
+          },
+          {
+            "type": "choice",
+            "question": "—Who's he? —He's my father. —______",
+            "options": [
+              "Nice to meet you.",
+              "Goodbye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "认识了要问好。"
+          },
+          {
+            "type": "choice",
+            "question": "grandpa 的意思是：",
+            "options": [
+              "爷爷或外公",
+              "奶奶或外婆",
+              "哥哥"
+            ],
+            "answer": "A",
+            "explanation": "grandpa：爷爷／外公。"
+          }
+        ]
+      },
+      {
+        "name": "四、判断对错",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "true_false",
+            "question": "he 指男生，she 指女生。",
+            "answer": "对",
+            "explanation": "基本分工。"
+          },
+          {
+            "type": "true_false",
+            "question": "brother 可以指哥哥也可以指弟弟。",
+            "answer": "对",
+            "explanation": "英语不分大小。"
+          },
+          {
+            "type": "true_false",
+            "question": "Who's = Who are。",
+            "answer": "错",
+            "explanation": "Who's = Who is。"
+          },
+          {
+            "type": "true_false",
+            "question": "介绍家人用 This is my…",
+            "answer": "对",
+            "explanation": "固定句型。"
+          },
+          {
+            "type": "true_false",
+            "question": "O 在字母表里排在 N 前面。",
+            "answer": "错",
+            "explanation": "N O，O 在 N 后面。"
+          }
+        ]
+      },
+      {
+        "name": "五、写出单词",
+        "perScore": 4,
+        "questions": [
+          {
+            "type": "input",
+            "question": "写词：妈妈",
+            "answer": "mother",
+            "explanation": "mother。"
+          },
+          {
+            "type": "input",
+            "question": "写词：姐姐或妹妹",
+            "answer": "sister",
+            "explanation": "sister。"
+          },
+          {
+            "type": "input",
+            "question": "填空：Who's ______?（指男生，填 he 或 she）",
+            "answer": "he",
+            "explanation": "问男生用 he。"
+          },
+          {
+            "type": "input",
+            "question": "填空：He's ______ father.（我的）",
+            "answer": "my",
+            "explanation": "my。"
+          },
+          {
+            "type": "input",
+            "question": "填字母：M ____ O P（大写）",
+            "answer": "N",
+            "explanation": "M N O P。"
+          }
+        ]
+      },
+      {
+        "name": "六、读对话，选答案",
+        "perScore": 6,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "—Who's she? —She's my mother. —______",
+            "options": [
+              "Nice to meet you, Auntie.",
+              "Goodbye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "认识了要问好。"
+          },
+          {
+            "type": "choice",
+            "question": "—Who's he? —______（指着你的哥哥）",
+            "options": [
+              "He's my brother.",
+              "She's my sister.",
+              "I'm nine."
+            ],
+            "answer": "A",
+            "explanation": "he 问 he 答。"
+          },
+          {
+            "type": "choice",
+            "question": "—This is my grandpa. —______",
+            "options": [
+              "Nice to meet you!",
+              "Who are you?",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "被介绍后问好。"
+          }
+        ]
+      }
+    ]
+  }
+}

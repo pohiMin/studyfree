@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>苏教版三年级上册 · 数学</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#EFF2F6; --card:#FFFFFF; --soft:#F7F9FC;
+    --ink:#141B2D; --ink2:#48536B; --ink3:#8B95AB;
+    --line:#E3E8F0; --line2:#CBD3E1;
+    --pri:#2E6BE6; --pri-l:#EAF1FE; --pri-d:#1B4BB8;
+  }
+  html{font-size:17px}
+  body{background:var(--bg);color:var(--ink);line-height:1.75;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 22px 80px}
+
+  header{padding:56px 0 34px}
+  .kick{font-size:.78rem;font-weight:700;color:var(--pri);letter-spacing:1.6px}
+  h1{font-size:2.15rem;font-weight:700;letter-spacing:-.6px;margin:10px 0 12px;line-height:1.35}
+  .sub{font-size:.95rem;color:var(--ink2)}
+  .sub b{color:var(--ink);font-weight:700}
+
+  .tip{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:18px 22px;font-size:.9rem;line-height:1.9;color:var(--ink2)}
+  .tip b{color:var(--ink);font-weight:700}
+
+  .userbar{display:flex;align-items:center;gap:14px;background:var(--card);
+    border:1px solid var(--line);border-radius:16px;padding:14px 20px;margin-top:26px}
+  .avatar{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+    font-size:1.2rem;font-weight:700;color:#fff;flex:0 0 auto;
+    box-shadow:inset 0 -2px 6px rgba(0,0,0,.14)}
+  .uinfo{flex:1;min-width:0}
+  .uname{font-size:1.05rem;font-weight:700;line-height:1.4}
+  .usub{font-size:.78rem;color:var(--ink3);margin-top:2px}
+  .ustar{display:flex;align-items:center;gap:7px;background:var(--soft);border:1px solid var(--line);
+    border-radius:999px;padding:8px 17px 8px 13px;flex:0 0 auto}
+  .ustar svg{width:21px;height:21px}
+  .ustar svg path{fill:#F5A524}
+  .ustar b{font-size:1.25rem;color:#B4460E;font-variant-numeric:tabular-nums;line-height:1}
+  .ustar .lbl{font-size:.74rem;color:var(--ink3)}
+
+  .sechead{font-size:.78rem;font-weight:700;color:var(--ink3);letter-spacing:1.2px;
+    margin:36px 0 14px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+
+  .ucard{background:var(--card);border:1px solid var(--line);border-radius:17px;
+    padding:22px 24px;text-decoration:none;color:inherit;display:flex;gap:16px;
+    align-items:flex-start;transition:.16s;position:relative}
+  .ucard:hover{border-color:var(--pri);transform:translateY(-3px);
+    box-shadow:0 6px 22px rgba(46,107,230,.14)}
+  .ucard .num{flex:0 0 auto;width:44px;height:44px;border-radius:13px;background:var(--pri-l);
+    color:var(--pri-d);font-size:1.1rem;font-weight:700;display:grid;place-items:center;
+    transition:.16s}
+  .ucard:hover .num{background:var(--pri);color:#fff}
+  .ucard .body{flex:1;min-width:0}
+  .ucard .tt{font-size:1.08rem;font-weight:700;line-height:1.5;letter-spacing:-.1px}
+  .ucard .mm{font-size:.8rem;color:var(--ink3);margin-top:7px;display:flex;gap:14px;flex-wrap:wrap}
+  .ucard .mm .hl{color:var(--pri-d);font-weight:600}
+  .ucard .go{position:absolute;right:20px;bottom:18px;font-size:.76rem;color:var(--ink3);opacity:0;transition:.16s}
+  .ucard:hover .go{opacity:1;color:var(--pri)}
+
+  .ucard.review{background:linear-gradient(135deg,#F3F7FF,#FFFFFF);border-color:#CBDCFA}
+
+  footer{text-align:center;font-size:.78rem;color:var(--ink3);padding:56px 0 0;line-height:2}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kick">小学数学 · 三年级上学期</div>
+    <h1>苏教版三年级上册</h1>
+    <div class="sub" id="sub"></div>
+  </header>
+
+  <div class="userbar" id="userbar">
+    <div class="avatar" id="avatar">小</div>
+    <div class="uinfo">
+      <div class="uname" id="uname">小朋友</div>
+      <div class="usub" id="usub">还没有获得星星</div>
+    </div>
+    <div class="ustar">
+      <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
+      <b id="startotal">0</b><span class="lbl">颗星</span>
+    </div>
+  </div>
+
+  <div class="tip" id="tip"></div>
+
+  <div class="sechead">全部单元</div>
+  <div class="grid" id="grid"></div>
+
+  <div class="sechead">专项</div>
+  <div class="grid" id="extra"></div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>const BOOK = /*__BOOK__*/; const UNITS = /*__UNITS__*/;</script>
+<script>
+(function(){
+  document.getElementById("sub").innerHTML =
+    "<b>" + UNITS.length + "</b> 个单元　·　<b>" +
+    UNITS.reduce((s,u)=>s+(u.kp||0),0) + "</b> 个知识点　·　<b>" +
+    UNITS.reduce((s,u)=>s+(u.q||0),0) + "</b> 道练习　·　<b>" +
+    UNITS.reduce((s,u)=>s+(u.v||0),0) + "</b> 个学习视频";
+
+  document.getElementById("tip").innerHTML = BOOK.intro;
+
+  /* 用户条 */
+  (function(){
+    const KEY = "math3.profile.v1";
+    const COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
+    let p = {};
+    try{ p = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ p = {}; }
+    const name = p.name || "小朋友";
+    const ci = (p.color || 0) % COLORS.length;
+    const av = document.getElementById("avatar");
+    av.style.background = COLORS[ci];
+    av.textContent = name.slice(0,1) || "小";
+    document.getElementById("uname").textContent = name;
+    const st = p.stars || {};
+    let total = 0;
+    for(const k in st) total += st[k] || 0;
+    document.getElementById("startotal").textContent = total;
+    const done = Object.keys(st).length;
+    document.getElementById("usub").textContent = total === 0
+      ? "还没有获得星星，进任意单元做一次随堂自测"
+      : "已完成 "+done+" 项测验 · 每项取最好一次计星，不重复累计";
+  })();
+
+  const grid = document.getElementById("grid");
+  UNITS.forEach(u=>{
+    const a = document.createElement("a");
+    a.className = "ucard" + (u.n===9 ? " review" : "");
+    a.href = "u"+u.n+".html";
+    a.innerHTML =
+      '<div class="num"></div>' +
+      '<div class="body"><div class="tt"></div><div class="mm"></div></div>' +
+      '<div class="go">进入 \u2192</div>';
+    a.querySelector(".num").textContent = u.n===9 ? "\u2211" : (u.n<10 ? "0"+u.n : u.n);
+    a.querySelector(".tt").textContent = u.title;
+    const mm = a.querySelector(".mm");
+    if(u.ready){
+      mm.innerHTML = '<span class="hl">'+u.kp+' 个知识点</span><span>'+u.q+' 道题</span>' +
+                     (u.v? '<span>'+u.v+' 个视频</span>' : '') +
+                     (u.hasPaper? '<span>含检测卷</span>' : '');
+    } else {
+      mm.innerHTML = '<span>内容待搭建</span>';
+    }
+    grid.appendChild(a);
+  });
+
+  document.getElementById("foot").innerHTML =
+    "内容依据《义务教育教科书·数学》三年级上册（苏教版，2025 年 7 月第 1 版）<br>" +
+    "ISBN " + BOOK.isbn + "　·　本页为预览版，数据可直接迁入正式工程";
+
+  /* 专项入口 */
+  const extra = document.getElementById("extra");
+  function addCard(href, badge, title, meta, cls){
+    const a = document.createElement("a");
+    a.className = "ucard" + (cls ? " " + cls : "");
+    a.href = href;
+    a.innerHTML = '<div class="num"></div><div class="body"><div class="tt"></div>' +
+                  '<div class="mm"></div></div><div class="go">进入 \u2192</div>';
+    a.querySelector(".num").textContent = badge;
+    a.querySelector(".tt").textContent = title;
+    a.querySelector(".mm").innerHTML = meta;
+    extra.appendChild(a);
+  }
+  if(BOOK.hasMidterm){
+    addCard("midterm.html", "期", "期中阶段检测",
+            '<span class="hl">第一至第四单元</span><span>34 题</span><span>满分 100</span>', "review");
+  }
+  if(BOOK.hasFinal){
+    addCard("final.html", "终", "期末检测卷",
+            '<span class="hl">全册 · 难度递进</span><span>41 题</span><span>100 + 附加 10</span>', "review");
+  }
+  addCard("review.html", "错", "易错题本",
+          '<span class="hl">做错的题自动收入</span><span>连续答对 3 次移出</span>', "review");
+})();
+</script>
+</body>
+</html>

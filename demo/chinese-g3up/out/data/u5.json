@@ -1,0 +1,890 @@
+{
+  "unitNumber": 5,
+  "unitTitle": "留心观察",
+  "sections": [
+    "搭船的鸟",
+    "金色的草地",
+    "习作例文",
+    "初试身手",
+    "习作：我们眼中的缤纷世界"
+  ],
+  "note": "习作单元：先学例文怎么观察，再『初试身手』，最后写成一篇观察作文。",
+  "knowledgePoints": [
+    {
+      "id": "chinese-tongbian-g3up-u5-kp1",
+      "title": "多感官观察",
+      "short": "眼看耳听手摸",
+      "difficulty": 2,
+      "sections": [
+        "搭船的鸟",
+        "金色的草地"
+      ],
+      "core_concept": "观察不只靠眼睛：翠鸟的色彩是看，雨点打在船篷上是听，杨梅的味道是尝。多种感官一起用，写出来的东西才立体。",
+      "key_formula": "五感观察：看颜色形状 → 听声音 → 闻气味 → 摸质感 → 尝味道（能用的都用上）",
+      "common_mistakes": [
+        "只写看到的，颜色一种就写完了",
+        "观察写成介绍：『翠鸟是一种鸟』",
+        "细节是编的，不是真观察来的"
+      ],
+      "tips": "观察一样东西时，在心里过一遍：看到了什么？听到了什么？摸起来怎样？",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "《搭船的鸟》里，作者观察翠鸟主要用了哪种感官？",
+          "options": [
+            "视觉：看它的羽毛和嘴",
+            "听觉：听它唱歌",
+            "嗅觉：闻它的味道"
+          ],
+          "answer": "A",
+          "explanation": "课文重点写了翠鸟彩色的羽毛、红色的长嘴，都是看到的。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "雨点打在船篷上『沙啦、沙啦地响』，这用的是：",
+          "options": [
+            "听觉",
+            "视觉",
+            "触觉"
+          ],
+          "answer": "A",
+          "explanation": "雨声是听出来的。多种感官里，声音最容易被忽略。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "观察就是只用眼睛看。",
+          "answer": "错",
+          "explanation": "看、听、闻、摸、尝都是观察。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "写『我家的小狗』，下面哪句用到了触觉？",
+          "options": [
+            "它的毛摸上去又软又暖",
+            "它有一身黄毛",
+            "它爱吃骨头"
+          ],
+          "answer": "A",
+          "explanation": "『摸上去』是触觉。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "《我爱故乡的杨梅》写杨梅先是淡红，随后变成深红——这是抓住了颜色的____。（填两个字）",
+          "answer": "变化",
+          "explanation": "同一事物先后不同样子，就是变化，也是观察的重点。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "观察一朵刚开的月季，下面哪一项观察记录最完整？",
+          "options": [
+            "花瓣粉红、层层叠叠，摸上去像绸子，闻着有淡淡的香",
+            "月季是花",
+            "它开在五月"
+          ],
+          "answer": "A",
+          "explanation": "看、摸、闻三样都用了，记录才立体。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "观察一种水果，下面四种记录里用到感官最多的是：",
+          "options": [
+            "金黄的皮、摸上去有点粗糙、闻着甜香、咬一口水很多",
+            "是圆的",
+            "很好吃"
+          ],
+          "answer": "A",
+          "explanation": "看、摸、闻、尝四样全用上，观察才立体。"
+        },
+        {
+          "type": "input",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "『雨点打在船篷上沙啦沙啦响』，这句话用的感官是____。（填两个字）",
+          "answer": "听觉",
+          "explanation": "响声是耳朵听到的。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 4,
+          "question": "用两种感官写一句话观察『下雨』（填：雨点打在伞上沙啦响，溅到手上____）。",
+          "answer": "凉凉的",
+          "explanation": "答案不唯一：凉凉的（触觉）、像小石子（视觉比喻）都可以——两种感官一起用。"
+        }
+      ]
+    },
+    {
+      "id": "chinese-tongbian-g3up-u5-kp2",
+      "title": "连续观察与变化记录",
+      "short": "盯住变化",
+      "difficulty": 2,
+      "sections": [
+        "金色的草地"
+      ],
+      "core_concept": "有些事物会随时间变化。《金色的草地》里，蒲公英早上合拢是绿色，中午张开变金色，傍晚又合拢。把不同时间的样子记下来、比一比，就发现了别人没发现的秘密。",
+      "key_formula": "连续观察三步：定时看 → 记变化 → 想原因",
+      "common_mistakes": [
+        "只看一次就下结论",
+        "记录了变化却不去想为什么",
+        "把『金色的草地』当成草真的变成金色，没想到是花朵开合"
+      ],
+      "tips": "给自己一张观察表：时间、对象、样子、我的发现，一格一格填。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "《金色的草地》里，草地为什么早上是绿色、中午是金色？",
+          "options": [
+            "蒲公英花朵早上合拢、中午张开",
+            "太阳把草晒黄了",
+            "早上雾气太重"
+          ],
+          "answer": "A",
+          "explanation": "花朵张开时露出金色的花瓣，合拢时只剩绿叶。颜色变化是花朵开合造成的。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "想观察月亮的变化，正确的做法是：",
+          "options": [
+            "连续多天在同一时间观察并记录",
+            "看一次就写完",
+            "凭想象编"
+          ],
+          "answer": "A",
+          "explanation": "连续观察才能看到变化过程。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "连续观察就是要盯着一件事一整天不离开。",
+          "answer": "错",
+          "explanation": "是隔一段时间看一次、记一次，不是不眠不休。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "蒲公英的花瓣中午张开、傍晚____。（填两个字）",
+          "answer": "合拢",
+          "explanation": "傍晚花朵合拢，草地又变绿。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "记录『绿豆发芽』的观察表，哪一格最关键？",
+          "options": [
+            "和前一天比有什么变化",
+            "今天是星期几",
+            "绿豆多少钱一斤"
+          ],
+          "answer": "A",
+          "explanation": "连续观察的核心是记录变化。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 2,
+          "question": "《金色的草地》里『我』先发现了草地会变色，然后去观察花朵，才找到原因。",
+          "answer": "对",
+          "explanation": "先发现现象，再找原因——这正是观察加思考的过程。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "要观察月亮的变化，合理的记录频率是：",
+          "options": [
+            "每晚同一时间记录一次，连续一个月",
+            "只记一次",
+            "每分钟记一次"
+          ],
+          "answer": "A",
+          "explanation": "固定时间、持续记录，才能看到完整的变化过程。"
+        },
+        {
+          "type": "input",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "蒲公英的花早上合拢、中午张开，这与____和阳光有关。（填两个字）",
+          "answer": "温度",
+          "explanation": "课文说花朵开合与温度、阳光有关。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 4,
+          "question": "设计观察绿豆发芽：除了记录变化，还要记录____，才能找到变化的原因。（填两个字）",
+          "answer": "条件",
+          "explanation": "变化和条件一起记（比如水和温度），才能解释为什么变。"
+        }
+      ]
+    },
+    {
+      "id": "chinese-tongbian-g3up-u5-kp3",
+      "title": "抓住事物的独特之处",
+      "short": "写这一只",
+      "difficulty": 3,
+      "sections": [
+        "搭船的鸟",
+        "习作例文"
+      ],
+      "core_concept": "写观察对象，要写出『这一只』跟别的不同的地方：这只翠鸟红色的长嘴、我家小狗拱尾巴的样子。人人都一样的特点不用写，独一份的才是好素材。",
+      "key_formula": "观察三比：和同类比 → 和以前比 → 和想象中比，找出不一样",
+      "common_mistakes": [
+        "写出来的东西放在谁家都成立",
+        "开头就下结论，没有具体样子",
+        "特点写得太多，反而没有重点"
+      ],
+      "tips": "写之前先问：这件事物最让我惊讶的一点是什么？就写它。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "『写这一只，不写这一类』的意思是：",
+          "options": [
+            "写出它独有的特点",
+            "只写一只动物",
+            "不写别的动物"
+          ],
+          "answer": "A",
+          "explanation": "独特之处才让文章活起来。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "哪一句写出了『这一只』翠鸟？",
+          "options": [
+            "它的红色长嘴又尖又长，衔起小鱼一吞就走了",
+            "翠鸟是一种美丽的鸟",
+            "翠鸟住在河边"
+          ],
+          "answer": "A",
+          "explanation": "A 写的是这只鸟的捕鱼动作，是作者亲眼所见的具体样子。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 2,
+          "question": "观察作文可以抄百科全书里的介绍。",
+          "answer": "错",
+          "explanation": "观察作文写自己的发现，抄来的介绍没有『我』的眼睛。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "写观察作文前，先想想对象最____的地方。（填两个字）",
+          "answer": "独特",
+          "explanation": "独特之处是文章的重点。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "两篇写小狗的观察，哪篇更好？",
+          "options": [
+            "我家的小狗听见门铃就竖起一只耳朵，然后歪着头看门口",
+            "小狗是人类的伙伴",
+            "我家的小狗很可爱"
+          ],
+          "answer": "A",
+          "explanation": "A 有具体动作细节，是观察来的、独有的。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "观察日记不用写出自己的感受。",
+          "answer": "错",
+          "explanation": "『我的发现』『我的惊讶』是观察作文不可缺少的一部分。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "写『这一只』小狗，下面哪句最独特？",
+          "options": [
+            "它听到门铃总会歪着头，左耳先竖起来",
+            "它是一只狗",
+            "它有四条腿"
+          ],
+          "answer": "A",
+          "explanation": "歪头竖耳是这只狗独有的习惯——独特之处才让文章有生命。"
+        },
+        {
+          "type": "input",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "写观察作文前，先问自己：它最让我____的地方是什么？（填两个字）",
+          "answer": "惊讶",
+          "explanation": "惊讶的地方往往就是独特之处。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 4,
+          "question": "观察你家的小猫或一个文具，写出它『只有它才有』的一个特点（填一句话）。",
+          "answer": "我的台灯开关按下去会咔哒响一声",
+          "explanation": "答案不唯一。关键是这个特点是别人家的猫或别的台灯没有的。"
+        }
+      ]
+    },
+    {
+      "id": "chinese-tongbian-g3up-u5-kp4",
+      "title": "字词基础：本单元重点字词",
+      "short": "读音与字形",
+      "difficulty": 2,
+      "sections": [
+        "搭船的鸟",
+        "金色的草地"
+      ],
+      "core_concept": "本单元重点：『鹦鹉（yīng wǔ）、船篷（péng）、衔（xián）、蒲公英（pú gōng yīng）、合拢（lǒng）』等词的读音写法；『搭』的字形；形近字『拢/拢与扰』。",
+      "key_formula": "难字拆开记：衔＝行字中间夹金（用嘴叼着走）；拢＝提手旁＋龙（合拢用手）",
+      "common_mistakes": [
+        "把『合拢』写成『合笼』",
+        "『鹦鹉』两个字都是鸟字旁，容易丢偏旁",
+        "『衔』写成『街』"
+      ],
+      "tips": "『衔』是『用嘴叼着』，所以中间有个金字（像叼着东西）。街是街道，行字中间是圭。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "翠鸟『衔』起小鱼飞走了。『衔』的意思是：",
+          "options": [
+            "用嘴叼着",
+            "衔回家里",
+            "感谢"
+          ],
+          "answer": "A",
+          "explanation": "衔：用嘴叼。注意和街道的『街』区分。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "『合拢』的正确写法是：",
+          "options": [
+            "合拢",
+            "合笼",
+            "合胧"
+          ],
+          "answer": "A",
+          "explanation": "花瓣合上用提手旁的『拢』。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "船篷的『篷』是：",
+          "options": [
+            "竹字头，用竹子编的顶棚",
+            "草字头",
+            "绞丝旁"
+          ],
+          "answer": "A",
+          "explanation": "船篷用竹篾编成，所以是竹字头。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "『蒲公英』三个字的偏旁依次是：",
+          "options": [
+            "草字头、上下结构、草字头",
+            "木字旁",
+            "三点水"
+          ],
+          "answer": "A",
+          "explanation": "蒲公英都是植物，蒲和英是草字头。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "看拼音写词：yǔ diǎn（______打在船篷上沙啦沙啦响）",
+          "answer": "雨点",
+          "explanation": "雨点：一滴一滴的雨。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "《搭船的鸟》里翠鸟捕鱼的动作顺序是：",
+          "options": [
+            "冲进水里 → 衔起小鱼 → 飞回船头 → 吞下去",
+            "先飞再冲",
+            "先吞再衔"
+          ],
+          "answer": "A",
+          "explanation": "一连串动词写出了翠鸟捕鱼的敏捷，观察得非常细。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "『衔起小鱼』的『衔』和『街道』的『街』，区别在：",
+          "options": [
+            "中间部分不同：衔里面是金，街里面是圭",
+            "完全相同",
+            "读音相同"
+          ],
+          "answer": "A",
+          "explanation": "两个字都是行字框，里面不同：衔叼着金，街是十字路口。"
+        },
+        {
+          "type": "input",
+          "level": "advance",
+          "difficulty": 3,
+          "question": "『翠鸟』的『翠』本义与____色有关。（填一个字）",
+          "answer": "绿",
+          "explanation": "翠指青绿色的玉石，所以翠鸟羽毛是翠绿色的。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 4,
+          "question": "写出三个带鸟字旁的字（按「字、字、字」格式填）。",
+          "answer": "鹦、鹉、鸭",
+          "explanation": "答案不唯一：鹦、鹉、鸭、鹅、鸡都可以。"
+        }
+      ]
+    }
+  ],
+  "exam": {
+    "title": "第五单元 随堂自测",
+    "duration": 10,
+    "scorePerQuestion": 5,
+    "note": "限时 10 分钟 · 时间到自动交卷",
+    "questions": [
+      {
+        "type": "choice",
+        "question": "下面哪一项不属于观察？",
+        "options": [
+          "猜一个东西的样子",
+          "闻花香",
+          "摸小猫的毛"
+        ],
+        "answer": "A",
+        "explanation": "猜不是观察，观察要用感官获取真实信息。"
+      },
+      {
+        "type": "choice",
+        "question": "草地中午变成金色是因为：",
+        "options": [
+          "蒲公英花朵张开",
+          "草枯了",
+          "阳光反射在露水上"
+        ],
+        "answer": "A",
+        "explanation": "花朵张开露出金色花瓣。"
+      },
+      {
+        "type": "true_false",
+        "question": "连续观察就是一直盯着不离开。",
+        "answer": "错",
+        "explanation": "是定时多次观察记录。"
+      },
+      {
+        "type": "input",
+        "question": "蒲公英傍晚把花朵____。（填两个字）",
+        "answer": "合拢",
+        "explanation": "傍晚花朵合拢。"
+      },
+      {
+        "type": "choice",
+        "question": "《搭船的鸟》观察翠鸟时用得最多的感官是：",
+        "options": [
+          "视觉",
+          "嗅觉",
+          "味觉"
+        ],
+        "answer": "A",
+        "explanation": "主要写羽毛和长嘴的颜色样子。"
+      },
+      {
+        "type": "input",
+        "question": "看拼音写词：cuì niǎo（一只______）",
+        "answer": "翠鸟",
+        "explanation": "翠鸟的羽毛是翠绿色的。"
+      },
+      {
+        "type": "choice",
+        "question": "『写这一只，不写这一类』强调写出：",
+        "options": [
+          "独特之处",
+          "名字",
+          "价格"
+        ],
+        "answer": "A",
+        "explanation": "独一份的特点才是好素材。"
+      },
+      {
+        "type": "true_false",
+        "question": "观察作文可以抄百科全书。",
+        "answer": "错",
+        "explanation": "要写自己的发现。"
+      },
+      {
+        "type": "choice",
+        "question": "雨点『沙啦沙啦地响』用的是：",
+        "options": [
+          "听觉",
+          "视觉",
+          "触觉"
+        ],
+        "answer": "A",
+        "explanation": "声音是听出来的。"
+      },
+      {
+        "type": "input",
+        "question": "观察记录表一般有：时间、对象、____、我的发现。（填两个字）",
+        "answer": "变化",
+        "explanation": "记录变化是连续观察的核心。"
+      }
+    ]
+  },
+  "paper": {
+    "title": "第五单元 检测卷",
+    "subtitle": "留心观察（习作单元）",
+    "duration": 40,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选择正确读音",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "鹦鹉的『鹉』读：",
+            "options": [
+              "wǔ",
+              "wū",
+              "niǎo"
+            ],
+            "answer": "A",
+            "explanation": "鹦鹉读 yīng wǔ。"
+          },
+          {
+            "type": "choice",
+            "question": "船篷的『篷』读：",
+            "options": [
+              "péng",
+              "féng",
+              "pēng"
+            ],
+            "answer": "A",
+            "explanation": "篷读 péng。"
+          },
+          {
+            "type": "choice",
+            "question": "合拢的『拢』读：",
+            "options": [
+              "lǒng",
+              "lóng",
+              "nóng"
+            ],
+            "answer": "A",
+            "explanation": "拢读 lǒng。"
+          },
+          {
+            "type": "choice",
+            "question": "蒲公英的『蒲』读：",
+            "options": [
+              "pú",
+              "pū",
+              "bú"
+            ],
+            "answer": "A",
+            "explanation": "蒲读 pú。"
+          },
+          {
+            "type": "choice",
+            "question": "翠鸟的『翠』读：",
+            "options": [
+              "cuì",
+              "chuì",
+              "suì"
+            ],
+            "answer": "A",
+            "explanation": "翠读 cuì，羽毛颜色词。"
+          }
+        ]
+      },
+      {
+        "name": "二、选择正确的字",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "翠鸟____起一条小鱼。",
+            "options": [
+              "衔",
+              "街",
+              "衍"
+            ],
+            "answer": "A",
+            "explanation": "衔：用嘴叼。"
+          },
+          {
+            "type": "choice",
+            "question": "花朵慢慢____上了。",
+            "options": [
+              "合",
+              "和",
+              "河"
+            ],
+            "answer": "A",
+            "explanation": "合拢的合。"
+          },
+          {
+            "type": "choice",
+            "question": "雨点打在船____上。",
+            "options": [
+              "篷",
+              "蓬",
+              "棚"
+            ],
+            "answer": "A",
+            "explanation": "船篷竹字头。蓬松是草字头。"
+          },
+          {
+            "type": "choice",
+            "question": "蒲公英的种子随风____扬。",
+            "options": [
+              "飘",
+              "漂",
+              "瓢"
+            ],
+            "answer": "A",
+            "explanation": "在空中飘用飘（风字旁）。"
+          },
+          {
+            "type": "choice",
+            "question": "我____察了绿豆发芽的过程。",
+            "options": [
+              "观",
+              "关",
+              "官"
+            ],
+            "answer": "A",
+            "explanation": "观察：仔细看。"
+          }
+        ]
+      },
+      {
+        "name": "三、把词语补充完整",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "input",
+            "question": "五____缤纷（颜色繁多）",
+            "answer": "彩",
+            "explanation": "五彩缤纷。"
+          },
+          {
+            "type": "input",
+            "question": "留心____察",
+            "answer": "观",
+            "explanation": "留心观察。"
+          },
+          {
+            "type": "input",
+            "question": "一本____经（形容认真）",
+            "answer": "正",
+            "explanation": "一本正经。"
+          },
+          {
+            "type": "input",
+            "question": "引人____目（吸引人注意）",
+            "answer": "注",
+            "explanation": "引人注目。"
+          },
+          {
+            "type": "input",
+            "question": "____眯眯（形容眼睛笑得细缝）",
+            "answer": "笑",
+            "explanation": "笑眯眯。"
+          }
+        ]
+      },
+      {
+        "name": "四、观察方法",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "写观察作文，最好的材料来自：",
+            "options": [
+              "自己真实的观察",
+              "作文书",
+              "别人口述"
+            ],
+            "answer": "A",
+            "explanation": "观察作文的生命在真实。"
+          },
+          {
+            "type": "choice",
+            "question": "观察金鱼，下列记录最差的是：",
+            "options": [
+              "金鱼很漂亮",
+              "金鱼的眼睛鼓鼓的，尾巴像纱裙",
+              "金鱼摆尾时水花很小"
+            ],
+            "answer": "A",
+            "explanation": "A 没有任何观察细节。"
+          },
+          {
+            "type": "choice",
+            "question": "『草地变色』这个发现说明：",
+            "options": [
+              "观察加思考才能找到原因",
+              "草会变魔法",
+              "颜色是随机的"
+            ],
+            "answer": "A",
+            "explanation": "先发现现象再找原因。"
+          },
+          {
+            "type": "choice",
+            "question": "记录连续观察，最需要写清：",
+            "options": [
+              "不同时间的不同样子",
+              "观察那天的心情",
+              "东西的价格"
+            ],
+            "answer": "A",
+            "explanation": "变化是连续观察的核心。"
+          },
+          {
+            "type": "choice",
+            "question": "下面哪句写出了『我』的发现？",
+            "options": [
+              "我惊讶地发现，傍晚的草地又变回了绿色",
+              "草地是金色的",
+              "草地很大"
+            ],
+            "answer": "A",
+            "explanation": "『惊讶地发现』正是观察后的思考。"
+          }
+        ]
+      },
+      {
+        "name": "五、判断对错",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "true_false",
+            "question": "《搭船的鸟》里的翠鸟是彩色的，长嘴是红色的。",
+            "answer": "对",
+            "explanation": "课文细写它的羽毛与红嘴。"
+          },
+          {
+            "type": "true_false",
+            "question": "观察只需要眼睛。",
+            "answer": "错",
+            "explanation": "耳鼻手舌都能观察。"
+          },
+          {
+            "type": "true_false",
+            "question": "习作单元的例文不用读。",
+            "answer": "错",
+            "explanation": "例文教的是观察和写法，要先学再写。"
+          },
+          {
+            "type": "true_false",
+            "question": "《金色的草地》里草地变色是花朵开合造成的。",
+            "answer": "对",
+            "explanation": "蒲公英花张开合拢。"
+          },
+          {
+            "type": "true_false",
+            "question": "观察作文里可以写自己的想象。",
+            "answer": "对",
+            "explanation": "观察为主，适当联想可以让文章更生动，但要有观察打底。"
+          }
+        ]
+      },
+      {
+        "name": "六、按课文内容填空",
+        "perScore": 4,
+        "questions": [
+          {
+            "type": "input",
+            "question": "我看见一只彩色的小鸟站在船头，多么____啊！（填两个字）",
+            "answer": "美丽",
+            "explanation": "课文里『我』对翠鸟的赞叹。"
+          },
+          {
+            "type": "input",
+            "question": "它一下子____进水里，不见了。（填一个字）",
+            "answer": "冲",
+            "explanation": "翠鸟捕鱼动作：冲。"
+          },
+          {
+            "type": "input",
+            "question": "蒲公英的花就像我们的____，可以张开、合上。（填身体部位）",
+            "answer": "手掌",
+            "explanation": "课文把蒲公英的花比作手掌。"
+          },
+          {
+            "type": "input",
+            "question": "原来，蒲公英的花就像我们的手掌，可以____、合上。（填两个字）",
+            "answer": "张开",
+            "explanation": "花开如手掌张开。"
+          },
+          {
+            "type": "input",
+            "question": "看拼音写词：dā chuán（陪母亲______去外祖父家）",
+            "answer": "搭船",
+            "explanation": "搭船：乘船。"
+          }
+        ]
+      },
+      {
+        "name": "七、阅读与表达",
+        "perScore": 5,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "『我家的小狗』想写出小狗的独特之处，最好的观察角度是：",
+            "options": [
+              "它听到门铃时的特殊反应",
+              "狗的一般习性",
+              "狗的历史"
+            ],
+            "answer": "A",
+            "explanation": "独一份的反应才是这一只狗。"
+          },
+          {
+            "type": "choice",
+            "question": "观察记录『绿豆发芽』第一天该写什么？",
+            "options": [
+              "绿豆的样子和当时的大小",
+              "发芽的心情",
+              "绿豆的价钱"
+            ],
+            "answer": "A",
+            "explanation": "先记录起点，后面才有变化可比。"
+          },
+          {
+            "type": "choice",
+            "question": "下面哪句是观察后产生的联想？",
+            "options": [
+              "蒲公英的花像我们张开的手掌",
+              "草地是绿的",
+              "我站在草地上"
+            ],
+            "answer": "A",
+            "explanation": "把花比作手掌是观察加联想。"
+          },
+          {
+            "type": "input",
+            "question": "写观察作文，结尾最好写一写自己的____。（填两个字）",
+            "answer": "发现",
+            "explanation": "我的发现是观察作文的落点。"
+          }
+        ]
+      }
+    ]
+  }
+}

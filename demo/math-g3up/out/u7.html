@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>苏教版三年级上册 · 数学</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#EFF2F6; --card:#FFFFFF; --soft:#F7F9FC;
+    --ink:#141B2D; --ink2:#48536B; --ink3:#8B95AB;
+    --line:#E3E8F0; --line2:#CBD3E1;
+    --pri:#2E6BE6; --pri-l:#EAF1FE; --pri-d:#1B4BB8;
+    --ok:#0E9F6E; --ok-l:#E8F8F2;
+    --no:#E02424; --no-l:#FDECEC;
+    --warn:#C27803; --warn-l:#FFF7E6; --warn-b:#FBE3B0;
+    --adv:#7C3AED; --adv-l:#F3EEFF; --adv-b:#DDD0FE;
+    --r-lg:22px; --r-md:14px; --r-sm:10px;
+  }
+  html{font-size:17px}
+  body{background:var(--bg);color:var(--ink);line-height:1.75;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased}
+
+  .layout{display:flex;align-items:flex-start}
+
+  /* ───── 左侧栏 ───── */
+  .side{flex:0 0 258px;width:258px;position:sticky;top:0;height:100vh;overflow-y:auto;
+    padding:26px 14px 40px;border-right:1px solid var(--line);background:#F9FBFD}
+  .side::-webkit-scrollbar{width:5px}
+  .side::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
+  .brand{display:block;text-decoration:none;color:var(--ink);padding:0 10px 18px}
+  .brand .b1{font-size:1.06rem;font-weight:700;letter-spacing:-.2px;line-height:1.4}
+  .brand .b2{font-size:.72rem;color:var(--ink3);margin-top:2px;letter-spacing:.3px}
+  .sgroup{font-size:.7rem;font-weight:700;color:var(--ink3);letter-spacing:1.2px;
+    padding:16px 10px 7px}
+  .sitem{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink2);
+    border-radius:var(--r-sm);padding:9px 10px;font-size:.9rem;line-height:1.45;
+    transition:.14s;margin-bottom:2px}
+  .sitem:hover{background:#EDF2FA;color:var(--ink)}
+  .sitem .n{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:#E7EDF8;color:#5A6B87;
+    font-size:.72rem;font-weight:700;display:grid;place-items:center;transition:.14s}
+  .sitem .t{flex:1;min-width:0}
+  .sitem .q{font-size:.68rem;color:var(--ink3);flex:0 0 auto}
+  .sitem .wb{background:#FDECEC;color:#C81E1E;font-size:.66rem;font-weight:700;
+    border-radius:9px;padding:0 6px;margin-left:4px;line-height:1.75}
+  .sitem.on{background:var(--pri);color:#fff;font-weight:600}
+  .sitem.on .n{background:rgba(255,255,255,.22);color:#fff}
+  .sitem.on .q{color:rgba(255,255,255,.8)}
+  .sitem .dot{flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--line2);margin:0 8px 0 3px}
+  .sitem:hover .dot{background:var(--pri)}
+  .sback{display:block;margin:14px 10px 0;font-size:.78rem;color:var(--ink3);text-decoration:none}
+
+  /* 侧栏顶部用户条 */
+  .snav{padding-right:14px}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
+  .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .usub{display:none}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar svg{width:13px;height:13px}
+  .side .userbar .ustar b{font-size:.9rem}
+  .side .userbar .ustar .lbl{font-size:.64rem}
+
+  /* 侧栏：单元子目录 */
+  .ssub{margin:3px 0 9px 12px;padding-left:9px;border-left:1px solid var(--line2)}
+  .ssub .s2{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--ink2);
+    border-radius:8px;padding:6px 8px;font-size:.82rem;line-height:1.5;transition:.14s;margin-bottom:1px}
+  .ssub .s2:hover{background:#EDF2FA;color:var(--ink)}
+  .ssub .s2 .k{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#E7EDF8;color:#5A6B87;
+    font-size:.64rem;font-weight:700;display:grid;place-items:center;transition:.14s}
+  .ssub .s2 .tx{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ssub .s2.on{background:var(--pri);color:#fff;font-weight:600}
+  .ssub .s2.on .k{background:rgba(255,255,255,.24);color:#fff}
+  .ssub .s2.sd .k{width:7px;height:7px;background:var(--line2);margin:0 5px 0 1px}
+  .ssub .s2.sd.on .k{background:rgba(255,255,255,.75)}
+  .sback:hover{color:var(--pri)}
+
+  /* ───── 主区 ───── */
+  .main{flex:1;min-width:0;padding:26px 30px 90px 26px}
+  .frame{background:var(--card);border-radius:var(--r-lg);padding:34px 38px 40px;
+    max-width:1060px;margin:0 auto;box-shadow:0 1px 3px rgba(20,27,45,.05),0 8px 28px rgba(20,27,45,.04)}
+
+  /* 用户条 */
+  .userbar{display:flex;align-items:center;gap:14px;background:var(--soft);
+    border:1px solid var(--line);border-radius:var(--r-md);padding:13px 18px;margin-bottom:22px}
+  .avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+    font-size:1.15rem;font-weight:700;color:#fff;cursor:pointer;flex:0 0 auto;
+    box-shadow:inset 0 -2px 6px rgba(0,0,0,.14);transition:.15s}
+  .avatar:hover{transform:scale(1.07)}
+  .uinfo{flex:1;min-width:0}
+  .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
+  .uname:hover{color:var(--pri)}
+  .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
+  .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
+  .ustar svg{width:20px;height:20px}
+  .ustar svg path{fill:#F5A524}
+  .ustar b{font-size:1.15rem;color:#B4460E;font-variant-numeric:tabular-nums;line-height:1}
+  .ustar .lbl{font-size:.72rem;color:var(--ink3)}
+
+  .uhead{margin-bottom:26px}
+  .ukicker{font-size:.76rem;font-weight:700;color:var(--pri);letter-spacing:1.4px;margin-bottom:8px}
+  .uhead h1{font-size:1.72rem;font-weight:700;letter-spacing:-.4px;line-height:1.4}
+  .umeta{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;font-size:.76rem;color:var(--ink2)}
+  .chip{background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+  .uprog{margin-top:20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .bar{flex:1;min-width:180px;height:9px;background:#E7ECF4;border-radius:99px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,#2E6BE6,#0E9F6E);transition:width .4s ease}
+  .pnum{font-size:.82rem;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pnum b{color:var(--pri);font-size:1rem}
+
+  /* 视频 */
+  .videos{margin:26px 0 6px}
+  .vhead{display:flex;align-items:baseline;gap:10px;font-size:.92rem;font-weight:700;
+    color:var(--ink);margin-bottom:12px}
+  .vhead .hint{font-weight:400;font-size:.76rem;color:var(--ink3)}
+  .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:11px}
+  .vcard{background:var(--soft);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:15px 17px 13px;text-decoration:none;color:inherit;display:flex;flex-direction:column;
+    gap:8px;transition:.15s;position:relative;min-height:118px}
+  .vcard:hover{border-color:var(--pri);background:#F0F5FF;transform:translateY(-2px);
+    box-shadow:0 4px 16px rgba(46,107,230,.13)}
+  .vcard .arw{position:absolute;top:13px;right:15px;color:var(--line2);font-size:.85rem;line-height:1}
+  .vcard:hover .arw{color:var(--pri)}
+  .vtop{display:flex;align-items:center;gap:7px;padding-right:18px}
+  .vtag{font-size:.66rem;font-weight:700;letter-spacing:.5px;border-radius:5px;padding:2px 7px;
+    background:var(--pri-l);color:var(--pri-d)}
+  .vcard .vt{font-size:.98rem;font-weight:700;line-height:1.5;color:var(--ink)}
+  .vkw{display:flex;flex-wrap:wrap;gap:5px}
+  .kw{font-size:.72rem;background:#E9EFF8;color:#4A5A75;border-radius:5px;padding:2px 7px;line-height:1.6}
+  .vmeta{display:flex;justify-content:space-between;align-items:center;
+    font-size:.72rem;color:var(--ink3);margin-top:auto;padding-top:3px;gap:8px}
+  .vmeta .dur{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink2)}
+
+  /* 主分区标签 */
+  .main-tabs{display:flex;gap:7px;margin:24px 0 22px;background:var(--soft);
+    border:1px solid var(--line);border-radius:15px;padding:5px}
+  .mtab{flex:1;font:inherit;font-size:.94rem;font-weight:700;color:var(--ink2);
+    background:none;border:none;border-radius:11px;padding:12px 8px;cursor:pointer;
+    transition:.15s;line-height:1.4}
+  .mtab:hover:not(.on){color:var(--ink);background:#E9EFF9}
+  .mtab.on{background:#fff;color:var(--pri);box-shadow:0 1px 5px rgba(20,27,45,.11)}
+  .mtab .sub{display:block;font-size:.7rem;font-weight:400;color:var(--ink3);margin-top:2px}
+  .mtab.on .sub{color:var(--pri)}
+  .pane{display:none;animation:fade .2s ease}
+  .pane.show{display:block}
+
+  /* 知识点标签 */
+  .kptabs{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 20px;
+    padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .kptab{display:flex;align-items:center;gap:8px;border:1px solid var(--line);
+    background:var(--soft);border-radius:999px;padding:8px 15px 8px 9px;cursor:pointer;
+    font:inherit;font-size:.86rem;color:var(--ink2);transition:.15s}
+  .kptab:hover{border-color:var(--line2);background:#EDF2FA;color:var(--ink)}
+  .kptab .idx{width:24px;height:24px;border-radius:50%;background:#DDE5F2;color:#5A6B87;
+    font-size:.72rem;font-weight:700;display:grid;place-items:center;flex:0 0 auto;transition:.15s}
+  .kptab.on{background:var(--pri);border-color:var(--pri);color:#fff;font-weight:600;
+    box-shadow:0 3px 12px rgba(46,107,230,.28)}
+  .kptab.on .idx{background:rgba(255,255,255,.24);color:#fff}
+
+  /* 知识点块 */
+  .kp{display:none;animation:fade .22s ease}
+  .kp.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .kp-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .kp-head h2{font-size:1.3rem;font-weight:700;letter-spacing:-.2px;line-height:1.4;flex:1;min-width:180px}
+  .diff{font-size:.72rem;color:var(--warn);letter-spacing:2px}
+
+  .kp-body{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:26px;align-items:start}
+  @media(max-width:1080px){.kp-body{grid-template-columns:1fr;gap:20px}}
+
+  .kp-left{display:flex;flex-direction:column;gap:11px}
+  .panel{border-radius:var(--r-md);padding:15px 17px;border:1px solid var(--line);background:var(--soft)}
+  .panel .label{font-size:.72rem;font-weight:700;letter-spacing:.8px;color:var(--ink3);margin-bottom:7px}
+  .panel p{font-size:.94rem;line-height:1.85;color:var(--ink2)}
+  .panel ul{margin:0;padding-left:19px}
+  .panel li{font-size:.9rem;line-height:1.8;color:var(--ink2);margin-bottom:4px}
+  .panel.fm{background:var(--pri-l);border-color:#C3D8FF}
+  .panel.fm .label{color:var(--pri-d)}
+  .panel.fm p{color:var(--pri-d);font-weight:600;font-size:.98rem;line-height:1.75}
+  .panel.bad{background:#FFF8F8;border-color:#FBD5D5}
+  .panel.bad .label{color:var(--no)}
+  .panel.tip{background:var(--warn-l);border-color:var(--warn-b)}
+  .panel.tip .label{color:var(--warn)}
+
+  .qgroup{margin-bottom:18px}
+  .qgroup-title{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:700;
+    letter-spacing:.5px;color:var(--ink3);padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:2px}
+  .qgroup.adv .qgroup-title{color:var(--adv);border-bottom-color:var(--adv-b)}
+  .tagv{background:var(--adv-l);color:var(--adv);font-size:.68rem;font-weight:700;
+    border-radius:5px;padding:2px 7px;letter-spacing:.4px}
+  .qgroup.chal .qgroup-title{color:#B4460E;border-bottom-color:#F8D3BC}
+  .tagc{background:#FFF0E6;color:#B4460E;font-size:.68rem;font-weight:700;
+    border-radius:5px;padding:2px 7px;letter-spacing:.4px}
+
+  .q{padding:16px 0;border-bottom:1px dashed #E9EDF4}
+  .q:last-child{border-bottom:none;padding-bottom:2px}
+  .q.adv{background:linear-gradient(90deg,rgba(124,58,237,.05),transparent 55%);
+    margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:10px}
+  .q.chal{background:linear-gradient(90deg,rgba(180,70,14,.06),transparent 55%);
+    margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:10px}
+  .q-top{display:flex;gap:11px;align-items:flex-start;margin-bottom:12px}
+  .q-no{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#E9EEF6;color:var(--ink2);
+    font-size:.78rem;font-weight:700;display:grid;place-items:center;margin-top:2px;transition:.2s}
+  .q.adv .q-no{background:var(--adv-l);color:var(--adv)}
+  .q.chal .q-no{background:#FFF0E6;color:#B4460E}
+  .q-txt{font-size:1rem;line-height:1.8;color:var(--ink);flex:1}
+  .q.done .q-no{background:var(--ok);color:#fff}
+  .q.fail .q-no{background:var(--no);color:#fff}
+  .q.done{background:rgba(14,159,110,.045);margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:10px}
+
+  .opts{display:flex;flex-direction:column;gap:8px;margin-left:37px}
+  .opt{text-align:left;font:inherit;font-size:.94rem;color:var(--ink2);background:#fff;
+    border:1.5px solid var(--line2);border-radius:var(--r-sm);padding:11px 15px;cursor:pointer;
+    display:flex;gap:11px;align-items:flex-start;transition:.14s;line-height:1.7}
+  .opt:hover:not(:disabled){border-color:var(--pri);background:var(--pri-l);transform:translateX(2px)}
+  .opt b{color:var(--ink3);font-weight:700;flex:0 0 auto}
+  .opt:disabled{cursor:default;transform:none}
+  .opt.ok{border-color:var(--ok);background:var(--ok-l);color:#08694A}
+  .opt.ok b{color:var(--ok)}
+  .opt.no{border-color:var(--no);background:var(--no-l);color:#9B1C1C}
+  .opt.no b{color:var(--no)}
+  .opt.on{border-color:var(--pri);background:var(--pri-l);color:var(--pri-d);font-weight:600}
+  .opt.on b{color:var(--pri)}
+
+  .inp-row{display:flex;gap:9px;margin-left:37px;align-items:center;flex-wrap:wrap}
+  .inp-row input{font:inherit;font-size:1rem;width:130px;padding:10px 14px;border:1.5px solid var(--line2);
+    border-radius:var(--r-sm);outline:none;transition:.14s;color:var(--ink)}
+  .inp-row input:focus{border-color:var(--pri);box-shadow:0 0 0 4px rgba(46,107,230,.12)}
+  .inp-row input:disabled{background:#F4F6FA;color:var(--ink2)}
+  .inp-row .unit-tag{font-size:.92rem;color:var(--ink3)}
+  .btn{font:inherit;font-size:.88rem;font-weight:600;padding:9px 20px;border-radius:var(--r-sm);
+    cursor:pointer;border:1.5px solid var(--pri);background:var(--pri);color:#fff;transition:.14s}
+  .btn:hover{background:var(--pri-d);border-color:var(--pri-d)}
+  .btn:disabled{background:#E6EAF1;border-color:#E6EAF1;color:#9AA5B8;cursor:default}
+
+  .fb{margin:11px 0 0 37px;font-size:.9rem;line-height:1.8;border-radius:10px;padding:11px 15px;display:none}
+  .fb.show{display:block}
+  .fb.ok{background:var(--ok-l);color:#08694A;border-left:4px solid var(--ok)}
+  .fb.no{background:var(--no-l);color:#9B1C1C;border-left:4px solid var(--no)}
+  .fb .tk{font-weight:700;margin-right:6px}
+
+  /* 侧栏收起 */
+  .side-toggle{position:fixed;left:246px;top:14px;z-index:40;width:26px;height:46px;
+    border-radius:0 9px 9px 0;background:#fff;border:1px solid var(--line);border-left:none;
+    cursor:pointer;display:grid;place-items:center;color:var(--ink3);font-size:11px;
+    transition:.2s;padding:0;font-family:inherit}
+  .side-toggle:hover{color:var(--pri);background:var(--pri-l)}
+  .side-toggle li{list-style:none}
+  .layout.side-off .side{width:0;flex-basis:0;padding:0;overflow:hidden;border-right:none;opacity:0}
+  .layout.side-off .side-toggle{left:0}
+  .layout.side-off .main{padding-left:34px}
+
+  /* 视频折叠 */
+  .vhead{cursor:pointer;user-select:none}
+  .vhead .tg{font-size:.72rem;color:var(--pri);font-weight:600;margin-left:auto}
+  .vgrid.hide{display:none}
+
+  /* 知识点两栏：左固定右滚动 */
+  .kp-body{display:grid;grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr);gap:26px;align-items:start}
+  .kp-left{position:sticky;top:14px;display:flex;flex-direction:column;gap:11px}
+  .kp-right{max-height:calc(100vh - 40px);overflow-y:auto;padding-right:6px}
+  .kp-right::-webkit-scrollbar{width:7px}
+  .kp-right::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
+  .kp-right::-webkit-scrollbar-track{background:#F2F5F9;border-radius:9px}
+  @media(max-width:1080px){
+    .kp-body{grid-template-columns:1fr;gap:18px}
+    .kp-left{position:static}
+    .kp-right{max-height:none;overflow:visible;padding-right:0}
+  }
+
+  /* 限时测验 */
+  .quizbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--soft);
+    border:1px solid var(--line);border-radius:var(--r-md);padding:13px 18px;margin:18px 0 6px}
+  .quizbar .tm{font-size:1.5rem;font-weight:700;font-variant-numeric:tabular-nums;
+    color:var(--pri);letter-spacing:.5px;line-height:1}
+  .quizbar .tm.warn{color:var(--no);animation:blink 1s infinite}
+  @keyframes blink{50%{opacity:.4}}
+  .quizbar .meta{font-size:.8rem;color:var(--ink2);flex:1;min-width:120px}
+  .quizbar .meta b{color:var(--ink)}
+  .startbtn{font:inherit;font-size:1rem;font-weight:700;padding:13px 34px;border-radius:12px;
+    border:none;background:var(--pri);color:#fff;cursor:pointer;transition:.15s;
+    box-shadow:0 4px 14px rgba(46,107,230,.28)}
+  .startbtn:hover{background:var(--pri-d);transform:translateY(-1px)}
+  .startbtn:disabled{background:#D7DEEA;box-shadow:none;transform:none;cursor:default}
+
+  .result{margin-top:20px;background:linear-gradient(160deg,#F8FBFF,#FFFFFF);
+    border:1px solid #C3D8FF;border-radius:var(--r-lg);padding:26px 28px}
+  .result .top{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .result .sc{font-size:2.6rem;font-weight:700;color:var(--pri-d);line-height:1;
+    font-variant-numeric:tabular-nums}
+  .result .sc small{font-size:.9rem;font-weight:400;color:var(--ink3);margin-left:4px}
+  .stars{display:flex;gap:7px}
+  .star{width:30px;height:30px;position:relative}
+  .star svg{width:100%;height:100%}
+  .star.on svg path{fill:#F5A524}
+  .star.off svg path{fill:#E3E8F0}
+  .result .lv{font-size:.95rem;font-weight:700;color:#B4460E}
+  .result .sub{font-size:.82rem;color:var(--ink2);margin-top:6px}
+  .result h3{font-size:1rem;font-weight:700;margin:22px 0 10px;padding-top:16px;
+    border-top:1px dashed var(--line2)}
+  .wlist{display:flex;flex-direction:column;gap:10px}
+  .wrow{background:#FFF8F8;border:1px solid #FBD5D5;border-radius:10px;padding:13px 16px}
+  .wrow .q{font-size:.94rem;line-height:1.7;margin-bottom:7px;padding:0;border:none;background:none}
+  .wrow .ans{font-size:.84rem;color:var(--ink2);line-height:1.8}
+  .wrow .ans .bad{color:var(--no);font-weight:600}
+  .wrow .ans .good{color:var(--ok);font-weight:600}
+  .wrow .exp{font-size:.84rem;color:var(--ink2);margin-top:5px;line-height:1.8}
+
+  /* 自测 / 检测卷 */
+  .block{margin-top:40px;padding-top:32px;border-top:1px solid var(--line)}
+  .bhead h2{font-size:1.3rem;font-weight:700;letter-spacing:-.2px}
+  .bsub{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--ink2);margin-top:9px}
+  .score-box{margin-top:16px;background:var(--pri-l);border:1px solid #C3D8FF;border-radius:var(--r-md);
+    padding:14px 18px;font-size:.92rem;color:var(--pri-d);display:none}
+  .score-box.show{display:block}
+  .score-box b{font-size:1.35rem}
+
+  .paper-cover{background:var(--soft);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:22px 24px;margin-bottom:16px;border-top:3px solid var(--ink)}
+  .paper-cover .eyebrow{font-size:.7rem;letter-spacing:2px;color:var(--ink3);font-weight:700}
+  .paper-cover h2{font-size:1.35rem;font-weight:700;margin:9px 0 4px}
+  .paper-cover .sub{font-size:.86rem;color:var(--ink2)}
+  .paper-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--ink2);
+    margin-top:14px;padding-top:14px;border-top:1px dashed var(--line2)}
+
+  .paper-sec{margin-top:26px}
+  .p-sec-title{font-size:1rem;font-weight:700;color:var(--ink);padding-bottom:10px;
+    border-bottom:2px solid var(--ink);margin-bottom:6px;display:flex;justify-content:space-between;
+    align-items:baseline;gap:12px;flex-wrap:wrap}
+  .p-sec-title .ps{font-size:.76rem;font-weight:400;color:var(--ink3)}
+
+  .unitnav{display:flex;justify-content:space-between;gap:12px;margin-top:44px}
+  .unitnav a{flex:1;display:block;background:var(--soft);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:14px 18px;text-decoration:none;color:var(--ink2);font-size:.86rem;transition:.15s}
+  .unitnav a:hover{border-color:var(--pri);color:var(--pri-d);background:var(--pri-l)}
+  .unitnav a .k{display:block;font-size:.72rem;color:var(--ink3);margin-bottom:3px}
+  .unitnav a.next{text-align:right}
+
+  footer{text-align:center;font-size:.76rem;color:var(--ink3);padding:30px 0 0;line-height:1.9}
+  .reset{font:inherit;font-size:.76rem;color:var(--ink3);background:none;border:none;
+    text-decoration:underline;cursor:pointer;margin-top:8px}
+  .reset:hover{color:var(--no)}
+
+  /* 移动端：侧栏转顶部横条 */
+  @media(max-width:900px){
+    .layout{display:block}
+    .side{position:static;width:auto;height:auto;border-right:none;border-bottom:1px solid var(--line);
+      padding:14px 12px 12px;background:#F9FBFD}
+    .brand{padding:0 4px 10px}
+    .sgroup{display:none}
+    .snav{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+    .snav::-webkit-scrollbar{display:none}
+    .sitem{flex:0 0 auto;margin-bottom:0;white-space:nowrap;font-size:.82rem;padding:7px 12px 7px 8px}
+    .sitem .q{display:none}
+    .sitem .t{max-width:11em;overflow:hidden;text-overflow:ellipsis}
+    .sback{display:none}
+    .main{padding:16px 12px 70px}
+    .frame{padding:22px 18px 26px;border-radius:var(--r-md)}
+    .uhead h1{font-size:1.35rem}
+    .kp-body{gap:18px}
+    .opts,.inp-row,.fb{margin-left:0}
+    .q-top{gap:9px}
+  }
+</style>
+</head>
+<body>
+<div class="layout" id="layout">
+
+  <button class="side-toggle" id="sideToggle" type="button" title="收起 / 展开目录">◀</button>
+
+  <aside class="side" id="side">
+    <div class="userbar" id="userbar">
+      <div class="avatar" id="avatar" title="点头像换颜色">小</div>
+      <div class="uinfo">
+        <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
+        <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
+      </div>
+      <div class="ustar">
+        <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
+        <b id="startotal">0</b><span class="lbl">颗星</span>
+      </div>
+    </div>
+    <a class="brand" href="index.html">
+      <div class="b1">三年级数学</div>
+      <div class="b2">苏教版 · 上册</div>
+    </a>
+    <div class="snav" id="snav"></div>
+    <a class="sback" href="index.html">← 整册总览</a>
+  </aside>
+
+  <main class="main">
+    <div class="frame">
+
+      <header class="uhead">
+        <div class="ukicker" id="kicker"></div>
+        <h1 id="title"></h1>
+        <div class="umeta" id="meta"></div>
+        <div class="uprog">
+          <div class="bar"><i id="bar"></i></div>
+          <div class="pnum" id="ptxt">已完成 0 / 0</div>
+        </div>
+      </header>
+
+      <div class="pane show" id="pane-kp">
+        <section class="videos" id="videos" style="display:none">
+          <div class="vhead" id="vhead">看视频学<span class="hint" id="vhint">在新窗口播放</span><span class="tg" id="vtg">展开 ▾</span></div>
+          <div class="vgrid hide" id="vlist"></div>
+        </section>
+        <div id="kps"></div>
+      </div>
+
+      <div class="pane" id="pane-exam"><section id="exam"></section></div>
+      <div class="pane" id="pane-paper"><section id="paper"></section></div>
+
+      <div class="unitnav" id="unitnav"></div>
+
+      <footer>
+        内容依据《义务教育教科书·数学》三年级上册（苏教版，2025 年 7 月第 1 版）<br>
+        <button class="reset" id="reset">清空本页作答记录</button>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 7, "unitTitle": "数量关系的分析（一）", "sections": ["数量关系的分析", "练习十一"], "note": "这单元教材篇幅最短，但最难。考的是「先说清先求什么、再求什么」，不是直接列式。练的时候要求孩子先说思路，再动笔。", "knowledgePoints": [{"id": "math-sujiao-g3up-u7-kp1", "title": "从条件出发分析", "short": "看条件能求出什么", "difficulty": 2, "core_concept": "从条件出发，就是先看题目给了哪些已知条件，想一想「把这两个条件放在一起，能求出什么」。求出来的新结果又变成新的条件，接着往下推，一直推到答案。", "key_formula": "已知条件 → 能求出什么 → 新结果变新条件 → 推出答案", "common_mistakes": ["看到数字就凑算式，不先看条件之间的关系", "条件用错，把不相干的两个数放在一起", "中途忘了新求出的结果也是条件"], "tips": "先问一句：这两个条件能算出什么？算出来的东西，往往就是下一步要用的。", "questions": [{"type": "input", "difficulty": 2, "question": "商店运来 4 箱苹果，每箱 25 千克，又运来 30 千克橘子。苹果和橘子一共多少千克？（只填数字，单位：千克）", "answer": "130", "unit": "千克", "explanation": "由「4 箱」和「每箱 25 千克」先求出苹果的总量：4×25=100（千克）；再和橘子合起来：100+30=130（千克）。"}, {"type": "input", "difficulty": 2, "question": "每盒有 6 个鸡蛋，买了 5 盒，吃了 8 个。还剩多少个？（只填数字，单位：个）", "answer": "22", "unit": "个", "explanation": "先求一共买了多少：6×5=30（个）；再减去吃掉的：30-8=22（个）。"}, {"type": "choice", "difficulty": 2, "question": "已知「每盒 12 支」和「买了 4 盒」，由这两个条件可以求出（  ）", "options": ["一共多少支", "每支多少钱", "还剩多少支"], "answer": "A", "explanation": "盒数乘每盒支数就是总数。每支多少钱需要知道总价，还剩多少需要知道用了多少，这两个条件都给不出。"}, {"type": "true_false", "difficulty": 1, "question": "从条件出发分析，就是先看已知条件能求出什么。", "answer": "对", "explanation": "这是分析数量关系的一条基本思路。"}, {"type": "input", "difficulty": 3, "question": "一本书每天看 15 页，看了 6 天，还剩 30 页。这本书一共多少页？（只填数字，单位：页）", "answer": "120", "unit": "页", "explanation": "先求已经看了多少：15×6=90（页）；再加上剩下的：90+30=120（页）。"}, {"type": "choice", "difficulty": 2, "question": "已知「每箱 25 千克」和「有 4 箱」，下一步应该求（  ）", "options": ["一共多少千克", "每千克多少钱", "还剩多少千克"], "answer": "A", "explanation": "这两个条件能直接求出的就是总重量。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "商店运来 3 箱苹果，每箱 20 千克，又运来 25 千克梨。苹果和梨一共多少千克？（只填数字，单位：千克）", "answer": "85", "explanation": "先由前两个条件求苹果：20×3=60（千克）。再和梨合起来：60+25=85（千克）。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "题目：『小丽买了 4 支笔，每支 3 元；又买了一本 12 元的书。』从条件出发，第一步能先求出：", "options": ["4 支笔一共多少钱", "书多少钱", "一共花多少钱"], "answer": "A", "explanation": "『4 支』『每支 3 元』这两个条件放在一起能求出笔的总价，这是第一步。"}, {"type": "true_false", "level": "advance", "difficulty": 3, "question": "从条件出发分析，就是把有关系的两个条件放在一起，看能求出什么新条件。", "answer": "对", "explanation": "这是综合法分析的核心：条件组合 → 新条件 → 直到得出答案。"}]}, {"id": "math-sujiao-g3up-u7-kp2", "title": "从问题出发分析", "short": "要答题先要什么", "difficulty": 3, "core_concept": "从问题出发，就是先看题目最后问的是什么，再想「要回答这个问题，我必须先知道什么」。如果这个「必须知道的」题目里没有直接给，那就要先把它求出来。", "key_formula": "看问题 → 需要什么条件 → 缺什么先求什么", "common_mistakes": ["不看问题问的是什么，直接算", "需要的条件其实题目已经给了，又去重复求", "求出来的中间量不是问题需要的那个"], "tips": "把问题圈起来，然后问自己：要回答它，我手上还缺什么？", "questions": [{"type": "choice", "difficulty": 2, "question": "要求「还剩多少页没看」，必须先知道（  ）", "options": ["书的总页数和已经看了的页数", "每天看几页", "看了几天"], "answer": "A", "explanation": "剩下 = 总数 − 已看。只知每天看几页、看了几天，也还要看有没有别的安排，不如直接用总数减已看最直接。"}, {"type": "choice", "difficulty": 2, "question": "要求「平均每班多少人」，必须先知道（  ）", "options": ["总人数和班级数", "男生人数", "教室有多大"], "answer": "A", "explanation": "平均每班人数 = 总人数 ÷ 班数，两个条件缺一不可。"}, {"type": "true_false", "difficulty": 2, "question": "从问题出发分析，要先想清楚要求这个问题需要哪些条件。", "answer": "对", "explanation": "这是另一条基本思路，和从条件出发正好互补。"}, {"type": "input", "difficulty": 1, "question": "学校有 240 本书，平均分给 6 个班，每班多少本？（只填数字，单位：本）", "answer": "40", "unit": "本", "explanation": "问题问「每班多少本」，需要总本数和班数，题目都给了。240÷6=40（本）。"}, {"type": "choice", "difficulty": 2, "question": "要求「一共用了多少钱」，需要知道（  ）", "options": ["单价和数量", "只有单价", "只有数量"], "answer": "A", "explanation": "总价 = 单价 × 数量，两个都要有。"}, {"type": "input", "difficulty": 3, "question": "小明买了 3 支笔，每支 8 元，付了 50 元。应找回多少元？（只填数字，单位：元）", "answer": "26", "unit": "元", "explanation": "问题问「找回多少」，需要先知道花了多少：3×8=24（元）；再算 50-24=26（元）。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "爷爷家养的鸡和鸭一共 86 只。卖掉 30 只鸭以后，剩下的鸡和鸭只数同样多。爷爷家原来养了多少只鸡？", "answer": "28", "unit": "只", "explanation": "卖掉 30 只鸭后，鸡鸭共 86-30=56 只，而且一样多，所以各 56÷2=28 只。鸡没有被卖，原来就是 28 只。关键是先求出「卖掉之后」的总数。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "问题：『买 5 碗牛肉面还差多少钱？』要求这个问题，必须先知道：", "options": ["5 碗牛肉面一共多少钱，和带了多少元", "牛肉面的味道", "店里有几张桌子"], "answer": "A", "explanation": "『还差多少』= 应付的钱-带来的钱。所以先求 5 碗面的总价，再看带了多少钱。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "小军带了 50 元，买一个 42 元的足球，还剩 ____ 元。", "answer": "8", "explanation": "50-42=8（元）。从问题出发：剩多少=带了多少-花了多少。"}, {"type": "true_false", "level": "advance", "difficulty": 3, "question": "从问题出发分析时，要先想『要求这个，必须先知道什么』。", "answer": "对", "explanation": "这是分析法：从问题倒推需要的条件。"}]}, {"id": "math-sujiao-g3up-u7-kp3", "title": "画图与列表整理信息", "short": "把条件摆出来", "difficulty": 2, "core_concept": "题目里条件一多，光靠脑子记容易漏。这时候用线段图把数量画出来，或者列个表格把条件摆清楚，关系一眼就能看出来。画图不是多余的动作，是把想的过程写下来。", "key_formula": "条件多 → 画图或列表 → 看清关系 → 再列式", "common_mistakes": ["嫌画图麻烦，直接凭感觉列式", "图画了但没标清楚谁多谁少", "表格里把条件和问题混在一起"], "tips": "线段图最省事：长的画长一点，短的画短一点，多出来的那一段标上数字。", "questions": [{"type": "true_false", "difficulty": 1, "question": "信息比较多的时候，可以用画图或列表的方法整理。", "answer": "对", "explanation": "整理信息能让关系变清楚，是解两步问题很实用的一步。"}, {"type": "choice", "difficulty": 1, "question": "整理条件最常用的两种方法是（  ）", "options": ["画图和列表", "背下来", "猜一猜"], "answer": "A", "explanation": "画线段图看长短关系，列表格看对应关系，这两种最常用。"}, {"type": "true_false", "difficulty": 1, "question": "画线段图可以帮助我们看清数量之间的关系。", "answer": "对", "explanation": "谁多谁少、多多少，画出来比读文字快。"}, {"type": "choice", "difficulty": 2, "question": "解决两步计算的问题，先整理信息的好处是（  ）", "options": ["不容易漏掉条件", "算得更快", "字写得更好看"], "answer": "A", "explanation": "两步问题的条件多，整理一遍就不容易漏。算得快是练出来的，跟整理没关系。"}, {"type": "input", "difficulty": 2, "question": "一班有 42 人，二班比一班少 5 人。两个班一共多少人？（只填数字，单位：人）", "answer": "79", "unit": "人", "explanation": "先求二班：42-5=37（人）；再求两班之和：42+37=79（人）。"}, {"type": "input", "difficulty": 3, "question": "果园里有桃树 45 棵，梨树比桃树多 18 棵。两种树一共多少棵？（只填数字，单位：棵）", "answer": "108", "unit": "棵", "explanation": "先求梨树：45+18=63（棵）；再求总数：45+63=108（棵）。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "题目条件又多又乱时，最好先：", "options": ["画线段图或列表把条件整理清楚", "直接列式碰运气", "只看数字不算"], "answer": "A", "explanation": "画图列表能把数量关系摆清楚，是解题的重要帮手。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "一件上衣 60 元，一条裤子 40 元。买 2 套衣服要多少元？（一套=上衣+裤子，只填数字，单位：元）", "answer": "200", "explanation": "先求一套：60+40=100（元）。2 套：100×2=200（元）。"}, {"type": "true_false", "level": "advance", "difficulty": 3, "question": "线段图就是把数量画成长短不同的段，短的表示小数，长的表示大数。", "answer": "对", "explanation": "线段图用长短表现数量大小，一眼看出谁多谁少、多多少。"}]}, {"id": "math-sujiao-g3up-u7-kp4", "title": "两步计算实际问题", "short": "先中间量，再答案", "difficulty": 3, "core_concept": "两步计算的问题，中间一定有一个必须先求出来的量。找到它，问题就变成一步了。找中间量的办法有两个：从条件往前推，或者从问题往回找。两种都行，哪条顺走哪条。", "key_formula": "找出中间量 → 先求中间量 → 再求最终答案", "common_mistakes": ["一步算完就写答案，少算一步", "中间量求出来了，最后却没用上", "单位不统一就直接加减"], "tips": "算完先别写答案，问自己：题目问的那个东西，我现在能直接说了吗？", "questions": [{"type": "input", "difficulty": 2, "question": "商店有 5 箱苹果，每箱 12 千克，卖出 35 千克。还剩多少千克？（只填数字，单位：千克）", "answer": "25", "unit": "千克", "explanation": "中间量是一共多少千克：5×12=60（千克）；再算 60-35=25（千克）。"}, {"type": "input", "difficulty": 3, "question": "三年级有 4 个班，每班 40 人，平均分成 8 队。每队多少人？（只填数字，单位：人）", "answer": "20", "unit": "人", "explanation": "中间量是总人数：4×40=160（人）；再算 160÷8=20（人）。"}, {"type": "input", "difficulty": 2, "question": "妈妈买了 3 千克苹果，每千克 6 元，付了 50 元。应找回多少元？（只填数字，单位：元）", "answer": "32", "unit": "元", "explanation": "中间量是花了多少钱：3×6=18（元）；再算 50-18=32（元）。"}, {"type": "input", "difficulty": 3, "question": "一本书共 96 页，小明看了 4 天，每天看 12 页。还剩多少页？（只填数字，单位：页）", "answer": "48", "unit": "页", "explanation": "中间量是已经看了多少：4×12=48（页）；再算 96-48=48（页）。"}, {"type": "choice", "difficulty": 2, "question": "解决两步计算的问题，最重要的是（  ）", "options": ["先想清楚先求什么", "算得特别快", "字写得整齐"], "answer": "A", "explanation": "想清楚先求什么，两步就顺了。算得快是熟练的结果，想不清就先算，往往算出没用的数。"}, {"type": "input", "difficulty": 2, "question": "学校买了 6 箱粉笔，每箱 20 盒，用去 75 盒。还剩多少盒？（只填数字，单位：盒）", "answer": "45", "unit": "盒", "explanation": "中间量是一共多少盒：6×20=120（盒）；再算 120-75=45（盒）。"}, {"type": "true_false", "difficulty": 1, "question": "两步计算的问题，可以先求出中间量，再求最后的答案。", "answer": "对", "explanation": "先求中间量，两步问题就变成两个一步问题，难度立刻下来了。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "一根绳子，第一次剪去一半，第二次剪去剩下的一半，最后还剩 5 米。这根绳子原来长多少米？", "answer": "20", "unit": "米", "explanation": "倒着想：剩下 5 米是第二次剪之前的 5×2=10（米）；这 10 米又是第一次剪之前的一半，10×2=20（米）。两次「一半」要乘两次 2，只乘一次是最常见的错。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "水果店有 80 个西瓜，上午卖了 25 个，下午卖了 30 个，还剩多少个？（只填数字，单位：个）", "answer": "25", "explanation": "先算一共卖了：25+30=55（个）。再算剩下：80-55=25（个）。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "妈妈买了 4 袋糖，每袋 15 块，分给小朋友 30 块，还剩多少块？（只填数字，单位：块）", "answer": "30", "explanation": "先算一共：15×4=60（块）。再算剩下：60-30=30（块）。中间量是『一共有多少块』。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "两步计算的问题里，最关键的是找到：", "options": ["中间量（先求出来的那个量）", "最大的数字", "最后的问题"], "answer": "A", "explanation": "找到中间量，两步就拆成了两个一步，问题迎刃而解。"}]}], "exam": {"title": "第七单元自测", "subtitle": "数量关系的分析（一）", "duration": 25, "scorePerQuestion": 5, "note": "自主练习 · 不计排名", "questions": [{"type": "input", "question": "每盒有 8 个面包，买了 4 盒，吃了 5 个。还剩多少个？（只填数字，单位：个）", "answer": "27", "unit": "个", "explanation": "中间量是总数：8×4=32（个）；再算 32-5=27（个）。"}, {"type": "input", "question": "一班 45 人，二班比一班多 3 人。两个班一共多少人？（只填数字，单位：人）", "answer": "93", "unit": "人", "explanation": "先求二班：45+3=48（人）；再算 45+48=93（人）。"}, {"type": "choice", "question": "要求「平均每天看多少页」，必须先知道（  ）", "options": ["剩下没看的页数和天数", "书的总页数", "作者是谁"], "answer": "A", "explanation": "平均每天看多少 = 剩下页数 ÷ 天数，两个条件都要有。"}, {"type": "true_false", "question": "从条件出发和从问题出发，是分析数量关系的两种思路。", "answer": "对", "explanation": "一条往前推，一条往回找，哪条顺走哪条。"}, {"type": "input", "question": "商店运来 6 箱矿泉水，每箱 24 瓶，卖出 80 瓶。还剩多少瓶？（只填数字，单位：瓶）", "answer": "64", "unit": "瓶", "explanation": "中间量是总数：6×24=144（瓶）；再算 144-80=64（瓶）。"}, {"type": "choice", "question": "已知「每支 5 元」和「买了 6 支」，能求出（  ）", "options": ["一共多少钱", "还剩多少钱", "每支多长"], "answer": "A", "explanation": "单价乘数量就是总价。还剩多少钱还需要知道带了多少钱。"}, {"type": "input", "question": "学校有 360 本书，平均分给 4 个班，每班多少本？（只填数字，单位：本）", "answer": "90", "unit": "本", "explanation": "360÷4=90（本）。"}, {"type": "input", "question": "小明有 40 元，买了 5 支笔，每支 6 元。还剩多少元？（只填数字，单位：元）", "answer": "10", "unit": "元", "explanation": "中间量是花了多少：5×6=30（元）；再算 40-30=10（元）。"}, {"type": "true_false", "question": "两步计算的问题，中间一定有一个必须先求出来的量。", "answer": "对", "explanation": "这个量叫中间量。找到它，两步问题就拆成了两个一步问题。"}, {"type": "input", "question": "果园有苹果树 38 棵，梨树比苹果树少 9 棵。两种树一共多少棵？（只填数字，单位：棵）", "answer": "67", "unit": "棵", "explanation": "先求梨树：38-9=29（棵）；再算 38+29=67（棵）。"}, {"type": "choice", "question": "下面哪种做法最适合解两步计算的问题？", "options": ["先用画图或列表理清关系", "直接把数字加起来", "先猜一个答案"], "answer": "A", "explanation": "理清关系再列式，出错最少。直接凑数容易算错，猜答案更不可靠。"}, {"type": "input", "question": "每箱牛奶 12 盒，买了 5 箱，送给邻居 8 盒。还剩多少盒？（只填数字，单位：盒）", "answer": "52", "unit": "盒", "explanation": "中间量是总数：12×5=60（盒）；再算 60-8=52（盒）。"}, {"type": "true_false", "question": "算式里有小括号时，要先算括号里面的。", "answer": "对", "explanation": "小括号的作用就是改变运算顺序。"}, {"type": "input", "question": "三年级 3 个班，每班 35 人，平均分成 5 队。每队多少人？（只填数字，单位：人）", "answer": "21", "unit": "人", "explanation": "中间量是总人数：3×35=105（人）；再算 105÷5=21（人）。"}, {"type": "choice", "question": "要求「还剩多少千克」，必须先知道（  ）", "options": ["总重量和卖出的重量", "每千克多少钱", "箱子有多大"], "answer": "A", "explanation": "剩下 = 总数 − 卖出的，两个条件缺一不可。"}]}, "videos": [{"title": "数量关系的分析（第 1 课时）", "keywords": ["从条件出发", "中间量", "两步问题"], "source": "B站 · 国家中小学课程资源", "ep": "第 36 集", "duration": "14:51", "kind": "official", "tag": "同步课", "url": "https://www.bilibili.com/video/BV1RZ4y1P7Qt?p=36"}, {"title": "数量关系的分析（第 2 课时）", "keywords": ["从问题出发", "倒推", "练一练"], "source": "B站 · 国家中小学课程资源", "ep": "第 37 集", "duration": "12:08", "kind": "official", "tag": "同步课", "url": "https://www.bilibili.com/video/BV1RZ4y1P7Qt?p=37"}], "paper": {"title": "第七单元 检测卷", "subtitle": "数量关系的分析（一）", "duration": 40, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、直接写出答案", "perScore": 2, "questions": [{"type": "input", "question": "20×3+15 =（  ）", "answer": "75", "explanation": "先乘后加：60+15=75。"}, {"type": "input", "question": "100-40-25 =（  ）", "answer": "35", "explanation": "100-40=60，60-25=35。"}, {"type": "input", "question": "(30+20)÷5 =（  ）", "answer": "10", "explanation": "括号先算：50÷5=10。"}, {"type": "input", "question": "15×2+30 =（  ）", "answer": "60", "explanation": "30+30=60。"}, {"type": "input", "question": "80-6×5 =（  ）", "answer": "50", "explanation": "先乘：6×5=30，80-30=50。"}, {"type": "input", "question": "45+45÷9 =（  ）", "answer": "50", "explanation": "先除：45÷9=5，45+5=50。"}, {"type": "input", "question": "(60-20)÷8 =（  ）", "answer": "5", "explanation": "40÷8=5。"}, {"type": "input", "question": "12×4-18 =（  ）", "answer": "30", "explanation": "48-18=30。"}, {"type": "input", "question": "6×7+28 =（  ）", "answer": "70", "explanation": "42+28=70。"}, {"type": "input", "question": "72÷8×2 =（  ）", "answer": "18", "explanation": "从左往右：9×2=18。"}]}, {"name": "二、填空", "perScore": 2, "questions": [{"type": "input", "question": "分析应用题可以从条件出发，也可以从____出发。（填两个字）", "answer": "问题", "explanation": "两种基本思路：综合法从条件出发，分析法从问题出发。"}, {"type": "input", "question": "两步计算的问题里，必须先求出的量叫____量。（填两个字）", "answer": "中间", "explanation": "中间量是连接条件的桥梁。"}, {"type": "input", "question": "条件多的时候，可以用画____图或列表的方法整理。（填两个字）", "answer": "线段", "explanation": "线段图和表格让数量关系一目了然。"}, {"type": "input", "question": "买 4 支笔每支 3 元，付 20 元应找回 ____ 元。", "answer": "8", "explanation": "先算花的：3×4=12 元，再算找的：20-12=8 元。"}, {"type": "input", "question": "小明有 36 张邮票，给同学 9 张后，剩下 ____ 张。", "answer": "27", "explanation": "36-9=27（张）。"}, {"type": "input", "question": "每盒有 6 个乒乓球，5 盒一共有 ____ 个。", "answer": "30", "explanation": "6×5=30（个）。"}, {"type": "input", "question": "30 个乒乓球，取走 12 个后平均放进 3 个盒子里，每盒放 ____ 个。", "answer": "6", "explanation": "先算剩下：30-12=18 个，再平均分：18÷3=6 个。"}, {"type": "input", "question": "一件上衣 45 元，一条裤子 35 元，买一套要 ____ 元。", "answer": "80", "explanation": "45+35=80（元）。"}]}, {"name": "三、选择", "perScore": 3, "questions": [{"type": "choice", "question": "『买 3 盒巧克力，每盒 18 元，付了 100 元。』要求找回多少钱，第一步先求：", "options": ["3 盒巧克力一共多少钱", "付了多少钱", "巧克力的味道"], "answer": "A", "explanation": "先求总价 18×3=54 元，才能算找回 100-54=46 元。"}, {"type": "choice", "question": "从问题『一共多少钱』出发，要先想：", "options": ["哪些量加起来是一共", "哪个数字最大", "答案是多少"], "answer": "A", "explanation": "『一共』提示把相关数量合起来。"}, {"type": "choice", "question": "两步计算应用题：鸡 24 只，鸭的只数是鸡的 3 倍，鸡鸭一共多少只？第一步算：", "options": ["鸭有多少只", "鸡有多少只", "一共多少只"], "answer": "A", "explanation": "先求中间量——鸭的只数 24×3=72，再求一共 24+72=96 只。"}, {"type": "choice", "question": "画线段图时，表示『鸭的只数是鸡的 3 倍』，鸭的线段应该画：", "options": ["鸡的 3 倍长", "和鸡一样长", "鸡的一半长"], "answer": "A", "explanation": "线段长短表现倍数关系。"}, {"type": "choice", "question": "『还剩多少』通常用____计算。", "options": ["减法", "乘法", "加法"], "answer": "A", "explanation": "从总量里去掉用掉的部分，用减法。"}, {"type": "choice", "question": "列表整理信息的最大好处是：", "options": ["条件不漏不乱，关系清楚", "字写得好看", "省纸"], "answer": "A", "explanation": "表格让每个条件都有位置，对应关系一目了然。"}]}, {"name": "四、算一算", "perScore": 3, "questions": [{"type": "input", "question": "苹果 3 箱每箱 20 千克，梨 25 千克，一共 ____ 千克。", "answer": "85", "explanation": "20×3=60，60+25=85（千克）。"}, {"type": "input", "question": "一支钢笔 8 元，买 6 支要 ____ 元。", "answer": "48", "explanation": "8×6=48（元）。"}, {"type": "input", "question": "带 50 元买 6 支钢笔（每支 8 元），还剩 ____ 元。", "answer": "2", "explanation": "6×8=48（元），50-48=2（元）。先求花了多少，再求剩下多少。"}, {"type": "input", "question": "果园有 4 行桃树，每行 18 棵，一共有 ____ 棵。", "answer": "72", "explanation": "18×4=72（棵）。"}, {"type": "input", "question": "72 棵桃树中，已经浇了 30 棵，还剩 ____ 棵没浇。", "answer": "42", "explanation": "72-30=42（棵）。"}, {"type": "input", "question": "商店运来 5 箱橙子，每箱 24 个，卖出去 90 个，还剩 ____ 个。", "answer": "30", "explanation": "24×5=120，120-90=30（个）。"}]}, {"name": "五、解决问题", "perScore": 7, "questions": [{"type": "input", "question": "水果店有 80 个西瓜，上午卖出 25 个，下午卖出 30 个，还剩多少个？（只填数字，单位：个）", "answer": "25", "explanation": "25+30=55，80-55=25（个）。"}, {"type": "input", "question": "妈妈买了 4 袋糖，每袋 15 块，分给小朋友 30 块，还剩多少块？（只填数字，单位：块）", "answer": "30", "explanation": "15×4=60，60-30=30（块）。中间量是『一共有多少块』。"}, {"type": "choice", "question": "三年级栽了 4 行树，每行 15 棵；二年级栽了 40 棵。两个年级一共栽多少棵？正确算式是：", "options": ["15×4+40", "15+4+40", "15×4×40"], "answer": "A", "explanation": "先求三年级 15×4=60 棵，再加二年级 60+40=100 棵。"}, {"type": "input", "question": "接着上题，两个年级一共栽了 ____ 棵。（填数字）", "answer": "100", "explanation": "60+40=100（棵）。"}]}]}};</script>
+<script>
+(function(){
+  const D = DATA;
+  const store = {};
+  const scoreMap = {};
+  let TOTAL = 0;
+
+  /* ───── 易错题本：localStorage 持久化 ───── */
+  const WB_KEY = "math3.wrongbook.v1";
+  const WB_NEED = 3;
+
+  function wbAll(){
+    try{ return JSON.parse(localStorage.getItem(WB_KEY) || "{}"); }
+    catch(e){ return {}; }
+  }
+  function wbWrite(o){
+    try{ localStorage.setItem(WB_KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function wbSnap(q){
+    return {
+      type:q.type, question:q.question, options:q.options||null,
+      answer:q.answer, unit:q.unit||"", explanation:q.explanation||"",
+      level:q.level||"basic"
+    };
+  }
+  /* 生成同类型变式题：纯算式扰动数字，其余从同知识点题池取 */
+  function makeVariant(q){
+    const src = String(q.question || "");
+    const m = src.match(/([0-9]+(?:\s*[+\-×÷]\s*[0-9]+)+)\s*=\s*（/);
+    if(!m) return null;
+    const expr = m[1];
+    for(let t=0; t<16; t++){
+      const nums = expr.match(/[0-9]+/g) || [];
+      let ne = expr;
+      nums.forEach(function(n){
+        const v = parseInt(n,10);
+        let nv;
+        if(v <= 9) nv = 1 + Math.floor(Math.random()*9);
+        else if(v < 100) nv = 10 + Math.floor(Math.random()*90);
+        else nv = 100 + Math.floor(Math.random()*800);
+        ne = ne.replace(new RegExp("\\b"+n+"\\b"), String(nv));
+      });
+      if(ne === expr) continue;
+      let val;
+      try{ val = eval(ne.replace(/×/g,"*").replace(/÷/g,"/")); }catch(e){ continue; }
+      if(!isFinite(val) || val <= 0) continue;
+      if(Math.abs(val - Math.round(val)) > 1e-9) continue;
+      return {
+        type: "input", level: "basic",
+        question: ne + " =（  ）",
+        answer: String(Math.round(val)),
+        unit: "",
+        explanation: "这是同类型变式题：" + ne + " = " + Math.round(val) + "。原题是「" + src + "」，换一组数字再算一遍。"
+      };
+    }
+    return null;
+  }
+  function pickFromPool(q, meta){
+    const want = meta && meta.kp;
+    const isRealKp = (D.knowledgePoints || []).some(function(k){ return k.title === want; });
+    const pool = [];
+    (D.knowledgePoints || []).forEach(function(kp){
+      if(isRealKp && kp.title !== want) return;
+      (kp.questions || []).forEach(function(x){ pool.push(x); });
+    });
+    /* 第一优先：同题型、不同题、非挑战题 */
+    const same = pool.filter(function(x){
+      return x.type === q.type && x.question !== q.question && x.level !== "challenge";
+    });
+    if(same.length) return same[Math.floor(Math.random()*same.length)];
+    /* 回退：同范围内任意其他选择/判断题——变式的意义是再练一道相关的题，
+       避免判断题等题型池子单薄时变式题生成失败 */
+    const any = pool.filter(function(x){
+      return (x.type === "choice" || x.type === "true_false") && x.question !== q.question;
+    });
+    if(any.length) return any[Math.floor(Math.random()*any.length)];
+    return null;
+  }
+
+  function wbRecord(qid, ok, q, meta){
+    const all = wbAll();
+    const cur = all[qid];
+    if(!ok){
+      all[qid] = {
+        streak: 0,
+        wrong: (cur ? (cur.wrong||0) : 0) + 1,
+        ts: Date.now(),
+        q: wbSnap(q),
+        meta: meta || (cur ? cur.meta : {})
+      };
+      // 首次答错时生成一道同类型题
+      const vk = qid + "_v";
+      if(!all[vk]){
+        let vq = makeVariant(q);
+        if(!vq) vq = pickFromPool(q, meta);
+        if(vq){
+          all[vk] = {
+            streak: 0, wrong: 0, ts: Date.now(),
+            q: wbSnap(vq),
+            meta: meta || {},
+            generated: true,
+            origin: qid
+          };
+        }
+      }
+    } else if(cur){
+      cur.streak = (cur.streak||0) + 1;
+      cur.ts = Date.now();
+      if(cur.streak >= WB_NEED) delete all[qid];
+    }
+    wbWrite(all);
+    wbBadge();
+  }
+  function wbCount(){ return Object.keys(wbAll()).length; }
+  function wbBadge(){
+    const b = document.getElementById("wbcount");
+    if(!b) return;
+    const n = wbCount();
+    b.textContent = n ? n : "";
+    b.style.display = n ? "" : "none";
+  }
+
+  /* ───── 用户资料与星星（取最好成绩，不累加） ───── */
+  const PF_KEY = "math3.profile.v1";
+  const AV_COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
+
+  function pfAll(){
+    try{ return JSON.parse(localStorage.getItem(PF_KEY) || "{}"); }catch(e){ return {}; }
+  }
+  function pfSave(o){ try{ localStorage.setItem(PF_KEY, JSON.stringify(o)); }catch(e){} }
+  function pfGet(k, d){ const p = pfAll(); return p[k]!==undefined ? p[k] : d; }
+  function pfSet(k, v){ const p = pfAll(); p[k]=v; pfSave(p); }
+
+  function starId(kind){
+    if(D.unitNumber === 0) return "mid";
+    if(D.unitNumber === -1) return "final";
+    return "u"+D.unitNumber+":"+kind;
+  }
+  function starsMap(){ const p = pfAll(); return p.stars || {}; }
+  function starsFromPct(pct){ return pct < 60 ? 1 : (pct <= 95 ? 2 : 3); }
+  function starUpd(id, s){
+    const p = pfAll();
+    p.stars = p.stars || {};
+    const cur = p.stars[id] || 0;
+    if(s > cur){ p.stars[id] = s; pfSave(p); }
+    renderUserbar();
+  }
+  function starTotal(){
+    const m = starsMap();
+    let t = 0;
+    for(const k in m) t += m[k] || 0;
+    return t;
+  }
+
+  function renderUserbar(){
+    const av = document.getElementById("avatar");
+    const nm = document.getElementById("unametxt");
+    const sub = document.getElementById("usub");
+    const tot = document.getElementById("startotal");
+    if(!av || !nm || !sub || !tot) return;
+    const name = pfGet("name", "小朋友");
+    const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
+    av.style.background = AV_COLORS[ci];
+    av.textContent = name.slice(0,1) || "小";
+    nm.textContent = name;
+    const t = starTotal();
+    tot.textContent = t;
+    const done = Object.keys(starsMap()).length;
+    sub.textContent = t === 0
+      ? "还没有获得星星，去做一次随堂自测吧"
+      : "已完成 "+done+" 项测验 · 每项取最好一次计星，不重复累计";
+  }
+
+  (function(){
+    const av = document.getElementById("avatar");
+    const nm = document.getElementById("uname");
+    if(!av || !nm) return;
+    av.onclick = function(){
+      pfSet("color", ((pfGet("color",0)||0) + 1) % AV_COLORS.length);
+      renderUserbar();
+    };
+    nm.onclick = function(){
+      const cur = pfGet("name","小朋友");
+      const v = window.prompt("你的名字（10 字以内）", cur);
+      if(v !== null){
+        const t = String(v).trim().slice(0,10);
+        if(t) pfSet("name", t);
+        renderUserbar();
+      }
+    };
+  })();
+
+  /* ───── 限时测验：作答暂不判分 ───── */
+  const quizAns = {};
+  function pickChoice(box, v, qid){
+    [...box.children].forEach(b=>b.classList.toggle("on", b.dataset.val===v));
+    quizAns[qid] = v;
+    try{ document.dispatchEvent(new Event("quizans")); }catch(e){}
+  }
+
+  function norm(s){
+    return String(s).trim()
+      .replace(/[\uff10-\uff19]/g, c=>String.fromCharCode(c.charCodeAt(0)-65248))
+      .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"");
+  }
+  function letter(i){ return "ABCDEF"[i]; }
+  function diffDots(n){ return "●".repeat(n) + "○".repeat(Math.max(0,4-n)); }
+  function el(tag, cls, txt){
+    const e=document.createElement(tag);
+    if(cls) e.className=cls;
+    if(txt!==undefined) e.textContent=txt;
+    return e;
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  /* 顶部信息 */
+  document.getElementById("kicker").textContent =
+    D.unitNumber === 0 ? (D.unitSubtitle || "阶段检测")
+    : D.unitNumber === -1 ? (D.unitSubtitle || "全册期末")
+    : (D.unitNumber <= 8 ? "第 "+D.unitNumber+" 单元" : "全册总复习");
+  document.getElementById("title").textContent = D.unitTitle;
+  const chips = [BOOK.edition];
+  if(D.knowledgePoints.length) chips.push(D.knowledgePoints.length+" 个知识点");
+  if(D.videos && D.videos.length) chips.push(D.videos.length+" 个学习视频");
+  if(D.paper) chips.push(D.unitNumber <= 0 ? ("满分 "+D.paper.totalScore+" 分") : "单元检测卷");
+  document.getElementById("meta").innerHTML = chips.map(t=>'<span class="chip">'+t+'</span>').join("");
+
+  /* 侧栏 */
+  (function(){
+    const nav = document.getElementById("snav");
+    const cur = D.unitNumber;
+
+    function subRow(navKey, label, badge, dot){
+      const a = el("a", "s2" + (dot ? " sd" : ""));
+      a.href = "#" + navKey;
+      a.dataset.nav = navKey;
+      a.innerHTML = '<span class="k"></span><span class="tx"></span>';
+      a.querySelector(".k").textContent = badge || "";
+      a.querySelector(".tx").textContent = label;
+      return a;
+    }
+
+    (BOOK.units||[]).forEach(u=>{
+      const on = u.n === cur;
+      const a = el("a","sitem" + (on?" on":""));
+      a.href = "u"+u.n+".html";
+      a.innerHTML = '<span class="n"></span><span class="t"></span>';
+      a.querySelector(".n").textContent = u.n;
+      a.querySelector(".t").textContent = u.t;
+      nav.appendChild(a);
+      if(!on) return;
+
+      /* 当前单元展开：知识点 + 随堂自测 + 单元检测卷 */
+      const box = el("div","ssub");
+      D.knowledgePoints.forEach((kp,i)=>{
+        const s = subRow("kp"+i, kp.title, i+1, false);
+        if(i===0) s.classList.add("on");
+        s.onclick = e=>{ e.preventDefault(); showKp(i); };
+        box.appendChild(s);
+      });
+      if(D.exam){
+        const s = subRow("exam", "随堂自测·"+D.exam.questions.length+" 题", "", true);
+        s.onclick = e=>{ e.preventDefault(); window.showPane("exam"); };
+        box.appendChild(s);
+      }
+      if(D.paper){
+        const s = subRow("paper", "单元检测卷·满分 "+D.paper.totalScore, "", true);
+        s.onclick = e=>{ e.preventDefault(); window.showPane("paper"); };
+        box.appendChild(s);
+      }
+      nav.appendChild(box);
+    });
+    if(BOOK.hasMidterm){
+      const md = el("a","sitem");
+      md.href = "midterm.html";
+      md.innerHTML = '<span class="dot"></span><span class="t">期中检测</span>';
+      if(/midterm\.html$/.test(location.pathname)) md.className = "sitem on";
+      nav.appendChild(md);
+    }
+    if(BOOK.hasFinal){
+      const fd = el("a","sitem");
+      fd.href = "final.html";
+      fd.innerHTML = '<span class="dot"></span><span class="t">期末检测</span>';
+      if(/final\.html$/.test(location.pathname)) fd.className = "sitem on";
+      nav.appendChild(fd);
+    }
+    const rv = el("a","sitem");
+    rv.href = "review.html";
+    rv.innerHTML = '<span class="dot"></span><span class="t">易错题本</span><span class="wb" id="wbcount"></span>';
+    if(/review\.html$/.test(location.pathname)) rv.className = "sitem on";
+    nav.appendChild(rv);
+    wbBadge();
+  })();
+
+  /* 视频卡片 */
+  if(D.videos && D.videos.length){
+    document.getElementById("videos").style.display="";
+    document.getElementById("vhint").textContent = "点击在新窗口播放 · 共 "+D.videos.length+" 个";
+    const list = document.getElementById("vlist");
+    D.videos.forEach((v,i)=>{
+      const a = el("a","vcard");
+      a.href = v.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+      a.innerHTML = '<span class="arw">\u2197</span>' +
+                    '<div class="vtop"><span class="vtag"></span></div>' +
+                    '<div class="vt"></div><div class="vkw"></div>' +
+                    '<div class="vmeta"><span class="src"></span><span class="dur"></span></div>';
+      a.querySelector(".vtag").textContent = v.tag || "视频";
+      a.querySelector(".vt").textContent = v.title;
+      const kw = a.querySelector(".vkw");
+      (v.keywords||[]).forEach(k=>{ const s=el("span","kw",k); kw.appendChild(s); });
+      a.querySelector(".src").textContent = (v.ep? v.ep+" · " : "") + (v.source||"");
+      a.querySelector(".dur").textContent = v.duration || "";
+      list.appendChild(a);
+    });
+  }
+
+  /* 题目 */
+  function renderQ(q, qid, score, adv, idx, meta, mode){
+    const lvl = q.level==="advance" ? "adv" : (q.level==="challenge" ? "chal" : "");
+    const wrap = el("div", "q" + (lvl?" "+lvl:""));
+    wrap.dataset.qid = qid; wrap.dataset.ans = q.answer; wrap.dataset.lvl = lvl;
+    wrap.dataset.meta = JSON.stringify(meta || {});
+    wrap.dataset.mode = mode || "";
+    if(!(qid in scoreMap)){ scoreMap[qid] = score; TOTAL++; }
+
+    const top = el("div","q-top");
+    top.innerHTML = '<span class="q-no"></span><span class="q-txt"></span>';
+    top.querySelector(".q-no").textContent = idx;
+    top.querySelector(".q-txt").textContent = q.question;
+    wrap.appendChild(top);
+
+    const fb = el("div","fb");
+
+    if(q.type==="choice" || q.type==="true_false"){
+      const box = el("div","opts");
+      const vals = q.type==="true_false" ? ["对","错"] : q.options.map((_,i)=>letter(i));
+      vals.forEach((v,i)=>{
+        const b=el("button","opt");
+        b.dataset.val=v;
+        b.innerHTML='<b></b><span></span>';
+        b.querySelector("b").textContent = q.type==="true_false" ? "" : letter(i);
+        b.querySelector("span").textContent = q.type==="true_false" ? v : q.options[i];
+        b.onclick = ()=> mode==="quiz" ? pickChoice(box, v, qid) : judgeChoice(box,q,v,fb,wrap,qid);
+        box.appendChild(b);
+      });
+      wrap.appendChild(box);
+    } else {
+      const row = el("div","inp-row");
+      const inp = document.createElement("input");
+      inp.type="text"; inp.inputMode="decimal"; inp.placeholder="填答案";
+      row.appendChild(inp);
+      if(q.unit) row.appendChild(el("span","unit-tag",q.unit));
+      if(mode==="quiz"){
+        inp.oninput = ()=>{
+          quizAns[qid] = inp.value;
+          try{ document.dispatchEvent(new Event("quizans")); }catch(e){}
+        };
+      } else {
+        const btn = el("button","btn","检查");
+        row.appendChild(btn);
+        const go = ()=>judgeInput(inp,btn,q,fb,wrap,qid);
+        btn.onclick = go;
+        inp.onkeydown = e=>{ if(e.key==="Enter") go(); };
+      }
+      wrap.appendChild(row);
+    }
+    wrap.appendChild(fb);
+    return wrap;
+  }
+
+  function showFb(fb, ok, q){
+    fb.className = "fb show " + (ok?"ok":"no");
+    let tip = "";
+    if(!ok){
+      if(q.type==="choice") tip = "正确答案：" + q.answer + "．" + q.options["ABCDEF".indexOf(q.answer)] + "　";
+      else if(q.type==="true_false") tip = "正确答案：" + q.answer + "　";
+      else tip = "正确答案：" + q.answer + (q.unit||"") + "　";
+    }
+    fb.innerHTML = '<span class="tk">'+(ok?"\u2713 答对了":"\u2717 再想想")+'</span>' + tip + q.explanation;
+  }
+
+  function judgeChoice(box,q,val,fb,wrap,qid){
+    const ok = val === q.answer;
+    [...box.children].forEach(b=>{
+      b.disabled = true;
+      if(b.dataset.val === q.answer) b.classList.add("ok");
+      else if(b.dataset.val === val && !ok) b.classList.add("no");
+    });
+    wrap.classList.add(ok?"done":"fail");
+    showFb(fb, ok, q);
+    store[qid] = ok;
+    try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+    updateProgress();
+  }
+
+  function judgeInput(inp,btn,q,fb,wrap,qid){
+    if(!inp.value.trim()){ inp.focus(); return; }
+    const ok = norm(inp.value) === norm(q.answer);
+    inp.disabled = true; btn.disabled = true;
+    inp.style.borderColor = ok ? "var(--ok)" : "var(--no)";
+    inp.style.color = ok ? "var(--ok)" : "var(--no)";
+    wrap.classList.add(ok?"done":"fail");
+    showFb(fb, ok, q);
+    store[qid] = ok;
+    try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+    updateProgress();
+  }
+
+  function updateProgress(){
+    const done = Object.keys(store).length;
+    document.getElementById("bar").style.width = (done/Math.max(1,TOTAL)*100) + "%";
+    document.getElementById("ptxt").innerHTML =
+      "已完成 <b>"+done+"</b> / "+TOTAL;
+
+    /* 自测与检测卷的计分改在交卷时完成，这里只更新总进度 */
+  }
+
+  /* 知识点：一次只显示一个 */
+  const kpsBox = document.getElementById("kps");
+  let curKp = 0;
+
+  /* 侧栏当前项高亮：key 为 kp0..kpN / exam / paper */
+  function markSub(key){
+    document.querySelectorAll("#snav .ssub .s2").forEach(function(x){
+      x.classList.toggle("on", x.dataset.nav === key);
+    });
+  }
+
+  D.knowledgePoints.forEach((kp,ki)=>{
+    const sec = el("section","kp"+(ki===0?" show":""));
+    sec.dataset.ki = ki;
+
+    const head = el("div","kp-head");
+    head.innerHTML = '<h2></h2><span class="diff">'+diffDots(kp.difficulty)+'</span>';
+    head.querySelector("h2").textContent = kp.title;
+    sec.appendChild(head);
+
+    const body = el("div","kp-body");
+    const left = el("div","kp-left");
+
+    const p1 = el("div","panel");
+    p1.innerHTML='<div class="label">核心概念</div><p></p>';
+    p1.querySelector("p").textContent = kp.core_concept;
+    left.appendChild(p1);
+
+    const p2 = el("div","panel fm");
+    p2.innerHTML='<div class="label">关键规则</div><p></p>';
+    p2.querySelector("p").textContent = kp.key_formula;
+    left.appendChild(p2);
+
+    const p3 = el("div","panel bad");
+    p3.innerHTML='<div class="label">常见错误</div><ul></ul>';
+    const ul = p3.querySelector("ul");
+    kp.common_mistakes.forEach(m=>{ ul.appendChild(el("li",null,m)); });
+    left.appendChild(p3);
+
+    const p4 = el("div","panel tip");
+    p4.innerHTML='<div class="label">小提示</div><p></p>';
+    p4.querySelector("p").textContent = kp.tips;
+    left.appendChild(p4);
+
+    body.appendChild(left);
+
+    const right = el("div","kp-right");
+    const basics = kp.questions.filter(q=>q.level!=="advance" && q.level!=="challenge");
+    const advs = kp.questions.filter(q=>q.level==="advance");
+    const chals = kp.questions.filter(q=>q.level==="challenge");
+
+    const metaKp = {u:D.unitNumber, ut:D.unitTitle, kp:kp.title};
+    if(basics.length){
+      const g = el("div","qgroup");
+      g.appendChild(el("div","qgroup-title", "基础题　"+basics.length+" 题"));
+      basics.forEach((q,i)=> g.appendChild(renderQ(q, "kp"+ki+"_"+i, 0, false, i+1, metaKp)));
+      right.appendChild(g);
+    }
+    if(advs.length){
+      const g = el("div","qgroup adv");
+      const t = el("div","qgroup-title");
+      t.innerHTML = '<span class="tagv">提高</span>提高题　'+advs.length+' 题';
+      g.appendChild(t);
+      advs.forEach((q,i)=> g.appendChild(renderQ(q, "kp"+ki+"_a"+i, 0, true, basics.length+i+1, metaKp)));
+      right.appendChild(g);
+    }
+    if(chals.length){
+      const g = el("div","qgroup chal");
+      const t = el("div","qgroup-title");
+      t.innerHTML = '<span class="tagc">挑战</span>挑战题　'+chals.length+' 题';
+      g.appendChild(t);
+      chals.forEach((q,i)=> g.appendChild(renderQ(q, "kp"+ki+"_c"+i, 0, false, basics.length+advs.length+i+1, metaKp)));
+      right.appendChild(g);
+    }
+    if(!basics.length && !advs.length && !chals.length) right.appendChild(el("div","panel","本知识点暂无练习"));
+
+    body.appendChild(right);
+    sec.appendChild(body);
+    kpsBox.appendChild(sec);
+  });
+
+  function showKp(i){
+    curKp = i;
+    [...kpsBox.children].forEach((s,j)=>s.classList.toggle("show", j===i));
+    if(window.showPane) window.showPane("kp", "kp"+i);
+    else markSub("kp"+i);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+  window.showKp = showKp;
+
+  /* ───── 限时测验 · 共用部件 ───── */
+  const STAR_SVG = '<svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>';
+
+  function fmtTime(s){
+    const m = Math.floor(s/60), ss = s%60;
+    return (m<10?"0":"")+m+":"+(ss<10?"0":"")+ss;
+  }
+
+  function buildResultHtml(res){
+    let html = '<div class="result"><div class="top">';
+    html += '<div class="sc">'+res.main+'<small>'+res.sub+'</small></div>';
+    html += '<div class="stars">';
+    for(let i=0;i<3;i++) html += '<span class="star'+(i<res.stars?' on':' off')+'">'+STAR_SVG+'</span>';
+    html += '</div>';
+    html += '<div><div class="lv">'+res.lv+'</div><div class="sub">'+res.line+'</div></div>';
+    html += '</div>';
+
+    if(res.wrongs.length){
+      html += '<h3>错题分析（'+res.wrongs.length+' 道）</h3><div class="wlist">';
+      res.wrongs.forEach(function(w){
+        const q = w.q;
+        let uaTxt = "未作答";
+        if(w.ua!==undefined && String(w.ua).trim()!==""){
+          uaTxt = String(w.ua);
+          if(q.type==="choice" && /^[A-F]$/.test(uaTxt)){
+            uaTxt = uaTxt + "．" + (q.options["ABCDEF".indexOf(uaTxt)]||"");
+          }
+        }
+        let ansTxt = q.answer + (q.unit||"");
+        if(q.type==="choice") ansTxt = q.answer + "．" + (q.options["ABCDEF".indexOf(q.answer)]||"");
+        html += '<div class="wrow">';
+        html += '<div class="q">'+escapeHtml(q.question)+'</div>';
+        html += '<div class="ans">你的答案：<span class="bad">'+escapeHtml(uaTxt)+'</span>　正确答案：<span class="good">'+escapeHtml(ansTxt)+'</span></div>';
+        if(q.explanation) html += '<div class="exp">'+escapeHtml(q.explanation)+'</div>';
+        html += '</div>';
+      });
+      html += '</div>';
+      html += '<div class="sub" style="margin-top:14px">答错的题已收入易错题本，并各生成了一道同类型的新题供你练。</div>';
+    } else {
+      html += '<h3>全部答对</h3><div class="sub">这一份没有错题。可以去左侧「易错题本」回顾之前积累的题。</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  /* 通用限时测验：开始按钮 → 倒计时 → 交卷（时间到自动交卷） */
+  function runTimedQuiz(cfg){
+    const mount = cfg.mount;
+    const ITEMS = cfg.items || [];
+    const QN = ITEMS.length;
+    const LIMIT = cfg.limit;
+    let timer = null, left = LIMIT, started = false, done = false;
+
+    const bar = el("div","quizbar");
+    bar.innerHTML =
+      '<button class="startbtn" id="'+cfg.id+'Start" type="button">开始'+cfg.name+'</button>' +
+      '<div class="meta" id="'+cfg.id+'Meta">'+cfg.intro+'</div>' +
+      '<div class="tm" id="'+cfg.id+'Tm" style="display:none">--:--</div>';
+    mount.appendChild(bar);
+
+    const body = el("div");
+    body.style.display = "none";
+    mount.appendChild(body);
+
+    const rbox = el("div");
+    rbox.id = cfg.id + "Result";
+    mount.appendChild(rbox);
+
+    const tmEl = document.getElementById(cfg.id+"Tm");
+    const metaEl = document.getElementById(cfg.id+"Meta");
+
+    /* 供「重置本页」调用：停表、清空作答、回到未开始状态 */
+    if(!window.__quizResets) window.__quizResets = [];
+    window.__quizResets.push(function(){
+      clearInterval(timer);
+      started = false; done = false; left = LIMIT;
+      body.style.display = "none";
+      body.innerHTML = "";
+      rbox.innerHTML = "";
+      tmEl.textContent = "--:--";
+      tmEl.style.display = "none";
+      tmEl.classList.remove("warn");
+      const sb = document.getElementById(cfg.id+"Start");
+      if(sb){ sb.disabled = false; sb.textContent = "开始"+cfg.name; }
+      if(metaEl) metaEl.innerHTML = cfg.intro;
+      ITEMS.forEach(function(it){ delete quizAns[it.qid]; });
+    });
+
+    function paint(){
+      if(done) return;
+      tmEl.style.display = "";
+      tmEl.textContent = fmtTime(Math.max(0,left));
+      tmEl.classList.toggle("warn", left<=60);
+    }
+    document.addEventListener("quizans", function(){
+      if(started && !done) countAnswered();
+    });
+
+    function countAnswered(){
+      let n = 0;
+      ITEMS.forEach(function(it){
+        const v = quizAns[it.qid];
+        if(v!==undefined && String(v).trim()!=="") n++;
+      });
+      if(metaEl) metaEl.innerHTML = '已答 <b>'+n+'</b> / '+QN+' 题　·　时间到自动交卷';
+    }
+
+    function submit(){
+      if(!started || done) return;
+      done = true;
+      clearInterval(timer);
+      const sb = document.getElementById(cfg.id+"Submit");
+      if(sb){ sb.disabled = true; sb.textContent = "已交卷"; }
+      tmEl.classList.remove("warn");
+      tmEl.style.display = "";
+      tmEl.textContent = "已交卷";
+
+      let right = 0, got = 0, full = 0;
+      const wrongs = [];
+      ITEMS.forEach(function(it){
+        const k = it.qid;
+        const ua = quizAns[k];
+        const answered = ua!==undefined && String(ua).trim()!=="";
+        const ok = answered && norm(ua)===norm(it.q.answer);
+        store[k] = ok;
+        full += (it.score||0);
+        if(ok){ right++; got += (it.score||0); }
+        else wrongs.push({q:it.q, ua:ua});
+        try{ wbRecord(k, ok, it.q, it.meta||{}); }catch(e){}
+      });
+
+      const pct = cfg.scoreMode==="score"
+        ? Math.round(got/Math.max(1,full)*100)
+        : (QN ? Math.round(right/QN*100) : 0);
+      const stars = starsFromPct(pct);
+      const lv = stars===3 ? "优秀" : (stars===2 ? "良好" : "待加强");
+
+      if(cfg.starKey) starUpd(cfg.starKey, stars);
+
+      const res = {
+        main: cfg.scoreMode==="score" ? got : right,
+        sub: cfg.scoreMode==="score" ? ("/ "+full+" 分") : ("/ "+QN),
+        stars: stars,
+        lv: lv,
+        line: cfg.scoreMode==="score"
+          ? ("得分 "+got+" / "+full+" 分　·　答对 "+right+" / "+QN+" 题　·　正确率 "+pct+"%")
+          : ("正确率 "+pct+"%　·　答对 "+right+" 题，答错 "+wrongs.length+" 题"),
+        wrongs: wrongs
+      };
+      rbox.innerHTML = buildResultHtml(res);
+      rbox.scrollIntoView({behavior:"smooth", block:"start"});
+      updateProgress();
+    }
+
+    document.getElementById(cfg.id+"Start").onclick = function(){
+      if(started) return;
+      started = true;
+      this.disabled = true;
+      this.textContent = cfg.name+"中…";
+      body.style.display = "";
+      cfg.buildBody(body);
+
+      const sb = el("button","startbtn","交卷");
+      sb.id = cfg.id+"Submit";
+      sb.type = "button";
+      sb.style.background = "#0E9F6E";
+      sb.style.boxShadow = "0 4px 14px rgba(14,159,110,.28)";
+      sb.style.marginTop = "20px";
+      sb.onclick = submit;
+      body.appendChild(sb);
+
+      paint();
+      countAnswered();
+      timer = setInterval(function(){
+        left--;
+        paint();
+        countAnswered();
+        if(left<=0) submit();
+      }, 1000);
+    };
+  }
+
+  /* ───── 随堂自测：限时测验 ───── */
+  if(D.exam){
+    const ex = document.getElementById("exam");
+    const QN = D.exam.questions.length;
+    const LIMIT = QN * 60;
+
+    const eh = el("div","bhead");
+    eh.innerHTML = '<h2></h2><div class="bsub"></div>';
+    eh.querySelector("h2").textContent = D.exam.title;
+    eh.querySelector(".bsub").innerHTML =
+      '<span>共 '+QN+' 题</span><span>限时 '+Math.round(LIMIT/60)+' 分钟</span>' +
+      '<span>时间到自动交卷</span><span>'+((D.exam.note)||"自主练习")+'</span>';
+    ex.appendChild(eh);
+
+    runTimedQuiz({
+      mount: ex,
+      id: "exam",
+      name: "测试",
+      intro: '共 <b>'+QN+'</b> 题，按每题 1 分钟计算，限时 <b>'+Math.round(LIMIT/60)+'</b> 分钟',
+      limit: LIMIT,
+      starKey: starId("exam"),
+      scoreMode: "count",
+      items: D.exam.questions.map(function(q, i){
+        return {q:q, qid:"ex_"+i, score:(D.exam.scorePerQuestion||5),
+                meta:{u:D.unitNumber, ut:D.unitTitle, kp:"随堂自测"}};
+      }),
+      buildBody: function(body){
+        D.exam.questions.forEach(function(q, i){
+          body.appendChild(renderQ(q, "ex_"+i, D.exam.scorePerQuestion||5, false, i+1,
+            {u:D.unitNumber, ut:D.unitTitle, kp:"随堂自测"}, "quiz"));
+        });
+      }
+    });
+  }
+
+  /* ───── 检测卷：单元检测 / 期中 / 期末，同样是限时测验 ───── */
+  if(D.paper){
+    const P = D.paper;
+    const SECS = P.sections || [];
+    const box = document.getElementById("paper");
+
+    const cover = el("div","paper-cover");
+    cover.innerHTML = '<div class="eyebrow">'+ (D.unitNumber <= 0 ? "阶段检测" : "单元检测") +'</div>' +
+      '<h2></h2><div class="sub"></div><div class="paper-meta"></div>';
+    cover.querySelector("h2").textContent = P.title;
+    cover.querySelector(".sub").textContent = P.subtitle || "";
+
+    const items = [];
+    SECS.forEach(function(sec, si){
+      (sec.questions||[]).forEach(function(q, qi){
+        items.push({q:q, qid:"pa_"+si+"_"+qi, score:(sec.perScore||0),
+                    meta:{u:D.unitNumber, ut:D.unitTitle, kp:sec.name}});
+      });
+    });
+    const LIMIT = (P.duration || Math.max(20, Math.round(items.length*1.6))) * 60;
+
+    /* 提前登记卷面题目，让总进度从一开始就是整册量，不会因开始测验而跳变 */
+    items.forEach(function(it){
+      if(!(it.qid in scoreMap)){ scoreMap[it.qid] = it.score; TOTAL++; }
+    });
+
+    cover.querySelector(".paper-meta").innerHTML =
+      '<span>满分 '+P.totalScore+' 分</span><span>限时 '+Math.round(LIMIT/60)+' 分钟</span>' +
+      '<span>共 '+items.length+' 题</span><span>时间到自动交卷</span>';
+    box.appendChild(cover);
+
+    runTimedQuiz({
+      mount: box,
+      id: "paper",
+      name: "检测",
+      intro: '点「开始检测」后开始计时，中途可提前交卷 · 共 <b>'+items.length+'</b> 题',
+      limit: LIMIT,
+      starKey: starId("paper"),
+      scoreMode: "score",
+      items: items,
+      buildBody: function(body){
+        SECS.forEach(function(sec, si){
+          const s = el("div","paper-sec");
+          const title = el("div","p-sec-title");
+          title.innerHTML = '<span></span><span class="ps"></span>';
+          title.querySelector("span").textContent = sec.name;
+          title.querySelector(".ps").textContent =
+            "每题 "+sec.perScore+" 分，共 "+(sec.perScore*(sec.questions||[]).length)+" 分";
+          s.appendChild(title);
+          (sec.questions||[]).forEach(function(q, qi){
+            s.appendChild(renderQ(q, "pa_"+si+"_"+qi, sec.perScore, false, qi+1,
+              {u:D.unitNumber, ut:D.unitTitle, kp:sec.name}, "quiz"));
+          });
+          body.appendChild(s);
+        });
+      }
+    });
+  }
+
+  /* 侧栏折叠 */
+  (function(){
+    const lay = document.getElementById("layout");
+    const btn = document.getElementById("sideToggle");
+    if(!lay || !btn) return;
+    btn.onclick = function(){
+      lay.classList.toggle("side-off");
+      btn.textContent = lay.classList.contains("side-off") ? "\u25b6" : "\u25c0";
+    };
+  })();
+
+  /* 视频展开 / 收起 */
+  (function(){
+    const head = document.getElementById("vhead");
+    const grid = document.getElementById("vlist");
+    const tg = document.getElementById("vtg");
+    if(!head || !grid || !tg) return;
+    head.onclick = function(){
+      const hidden = grid.classList.toggle("hide");
+      tg.textContent = hidden ? "\u5c55\u5f00 \u25be" : "\u6536\u8d77 \u25b4";
+    };
+  })();
+
+  /* 分区切换：知识点 / 随堂自测 / 单元检测卷（入口在左侧目录树） */
+  (function(){
+    function showPane(p, navKey){
+      document.querySelectorAll(".pane").forEach(x=>x.classList.toggle("show", x.id==="pane-"+p));
+      markSub(navKey || (p==="kp" ? "kp"+curKp : p));
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+    window.showPane = showPane;
+
+    /* 没有知识点的页（期中 / 期末）直接落到卷面 */
+    if(!D.knowledgePoints.length){
+      showPane(D.paper ? "paper" : "exam");
+    }
+  })();
+
+  /* 上下单元 */
+  (function(){
+    const box=document.getElementById("unitnav"); if(!box||!BOOK.units) return;
+    const cur=D.unitNumber; let prev=null, next=null;
+    BOOK.units.forEach(u=>{ if(u.n===cur-1) prev=u; if(u.n===cur+1) next=u; });
+    box.innerHTML =
+      (prev ? '<a href="u'+prev.n+'.html"><span class="k">上一单元</span>'+prev.t+'</a>'
+            : '<a href="index.html"><span class="k">返回</span>整册总览</a>') +
+      (next ? '<a class="next" href="u'+next.n+'.html"><span class="k">下一单元</span>'+next.t+'</a>'
+            : '<a class="next" href="index.html"><span class="k">返回</span>整册总览</a>');
+  })();
+
+  document.getElementById("reset").onclick = ()=>{
+    if(!confirm("确定清空本页所有作答记录？")) return;
+    for(const k in store) delete store[k];
+    document.querySelectorAll(".q").forEach(x=>{
+      x.className = "q" + (x.dataset.lvl ? " "+x.dataset.lvl : "");
+      const fb=x.querySelector(".fb"); if(fb) fb.className="fb";
+      x.querySelectorAll(".opt").forEach(o=>{ o.disabled=false; o.classList.remove("ok","no"); });
+      const inp=x.querySelector("input");
+      if(inp){ inp.disabled=false; inp.value=""; inp.style.borderColor=""; inp.style.color=""; }
+      const btn=x.querySelector(".btn"); if(btn) btn.disabled=false;
+    });
+    if(window.__quizResets) window.__quizResets.forEach(fn=>{ try{ fn(); }catch(e){} });
+    updateProgress();
+  };
+
+  renderUserbar();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

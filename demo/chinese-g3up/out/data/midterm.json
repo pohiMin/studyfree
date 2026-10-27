@@ -1,0 +1,378 @@
+{
+  "unitNumber": 0,
+  "unitTitle": "期中阶段检测",
+  "unitSubtitle": "第一至第四单元",
+  "sections": [],
+  "note": "覆盖第一至第四单元",
+  "knowledgePoints": [],
+  "videos": [],
+  "exam": null,
+  "paper": {
+    "title": "语文期中阶段检测",
+    "subtitle": "第一至第四单元（学校生活 · 金秋时节 · 预测 · 童话世界）",
+    "duration": 45,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选择正确读音",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "早晨的『晨』读：",
+            "options": [
+              "chén",
+              "chéng",
+              "shén"
+            ],
+            "answer": "A",
+            "explanation": "晨读 chén。"
+          },
+          {
+            "type": "choice",
+            "question": "绒球花的『绒』读：",
+            "options": [
+              "róng",
+              "yóng",
+              "lóng"
+            ],
+            "answer": "A",
+            "explanation": "绒读 róng。"
+          },
+          {
+            "type": "choice",
+            "question": "傣族的『傣』读：",
+            "options": [
+              "dǎi",
+              "tài",
+              "dá"
+            ],
+            "answer": "A",
+            "explanation": "傣读 dǎi。"
+          },
+          {
+            "type": "choice",
+            "question": "铺满的『铺』读：",
+            "options": [
+              "pū",
+              "pù",
+              "pǔ"
+            ],
+            "answer": "A",
+            "explanation": "铺满读 pū；店铺读 pù。"
+          },
+          {
+            "type": "choice",
+            "question": "歌曲的『曲』读：",
+            "options": [
+              "qǔ",
+              "qū",
+              "qù"
+            ],
+            "answer": "A",
+            "explanation": "歌曲读 qǔ；弯曲读 qū。"
+          },
+          {
+            "type": "choice",
+            "question": "几乎的『几』读：",
+            "options": [
+              "jī",
+              "jǐ",
+              "jì"
+            ],
+            "answer": "A",
+            "explanation": "几乎读 jī。"
+          },
+          {
+            "type": "choice",
+            "question": "答应别人的『答』读：",
+            "options": [
+              "dā",
+              "dá",
+              "dà"
+            ],
+            "answer": "A",
+            "explanation": "答应读 dā；回答读 dá。"
+          },
+          {
+            "type": "choice",
+            "question": "《鹿柴》的『柴』读：",
+            "options": [
+              "zhài",
+              "chái",
+              "cài"
+            ],
+            "answer": "A",
+            "explanation": "鹿柴的柴读 zhài。"
+          },
+          {
+            "type": "choice",
+            "question": "促进的『促』读：",
+            "options": [
+              "cù",
+              "chù",
+              "zú"
+            ],
+            "answer": "A",
+            "explanation": "促读 cù。"
+          },
+          {
+            "type": "choice",
+            "question": "一骨碌的『骨碌』读：",
+            "options": [
+              "gū lu",
+              "gǔ lù",
+              "gú lū"
+            ],
+            "answer": "A",
+            "explanation": "骨碌：滚动。"
+          }
+        ]
+      },
+      {
+        "name": "二、选择正确的字",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "教室里很安______。",
+            "options": [
+              "静",
+              "清",
+              "睛"
+            ],
+            "answer": "A",
+            "explanation": "安静。"
+          },
+          {
+            "type": "choice",
+            "question": "大树______的枝干。",
+            "options": [
+              "粗",
+              "祖",
+              "组"
+            ],
+            "answer": "A",
+            "explanation": "粗壮。"
+          },
+          {
+            "type": "choice",
+            "question": "地上的树______。",
+            "options": [
+              "影",
+              "景",
+              "井"
+            ],
+            "answer": "A",
+            "explanation": "影子带彡。"
+          },
+          {
+            "type": "choice",
+            "question": "遵守交通______。",
+            "options": [
+              "规则",
+              "规缺",
+              "规侧"
+            ],
+            "answer": "A",
+            "explanation": "规则的则。"
+          },
+          {
+            "type": "choice",
+            "question": "翠鸟______起小鱼。",
+            "options": [
+              "衔",
+              "街",
+              "衍"
+            ],
+            "answer": "A",
+            "explanation": "衔：用嘴叼。"
+          },
+          {
+            "type": "choice",
+            "question": "大家______着好奇的目光。",
+            "options": [
+              "投",
+              "头",
+              "没"
+            ],
+            "answer": "A",
+            "explanation": "投以目光。"
+          },
+          {
+            "type": "choice",
+            "question": "老屋的______上有一张网。",
+            "options": [
+              "墙壁",
+              "璧",
+              "玉"
+            ],
+            "answer": "A",
+            "explanation": "墙壁。"
+          },
+          {
+            "type": "choice",
+            "question": "小雨打在船______上。",
+            "options": [
+              "篷",
+              "蓬",
+              "棚"
+            ],
+            "answer": "A",
+            "explanation": "船篷竹字头。"
+          }
+        ]
+      },
+      {
+        "name": "三、把词语补充完整",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "input",
+            "question": "五彩____纷",
+            "answer": "缤",
+            "explanation": "五彩缤纷。"
+          },
+          {
+            "type": "input",
+            "question": "秋高____爽",
+            "answer": "气",
+            "explanation": "秋高气爽。"
+          },
+          {
+            "type": "input",
+            "question": "百____百中（每次都猜中）",
+            "answer": "发",
+            "explanation": "百发百中。"
+          },
+          {
+            "type": "input",
+            "question": "自____自语",
+            "answer": "言",
+            "explanation": "自言自语。"
+          },
+          {
+            "type": "input",
+            "question": "眼____手快",
+            "answer": "疾",
+            "explanation": "眼疾手快。"
+          },
+          {
+            "type": "input",
+            "question": "一本____经",
+            "answer": "正",
+            "explanation": "一本正经。"
+          }
+        ]
+      },
+      {
+        "name": "四、选择填空",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "『水泥道像铺上了一块彩色的地毯』是：",
+            "options": [
+              "比喻",
+              "拟人",
+              "夸张"
+            ],
+            "answer": "A",
+            "explanation": "有『像』，把道比作地毯。"
+          },
+          {
+            "type": "choice",
+            "question": "『秋天的雨，吹起了金色的小喇叭』是：",
+            "options": [
+              "拟人",
+              "比喻",
+              "反问"
+            ],
+            "answer": "A",
+            "explanation": "雨会吹喇叭，把雨当成人写。"
+          },
+          {
+            "type": "choice",
+            "question": "日记第一行应该写：",
+            "options": [
+              "日期、星期、天气",
+              "题目",
+              "心情"
+            ],
+            "answer": "A",
+            "explanation": "日记格式第一条。"
+          },
+          {
+            "type": "choice",
+            "question": "『猜猜他是谁』最关键的是写出人物的：",
+            "options": [
+              "突出特点",
+              "名字",
+              "年龄"
+            ],
+            "answer": "A",
+            "explanation": "特点才能让人猜出。"
+          },
+          {
+            "type": "choice",
+            "question": "预测课文时最重要的是：",
+            "options": [
+              "说出依据",
+              "猜对结果",
+              "读得快"
+            ],
+            "answer": "A",
+            "explanation": "预测重在依据。"
+          },
+          {
+            "type": "choice",
+            "question": "《在牛肚子里旅行》用到的科学知识是：",
+            "options": [
+              "牛有四个胃，会反刍",
+              "蟋蟀会游泳",
+              "牛爱吃虫"
+            ],
+            "answer": "A",
+            "explanation": "科学童话的知识骨架。"
+          }
+        ]
+      },
+      {
+        "name": "五、理解与表达",
+        "perScore": 7,
+        "questions": [
+          {
+            "type": "input",
+            "question": "《山行》：远上寒山石径斜，白云____有人家。",
+            "answer": "生处",
+            "explanation": "白云生处。"
+          },
+          {
+            "type": "input",
+            "question": "《夜书所见》：萧萧梧叶送寒声，江上秋风动____。",
+            "answer": "客情",
+            "explanation": "动客情，思的是家乡。"
+          },
+          {
+            "type": "choice",
+            "question": "三首秋天的古诗中，表达思乡之情的是：",
+            "options": [
+              "《夜书所见》",
+              "《山行》",
+              "《赠刘景文》"
+            ],
+            "answer": "A",
+            "explanation": "江上秋风动客情。"
+          },
+          {
+            "type": "input",
+            "question": "默写《山行》第三、四句：停车坐爱枫林晚，____红于二月花。（填三个字）",
+            "answer": "霜叶",
+            "explanation": "霜叶红于二月花。"
+          }
+        ]
+      }
+    ]
+  }
+}

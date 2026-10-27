@@ -1,0 +1,935 @@
+{
+  "unitNumber": 7,
+  "unitTitle": "Happy Birthday!",
+  "sections": [
+    "生日祝福",
+    "问年龄",
+    "数字 one 到 ten",
+    "Assessment time"
+  ],
+  "note": "核心句型：Happy Birthday! / How old are you? — I'm nine.",
+  "knowledgePoints": [
+    {
+      "id": "english-yilin-3a-u7-kp1",
+      "title": "生日祝福：Happy Birthday!",
+      "short": "送祝福",
+      "difficulty": 1,
+      "sections": [
+        "生日祝福"
+      ],
+      "core_concept": "朋友过生日，说 Happy Birthday!（生日快乐！），对方回答 Thank you!（谢谢）。也可以送上礼物：This is for you.（这是送给你的。）收到礼物说 Thank you.",
+      "key_formula": "Happy Birthday! → Thank you! ／ This is for you. → Thank you!",
+      "common_mistakes": [
+        "收到祝福不说谢谢",
+        "for you 写成 four you",
+        "Birthday 的 B 要大写（Happy Birthday 两个词都大写）"
+      ],
+      "tips": "说 Happy Birthday! 时可以唱生日歌，一句一句跟着唱就背下来了。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "同学生日，你对他说：",
+          "options": [
+            "Happy Birthday!",
+            "Goodbye!",
+            "How are you?"
+          ],
+          "answer": "A",
+          "explanation": "Happy Birthday! 生日快乐！"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "别人祝你生日快乐，你回答：",
+          "options": [
+            "Thank you!",
+            "OK!",
+            "Bye!"
+          ],
+          "answer": "A",
+          "explanation": "受到祝福要道谢。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：This is ______ you.（送礼物给你）",
+          "answer": "for",
+          "explanation": "This is for you. 这是给你的。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "送出礼物时说：",
+          "options": [
+            "This is for you.",
+            "This is me.",
+            "Look at me."
+          ],
+          "answer": "A",
+          "explanation": "This is for you. 这是给你的。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "收到礼物要说 Thank you.",
+          "answer": "对",
+          "explanation": "道谢是礼貌。"
+        },
+        {
+          "type": "input",
+          "difficulty": 1,
+          "question": "写词：谢谢（一个词）",
+          "answer": "thanks",
+          "explanation": "thanks 或 thank you 都可以，大小写不限。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "同学收到你的礼物说 Thank you! 你接着说：",
+          "options": [
+            "You're welcome!",
+            "Goodbye!",
+            "What?"
+          ],
+          "answer": "A",
+          "explanation": "You're welcome! 不客气——回应感谢的礼貌用语。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "完整生日对话排序：① Thank you! ② Happy Birthday! ③ This is for you.",
+          "answer": "②①③",
+          "explanation": "先祝福→道谢→再送礼物→再道谢。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u7-kp2",
+      "title": "问年龄：How old are you?",
+      "short": "你几岁",
+      "difficulty": 2,
+      "sections": [
+        "问年龄"
+      ],
+      "core_concept": "问年龄：How old are you?（你几岁？）回答：I'm nine.（我九岁。）注意回答直接用数字，不说 I'm nine years old 的 years old 也可以，三年级只说 I'm nine. 就够了。别人问年龄，如实回答。",
+      "key_formula": "How old are you? → I'm nine.（数字换成自己的岁数）",
+      "common_mistakes": [
+        "回答 I am nine 后面加 are",
+        "how old 写成 how Old",
+        "把 How old are you? 回答成 Thank you."
+      ],
+      "tips": "回答年龄就一个词：I'm nine. 数字换成你自己的岁数。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "问别人几岁，说：",
+          "options": [
+            "How old are you?",
+            "What's your name?",
+            "Who's he?"
+          ],
+          "answer": "A",
+          "explanation": "How old are you? 你几岁？"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "—How old are you? —______",
+          "options": [
+            "I'm nine.",
+            "My name is Mike.",
+            "Yes, I am."
+          ],
+          "answer": "A",
+          "explanation": "回答年龄用 I'm + 数字。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：______ old are you?（填两个词的第一个）",
+          "answer": "how",
+          "explanation": "How old are you?（大小写不限）。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "九岁的英语是：",
+          "options": [
+            "nine",
+            "nineteen",
+            "ninth"
+          ],
+          "answer": "A",
+          "explanation": "nine：九。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "How old are you? 可以回答 My name is Mike.",
+          "answer": "错",
+          "explanation": "问年龄答年龄，问名字才答名字。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：I'm ______.（八岁，填英语单词）",
+          "answer": "eight",
+          "explanation": "eight：八。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "问妹妹（5 岁）几岁，她说：",
+          "options": [
+            "I'm five.",
+            "I'm six.",
+            "I five."
+          ],
+          "answer": "A",
+          "explanation": "I'm + 数字。five：五。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "你十岁，回答 How old are you?（填完整句子）",
+          "answer": "I'm ten.",
+          "explanation": "I'm ten. 我十岁。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u7-kp3",
+      "title": "数字 one 到 ten",
+      "short": "数一数",
+      "difficulty": 2,
+      "sections": [
+        "数字 one 到 ten"
+      ],
+      "core_concept": "一到十：one two three four five six seven eight nine ten。它们是年龄、数量、电话号码的基础。three 的 th 咬舌读；five 里有个 v；ten 别写成 nine。",
+      "key_formula": "1 one 2 two 3 three 4 four 5 five 6 six 7 seven 8 eight 9 nine 10 ten",
+      "common_mistakes": [
+        "eight 拼写成 eiht（gh 顺序）",
+        "three 写成 tree",
+        "five 和 four 混"
+      ],
+      "tips": "用手指头数一遍：one two three… 边数边说，比背字母表还容易。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "three 的意思是：",
+          "options": [
+            "三",
+            "四",
+            "五"
+          ],
+          "answer": "A",
+          "explanation": "three：三。注意拼写，别写成 tree（树）。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 1,
+          "question": "five 的意思是：",
+          "options": [
+            "五",
+            "四",
+            "六"
+          ],
+          "answer": "A",
+          "explanation": "five：五。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "写词：八",
+          "answer": "eight",
+          "explanation": "eight：八。e-i-g-h-t。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "写词：十",
+          "answer": "ten",
+          "explanation": "ten：十。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "下面按顺序排对的一组是：",
+          "options": [
+            "six seven eight",
+            "six eight seven",
+            "seven six eight"
+          ],
+          "answer": "A",
+          "explanation": "6 7 8：six seven eight。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 2,
+          "question": "nine 的意思是九。",
+          "answer": "对",
+          "explanation": "nine：九。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "seven 和 nine 中间的数：",
+          "options": [
+            "eight",
+            "six",
+            "ten"
+          ],
+          "answer": "A",
+          "explanation": "7 8 9：seven eight nine。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "倒着数：ten nine ____ seven（填英语单词）",
+          "answer": "eight",
+          "explanation": "10 9 8 7：ten nine eight seven。"
+        }
+      ]
+    },
+    {
+      "id": "english-yilin-3a-u7-kp4",
+      "title": "生日聚会场景对话",
+      "short": "一整套祝福",
+      "difficulty": 2,
+      "sections": [
+        "生日祝福",
+        "问年龄"
+      ],
+      "core_concept": "生日聚会上的对话链：祝你生日快乐（Happy Birthday!）→ 道谢（Thank you!）→ 送礼物（This is for you.）→ 再道谢 → 问年龄（How old are you?）→ 回答（I'm nine.）。会走完这条链，你就能用英语参加一场生日会。",
+      "key_formula": "祝福 → 道谢 → 送礼物 → 道谢 → 问年龄 → 回答",
+      "common_mistakes": [
+        "环节跳步：送完礼物直接问年龄，忘了等道谢",
+        "重复说同一句",
+        "问年龄忘了怎么问"
+      ],
+      "tips": "和同桌把六步对话演两遍，一遍你过生日，一遍他过生日。",
+      "questions": [
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "生日会开始，你先说：",
+          "options": [
+            "Happy Birthday!",
+            "How old are you?",
+            "Goodbye!"
+          ],
+          "answer": "A",
+          "explanation": "先送祝福。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 2,
+          "question": "送上礼物的正确说法：",
+          "options": [
+            "This is for you.",
+            "This is you.",
+            "For you this is."
+          ],
+          "answer": "A",
+          "explanation": "This is for you.。"
+        },
+        {
+          "type": "input",
+          "difficulty": 2,
+          "question": "填空：—How old are you? —I'm ______.（九岁，填单词）",
+          "answer": "nine",
+          "explanation": "nine：九。"
+        },
+        {
+          "type": "choice",
+          "difficulty": 3,
+          "question": "对话排序：① Thank you! ② Happy Birthday! ③ This is for you.",
+          "options": [
+            "②①③",
+            "①②③",
+            "③②①"
+          ],
+          "answer": "A",
+          "explanation": "先祝福，等道谢，再送礼物。"
+        },
+        {
+          "type": "true_false",
+          "difficulty": 1,
+          "question": "送了礼物对方道谢后，可以接着问 How old are you?",
+          "answer": "对",
+          "explanation": "生日会常这么聊。"
+        },
+        {
+          "type": "input",
+          "difficulty": 3,
+          "question": "填空：—This is for you. —______ ______!（两个词：谢谢你）",
+          "answer": "thank you",
+          "explanation": "Thank you!（大小写不限）。"
+        },
+        {
+          "type": "choice",
+          "level": "advance",
+          "difficulty": 2,
+          "question": "生日会上想问寿星几岁，礼貌的问法是：",
+          "options": [
+            "How old are you?",
+            "How are you?",
+            "Who are you?"
+          ],
+          "answer": "A",
+          "explanation": "How old are you? 问年龄。"
+        },
+        {
+          "type": "input",
+          "level": "challenge",
+          "difficulty": 3,
+          "question": "编完整生日对话：—Happy Birthday! —Thank you! —How old are you? —____（你九岁）",
+          "answer": "I'm nine.",
+          "explanation": "回答年龄：I'm nine.。"
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "w": "birthday",
+      "zh": "生日",
+      "ex": "Happy Birthday!",
+      "type": "word"
+    },
+    {
+      "w": "happy",
+      "zh": "快乐的",
+      "ex": "Happy Birthday!",
+      "type": "word"
+    },
+    {
+      "w": "old",
+      "zh": "……岁的",
+      "ex": "How old are you?",
+      "type": "word"
+    },
+    {
+      "w": "how",
+      "zh": "怎样",
+      "ex": "How old are you?",
+      "type": "word"
+    },
+    {
+      "w": "for",
+      "zh": "给；为",
+      "ex": "This is for you.",
+      "type": "word"
+    },
+    {
+      "w": "thank",
+      "zh": "谢谢",
+      "ex": "Thank you.",
+      "type": "word"
+    },
+    {
+      "w": "one",
+      "zh": "一",
+      "ex": "I'm one.",
+      "type": "word"
+    },
+    {
+      "w": "two",
+      "zh": "二",
+      "ex": "I'm two.",
+      "type": "word"
+    },
+    {
+      "w": "three",
+      "zh": "三",
+      "ex": "I'm three.",
+      "type": "word"
+    },
+    {
+      "w": "four",
+      "zh": "四",
+      "ex": "I'm four.",
+      "type": "word"
+    },
+    {
+      "w": "five",
+      "zh": "五",
+      "ex": "I'm five.",
+      "type": "word"
+    },
+    {
+      "w": "six",
+      "zh": "六",
+      "ex": "I'm six.",
+      "type": "word"
+    },
+    {
+      "w": "seven",
+      "zh": "七",
+      "ex": "I'm seven.",
+      "type": "word"
+    },
+    {
+      "w": "eight",
+      "zh": "八",
+      "ex": "I'm eight.",
+      "type": "word"
+    },
+    {
+      "w": "nine",
+      "zh": "九",
+      "ex": "I'm nine.",
+      "type": "word"
+    },
+    {
+      "w": "ten",
+      "zh": "十",
+      "ex": "I'm ten.",
+      "type": "word"
+    }
+  ],
+  "exam": {
+    "title": "Unit 7 随堂自测",
+    "duration": 10,
+    "scorePerQuestion": 5,
+    "note": "限时 10 分钟 · 时间到自动交卷",
+    "questions": [
+      {
+        "type": "choice",
+        "question": "同学生日你说：",
+        "options": [
+          "Happy Birthday!",
+          "Goodbye!",
+          "What?"
+        ],
+        "answer": "A",
+        "explanation": "生日祝福。"
+      },
+      {
+        "type": "choice",
+        "question": "—How old are you? —______",
+        "options": [
+          "I'm nine.",
+          "My name is Sam.",
+          "Yes, I am."
+        ],
+        "answer": "A",
+        "explanation": "回答年龄。"
+      },
+      {
+        "type": "input",
+        "question": "写词：五",
+        "answer": "five",
+        "explanation": "five：五。"
+      },
+      {
+        "type": "input",
+        "question": "写词：三",
+        "answer": "three",
+        "explanation": "three：三。"
+      },
+      {
+        "type": "input",
+        "question": "填空：This is ______ you.（送给你）",
+        "answer": "for",
+        "explanation": "for you。"
+      },
+      {
+        "type": "choice",
+        "question": "收到礼物说：",
+        "options": [
+          "Thank you!",
+          "Bye!",
+          "OK!"
+        ],
+        "answer": "A",
+        "explanation": "道谢。"
+      },
+      {
+        "type": "input",
+        "question": "写词：十",
+        "answer": "ten",
+        "explanation": "ten：十。"
+      },
+      {
+        "type": "true_false",
+        "question": "How old are you? 回答名字。",
+        "answer": "错",
+        "explanation": "回答年龄。"
+      },
+      {
+        "type": "input",
+        "question": "写词：八",
+        "answer": "eight",
+        "explanation": "eight。"
+      },
+      {
+        "type": "choice",
+        "question": "six seven 的后面是：",
+        "options": [
+          "eight",
+          "nine",
+          "five"
+        ],
+        "answer": "A",
+        "explanation": "6 7 8。"
+      }
+    ]
+  },
+  "paper": {
+    "title": "Unit 7 检测卷",
+    "subtitle": "Happy Birthday!",
+    "duration": 40,
+    "totalScore": 100,
+    "note": "自主检测 · 不计排名 · 不代替学校考试",
+    "sections": [
+      {
+        "name": "一、选出不同类的单词",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "one",
+              "two",
+              "birthday"
+            ],
+            "answer": "C",
+            "explanation": "one、two 是数字。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "five",
+              "six",
+              "old"
+            ],
+            "answer": "C",
+            "explanation": "old 是形容词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "cake（蛋糕）",
+              "candle（蜡烛）",
+              "ten"
+            ],
+            "answer": "C",
+            "explanation": "ten 是数字。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "three",
+              "four",
+              "thank"
+            ],
+            "answer": "C",
+            "explanation": "thank 是动词。"
+          },
+          {
+            "type": "choice",
+            "question": "选出不同类：",
+            "options": [
+              "gift（礼物）",
+              "card（卡片）",
+              "old"
+            ],
+            "answer": "C",
+            "explanation": "old 是形容词。"
+          }
+        ]
+      },
+      {
+        "name": "二、单项选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "生日祝福：",
+            "options": [
+              "Happy Birthday!",
+              "Happy New Year!",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "Happy Birthday!"
+          },
+          {
+            "type": "choice",
+            "question": "—How old are you? —______",
+            "options": [
+              "I'm nine.",
+              "I'm Mike.",
+              "Yes, I am."
+            ],
+            "answer": "A",
+            "explanation": "回答年龄。"
+          },
+          {
+            "type": "choice",
+            "question": "送礼物：",
+            "options": [
+              "This is for you.",
+              "This is you.",
+              "For is this you."
+            ],
+            "answer": "A",
+            "explanation": "This is for you.。"
+          },
+          {
+            "type": "choice",
+            "question": "—This is for you. —______",
+            "options": [
+              "Thank you!",
+              "OK!",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "8 的英语：",
+            "options": [
+              "eight",
+              "eiht",
+              "eighte"
+            ],
+            "answer": "A",
+            "explanation": "eight。"
+          },
+          {
+            "type": "choice",
+            "question": "7 的英语：",
+            "options": [
+              "seven",
+              "six",
+              "eight"
+            ],
+            "answer": "A",
+            "explanation": "seven。"
+          },
+          {
+            "type": "choice",
+            "question": "How old = ",
+            "options": [
+              "多大年纪",
+              "怎么老",
+              "哪里"
+            ],
+            "answer": "A",
+            "explanation": "How old 问年龄。"
+          },
+          {
+            "type": "choice",
+            "question": "five 后面的数：",
+            "options": [
+              "six",
+              "seven",
+              "four"
+            ],
+            "answer": "A",
+            "explanation": "5 6。"
+          }
+        ]
+      },
+      {
+        "name": "三、情景选择",
+        "perScore": 3,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "同学过生日，你先说：",
+            "options": [
+              "Happy Birthday!",
+              "How old are you?",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "先祝福。"
+          },
+          {
+            "type": "choice",
+            "question": "收到礼物：",
+            "options": [
+              "Thank you!",
+              "Give me more.",
+              "OK."
+            ],
+            "answer": "A",
+            "explanation": "道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "想知道新朋友几岁：",
+            "options": [
+              "How old are you?",
+              "What's your name?",
+              "Who's he?"
+            ],
+            "answer": "A",
+            "explanation": "问年龄句型。"
+          },
+          {
+            "type": "choice",
+            "question": "你九岁，回答：",
+            "options": [
+              "I'm nine.",
+              "I nine.",
+              "Nine am I."
+            ],
+            "answer": "A",
+            "explanation": "I'm nine.。"
+          },
+          {
+            "type": "choice",
+            "question": "把礼物递给朋友：",
+            "options": [
+              "This is for you.",
+              "This is me.",
+              "Look at you."
+            ],
+            "answer": "A",
+            "explanation": "This is for you.。"
+          },
+          {
+            "type": "choice",
+            "question": "cake 的意思：",
+            "options": [
+              "蛋糕",
+              "蜡烛",
+              "卡片"
+            ],
+            "answer": "A",
+            "explanation": "cake：蛋糕。"
+          }
+        ]
+      },
+      {
+        "name": "四、判断对错",
+        "perScore": 2,
+        "questions": [
+          {
+            "type": "true_false",
+            "question": "受到祝福要回答 Thank you.",
+            "answer": "对",
+            "explanation": "礼貌道谢。"
+          },
+          {
+            "type": "true_false",
+            "question": "How old are you? 回答 My name is Mike.",
+            "answer": "错",
+            "explanation": "答非所问。"
+          },
+          {
+            "type": "true_false",
+            "question": "eight 的拼写是 e-i-g-h-t。",
+            "answer": "对",
+            "explanation": "eight。"
+          },
+          {
+            "type": "true_false",
+            "question": "ten 是十。",
+            "answer": "对",
+            "explanation": "ten：十。"
+          },
+          {
+            "type": "true_false",
+            "question": "This is for you. 是向别人要东西。",
+            "answer": "错",
+            "explanation": "是送东西给别人。"
+          }
+        ]
+      },
+      {
+        "name": "五、写出单词",
+        "perScore": 4,
+        "questions": [
+          {
+            "type": "input",
+            "question": "写词：九",
+            "answer": "nine",
+            "explanation": "nine。"
+          },
+          {
+            "type": "input",
+            "question": "写词：六",
+            "answer": "six",
+            "explanation": "six。"
+          },
+          {
+            "type": "input",
+            "question": "填空：Happy ______!（生日）",
+            "answer": "birthday",
+            "explanation": "Happy Birthday!"
+          },
+          {
+            "type": "input",
+            "question": "填空：How ______ are you?",
+            "answer": "old",
+            "explanation": "How old are you?"
+          },
+          {
+            "type": "input",
+            "question": "写词：七",
+            "answer": "seven",
+            "explanation": "seven。"
+          }
+        ]
+      },
+      {
+        "name": "六、读对话，选答案",
+        "perScore": 6,
+        "questions": [
+          {
+            "type": "choice",
+            "question": "—Happy Birthday! —______",
+            "options": [
+              "Thank you!",
+              "OK!",
+              "Bye!"
+            ],
+            "answer": "A",
+            "explanation": "道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "—This is for you. —______ —How old are you? —I'm nine.",
+            "options": [
+              "Thank you!",
+              "Goodbye!",
+              "What?"
+            ],
+            "answer": "A",
+            "explanation": "收礼先道谢。"
+          },
+          {
+            "type": "choice",
+            "question": "数字接龙：eight ____ ten",
+            "options": [
+              "nine",
+              "seven",
+              "six"
+            ],
+            "answer": "A",
+            "explanation": "8 9 10。"
+          }
+        ]
+      }
+    ]
+  }
+}

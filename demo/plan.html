@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学期学习规划 · 三年级上学期</title>
+<style>
+  :root{
+    --paper:#F6F4EF; --card:#FFFDF9;
+    --ink:#20242E; --ink2:#4C5262; --ink3:#8D93A3;
+    --line:#E6E2D8; --soft:#F5F3ED;
+    --hero1:#1C2230; --hero2:#2A3247;
+    --gold:#D9B87C; --gold2:#B08D57;
+    --ok:#2E7D64; --pri:#2F5D8C; --warn:#A8432F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.85;padding:0 18px 70px;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero{
+    position:relative;color:#F3EFE6;overflow:hidden;
+    background:
+      radial-gradient(120% 140% at 85% -20%, #34405C 0%, transparent 55%),
+      radial-gradient(90% 120% at -10% 110%, #2C2519 0%, transparent 50%),
+      linear-gradient(160deg, var(--hero1), var(--hero2));
+    margin:0 -18px 34px;padding:56px 24px 60px;border-radius:0 0 32px 32px;
+  }
+  .hero .wrap{max-width:980px;margin:0 auto}
+  .back{display:inline-block;color:#C9CBD6;text-decoration:none;font-size:.85rem;margin-bottom:20px}
+  .back:hover{color:var(--gold)}
+  .k{font-size:.72rem;letter-spacing:.4em;color:#D9B87C;font-weight:700;margin-bottom:12px}
+  .hero h1{
+    font-family:"Songti SC","STSong","SimSun",serif;
+    font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:800;letter-spacing:.06em;
+  }
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p{margin-top:12px;font-size:.92rem;color:#C9CBD6}
+  .wrap{max-width:980px;margin:0 auto}
+  .card{
+    background:var(--card);border:1px solid rgba(32,36,46,.07);border-radius:22px;
+    padding:26px 30px 30px;margin-bottom:20px;
+    box-shadow:0 1px 2px rgba(32,36,46,.04), 0 10px 30px -12px rgba(32,36,46,.12);
+  }
+  .card h2{
+    font-family:"Songti SC","STSong","SimSun",serif;
+    font-size:1.22rem;font-weight:800;letter-spacing:.04em;
+    display:flex;align-items:baseline;gap:12px;
+    padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line);
+  }
+  .card h2 i{
+    font-style:normal;font-size:.72rem;color:var(--gold2);font-weight:700;
+    letter-spacing:.2em;
+  }
+  table{width:100%;border-collapse:collapse;font-size:.86rem}
+  th{background:var(--soft);text-align:left;padding:9px 13px;border:1px solid var(--line);font-weight:700}
+  td{padding:9px 13px;border:1px solid var(--line);color:var(--ink2)}
+  td b{color:var(--ink)}
+  tr:hover td{background:#FBFAF5}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:4px}
+  .step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+  .step .t{font-weight:800;color:var(--pri);font-size:.84rem;margin-bottom:5px;letter-spacing:.05em}
+  .step .d{font-size:.85rem;color:var(--ink2);line-height:1.75}
+  .lv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:4px}
+  .lv .item{border-radius:14px;padding:15px 17px;border:1.5px solid}
+  .lv .item b{display:block;margin-bottom:4px;font-size:.95rem}
+  .lv .item p{font-size:.84rem;line-height:1.75}
+  .l1{border-color:#BFD9CD;background:#F1F8F4}.l1 b{color:var(--ok)}
+  .l2{border-color:#C2D4EA;background:#F0F5FB}.l2 b{color:var(--pri)}
+  .l3{border-color:#EAC9B8;background:#FBF4EE}.l3 b{color:var(--warn)}
+  .note{
+    background:#FBF6E9;border:1px solid #EAD9AC;border-radius:14px;
+    padding:14px 18px;font-size:.85rem;color:#7A5C13;line-height:1.8;margin-top:18px;
+  }
+  @media print{ .hero{margin:0 0 20px} .card{break-inside:avoid} body{background:#fff;padding:10px} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <a class="back" href="首页.html">← 返回三科入口</a>
+    <div class="k">STUDY PLAN · 学期规划</div>
+    <h1>二十周<em>学习规划</em></h1>
+    <p>三科并行 · 每周节奏固定 · 期末四周专攻复习 —— 本规划对应工具台的单元与测验</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>每周进度表<i>约二十个教学周 · 按学校进度微调</i></h2>
+    <table>
+      <tr><th style="width:14%">周次</th><th>语文（统编版）</th><th>数学（苏教版）</th><th>英语（译林 3A）</th></tr>
+      <tr><td><b>第 1—2 周</b></td><td>第一单元 学校生活</td><td>第一单元 混合运算</td><td>Unit 1 Hello!</td></tr>
+      <tr><td><b>第 3—4 周</b></td><td>第二单元 金秋时节（背三首古诗）</td><td>第二单元 乘一位数</td><td>Unit 2 What's your name?</td></tr>
+      <tr><td><b>第 5—6 周</b></td><td>第三单元 预测（策略单元）</td><td>第三单元 数据的收集与整理</td><td>Unit 3 Are you Su Hai?</td></tr>
+      <tr><td><b>第 7—8 周</b></td><td>第四单元 童话世界</td><td>第四单元 毫米、分米和千米</td><td>Unit 4 This is my friend</td></tr>
+      <tr><td><b>第 9 周</b></td><td>第五单元 留心观察</td><td>第五单元 平移、旋转和轴对称</td><td>Unit 5 She's my mother</td></tr>
+      <tr><td><b>第 10 周</b></td><td colspan="3"><b>期中阶段检测周</b>（三科各做一份期中卷 + 错题清一轮）</td></tr>
+      <tr><td><b>第 11—12 周</b></td><td>第六单元 祖国山河</td><td>第六单元 除以一位数（全册最重）</td><td>Unit 6 Is he your grandpa?</td></tr>
+      <tr><td><b>第 13—14 周</b></td><td>第七单元 自然之美（再背三首古诗）</td><td>第七单元 数量关系的分析</td><td>Unit 7 Happy Birthday!</td></tr>
+      <tr><td><b>第 15 周</b></td><td>第八单元 美好品质（文言文）</td><td>第八单元 观察物体（二）</td><td>Unit 8 I can do this for you</td></tr>
+      <tr><td><b>第 16 周</b></td><td>期末复习启动</td><td>第九单元 期末复习</td><td>期末复习启动</td></tr>
+      <tr><td><b>第 17—18 周</b></td><td colspan="3"><b>总复习三周：</b>各科期末检测卷 → 错题本清零 → 背单词全部过关 → 六首古诗默写全对</td></tr>
+      <tr><td><b>第 19—20 周</b></td><td colspan="3"><b>查漏补缺：</b>只重做错题本里的题，不再刷新题；每天保证睡眠</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>每天三十分钟怎么用<i>周一到周五</i></h2>
+    <div class="flow">
+      <div class="step"><div class="t">10 分钟 · 学</div><div class="d">打开当周单元，看 1 个知识点讲解，把基础题做掉。只学一个知识点，不贪多。</div></div>
+      <div class="step"><div class="t">10 分钟 · 练</div><div class="d">做这个知识点的提高题。提高题做对 2 道，可以试 1 道挑战题；做错不批评，看懂解析再来。</div></div>
+      <div class="step"><div class="t">5—10 分钟 · 清</div><div class="d">打开易错题本，把里面的题清一轮（连对 3 次自动移出）。英语再加背单词一组。</div></div>
+    </div>
+    <table style="margin-top:14px">
+      <tr><th style="width:14%">周末</th><th>安排</th></tr>
+      <tr><td><b>周六</b></td><td>本周单元的<b>检测卷</b>（限时），像考试一样一次性做完。星星取最高，低于 2 星下周重做一次。</td></tr>
+      <tr><td><b>周日</b></td><td>休息为主。英语<b>背单词</b>过一组；把本周的错题分析读一遍（只读不做）。</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>题目难度怎么用<i>三科统一：基础 → 提高 → 挑战</i></h2>
+    <div class="lv">
+      <div class="item l1"><b>基础题（必须全对）</b><p>课堂同步。基础题有错，先不做提高题，把错的弄懂、隔天再做一遍。基础全对是底线。</p></div>
+      <div class="item l2"><b>提高题（做对 2 道即过）</b><p>略高于课堂。目标不是全对，是弄懂错的那道。提高题连续做对 2 道，就够格碰挑战题。</p></div>
+      <div class="item l3"><b>挑战题（自愿奖励）</b><p>文字坑、逆向推理、开放表达。做对是惊喜，做错是收获——这一层永远不强制、不考核。</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>期末四周冲刺法<i>第 16—20 周</i></h2>
+    <table>
+      <tr><th style="width:16%">周次</th><th>做法</th></tr>
+      <tr><td><b>第 16 周</b></td><td>过一遍全册知识点（每科每单元只看「常见错误」清单，不重刷基础题）</td></tr>
+      <tr><td><b>第 17 周</b></td><td>做各科<b>期末检测卷</b>（限时），按分数定位弱单元</td></tr>
+      <tr><td><b>第 18 周</b></td><td>弱单元专项：只做薄弱单元的基础+提高题；英语背单词全组过关</td></tr>
+      <tr><td><b>第 19 周</b></td><td>语文六首古诗逐字默写；数学口算 50 题限时；英语字母与核心句型复述</td></tr>
+      <tr><td><b>第 20 周</b></td><td>错题本清零冲刺；每天早睡；考试当天只提醒一句话：先审题，再动笔</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>给家长的三条建议</h2>
+    <table>
+      <tr><td><b>1. 星星不比较</b>：星星只和孩子自己的上次比。每项测验取最高一次的设计，就是为了让孩子跟自己较劲，不跟别人比。</td></tr>
+      <tr><td><b>2. 错题是资产</b>：错题本连对 3 次移出的机制，是为了让孩子知道「错误是用来消灭的，不是用来害怕的」。家长只需要在清零日陪他庆祝。</td></tr>
+      <tr><td><b>3. 挑战题永远不考</b>：挑战题做错不扣任何东西。它存在的意义是让孩子知道学习可以有难度的乐趣。</td></tr>
+    </table>
+    <div class="note">
+      <b>规划依据与边界：</b>周进度按三科教材单元的自然顺序与常规教学节奏排出；学校实际教学进度可能不同，
+      以学校为准调整对应周次即可。本页所有测验均为自主练习，不计排名、不代替学校考试。
+    </div>
+  </div>
+</div>
+</body>
+</html>

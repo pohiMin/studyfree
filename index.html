@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>三年级学习台</title>
+<style>
+  :root{
+    --paper:#F6F4EF;          /* 暖白底 */
+    --ink:#20242E;            /* 近黑 */
+    --ink2:#4C5262;
+    --ink3:#8D93A3;
+    --line:#E6E2D8;
+    --hero1:#1C2230; --hero2:#2A3247;
+    --yu:#A8432F; --yu2:#C4674F;    /* 语文 · 赭红 */
+    --shu:#2F5D8C; --shu2:#4A7FB5;  /* 数学 · 靛蓝 */
+    --ying:#2E7D64; --ying2:#4BA286;/* 英语 · 松绿 */
+    --gold:#B08D57;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);
+    -webkit-font-smoothing:antialiased;line-height:1.8;
+  }
+  /* 全局细噪点，压住数码感 */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ───────── Hero ───────── */
+  .hero{
+    position:relative;color:#F3EFE6;overflow:hidden;
+    background:
+      radial-gradient(120% 140% at 85% -20%, #34405C 0%, transparent 55%),
+      radial-gradient(90% 120% at -10% 110%, #2C2519 0%, transparent 50%),
+      linear-gradient(160deg, var(--hero1), var(--hero2));
+    padding:84px 24px 96px;
+    border-radius:0 0 40px 40px;
+  }
+  .hero::after{ /* 顶部微光 */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg, rgba(255,255,255,.06), transparent 30%);
+  }
+  .hero .seal{
+    position:absolute;right:min(8vw,110px);top:64px;width:82px;height:auto;padding:18px 0 34px;
+    border:2px solid rgba(176,141,87,.55);border-radius:16px;
+    display:flex;flex-direction:column;align-items:center;gap:9px;transform:rotate(4deg);
+    font-family:"Songti SC","STSong","SimSun",serif;
+  }
+  .hero .seal b{
+    font-size:1.7rem;line-height:1;color:#D9B87C;font-weight:700;
+  }
+  .hero .seal small{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-size:.58rem;letter-spacing:2px;color:rgba(217,184,124,.65)}
+  .wrap{max-width:1020px;margin:0 auto;position:relative;z-index:1}
+  .k{font-size:.78rem;letter-spacing:.42em;color:#D9B87C;font-weight:700;margin-bottom:18px}
+  .hero h1{
+    font-family:"Songti SC","STSong","SimSun",serif;
+    font-size:clamp(2.5rem,6vw,3.6rem);font-weight:800;letter-spacing:.06em;line-height:1.25;
+  }
+  .hero h1 em{font-style:normal;color:#D9B87C}
+  .hero p.lead{margin-top:18px;font-size:1rem;color:#C9CBD6;max-width:34em}
+  .hero .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+  .chip{
+    font-size:.78rem;letter-spacing:.08em;padding:7px 16px;border-radius:999px;
+    border:1px solid rgba(243,239,230,.22);color:#D9D2C2;
+    background:rgba(255,255,255,.05);backdrop-filter:blur(4px);
+  }
+
+  /* ───────── 科目卡片 ───────── */
+  .section{max-width:1020px;margin:-52px auto 0;padding:0 24px;position:relative;z-index:2}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+  a.card{
+    position:relative;display:flex;flex-direction:column;overflow:hidden;
+    text-decoration:none;color:inherit;
+    background:#FFFDF9;border:1px solid rgba(32,36,46,.07);
+    border-radius:24px;padding:30px 28px 26px;
+    box-shadow:
+      0 1px 2px rgba(32,36,46,.04),
+      0 10px 30px -12px rgba(32,36,46,.14);
+    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s, border-color .28s;
+  }
+  a.card:hover{transform:translateY(-7px);border-color:var(--ac);box-shadow:0 2px 4px rgba(32,36,46,.05), 0 24px 48px -16px var(--acsh)}
+  a.card .wm{ /* 右下水印大字 */
+    position:absolute;right:-14px;bottom:-34px;font-size:9.5rem;line-height:1;
+    font-family:"Songti SC","STSong","SimSun",serif;font-weight:800;
+    color:var(--ac);opacity:.07;pointer-events:none;user-select:none;
+  }
+  a.card .top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .stamp{
+    width:52px;height:52px;border-radius:16px;flex:0 0 auto;
+    display:grid;place-items:center;position:relative;
+    background:linear-gradient(150deg,var(--ac),var(--ac2));
+    color:#FBF7EE;font-size:1.5rem;font-weight:800;
+    font-family:"Songti SC","STSong","SimSun",serif;
+    box-shadow:inset 0 -3px 8px rgba(0,0,0,.18), 0 4px 12px -4px var(--acsh);
+  }
+  .stamp::after{content:"";position:absolute;inset:3px;border:1px solid rgba(255,255,255,.28);border-radius:12px}
+  a.card h2{font-size:1.3rem;font-weight:800;letter-spacing:.04em}
+  a.card .ed{font-size:.74rem;color:var(--ink3);margin-top:3px;letter-spacing:.02em}
+  a.card .desc{font-size:.88rem;color:var(--ink2);flex:1}
+  a.card .stats{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 16px}
+  a.card .stats span{
+    font-size:.74rem;color:var(--ink2);background:var(--soft2);
+    border:1px solid var(--line);border-radius:999px;padding:3px 12px;
+  }
+  a.card .go{
+    display:flex;align-items:center;justify-content:space-between;
+    font-size:.86rem;font-weight:700;color:var(--ac);
+    border-top:1px dashed var(--line);padding-top:14px;
+  }
+  a.card .go i{font-style:normal;transition:transform .25s}
+  a.card:hover .go i{transform:translateX(5px)}
+
+  .yu{--ac:var(--yu);--ac2:var(--yu2);--acsh:rgba(168,67,47,.35);--soft2:#F8F1EC}
+  .shu{--ac:var(--shu);--ac2:var(--shu2);--acsh:rgba(47,93,140,.35);--soft2:#EEF3F9}
+  .ying{--ac:var(--ying);--ac2:var(--ying2);--acsh:rgba(46,125,100,.35);--soft2:#EDF5F1}
+
+  /* ───────── 规划横条 ───────── */
+  .plan-row{
+    max-width:1020px;margin:22px auto 0;padding:0 24px;
+  }
+  a.plan{
+    display:flex;align-items:center;gap:20px;text-decoration:none;color:inherit;
+    background:linear-gradient(120deg,#232B3E,#2E3648);color:#F3EFE6;
+    border-radius:22px;padding:22px 28px;overflow:hidden;position:relative;
+    box-shadow:0 10px 30px -14px rgba(28,34,48,.5);
+    transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s;
+  }
+  a.plan:hover{transform:translateY(-4px);box-shadow:0 18px 44px -14px rgba(28,34,48,.6)}
+  a.plan .pstamp{
+    width:50px;height:50px;border-radius:14px;flex:0 0 auto;
+    display:grid;place-items:center;border:1.5px solid rgba(217,184,124,.5);
+    font-family:"Songti SC","STSong","SimSun",serif;font-size:1.3rem;color:#D9B87C;font-weight:800;
+  }
+  a.plan h3{font-size:1.08rem;letter-spacing:.04em}
+  a.plan p{font-size:.83rem;color:#B9BCC8;margin-top:2px}
+  a.plan .arr{margin-left:auto;font-size:1.2rem;color:#D9B87C;transition:transform .25s}
+  a.plan:hover .arr{transform:translateX(5px)}
+  a.plan::after{
+    content:"规";position:absolute;right:26px;top:-30px;font-size:7.5rem;line-height:1;
+    font-family:"Songti SC","STSong","SimSun",serif;color:rgba(217,184,124,.07);pointer-events:none;
+  }
+
+  /* ───────── 页脚 ───────── */
+  footer{max-width:1020px;margin:40px auto 0;padding:0 24px 46px;text-align:center}
+  footer .rule{display:flex;align-items:center;gap:14px;margin-bottom:16px;color:var(--line)}
+  footer .rule::before,footer .rule::after{content:"";flex:1;height:1px;background:var(--line)}
+  footer .rule span{font-size:.72rem;letter-spacing:.4em;color:var(--ink3)}
+  footer p{font-size:.78rem;color:var(--ink3);line-height:2}
+  footer b{color:var(--ink2);font-weight:700}
+
+  @media(max-width:760px){
+    .hero{padding:60px 20px 80px;border-radius:0 0 28px 28px}
+    .hero .seal{display:none}
+    .section,.plan-row,footer{padding-left:18px;padding-right:18px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="seal"><b>学</b><b>而</b><b>时</b><b>习</b><small>二〇二六</small></div>
+  <div class="wrap">
+    <div class="k">W O R K B E N C H · 二〇二六 — 二〇二七学年</div>
+    <h1>三年级<em>学习台</em></h1>
+    <p class="lead">语文 · 数学 · 英语，三科教材版本各不相同。错题自动归档，测验限时计时，星星记录每一次进步。</p>
+    <div class="chips">
+      <span class="chip">基础 · 提高 · 挑战 三层难度</span>
+      <span class="chip">错题连对三次自动出册</span>
+      <span class="chip">测验限时 · 时间到自动交卷</span>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="grid">
+    <a class="card yu" href="demo/chinese-g3up/out/index.html">
+      <div class="wm">语</div>
+      <div class="top">
+        <div class="stamp">语</div>
+        <div><h2>语文</h2><div class="ed">统编版 · 人民教育出版社</div></div>
+      </div>
+      <div class="desc">八个单元：有新鲜感的词句、六首必背古诗、预测策略、找关键句，直到第一篇文言文《司马光》。</div>
+      <div class="stats"><span>664 题</span><span>期中 + 期末</span><span>含习作指导</span></div>
+      <div class="go">进入语文 <i>→</i></div>
+    </a>
+
+    <a class="card shu" href="demo/math-g3up/out/index.html">
+      <div class="wm">数</div>
+      <div class="top">
+        <div class="stamp">数</div>
+        <div><h2>数学</h2><div class="ed">苏教版 · 江苏凤凰教育出版社</div></div>
+      </div>
+      <div class="desc">九个单元：混合运算、乘除笔算、量感与图形，直至期末复习。每个知识点基础、提高、挑战三层递进。</div>
+      <div class="stats"><span>964 题</span><span>教学视频</span><span>期中 + 期末</span></div>
+      <div class="go">进入数学 <i>→</i></div>
+    </a>
+
+    <a class="card ying" href="demo/english-g3up/out/index.html">
+      <div class="wm">英</div>
+      <div class="top">
+        <div class="stamp">英</div>
+        <div><h2>英语</h2><div class="ed">译林版（三年级起点）· 译林出版社</div></div>
+      </div>
+      <div class="desc">八个单元，每单元一个 Big question。打招呼到介绍家人，26 个字母滚动认读，另有背单词闯关。</div>
+      <div class="stats"><span>592 题</span><span>背单词 70 词</span><span>期中 + 期末</span></div>
+      <div class="go">进入英语 <i>→</i></div>
+    </a>
+  </div>
+</section>
+
+<div class="plan-row">
+  <a class="plan" href="demo/plan.html">
+    <div class="pstamp">习</div>
+    <div>
+      <h3>学期学习规划</h3>
+      <p>二十周进度表 · 每日三十分钟流程 · 期末四周冲刺法 · 难度使用规则</p>
+    </div>
+    <span class="arr">→</span>
+  </a>
+</div>
+
+<footer>
+  <div class="rule"><span>学 而 不 思 则 罔</span></div>
+  <p>错题本连对三次移出 · 星星每项取最高不累加 · 所有记录保存在本机浏览器<br>
+  <b>全部测验均为自主练习，不计排名，不代替学校考试</b></p>
+  <p style="margin-top:10px;font-size:.72rem">本页托管于 GitHub Pages · 学习记录仅存本机浏览器</p>
+</footer>
+
+</body>
+</html>
