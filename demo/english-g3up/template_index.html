@@ -35,6 +35,7 @@
     box-shadow:inset 0 -2px 6px rgba(0,0,0,.14)}
   .uinfo{flex:1;min-width:0}
   .uname{font-size:1.05rem;font-weight:700;line-height:1.4}
+  .uschool{font-size:.76rem;color:var(--ink3);margin-top:1px;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
   .usub{font-size:.78rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:var(--soft);border:1px solid var(--line);
     border-radius:999px;padding:8px 17px 8px 13px;flex:0 0 auto}
@@ -69,6 +70,16 @@
 
   footer{text-align:center;font-size:.78rem;color:var(--ink3);padding:56px 0 0;line-height:2}
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 </head>
 <body>
 <div class="wrap">
@@ -82,6 +93,7 @@
     <div class="avatar" id="avatar">小</div>
     <div class="uinfo">
       <div class="uname" id="uname">小朋友</div>
+      <div class="uschool" id="uschool"></div>
       <div class="usub" id="usub">还没有获得星星</div>
     </div>
     <div class="ustar">
@@ -119,12 +131,14 @@
     const COLORS = ["#2E6BE6","#0E9F6E","#C27803","#7C3AED","#D4537E","#0F766E","#B4460E","#4B5563"];
     let p = {};
     try{ p = JSON.parse(localStorage.getItem(KEY) || "{}"); }catch(e){ p = {}; }
-    const name = p.name || "小朋友";
+    const name = p.name || (typeof __DISP!=="undefined" && __DISP) || "小朋友";
     const ci = (p.color || 0) % COLORS.length;
     const av = document.getElementById("avatar");
     av.style.background = COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     document.getElementById("uname").textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const st = p.stars || {};
     let total = 0;
     for(const k in st) total += st[k] || 0;

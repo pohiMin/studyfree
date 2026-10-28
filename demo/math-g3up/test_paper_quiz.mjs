@@ -32,6 +32,7 @@ ws.on("message", raw => {
   if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); }
 });
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2400); }
@@ -104,7 +105,7 @@ chk("交卷后倒计时停住", tmAfter === "已交卷", tmAfter);
 chk("交卷按钮变已交卷", btnTxt === "已交卷", btnTxt);
 
 // 星记到 u1:paper
-const prof = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1")`) || "{}");
+const prof = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1.测试甲")`) || "{}");
 chk("检测卷星星写入", (prof.stars || {})["u1:paper"] === 3, JSON.stringify(prof.stars));
 
 // ── 2. 期中卷：限时 45 分钟、34 题、满分 100 ──

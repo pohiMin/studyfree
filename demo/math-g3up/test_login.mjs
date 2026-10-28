@@ -1,4 +1,5 @@
-// 测试：登录流程 —— 创建用户 / session / 数据按用户隔离 / 切换 / 退出
+// 测试：账号制（登录账号+学校班级+姓名）登录 + 门禁 + 账号管理页
+// 用法：node test_login.mjs <BASE>   例：http://127.0.0.1:8897/   （服务根须为 demo/）
 import { spawn } from "node:child_process";
 import http from "node:http";
 import os from "node:os";
@@ -9,12 +10,12 @@ const require = createRequire(import.meta.url);
 const WebSocket = require("C:/Users/10061/WorkBuddy/studyfree/ChinaStudyFree/node_modules/ws");
 
 const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const DBG = 9362;
+const DBG = 9352;
 const BASE = process.argv[2] || "http://127.0.0.1:8897/";
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 const get = (u) => new Promise((res, rej) => { http.get(u, r => { let d = ""; r.on("data", c => d += c); r.on("end", () => res(d)); }).on("error", rej); });
 
-const udd = fs.mkdtempSync(path.join(os.tmpdir(), "lg-"));
+const udd = fs.mkdtempSync(path.join(os.tmpdir(), "login-"));
 const proc = spawn(EDGE, ["--headless=new", "--disable-gpu", "--no-sandbox",
   `--remote-debugging-port=${DBG}`, `--user-data-dir=${udd}`, "about:blank"], { stdio: "ignore" });
 await sleep(2200);
@@ -23,11 +24,18 @@ const list = JSON.parse(await get(`http://127.0.0.1:${DBG}/json/list`));
 const page = list.find(t => t.type === "page");
 const ws = new WebSocket(page.webSocketDebuggerUrl, { perMessageDeflate: false, maxPayload: 64 * 1024 * 1024 });
 await new Promise(r => ws.on("open", r));
+
 let seq = 0; const pending = new Map();
 const send = (m, p = {}) => new Promise(r => { const i = ++seq; pending.set(i, r); ws.send(JSON.stringify({ id: i, method: m, params: p })); });
-ws.on("message", raw => { let m; try { m = JSON.parse(raw); } catch { return; } if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); } });
+ws.on("message", raw => {
+  let m; try { m = JSON.parse(raw); } catch { return; }
+  if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); }
+});
 await send("Page.enable"); await send("Runtime.enable");
 await send("Emulation.setDeviceMetricsOverride", { width: 1024, height: 768, deviceScaleFactor: 1, mobile: false });
+/* 管理页的 confirm/alert 在无头下自动压掉：删除流程直接放行 */
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `window.confirm=()=>true; window.alert=()=>{};` });
+/* 注意：本测试不种 session——门禁行为本身就是被测对象 */
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2000); }
 async function ev(e) {
@@ -35,85 +43,123 @@ async function ev(e) {
   if (r?.exceptionDetails) return "ERR:" + (r.exceptionDetails.exception?.description || r.exceptionDetails.text);
   return r?.result?.value;
 }
-const log = [];
-const chk = (n, c, x) => log.push((c ? "PASS " : "FAIL ") + n + (x !== undefined ? " → " + x : ""));
+let pass = 0, fail = 0;
+function chk(name, cond, detail) {
+  if (cond) { pass++; console.log("  PASS " + name); }
+  else { fail++; console.log("  FAIL " + name + (detail ? "  → " + detail : "")); }
+}
 
+/* 1. 登录页：账号密码表单 */
 await nav(BASE + "login.html");
-await ev(`localStorage.clear()`);
-await nav(BASE + "login.html");
+chk("登录页可达", (await ev(`location.pathname`)).endsWith("login.html"));
+chk("表单含账号与密码输入框", await ev(`!!document.getElementById("acc") && !!document.getElementById("pw") && !!document.getElementById("dologin")`));
+await ev(`document.getElementById("dologin").click()`); await sleep(200);
+chk("空提交被拦", await ev(`document.getElementById("err").className.indexOf("show")>-1`));
+await ev(`document.getElementById("acc").value="nobody1"`);
+await ev(`document.getElementById("pw").value="1234"`);
+await ev(`document.getElementById("dologin").click()`); await sleep(200);
+chk("不存在的账号被拦", ((await ev(`document.getElementById("err").textContent`)) || "").includes("不存在"));
 
-// 1. 创建用户 测试甲
-await ev(`document.getElementById("nm").value="测试甲"; document.getElementById("create").click();`);
-await sleep(800);
-const curUrl = await ev(`location.pathname.split("/").pop()`);
-const sess1 = await ev(`JSON.parse(localStorage.getItem("studyfree.session.v1")||"null")`);
-chk("创建后自动登录并跳回首页", curUrl.includes("首页") || curUrl.includes("%E9%A6%96"), curUrl);
-chk("session 记录了测试甲", sess1 && sess1.name === "测试甲", JSON.stringify(sess1));
+/* 2. 管理页：管理员密码 + 建号（学校/班级/账号/密码） */
+await nav(BASE + "accounts.html");
+chk("管理页首次显示设置管理员密码", await ev(`document.getElementById("setup").style.display !== "none"`));
+await ev(`document.getElementById("s1").value="admin9"`);
+await ev(`document.getElementById("s2").value="admin9"`);
+await ev(`document.getElementById("mkadm").click()`); await sleep(300);
+chk("设置后直接进入管理面板", await ev(`document.getElementById("panel").style.display !== "none"`));
 
-// 2. 首页 chip 显示当前用户
-const chip = await ev(`(document.getElementById("userchip")||{}).textContent || ""`);
-chk("首页显示当前使用者", /测试甲/.test(chip), (chip || "").slice(0, 24));
+const fillCreate = (nm, sch, cls, acc, p1, p2) => ev(`(function(){
+  document.getElementById("nnm").value=${JSON.stringify(nm)};
+  document.getElementById("nsch").value=${JSON.stringify(sch)};
+  document.getElementById("ncls").value=${JSON.stringify(cls)};
+  document.getElementById("nacc").value=${JSON.stringify(acc)};
+  document.getElementById("npw").value=${JSON.stringify(p1)};
+  document.getElementById("npw2").value=${JSON.stringify(p2)};
+  document.getElementById("mkuser").click();
+  return document.getElementById("e3").className.indexOf("show")>-1 ? document.getElementById("e3").textContent : "ok";
+})()`);
+let r = await fillCreate("小明", "实验小学", "三（2）班", "xm2026a", "1234", "1234"); await sleep(200);
+chk("建号成功", r === "ok", r);
+chk("列表显示姓名/账号/学校班级", ((await ev(`document.getElementById("ulist").textContent`)) || "").includes("实验小学") &&
+    ((await ev(`document.getElementById("ulist").textContent`)) || "").includes("三（2）班"));
+chk("账号 xm2026a 在列表", ((await ev(`document.getElementById("ulist").textContent`)) || "").includes("xm2026a"));
+r = await fillCreate("小明2", "实验小学", "三（2）班", "xm2026a", "1234", "1234");
+chk("重复账号被拒", r.includes("已存在"), r);
+r = await fillCreate("小刚", "实验小学", "三（2）班", "小刚abc", "1234", "1234");
+chk("中文账号被拒", r.includes("英文字母"), r);
+r = await fillCreate("小刚", "", "三（2）班", "xg2026c", "1234", "1234");
+chk("缺学校被拒", r.includes("学校"), r);
+r = await fillCreate("小刚", "实验小学", "三（2）班", "ab", "1234", "1234");
+chk("过短账号被拒", r.includes("3–12"), r);
+r = await fillCreate("小红", "实验小学", "三（2）班", "xh2026b", "5678", "5678"); await sleep(200);
+chk("小红建号成功", r === "ok", r);
 
-// 3. 数学 u1 答错一题 → 数据落在 测试甲 的 key 下
-await nav(BASE + "math-g3up/out/u1.html");
-const wrong = await ev(`(function(){
-  var n=0;
-  var qs=document.querySelectorAll("#kps .q");
-  for(var i=0;i<qs.length && n<1;i++){
-    var q=qs[i], opts=q.querySelectorAll(".opt");
-    if(!opts.length) continue;
-    var ans=q.getAttribute("data-ans");
-    for(var j=0;j<opts.length;j++){ if(opts[j].getAttribute("data-val")!==ans){ opts[j].click(); n++; break; } }
+/* 3. 管理员重锁 / 错密拒 / 改小明密码 */
+await ev(`document.getElementById("relock").click()`); await sleep(200);
+chk("重新锁定后面板隐藏", await ev(`document.getElementById("panel").style.display === "none"`));
+await ev(`document.getElementById("up").value="wrongpw"`);
+await ev(`document.getElementById("dounlock").click()`); await sleep(200);
+chk("错误管理密码被拒", await ev(`document.getElementById("e2").className.indexOf("show")>-1`));
+await ev(`document.getElementById("up").value="admin9"`);
+await ev(`document.getElementById("dounlock").click()`); await sleep(200);
+chk("正确管理密码解锁", await ev(`document.getElementById("panel").style.display !== "none"`));
+
+const boxIdx = async (acc) => ev(`(function(){
+  var boxes=[].slice.call(document.querySelectorAll("#ulist .uitem"));
+  for(var i=0;i<boxes.length;i++){
+    var a=boxes[i].querySelector(".acc");
+    if(a && a.textContent.indexOf(${JSON.stringify(acc)})>-1) return i;
   }
-  return n;
+  return -1;
 })()`);
-await sleep(400);
-const keysA = await ev(`Object.keys(localStorage).filter(function(k){ return k.indexOf("wrongbook")>-1; })`);
-chk("错题 key 带用户后缀", Array.isArray(keysA) && keysA.some(k => k.indexOf(".测试甲") > -1), JSON.stringify(keysA));
-const wbA = JSON.parse(await ev(`localStorage.getItem("math3.wrongbook.v1.测试甲")`) || "{}");
-chk("测试甲错题已入库", Object.keys(wbA).length >= 1, Object.keys(wbA).length + " 条");
-chk("游客 key 保持为空", !(await ev(`localStorage.getItem("math3.wrongbook.v1")`)),
-    "游客 wrongbook 不存在 ✓");
+let idx = await boxIdx("xm2026a");
+await ev(`(function(){ var b=document.querySelectorAll("#ulist .uitem")[${idx}]; b.querySelector('[data-act="pw"]').click(); })()`); await sleep(200);
+await ev(`(function(){ var b=document.querySelectorAll("#ulist .uitem")[${idx}]; b.querySelector("[data-p1]").value="4321"; b.querySelector("[data-p2]").value="4321"; b.querySelector("[data-save]").click(); })()`); await sleep(300);
+chk("改密成功", await ev(`(function(){ var u=JSON.parse(localStorage.getItem("studyfree.users.v1")); return u["xm2026a"].pw ? "yes" : "no"; })()`) === "yes");
 
-// 4. 切换到 测试乙 → 错题本应为空
-await nav(BASE + "login.html");
-await ev(`document.getElementById("nm").value="测试乙"; document.getElementById("create").click();`);
-await sleep(800);
+/* 4. 删号（confirm 已放行） */
+idx = await boxIdx("xh2026b");
+await ev(`(function(){ var b=document.querySelectorAll("#ulist .uitem")[${idx}]; b.querySelector('[data-act="del"]').click(); })()`); await sleep(400);
+const namesAfter = await ev(`Object.keys(JSON.parse(localStorage.getItem("studyfree.users.v1"))).join(",")`);
+chk("删号后小红账号消失", !namesAfter.includes("xh2026b"), namesAfter);
+chk("小明账号保留", namesAfter.includes("xm2026a"));
+
+/* 5. 门禁 + 登录 */
 await nav(BASE + "math-g3up/out/u1.html");
-const wbB = await ev(`(function(){
-  for(var i=0;i<localStorage.length;i++){ var k=localStorage.key(i);
-    if(k.indexOf("wrongbook")>-1 && k.indexOf("测试乙")>-1) return localStorage.getItem(k); }
-  return null;
-})()`);
-chk("测试乙错题本为空（数据隔离）", wbB === null, String(wbB));
+chk("未登录访问学习页被拦到登录页", (await ev(`location.pathname`)).endsWith("login.html"));
+await ev(`document.getElementById("acc").value="xm2026a"`);
+await ev(`document.getElementById("pw").value="0000"`);
+await ev(`document.getElementById("dologin").click()`); await sleep(300);
+chk("错密码被拒", ((await ev(`document.getElementById("err").textContent`)) || "").includes("不对"));
+await ev(`document.getElementById("pw").value="4321"`);
+await ev(`document.getElementById("dologin").click()`); await sleep(2000);
+chk("登录后回到被拦截的原页", (await ev(`location.pathname`)).includes("math-g3up/out/u1.html"));
+chk("session 用登录账号", ((await ev(`localStorage.getItem("studyfree.session.v1")`)) || "").includes("xm2026a"));
+chk("页面内 __USER 为登录账号", await ev(`(typeof __USER==="undefined"?"(none)":__USER)`) === "xm2026a");
+chk("用户条显示姓名（__DISP）", (await ev(`document.getElementById("unametxt").textContent`)) === "小明");
 
-// 5. 切回测试甲 → 错题还在
+/* 6. 旧账号迁移：无密码姓名账号 → 输账号后补设密码 */
+await ev(`localStorage.setItem("studyfree.users.v1", JSON.stringify({"老王":{pw:null,created:0,last:0}}))`);
 await nav(BASE + "login.html");
-await ev(`(function(){
-  var bs=[].slice.call(document.querySelectorAll(".uitem"));
-  for(var i=0;i<bs.length;i++){ if(bs[i].textContent.indexOf("测试甲")>-1){ bs[i].click(); return 1; } }
-  return 0;
-})()`);
-await sleep(800);
-await nav(BASE + "math-g3up/out/u1.html");
-const wbA2 = await ev(`localStorage.getItem("math3.wrongbook.v1.测试甲")`);
-chk("切回测试甲错题仍在", wbA2 && Object.keys(JSON.parse(wbA2)).length >= 1,
-    wbA2 ? Object.keys(JSON.parse(wbA2)).length + " 条" : "无");
+await ev(`document.getElementById("acc").value="老王"`);
+await ev(`document.getElementById("pw").value="1111"`);
+await ev(`document.getElementById("dologin").click()`); await sleep(300);
+chk("旧账号进入补设密码流程", await ev(`document.getElementById("setbox").className.indexOf("show")>-1`));
+await ev(`document.getElementById("np1").value="ab12"`);
+await ev(`document.getElementById("np2").value="ab12"`);
+await ev(`document.getElementById("doset").click()`); await sleep(2000);
+chk("补设密码后登录到首页", decodeURIComponent(await ev(`location.pathname`)).endsWith("首页.html"));
+const lw = await ev(`(function(){ var u=JSON.parse(localStorage.getItem("studyfree.users.v1")); return u["老王"] && u["老王"].pw && u["老王"].pw.h ? "hashed" : "none"; })()`);
+chk("旧账号密码已哈希保存", lw === "hashed", lw);
 
-// 6. 退出登录 → 游客
+/* 7. 首页用户徽章显示姓名 */
+await nav(BASE + "首页.html");
+chk("首页徽章显示姓名", ((await ev(`document.getElementById("userchip").textContent`)) || "").includes("老王"));
+
+/* 8. 退出登录 */
 await nav(BASE + "login.html");
-await ev(`document.getElementById("logout").click()`);
-await sleep(500);
-const sess2 = await ev(`localStorage.getItem("studyfree.session.v1")`);
-chk("退出后 session 清空", sess2 === null, String(sess2));
+await ev(`document.getElementById("logout").click()`); await sleep(300);
+chk("退出后 session 清除", (await ev(`localStorage.getItem("studyfree.session.v1")`)) === null);
 
-// 7. 平板字号断点（1024 视口下 html font-size 应为 18.5px）
-await nav(BASE + "math-g3up/out/u1.html");
-const fs1 = await ev(`getComputedStyle(document.documentElement).fontSize`);
-chk("平板横屏字号 18.5px", fs1 === "18.5px", fs1);
-
-console.log(log.join("\n"));
-console.log("\n结果：", log.every(x => x.startsWith("PASS")) ? "全部通过" : "存在失败项");
-ws.close(); proc.kill();
-try { fs.rmSync(udd, { recursive: true, force: true }); } catch {}
-process.exit(0);
+console.log("\n结果：" + pass + " 过，" + fail + " 败");
+ws.close(); proc.kill(); process.exit(fail ? 1 : 0);

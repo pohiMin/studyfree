@@ -31,6 +31,7 @@ ws.on("message", raw => {
 });
 
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
 async function nav(url) {
@@ -72,7 +73,7 @@ await ev(`(function(){
   bad.click(); return 1;
 })()`);
 await sleep(400);
-let obj = JSON.parse(await ev(`localStorage.getItem("math3.wrongbook.v1")`) || "{}");
+let obj = JSON.parse(await ev(`localStorage.getItem("math3.wrongbook.v1.测试甲")`) || "{}");
 let keys = Object.keys(obj);
 const genKeys = keys.filter(k => k.endsWith("_v"));
 chk("答错后入库（原题 + 变式）", keys.length === 2 && genKeys.length === 1, keys.length + " 条，其中变式 " + genKeys.length);
@@ -91,7 +92,7 @@ for (let i = 1; i <= 3; i++) {
   await nav(BASE + "review.html");
   const answered = await ev(ANSWER_ALL_RIGHT);
   await sleep(500);
-  const o = JSON.parse(await ev(`localStorage.getItem("math3.wrongbook.v1")`) || "{}");
+  const o = JSON.parse(await ev(`localStorage.getItem("math3.wrongbook.v1.测试甲")`) || "{}");
   const k = Object.keys(o);
   const streaks = k.map(x => o[x].streak);
   const ok = k.length === 0 || streaks.every(s => s === i);

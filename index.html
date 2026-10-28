@@ -184,6 +184,7 @@
       <span class="chip">错题连对三次自动出册</span>
       <span class="chip">测验限时 · 时间到自动交卷</span>
       <a class="chip userchip" id="userchip" href="demo/login.html"></a>
+      <a class="chip" href="demo/accounts.html">家长 · 账号管理</a>
     </div>
   </div>
 </header>
@@ -248,7 +249,11 @@
   var cur = null;
   try{ cur = JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
   var chip = document.getElementById("userchip");
-  if(cur && cur.name){ chip.textContent = "当前使用者：" + cur.name + "（点此切换）"; }
+  if(cur && cur.name){
+    var disp = cur.name;
+    try{ var u = JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[cur.name]; if(u && u.disp) disp = u.disp; }catch(e){}
+    chip.textContent = "当前使用者：" + disp + "（点此切换）";
+  }
   else{ chip.textContent = "登录使用者 · 记录我的学习进度"; }
 })();
 </script>

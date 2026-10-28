@@ -64,11 +64,13 @@
 
   /* 侧栏顶部用户条 */
   .snav{padding-right:14px}
-  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff;flex-wrap:wrap;position:relative}
   .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
   .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .uinfo{flex:1;min-width:0}
+  .side .userbar .uschool{flex-basis:100%;margin-left:41px;font-size:.66rem;max-width:none}
   .side .userbar .usub{display:none}
-  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px;position:absolute;right:10px;top:12px}
   .side .userbar .ustar svg{width:13px;height:13px}
   .side .userbar .ustar b{font-size:.9rem}
   .side .userbar .ustar .lbl{font-size:.64rem}
@@ -103,6 +105,7 @@
   .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
   .uname:hover{color:var(--pri)}
   .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .uschool{font-size:.72rem;color:var(--ink3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-basis:100%}
   .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
     border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
@@ -377,6 +380,14 @@
     .q-top{gap:9px}
   }
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 <div class="layout" id="layout">
@@ -390,6 +401,7 @@
         <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
         <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
       </div>
+      <div class="uschool" id="uschool"></div>
       <div class="ustar">
         <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
         <b id="startotal">0</b><span class="lbl">颗星</span>
@@ -439,6 +451,8 @@
 </div>
 
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "苏教版 · 数学 · 三年级上册", "edition": "2025 年 7 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-5743-1775-8", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点，再做题。答错的题会立刻给出解析，错在哪要看清，不要只记答案。<br><b>顺序建议：</b>第二、六单元（乘、除笔算）是本册最重的地基，第一、七单元（运算顺序与两步问题）紧跟其后，第四单元（量感）需要动手量，第五、八单元（图形）需要动手摆，第三单元（统计）放最后也不影响。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "混合运算与数量关系（一）"}, {"n": 2, "t": "两、三位数乘一位数"}, {"n": 3, "t": "数据的收集与整理"}, {"n": 4, "t": "毫米、分米和千米"}, {"n": 5, "t": "平移、旋转和轴对称"}, {"n": 6, "t": "两、三位数除以一位数"}, {"n": 7, "t": "数量关系的分析（一）"}, {"n": 8, "t": "观察物体（二）"}, {"n": 9, "t": "期末复习"}], "totalQ": 964, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 0, "unitTitle": "期中阶段检测", "unitSubtitle": "第一至第四单元", "sections": [], "note": "覆盖第一至第四单元", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "期中阶段检测", "subtitle": "第一单元至第四单元（混合运算 · 乘法 · 统计 · 长度单位）", "duration": 45, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、直接写出答案", "perScore": 2, "questions": [{"type": "input", "question": "5×6+18 =（  ）", "answer": "48", "explanation": "5×6=30，30+18=48。"}, {"type": "input", "question": "72-9×7 =（  ）", "answer": "9", "explanation": "9×7=63，72-63=9。"}, {"type": "input", "question": "45÷5+12 =（  ）", "answer": "21", "explanation": "45÷5=9，9+12=21。"}, {"type": "input", "question": "63-42÷6 =（  ）", "answer": "56", "explanation": "42÷6=7，63-7=56。"}, {"type": "input", "question": "(30+18)÷6 =（  ）", "answer": "8", "explanation": "30+18=48，48÷6=8。"}, {"type": "input", "question": "4×(25-17) =（  ）", "answer": "32", "explanation": "25-17=8，4×8=32。"}, {"type": "input", "question": "320×2 =（  ）", "answer": "640", "explanation": "32×2=64，末尾补 1 个 0，得 640。"}, {"type": "input", "question": "205×4 =（  ）", "answer": "820", "explanation": "4×5=20 写 0 进 2；4×0=0，0+2=2；4×2=8。得 820。"}, {"type": "input", "question": "260×3 =（  ）", "answer": "780", "explanation": "26×3=78，末尾补 1 个 0，得 780。"}, {"type": "input", "question": "48×5 =（  ）", "answer": "240", "explanation": "5×8=40 写 0 进 4；5×4=20，20+4=24。得 240。"}]}, {"name": "二、填空", "perScore": 2, "questions": [{"type": "input", "question": "6+4×8 =（  ）", "answer": "38", "explanation": "先算乘法 4×8=32，再算 6+32=38。"}, {"type": "input", "question": "下午 2 时用 24 时记时法表示是（  ）时。", "answer": "14", "unit": "时", "explanation": "2+12=14，所以是 14 时。"}, {"type": "input", "question": "20 时是晚上（  ）时。", "answer": "8", "explanation": "20-12=8，是晚上 8 时。"}, {"type": "input", "question": "从 8:00 到 11:30，经过了（  ）分钟。", "answer": "210", "unit": "分钟", "explanation": "8:00 到 11:00 是 3 小时即 180 分钟，再加 30 分钟，共 210 分钟。"}, {"type": "input", "question": "1 吨 =（  ）千克", "answer": "1000", "explanation": "1 吨 = 1000 千克。"}, {"type": "input", "question": "3000 克 =（  ）千克", "answer": "3", "explanation": "1000 克是 1 千克，3000 克是 3 千克。"}, {"type": "input", "question": "5 千米 =（  ）米", "answer": "5000", "explanation": "1 千米 = 1000 米，5 千米 = 5000 米。"}, {"type": "input", "question": "24 时是这一天的结束，也是第二天的（  ）时。", "answer": "0", "explanation": "一天从 0 时开始到 24 时结束，首尾相接。"}]}, {"name": "三、选择", "perScore": 3, "questions": [{"type": "choice", "question": "80-6×9 的得数是（  ）", "options": ["666", "26", "36"], "answer": "B", "explanation": "6×9=54，80-54=26。"}, {"type": "choice", "question": "下面算式中，先算减法的是（  ）", "options": ["45-5×6", "(45-5)×6", "45÷5-6"], "answer": "B", "explanation": "只有 B 有括号，括号里是减法，所以先算减法。"}, {"type": "choice", "question": "一个鸡蛋大约重 50（  ）", "options": ["克", "千克", "吨"], "answer": "A", "explanation": "鸡蛋很轻，用克。50 千克比人还重，明显不对。"}, {"type": "choice", "question": "下午 4 时 30 分用 24 时记时法表示是（  ）", "options": ["4 时 30 分", "14 时 30 分", "16 时 30 分"], "answer": "C", "explanation": "4+12=16，所以是 16 时 30 分。"}, {"type": "choice", "question": "一场电影 18:40 开始，20:10 结束，放映了（  ）", "options": ["1 小时 30 分", "2 小时 30 分", "1 小时 40 分"], "answer": "A", "explanation": "18:40 到 19:40 是 1 小时，19:40 到 20:10 是 30 分钟，共 1 小时 30 分。"}, {"type": "choice", "question": "下面哪个算式的积最大？", "options": ["305×3", "350×3", "300×3"], "answer": "B", "explanation": "305×3=915，350×3=1050，300×3=900。最大的是 350×3。"}]}, {"name": "四、计算（写出过程）", "perScore": 3, "questions": [{"type": "input", "question": "36+7×8 =（  ）", "answer": "92", "explanation": "7×8=56，36+56=92。"}, {"type": "input", "question": "90-6×9 =（  ）", "answer": "36", "explanation": "6×9=54，90-54=36。"}, {"type": "input", "question": "(28+44)÷8 =（  ）", "answer": "9", "explanation": "28+44=72，72÷8=9。"}, {"type": "input", "question": "5×(63-55) =（  ）", "answer": "40", "explanation": "63-55=8，5×8=40。"}, {"type": "input", "question": "407×6 =（  ）", "answer": "2442", "explanation": "6×7=42 写 2 进 4；6×0=0，0+4=4；6×4=24。得 2442。"}, {"type": "input", "question": "280×5 =（  ）", "answer": "1400", "explanation": "28×5=140，末尾补 1 个 0，得 1400。"}]}, {"name": "五、解决问题", "perScore": 7, "questions": [{"type": "input", "question": "学校买了 4 箱书，每箱 25 本，分给三年级 60 本。还剩多少本？（只填数字，单位：本）", "answer": "40", "unit": "本", "explanation": "中间量是总数：4×25=100（本）；再算 100-60=40（本）。"}, {"type": "input", "question": "一本书共 96 页，小明看了 5 天，每天看 12 页。还剩多少页？（只填数字，单位：页）", "answer": "36", "unit": "页", "explanation": "中间量是已看页数：5×12=60（页）；再算 96-60=36（页）。"}, {"type": "input", "question": "一袋大米重 25 千克，8 袋一共重多少千克？（只填数字，单位：千克）", "answer": "200", "unit": "千克", "explanation": "25×8=200（千克）。8×5=40 写 0 进 4；8×2=16，16+4=20。"}, {"type": "input", "question": "三年级 3 个班，每班 42 人，每 9 人一组。可以分成多少组？（只填数字，单位：组）", "answer": "14", "unit": "组", "explanation": "中间量是总人数：3×42=126（人）；再算 126÷9=14（组）。"}]}]}};</script>
 <script>
 (function(){
@@ -600,11 +614,13 @@
     const sub = document.getElementById("usub");
     const tot = document.getElementById("startotal");
     if(!av || !nm || !sub || !tot) return;
-    const name = pfGet("name", "小朋友");
+    const name = pfGet("name", __DISP || "小朋友");
     const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
     av.style.background = AV_COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     nm.textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const t = starTotal();
     tot.textContent = t;
     const done = Object.keys(starsMap()).length;
@@ -622,7 +638,7 @@
       renderUserbar();
     };
     nm.onclick = function(){
-      const cur = pfGet("name","小朋友");
+      const cur = pfGet("name", __DISP || "小朋友");
       const v = window.prompt("你的名字（10 字以内）", cur);
       if(v !== null){
         const t = String(v).trim().slice(0,10);

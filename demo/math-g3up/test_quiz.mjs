@@ -31,6 +31,7 @@ ws.on("message", raw => {
   if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); }
 });
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", {width:1440,height:900,deviceScaleFactor:1,mobile:false});
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2400); }
@@ -111,7 +112,7 @@ chk("全错得 1 星", starOn === 1, starOn + " 星");
 chk("列出错题分析", wrongRows > 0, wrongRows + " 行");
 
 // 6. 错题本：原错题 + 变式题
-const wbRaw = await ev(`localStorage.getItem("math3.wrongbook.v1")`);
+const wbRaw = await ev(`localStorage.getItem("math3.wrongbook.v1.测试甲")`);
 const wbObj = wbRaw ? JSON.parse(wbRaw) : {};
 const keys = Object.keys(wbObj);
 const genCount = keys.filter(k => k.endsWith("_v")).length;

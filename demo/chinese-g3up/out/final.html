@@ -64,11 +64,13 @@
 
   /* 侧栏顶部用户条 */
   .snav{padding-right:14px}
-  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff;flex-wrap:wrap;position:relative}
   .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
   .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .uinfo{flex:1;min-width:0}
+  .side .userbar .uschool{flex-basis:100%;margin-left:41px;font-size:.66rem;max-width:none}
   .side .userbar .usub{display:none}
-  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px;position:absolute;right:10px;top:12px}
   .side .userbar .ustar svg{width:13px;height:13px}
   .side .userbar .ustar b{font-size:.9rem}
   .side .userbar .ustar .lbl{font-size:.64rem}
@@ -103,6 +105,7 @@
   .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
   .uname:hover{color:var(--pri)}
   .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .uschool{font-size:.72rem;color:var(--ink3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-basis:100%}
   .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
     border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
@@ -377,6 +380,14 @@
     .q-top{gap:9px}
   }
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 <div class="layout" id="layout">
@@ -390,6 +401,7 @@
         <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
         <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
       </div>
+      <div class="uschool" id="uschool"></div>
       <div class="ustar">
         <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
         <b id="startotal">0</b><span class="lbl">颗星</span>
@@ -439,6 +451,8 @@
 </div>
 
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "统编版 · 语文 · 三年级上册", "edition": "2025 年 6 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-107-39754-7", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点讲解，再做题。答错的题会立刻给出解析，错的字要动手写一遍，不要只看。<br><b>顺序建议：</b>第二、七单元（六首古诗）要背熟默对；第三单元是阅读策略单元，练的是“预测要有依据”，不是背故事；第六、七单元的“找关键句、围绕一个意思写”是习作地基；第八单元第一次学文言文，先读通再理解。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "学校生活"}, {"n": 2, "t": "金秋时节"}, {"n": 3, "t": "预测"}, {"n": 4, "t": "童话世界"}, {"n": 5, "t": "留心观察"}, {"n": 6, "t": "祖国山河"}, {"n": 7, "t": "自然之美"}, {"n": 8, "t": "美好品质"}], "totalQ": 664, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": -1, "unitTitle": "语文期末检测卷", "unitSubtitle": "全册八个单元", "sections": [], "note": "覆盖全册八个单元", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "语文期末检测卷", "subtitle": "全册八个单元（含六首必背古诗）", "duration": 70, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、选择正确读音", "perScore": 2, "questions": [{"type": "choice", "question": "汉族的『汉』读：", "options": ["hàn", "háng", "fàn"], "answer": "A", "explanation": "汉读 hàn。"}, {"type": "choice", "question": "海报的『铺』（店铺）：", "options": ["pù", "pū", "pǔ"], "answer": "A", "explanation": "店铺读 pù。"}, {"type": "choice", "question": "《鹿柴》的『柴』读：", "options": ["zhài", "chái", "cài"], "answer": "A", "explanation": "鹿柴的柴读 zhài。"}, {"type": "choice", "question": "海参的『参』读：", "options": ["shēn", "cān", "sēn"], "answer": "A", "explanation": "海参读 shēn。"}, {"type": "choice", "question": "栖息的『栖』读：", "options": ["qī", "xī", "qì"], "answer": "A", "explanation": "栖读 qī。"}, {"type": "choice", "question": "战斗的『斗』读：", "options": ["dòu", "dǒu", "dōu"], "answer": "A", "explanation": "战斗读 dòu。"}, {"type": "choice", "question": "几乎的『几』读：", "options": ["jī", "jǐ", "jì"], "answer": "A", "explanation": "几乎读 jī。"}, {"type": "choice", "question": "音乐的『乐』读：", "options": ["yuè", "lè", "yuē"], "answer": "A", "explanation": "音乐读 yuè。"}]}, {"name": "二、选择正确的字", "perScore": 2, "questions": [{"type": "choice", "question": "校园里十分安______。", "options": ["静", "清", "睛"], "answer": "A", "explanation": "安静。"}, {"type": "choice", "question": "我____察了绿豆发芽。", "options": ["观", "关", "官"], "answer": "A", "explanation": "观察。"}, {"type": "choice", "question": "翠鸟____起小鱼飞走了。", "options": ["衔", "街", "衍"], "answer": "A", "explanation": "衔：用嘴叼。"}, {"type": "choice", "question": "他____不犹豫地冲上去。", "options": ["毫", "豪", "亳"], "answer": "A", "explanation": "毫不犹豫的毫下面是毛；豪下面是豕（自豪）；亳读 bó，是地名用字（安徽亳州），下面比毫少一横。"}, {"type": "choice", "question": "那里非常____险。", "options": ["危", "威", "微"], "answer": "A", "explanation": "危险。"}]}, {"name": "三、把词语补充完整", "perScore": 2, "questions": [{"type": "input", "question": "五彩____纷", "answer": "缤", "explanation": "五彩缤纷。"}, {"type": "input", "question": "秋高____爽", "answer": "气", "explanation": "秋高气爽。"}, {"type": "input", "question": "五____十色", "answer": "光", "explanation": "五光十色。"}, {"type": "input", "question": "争分____秒", "answer": "夺", "explanation": "争分夺秒。"}, {"type": "input", "question": "引人____目", "answer": "注", "explanation": "引人注目。"}]}, {"name": "四、判断对错", "perScore": 2, "questions": [{"type": "true_false", "question": "『秋天的雨，吹起了金色的小喇叭』是拟人句。", "answer": "对", "explanation": "把秋雨当成人写。"}, {"type": "true_false", "question": "预测课文时，猜错了就没有意义。", "answer": "错", "explanation": "预测重在依据，猜错可修正。"}, {"type": "true_false", "question": "牛有四个胃，会反刍。", "answer": "对", "explanation": "红头脱险的科学依据。"}, {"type": "true_false", "question": "草地中午变金色是因为草枯了。", "answer": "错", "explanation": "是蒲公英花朵张开。"}, {"type": "true_false", "question": "默读时要出声读。", "answer": "错", "explanation": "默读不出声、不指读。"}]}, {"name": "五、按课文内容填空", "perScore": 4, "questions": [{"type": "input", "question": "《大青树下的小学》：最有趣的是，跑来了____只猴子。", "answer": "两", "explanation": "课文原句。"}, {"type": "input", "question": "秋天的雨，是一把____。（两个字）", "answer": "钥匙", "explanation": "课文把秋雨比作钥匙。"}, {"type": "input", "question": "原来，蒲公英的花就像我们的____，可以张开、合上。", "answer": "手掌", "explanation": "课文原句。"}, {"type": "input", "question": "西沙群岛的海里一半是水，一半是____。", "answer": "鱼", "explanation": "夸张写鱼多。"}, {"type": "input", "question": "群儿戏于庭，一儿登瓮，足跌____水中。（填一个字）", "answer": "没", "explanation": "没读 mò，淹没。"}, {"type": "input", "question": "《大自然的声音》：____是大自然的音乐家。（填一个事物）", "answer": "风", "explanation": "风是大自然的音乐家。"}]}, {"name": "六、古诗默写与理解", "perScore": 3, "questions": [{"type": "input", "question": "《山行》：停车坐爱枫林晚，____红于二月花。（填三个字）", "answer": "霜叶", "explanation": "霜叶红于二月花。"}, {"type": "input", "question": "《望天门山》：天门中断楚江开，____东流至此回。（填两个字）", "answer": "碧水", "explanation": "碧水东流至此回。"}, {"type": "input", "question": "《饮湖上初晴后雨》：欲把西湖比西子，____总相宜。（填四个字）", "answer": "淡妆浓抹", "explanation": "淡妆浓抹总相宜。"}, {"type": "choice", "question": "『一年好景君须记，最是橙黄橘绿时』出自：", "options": ["《赠刘景文》", "《山行》", "《鹿柴》"], "answer": "A", "explanation": "苏轼的《赠刘景文》。"}]}, {"name": "七、阅读与表达", "perScore": 3, "questions": [{"type": "choice", "question": "『西沙群岛的海里一半是水，一半是鱼』的作用是：", "options": ["概括说明鱼非常多", "教算术", "说明水清"], "answer": "A", "explanation": "中心句，夸张写鱼多。"}, {"type": "choice", "question": "司马光救人的办法说明他：", "options": ["遇事冷静、肯动脑筋", "力气很大", "爱砸东西"], "answer": "A", "explanation": "别人跑了他不跑，想出砸瓮放水。"}, {"type": "choice", "question": "写『那次经历真难忘』，经过部分要：", "options": ["一步一步写具体", "一句话带过", "只写感受"], "answer": "A", "explanation": "经过是核心。"}, {"type": "choice", "question": "『围绕一个意思写』的意思是：", "options": ["一段话只讲一个意思，句句为中心服务", "只能写一句话", "不许举例"], "answer": "A", "explanation": "段落的写法规矩。"}, {"type": "choice", "question": "提『我有一个想法』最重要的部分是：", "options": ["具体的建议和理由", "抱怨", "抄新闻"], "answer": "A", "explanation": "有建议的想法才有用。"}, {"type": "choice", "question": "本学期学过的文言文是：", "options": ["《司马光》", "《花的学校》", "《秋天的雨》"], "answer": "A", "explanation": "第一篇文言文。"}]}]}};</script>
 <script>
 (function(){
@@ -600,11 +614,13 @@
     const sub = document.getElementById("usub");
     const tot = document.getElementById("startotal");
     if(!av || !nm || !sub || !tot) return;
-    const name = pfGet("name", "小朋友");
+    const name = pfGet("name", __DISP || "小朋友");
     const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
     av.style.background = AV_COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     nm.textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const t = starTotal();
     tot.textContent = t;
     const done = Object.keys(starsMap()).length;
@@ -622,7 +638,7 @@
       renderUserbar();
     };
     nm.onclick = function(){
-      const cur = pfGet("name","小朋友");
+      const cur = pfGet("name", __DISP || "小朋友");
       const v = window.prompt("你的名字（10 字以内）", cur);
       if(v !== null){
         const t = String(v).trim().slice(0,10);

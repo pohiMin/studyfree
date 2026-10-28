@@ -31,6 +31,7 @@ ws.on("message", raw => {
   if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); }
 });
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2300); }
@@ -113,9 +114,9 @@ chk("点单元检测卷切到卷面", paperShow === true);
 
 // ── 5. 星星总数在侧栏用户条里 ──
 await ev(`(function(){
-  var p=JSON.parse(localStorage.getItem("math3.profile.v1")||"{}");
+  var p=JSON.parse(localStorage.getItem("math3.profile.v1.测试甲")||"{}");
   p.stars=Object.assign({}, p.stars, {"u1:exam":3,"u1:paper":2});
-  localStorage.setItem("math3.profile.v1",JSON.stringify(p));
+  localStorage.setItem("math3.profile.v1.测试甲",JSON.stringify(p));
   return 1;
 })()`);
 await nav(BASE + "u1.html");

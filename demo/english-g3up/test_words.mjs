@@ -27,6 +27,7 @@ let seq = 0; const pending = new Map();
 const send = (m, p = {}) => new Promise(r => { const i = ++seq; pending.set(i, r); ws.send(JSON.stringify({ id: i, method: m, params: p })); });
 ws.on("message", raw => { let m; try { m = JSON.parse(raw); } catch { return; } if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); } });
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2300); }
@@ -92,7 +93,7 @@ async function answerCorrectly() {
 }
 
 let fb1 = await answerCorrectly();
-let s1 = JSON.parse(await ev(`localStorage.getItem("english3.words.v1")`) || "{}");
+let s1 = JSON.parse(await ev(`localStorage.getItem("english3.words.v1.测试甲")`) || "{}");
 let vals1 = Object.values(s1);
 chk("第 1 次答对 streak=1", fb1 === "RIGHT" && vals1.some(v => v.streak === 1),
     fb1 + " / " + JSON.stringify(vals1.map(v => v.streak)));
@@ -100,14 +101,14 @@ chk("第 1 次答对 streak=1", fb1 === "RIGHT" && vals1.some(v => v.streak === 
 await ev(`document.querySelector(".next").click()`);
 await sleep(300);
 let fb2 = await answerCorrectly();
-let st2 = Object.values(JSON.parse(await ev(`localStorage.getItem("english3.words.v1")`) || "{}"));
+let st2 = Object.values(JSON.parse(await ev(`localStorage.getItem("english3.words.v1.测试甲")`) || "{}"));
 chk("第 2 次答对（一词一关，同一词）streak=2", fb2 === "RIGHT" && st2.some(v => v.streak === 2),
     fb2 + " / " + JSON.stringify(st2.map(v => v.streak)));
 
 await ev(`document.querySelector(".next").click()`);
 await sleep(300);
 let fb3 = await answerCorrectly();
-let st3 = Object.values(JSON.parse(await ev(`localStorage.getItem("english3.words.v1")`) || "{}"));
+let st3 = Object.values(JSON.parse(await ev(`localStorage.getItem("english3.words.v1.测试甲")`) || "{}"));
 const masteredNow = st3.filter(v => v.streak >= 3).length;
 chk("第 3 次答对标记掌握", fb3 === "RIGHT" && masteredNow >= 1,
     fb3 + " / 掌握 " + masteredNow + " 个");
@@ -125,7 +126,7 @@ const wrongRes = await ev(`(function(){
   return "ALL-SAME";
 })()`);
 let zeroStreak = await ev(`(function(){
-  var o=JSON.parse(localStorage.getItem("english3.words.v1")||"{}");
+  var o=JSON.parse(localStorage.getItem("english3.words.v1.测试甲")||"{}");
   return Object.values(o).some(function(v){ return v.streak===0 && (v.wrong||0)>0; });
 })()`);
 chk("答错后 streak 清零", wrongRes === "WRONG" && zeroStreak === true,
@@ -134,7 +135,7 @@ chk("答错后 streak 清零", wrongRes === "WRONG" && zeroStreak === true,
 // 5. 持久化：刷新后掌握状态还在
 await nav(BASE + "words.html");
 const persisted = await ev(`(function(){
-  var o=JSON.parse(localStorage.getItem("english3.words.v1")||"{}");
+  var o=JSON.parse(localStorage.getItem("english3.words.v1.测试甲")||"{}");
   return Object.values(o).filter(function(v){ return v.streak>=3; }).length;
 })()`);
 chk("刷新后掌握状态保持", persisted >= 1, persisted + " 个已掌握");

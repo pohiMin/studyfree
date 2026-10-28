@@ -27,6 +27,7 @@ let seq = 0; const pending = new Map();
 const send = (m, p = {}) => new Promise(r => { const i = ++seq; pending.set(i, r); ws.send(JSON.stringify({ id: i, method: m, params: p })); });
 ws.on("message", raw => { let m; try { m = JSON.parse(raw); } catch { return; } if (m.id && pending.has(m.id)) { pending.get(m.id)(m.result ?? m.error); pending.delete(m.id); } });
 await send("Page.enable"); await send("Runtime.enable");
+await send("Page.addScriptToEvaluateOnNewDocument", { source: `try{localStorage.setItem("studyfree.session.v1", JSON.stringify({name:"\u6d4b\u8bd5\u7532",ts:Date.now()}))}catch(e){}` });
 await send("Emulation.setDeviceMetricsOverride", { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
 
 async function nav(u) { await send("Page.navigate", { url: u }); await sleep(2400); }
@@ -78,7 +79,7 @@ chk("初始星星为 0", initTotal === "0", initTotal);
 
 // 2. 全对 → 3 星
 await doQuiz(true);
-let st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1")`) || "{}");
+let st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1.测试甲")`) || "{}");
 chk("全对记 3 星", (st.stars||{})["u1:exam"] === 3, JSON.stringify(st.stars));
 let tot = await ev(`document.getElementById("startotal").textContent`);
 chk("总数显示 3", tot === "3", tot);
@@ -86,7 +87,7 @@ chk("总数显示 3", tot === "3", tot);
 // 3. 重载后再全错 → 仍是 3 星（不累加、不覆盖为低分）
 await nav(BASE + "u1.html");
 await doQuiz(false);
-st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1")`) || "{}");
+st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1.测试甲")`) || "{}");
 chk("再考差仍保留 3 星", (st.stars||{})["u1:exam"] === 3, JSON.stringify(st.stars));
 tot = await ev(`document.getElementById("startotal").textContent`);
 chk("总数仍是 3 未翻倍", tot === "3", tot);
@@ -112,7 +113,7 @@ await ev(`(function(){
 await sleep(400);
 await ev(`document.getElementById("paperSubmit").click()`);
 await sleep(1200);
-st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1")`) || "{}");
+st = JSON.parse(await ev(`localStorage.getItem("math3.profile.v1.测试甲")`) || "{}");
 chk("检测卷记 3 星", (st.stars||{})["u1:paper"] === 3, JSON.stringify(st.stars));
 tot = await ev(`document.getElementById("startotal").textContent`);
 chk("总数累加到 6", tot === "6", tot);
@@ -120,7 +121,7 @@ const subTxt = await ev(`document.getElementById("usub").textContent`);
 chk("副标题说明取最高", /最好一次/.test(subTxt || ""), subTxt);
 
 // 5. 改名字
-await ev(`(function(){ var p=JSON.parse(localStorage.getItem("math3.profile.v1")||"{}"); p.name="小明"; localStorage.setItem("math3.profile.v1",JSON.stringify(p)); return 1; })()`);
+await ev(`(function(){ var p=JSON.parse(localStorage.getItem("math3.profile.v1.测试甲")||"{}"); p.name="小明"; localStorage.setItem("math3.profile.v1.测试甲",JSON.stringify(p)); return 1; })()`);
 await nav(BASE + "u1.html");
 const nm2 = await ev(`document.getElementById("unametxt").textContent`);
 const av2 = await ev(`document.getElementById("avatar").textContent`);

@@ -64,11 +64,13 @@
 
   /* 侧栏顶部用户条 */
   .snav{padding-right:14px}
-  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff;flex-wrap:wrap;position:relative}
   .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
   .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .uinfo{flex:1;min-width:0}
+  .side .userbar .uschool{flex-basis:100%;margin-left:41px;font-size:.66rem;max-width:none}
   .side .userbar .usub{display:none}
-  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px;position:absolute;right:10px;top:12px}
   .side .userbar .ustar svg{width:13px;height:13px}
   .side .userbar .ustar b{font-size:.9rem}
   .side .userbar .ustar .lbl{font-size:.64rem}
@@ -103,6 +105,7 @@
   .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
   .uname:hover{color:var(--pri)}
   .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .uschool{font-size:.72rem;color:var(--ink3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-basis:100%}
   .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
     border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
@@ -377,6 +380,14 @@
     .q-top{gap:9px}
   }
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 <div class="layout" id="layout">
@@ -390,6 +401,7 @@
         <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
         <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
       </div>
+      <div class="uschool" id="uschool"></div>
       <div class="ustar">
         <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
         <b id="startotal">0</b><span class="lbl">颗星</span>
@@ -439,6 +451,8 @@
 </div>
 
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "译林版 · 英语 · 三年级上册", "edition": "2024 年 7 月第 1 版（2026 年 7 月第 3 次印刷）", "isbn": "978-7-5753-0037-7", "intro": "<b>怎么用：</b>三年级是英语零起点，先听说、后认读。每个单元先看 Big question 和句型讲解，再做对应练习。答错的题看解析里的中文说明，跟读几遍再回来重做。<br><b>顺序建议：</b>第一至四单元（打招呼、问名字、确认身份、介绍朋友）是全册的地基，第五至八单元（家庭、生日、表达能做的事）建立在它们之上；字母认读与书写贯穿全册，每天读几个。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "Hello!"}, {"n": 2, "t": "What's your name?"}, {"n": 3, "t": "Are you Su Hai?"}, {"n": 4, "t": "This is my friend"}, {"n": 5, "t": "She's my mother"}, {"n": 6, "t": "Is he your grandpa?"}, {"n": 7, "t": "Happy Birthday!"}, {"n": 8, "t": "I can do this for you"}], "totalQ": 592, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 0, "unitTitle": "英语期中阶段检测", "unitSubtitle": "Module 1（Unit 1—4）", "sections": [], "note": "覆盖 Module 1", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "英语期中阶段检测", "subtitle": "Module 1：打招呼 · 问名字 · 确认身份 · 介绍朋友（字母 Aa—Nn）", "duration": 45, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、选择正确答案", "perScore": 2, "questions": [{"type": "choice", "question": "早上见到老师说：", "options": ["Good morning.", "Goodbye!", "Good night."], "answer": "A", "explanation": "早上用 Good morning.。"}, {"type": "choice", "question": "问名字：", "options": ["What's your name?", "How old are you?", "Who's she?"], "answer": "A", "explanation": "What's your name?"}, {"type": "choice", "question": "—Are you Su Hai? —______（是的）", "options": ["Yes, I am.", "Yes, I'm.", "Yes, I is."], "answer": "A", "explanation": "完整形式。"}, {"type": "choice", "question": "介绍朋友：", "options": ["This is my friend Mike.", "This my friend.", "I friend."], "answer": "A", "explanation": "This is my friend…。"}, {"type": "choice", "question": "—Nice to meet you. —______", "options": ["Nice to meet you, too.", "Nice meet you.", "Fine."], "answer": "A", "explanation": "回答加 too。"}, {"type": "choice", "question": "介绍男生：", "options": ["He's Wang Bing.", "She's Wang Bing.", "It's Wang Bing."], "answer": "A", "explanation": "男生用 he。"}, {"type": "choice", "question": "—Are you Mike? —______（不是）", "options": ["No, I'm not.", "No, I amn't.", "No, I not."], "answer": "A", "explanation": "No, I'm not.。"}, {"type": "choice", "question": "I'm 的完整形式：", "options": ["I am", "I is", "I be"], "answer": "A", "explanation": "I'm = I am。"}, {"type": "choice", "question": "被介绍认识时说：", "options": ["Nice to meet you.", "Goodbye!", "OK."], "answer": "A", "explanation": "初次见面问候。"}, {"type": "choice", "question": "twins 的意思是：", "options": ["双胞胎", "朋友", "同学"], "answer": "A", "explanation": "twins：双胞胎。"}]}, {"name": "二、选择正确的单词", "perScore": 2, "questions": [{"type": "choice", "question": "—______ your name? —My name is Liu Tao.", "options": ["What's", "Whats", "What are"], "answer": "A", "explanation": "What's your name?"}, {"type": "choice", "question": "My name ______ Su Hai.", "options": ["is", "am", "are"], "answer": "A", "explanation": "name 用 is。"}, {"type": "choice", "question": "______ is my friend.（指女生 Yang Ling）", "options": ["She", "He", "I"], "answer": "A", "explanation": "女生用 she。"}, {"type": "choice", "question": "______ is my friend.（指男生 Wang Bing）", "options": ["He", "She", "You"], "answer": "A", "explanation": "男生用 he。"}, {"type": "choice", "question": "______ to our class!", "options": ["Welcome", "Wellcome", "Come"], "answer": "A", "explanation": "Welcome! 欢迎！"}, {"type": "choice", "question": "Nice to ______ you.", "options": ["meet", "meat", "met"], "answer": "A", "explanation": "meet：遇见。"}, {"type": "choice", "question": "Guess（猜）：______ you Jake?", "options": ["Are", "Is", "Am"], "answer": "A", "explanation": "Are you…?。"}, {"type": "choice", "question": "This is ______ friend.（我的）", "options": ["my", "me", "I"], "answer": "A", "explanation": "my：我的。"}]}, {"name": "三、字母填空", "perScore": 3, "questions": [{"type": "input", "question": "填字母：A B C ____（大写）", "answer": "D", "explanation": "A B C D。"}, {"type": "input", "question": "填字母：E F ____（大写）", "answer": "G", "explanation": "E F G。"}, {"type": "input", "question": "填字母：H I ____ K（大写）", "answer": "J", "explanation": "H I J K。"}, {"type": "input", "question": "填字母：J K ____ M N（大写）", "answer": "L", "explanation": "J K L M N。"}, {"type": "input", "question": "填字母：L M ____（大写）", "answer": "N", "explanation": "L M N。"}, {"type": "choice", "question": "Module 1 学了几个字母？", "options": ["14 个（Aa—Nn）", "12 个", "26 个"], "answer": "A", "explanation": "Aa 到 Nn 共 14 个。"}]}, {"name": "四、情景选择", "perScore": 3, "questions": [{"type": "choice", "question": "新同学走进教室，你说：", "options": ["Welcome to our class!", "Bye!", "What?"], "answer": "A", "explanation": "欢迎新同学。"}, {"type": "choice", "question": "把朋友介绍给妈妈：", "options": ["Mum, this is my friend Sam.", "Mum, he Sam.", "Mum, I'm Sam."], "answer": "A", "explanation": "This is…。"}, {"type": "choice", "question": "猜错别人的名字说：", "options": ["Sorry!", "OK!", "Bye!"], "answer": "A", "explanation": "道歉用语。"}, {"type": "choice", "question": "看到一对双胞胎，你猜：", "options": ["You're twins!", "You're nine!", "You're OK!"], "answer": "A", "explanation": "twins：双胞胎。"}, {"type": "choice", "question": "邀请新朋友一起玩：", "options": ["Let's play!", "Go away!", "Sit down!"], "answer": "A", "explanation": "Let's play!"}, {"type": "choice", "question": "b 和 d 的区别是：", "options": ["b 的肚子在右，d 的肚子在左", "没有区别", "一个是大小写"], "answer": "A", "explanation": "方向不同。"}]}, {"name": "五、理解与表达", "perScore": 7, "questions": [{"type": "choice", "question": "—Hello! What's your name? —______ —Hi, Mike!", "options": ["My name is Mike.", "Goodbye.", "I'm nine."], "answer": "A", "explanation": "后一句叫出了 Mike，说明前面回答的是名字。"}, {"type": "choice", "question": "连句：介绍女生 Su Hai 给朋友，第一句是：", "options": ["This is my friend Su Hai.", "She's my friend Su Hai. 不对——当面介绍用 This is.", "I'm Su Hai."], "answer": "A", "explanation": "当面介绍人用 This is…。"}, {"type": "input", "question": "填空：—Are you Liu Tao? —Yes, I ______.（填一个词）", "answer": "am", "explanation": "Yes, I am. 用完整形式。"}, {"type": "input", "question": "写词：朋友", "answer": "friend", "explanation": "friend。"}]}]}};</script>
 <script>
 (function(){
@@ -600,11 +614,13 @@
     const sub = document.getElementById("usub");
     const tot = document.getElementById("startotal");
     if(!av || !nm || !sub || !tot) return;
-    const name = pfGet("name", "小朋友");
+    const name = pfGet("name", __DISP || "小朋友");
     const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
     av.style.background = AV_COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     nm.textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const t = starTotal();
     tot.textContent = t;
     const done = Object.keys(starsMap()).length;
@@ -622,7 +638,7 @@
       renderUserbar();
     };
     nm.onclick = function(){
-      const cur = pfGet("name","小朋友");
+      const cur = pfGet("name", __DISP || "小朋友");
       const v = window.prompt("你的名字（10 字以内）", cur);
       if(v !== null){
         const t = String(v).trim().slice(0,10);

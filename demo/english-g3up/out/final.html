@@ -64,11 +64,13 @@
 
   /* 侧栏顶部用户条 */
   .snav{padding-right:14px}
-  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff;flex-wrap:wrap;position:relative}
   .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
   .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .uinfo{flex:1;min-width:0}
+  .side .userbar .uschool{flex-basis:100%;margin-left:41px;font-size:.66rem;max-width:none}
   .side .userbar .usub{display:none}
-  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px;position:absolute;right:10px;top:12px}
   .side .userbar .ustar svg{width:13px;height:13px}
   .side .userbar .ustar b{font-size:.9rem}
   .side .userbar .ustar .lbl{font-size:.64rem}
@@ -103,6 +105,7 @@
   .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
   .uname:hover{color:var(--pri)}
   .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .uschool{font-size:.72rem;color:var(--ink3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-basis:100%}
   .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
     border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
@@ -377,6 +380,14 @@
     .q-top{gap:9px}
   }
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 <div class="layout" id="layout">
@@ -390,6 +401,7 @@
         <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
         <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
       </div>
+      <div class="uschool" id="uschool"></div>
       <div class="ustar">
         <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
         <b id="startotal">0</b><span class="lbl">颗星</span>
@@ -439,6 +451,8 @@
 </div>
 
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = {"title": "译林版 · 英语 · 三年级上册", "edition": "2024 年 7 月第 1 版（2026 年 7 月第 3 次印刷）", "isbn": "978-7-5753-0037-7", "intro": "<b>怎么用：</b>三年级是英语零起点，先听说、后认读。每个单元先看 Big question 和句型讲解，再做对应练习。答错的题看解析里的中文说明，跟读几遍再回来重做。<br><b>顺序建议：</b>第一至四单元（打招呼、问名字、确认身份、介绍朋友）是全册的地基，第五至八单元（家庭、生日、表达能做的事）建立在它们之上；字母认读与书写贯穿全册，每天读几个。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "Hello!"}, {"n": 2, "t": "What's your name?"}, {"n": 3, "t": "Are you Su Hai?"}, {"n": 4, "t": "This is my friend"}, {"n": 5, "t": "She's my mother"}, {"n": 6, "t": "Is he your grandpa?"}, {"n": 7, "t": "Happy Birthday!"}, {"n": 8, "t": "I can do this for you"}], "totalQ": 592, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": -1, "unitTitle": "英语期末检测卷", "unitSubtitle": "全册八个单元", "sections": [], "note": "覆盖全册八个单元", "knowledgePoints": [], "videos": [], "exam": null, "paper": {"title": "英语期末检测卷", "subtitle": "全册八个单元（含 26 个字母）", "duration": 70, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、选出不同类的单词", "perScore": 2, "questions": [{"type": "choice", "question": "选出不同类：", "options": ["father", "mother", "hello"], "answer": "C", "explanation": "hello 是问候语。"}, {"type": "choice", "question": "选出不同类：", "options": ["one", "two", "she"], "answer": "C", "explanation": "she 是代词。"}, {"type": "choice", "question": "选出不同类：", "options": ["run", "sing", "table"], "answer": "C", "explanation": "table 是家具。"}, {"type": "choice", "question": "选出不同类：", "options": ["uncle", "aunt", "old"], "answer": "C", "explanation": "old 是形容词。"}, {"type": "choice", "question": "选出不同类：", "options": ["Z", "Y", "sorry"], "answer": "C", "explanation": "sorry 是道歉语。"}]}, {"name": "二、单项选择", "perScore": 3, "questions": [{"type": "choice", "question": "早上问好：", "options": ["Good morning.", "Good night.", "Bye!"], "answer": "A", "explanation": "早上用 Good morning.。"}, {"type": "choice", "question": "问名字：", "options": ["What's your name?", "Who's he?", "How old are you?"], "answer": "A", "explanation": "What's your name?。"}, {"type": "choice", "question": "—Are you Su Hai? —Yes, I ______.", "options": ["am", "is", "are"], "answer": "A", "explanation": "完整形式。"}, {"type": "choice", "question": "介绍朋友：", "options": ["This is my friend Mike.", "This my Mike.", "I friend Mike."], "answer": "A", "explanation": "This is…。"}, {"type": "choice", "question": "—Who's she? —______（指你的妈妈）", "options": ["She's my mother.", "He's my father.", "I'm nine."], "answer": "A", "explanation": "问 she 答 she。"}, {"type": "choice", "question": "—Is he your grandpa? —______（是的）", "options": ["Yes, he is.", "Yes, he's.", "Yes, he are."], "answer": "A", "explanation": "完整形式。"}, {"type": "choice", "question": "生日祝福：", "options": ["Happy Birthday!", "Happy New Year!", "Goodbye!"], "answer": "A", "explanation": "Happy Birthday!。"}, {"type": "choice", "question": "—How old are you? —______", "options": ["I'm nine.", "My name is Sam.", "Yes, I am."], "answer": "A", "explanation": "回答年龄。"}, {"type": "choice", "question": "我会游泳：", "options": ["I can swim.", "I can to swim.", "I swim can."], "answer": "A", "explanation": "can + 动词原形。"}, {"type": "choice", "question": "帮朋友做事：", "options": ["I can do this for you.", "I can do this for I.", "I for you."], "answer": "A", "explanation": "for you：为你。"}]}, {"name": "三、情景选择", "perScore": 3, "questions": [{"type": "choice", "question": "新同学来了，你说：", "options": ["Welcome to our class!", "Bye!", "What?"], "answer": "A", "explanation": "欢迎。"}, {"type": "choice", "question": "—Nice to meet you. —______", "options": ["Nice to meet you, too.", "Fine.", "OK."], "answer": "A", "explanation": "回答加 too。"}, {"type": "choice", "question": "收到礼物：", "options": ["Thank you!", "OK!", "Give me."], "answer": "A", "explanation": "道谢。"}, {"type": "choice", "question": "猜错名字说：", "options": ["Sorry!", "OK!", "What?"], "answer": "A", "explanation": "道歉。"}, {"type": "choice", "question": "鼓励朋友：", "options": ["You can do it!", "You can't!", "Go away!"], "answer": "A", "explanation": "最好的鼓励。"}]}, {"name": "四、判断对错", "perScore": 2, "questions": [{"type": "true_false", "question": "I'm = I am。", "answer": "对", "explanation": "缩写。"}, {"type": "true_false", "question": "he 指男生，she 指女生。", "answer": "对", "explanation": "基本分工。"}, {"type": "true_false", "question": "can 后面要加 to。", "answer": "错", "explanation": "can + 动词原形。"}, {"type": "true_false", "question": "肯定回答可以用缩写 Yes, I'm.", "answer": "错", "explanation": "完整形式 Yes, I am.。"}]}, {"name": "五、写出单词", "perScore": 4, "questions": [{"type": "input", "question": "写词：妈妈", "answer": "mother", "explanation": "mother。"}, {"type": "input", "question": "写词：朋友", "answer": "friend", "explanation": "friend。"}, {"type": "input", "question": "写词：九", "answer": "nine", "explanation": "nine：九。"}]}, {"name": "六、读对话，选答案", "perScore": 5, "questions": [{"type": "choice", "question": "—Hello! What's your name? —My name is Mike. —______", "options": ["Hi, Mike! Nice to meet you.", "Goodbye!", "What?"], "answer": "A", "explanation": "认识新朋友的标准三步。"}, {"type": "choice", "question": "—Who's she? —She's my mother. —______", "options": ["Nice to meet you, Auntie.", "Goodbye!", "What?"], "answer": "A", "explanation": "认识了问好。"}, {"type": "choice", "question": "—Happy Birthday! —Thank you! —This is for you. —______", "options": ["Thank you! How nice!", "Bye!", "What?"], "answer": "A", "explanation": "收礼物道谢。"}, {"type": "choice", "question": "—I can't open the door. —______", "options": ["I can do this for you.", "Bye!", "OK."], "answer": "A", "explanation": "主动帮忙。"}, {"type": "choice", "question": "字母接龙：X Y ____", "options": ["Z", "W", "A"], "answer": "A", "explanation": "X Y Z。"}]}]}};</script>
 <script>
 (function(){
@@ -600,11 +614,13 @@
     const sub = document.getElementById("usub");
     const tot = document.getElementById("startotal");
     if(!av || !nm || !sub || !tot) return;
-    const name = pfGet("name", "小朋友");
+    const name = pfGet("name", __DISP || "小朋友");
     const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
     av.style.background = AV_COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     nm.textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const t = starTotal();
     tot.textContent = t;
     const done = Object.keys(starsMap()).length;
@@ -622,7 +638,7 @@
       renderUserbar();
     };
     nm.onclick = function(){
-      const cur = pfGet("name","小朋友");
+      const cur = pfGet("name", __DISP || "小朋友");
       const v = window.prompt("你的名字（10 字以内）", cur);
       if(v !== null){
         const t = String(v).trim().slice(0,10);

@@ -5,6 +5,8 @@ import os, subprocess, re, glob
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
 
+_SEED_JS = r"""<script>try{localStorage.setItem("studyfree.session.v1",JSON.stringify({name:"测试甲",ts:Date.now()}))}catch(e){}</script>"""
+
 JS = r"""
 <script>
 setTimeout(function(){
@@ -64,6 +66,7 @@ setTimeout(function(){
 
 def run(html_path):
     h = open(html_path, encoding="utf-8").read()
+    h = h.replace("<head>", "<head>" + _SEED_JS, 1)
     h = h.replace("</body>", JS + "</body>")
     tmp = os.path.join(OUT, "_probe.html")
     open(tmp, "w", encoding="utf-8").write(h)

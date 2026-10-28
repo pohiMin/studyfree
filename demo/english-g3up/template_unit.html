@@ -64,11 +64,13 @@
 
   /* 侧栏顶部用户条 */
   .snav{padding-right:14px}
-  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff}
+  .side .userbar{margin:0 22px 16px 4px;padding:9px 10px;gap:9px;border-radius:12px;background:#fff;flex-wrap:wrap;position:relative}
   .side .userbar .avatar{width:32px;height:32px;font-size:.92rem}
   .side .userbar .uname{font-size:.86rem;line-height:1.3}
+  .side .userbar .uinfo{flex:1;min-width:0}
+  .side .userbar .uschool{flex-basis:100%;margin-left:41px;font-size:.66rem;max-width:none}
   .side .userbar .usub{display:none}
-  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px}
+  .side .userbar .ustar{padding:3px 8px;gap:4px;border-radius:9px;position:absolute;right:10px;top:12px}
   .side .userbar .ustar svg{width:13px;height:13px}
   .side .userbar .ustar b{font-size:.9rem}
   .side .userbar .ustar .lbl{font-size:.64rem}
@@ -103,6 +105,7 @@
   .uname{font-size:1rem;font-weight:700;cursor:pointer;display:inline-block;line-height:1.4}
   .uname:hover{color:var(--pri)}
   .uname .pen{font-size:.7rem;color:var(--ink3);margin-left:5px;font-weight:400}
+  .uschool{font-size:.72rem;color:var(--ink3);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-basis:100%}
   .usub{font-size:.76rem;color:var(--ink3);margin-top:2px}
   .ustar{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
     border-radius:999px;padding:7px 16px 7px 12px;flex:0 0 auto}
@@ -377,6 +380,14 @@
     .q-top{gap:9px}
   }
 </style>
+<script>/* 登录门禁：未登录一律跳登录页 */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 <div class="layout" id="layout">
@@ -390,6 +401,7 @@
         <div class="uname" id="uname" title="点名字可以改"><span id="unametxt">小朋友</span><span class="pen">✎</span></div>
         <div class="usub" id="usub">还没有获得星星，去做一次随堂自测吧</div>
       </div>
+      <div class="uschool" id="uschool"></div>
       <div class="ustar">
         <svg viewBox="0 0 24 24"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4 6.2 20.4l1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
         <b id="startotal">0</b><span class="lbl">颗星</span>
@@ -439,6 +451,8 @@
 </div>
 
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
+<script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
+const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const BOOK = /*__BOOK__*/; const DATA = /*__DATA__*/;</script>
 <script>
 (function(){
@@ -600,11 +614,13 @@
     const sub = document.getElementById("usub");
     const tot = document.getElementById("startotal");
     if(!av || !nm || !sub || !tot) return;
-    const name = pfGet("name", "小朋友");
+    const name = pfGet("name", __DISP || "小朋友");
     const ci = (pfGet("color", 0) || 0) % AV_COLORS.length;
     av.style.background = AV_COLORS[ci];
     av.textContent = name.slice(0,1) || "小";
     nm.textContent = name;
+    const sc = document.getElementById("uschool");
+    if(sc){ sc.textContent = (typeof __SCHX!=="undefined" && __SCHX) ? __SCHX : ""; sc.style.display = sc.textContent ? "" : "none"; }
     const t = starTotal();
     tot.textContent = t;
     const done = Object.keys(starsMap()).length;
@@ -622,7 +638,7 @@
       renderUserbar();
     };
     nm.onclick = function(){
-      const cur = pfGet("name","小朋友");
+      const cur = pfGet("name", __DISP || "小朋友");
       const v = window.prompt("你的名字（10 字以内）", cur);
       if(v !== null){
         const t = String(v).trim().slice(0,10);

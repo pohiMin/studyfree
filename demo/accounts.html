@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>账号权限管理 · 三年级学习台</title>
+<style>
+  :root{
+    --paper:#F6F4EF; --card:#FFFDF9;
+    --ink:#20242E; --ink2:#4C5262; --ink3:#8D93A3;
+    --line:#E6E2D8; --soft:#F5F3ED;
+    --gold:#D9B87C; --gold2:#B08D57;
+    --ok:#2E7D64; --no:#C43C3C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    color:var(--ink);background:var(--paper);min-height:100vh;
+    display:flex;align-items:center;justify-content:center;padding:30px 18px;
+    -webkit-font-smoothing:antialiased;line-height:1.8;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .box{
+    width:100%;max-width:560px;background:var(--card);
+    border:1px solid rgba(32,36,46,.07);border-radius:26px;
+    padding:38px 36px 34px;position:relative;overflow:hidden;
+    box-shadow:0 1px 2px rgba(32,36,46,.04), 0 18px 44px -14px rgba(28,34,48,.22);
+  }
+  .box::before{
+    content:"权";position:absolute;right:-10px;top:-46px;font-size:9rem;line-height:1;
+    font-family:"Songti SC","STSong","SimSun",serif;color:rgba(176,141,87,.08);pointer-events:none;
+  }
+  .k{font-size:.72rem;letter-spacing:.4em;color:var(--gold2);font-weight:700;margin-bottom:10px}
+  h1{font-family:"Songti SC","STSong","SimSun",serif;font-size:1.7rem;font-weight:800;letter-spacing:.05em}
+  .lead{font-size:.86rem;color:var(--ink2);margin:10px 0 22px}
+  .lead b{color:var(--ink)}
+  a.back{display:inline-block;margin-bottom:16px;color:var(--gold2);text-decoration:none;font-size:.85rem;font-weight:600}
+  .sec{font-size:.78rem;font-weight:700;color:var(--ink3);letter-spacing:.15em;margin:20px 0 10px}
+  .fld{margin-bottom:12px}
+  .fld label{display:block;font-size:.8rem;color:var(--ink2);font-weight:700;margin-bottom:6px}
+  .fld input{
+    width:100%;font:inherit;font-size:1.02rem;padding:13px 16px;border-radius:14px;
+    border:1.5px solid #CBD3E1;background:#fff;color:var(--ink);outline:none;
+  }
+  .fld input:focus{border-color:var(--gold2);box-shadow:0 0 0 4px rgba(176,141,87,.15)}
+  .go{
+    width:100%;font:inherit;font-size:1rem;font-weight:700;padding:14px 22px;border-radius:14px;
+    border:none;background:linear-gradient(150deg,#2E3648,#1C2230);color:var(--gold);
+    cursor:pointer;transition:.15s;margin-top:4px;
+  }
+  .go:hover{transform:translateY(-1px)}
+  .go.sub{background:#fff;color:var(--ink);border:1.5px solid var(--line);font-weight:600}
+  .err{color:var(--no);font-size:.82rem;margin-top:8px;display:none}
+  .err.show{display:block}
+  .okm{color:var(--ok);font-size:.82rem;margin-top:8px;display:none}
+  .okm.show{display:block}
+  .ulist{display:flex;flex-direction:column;gap:9px}
+  .uitem{
+    background:var(--soft);border:1.5px solid var(--line);border-radius:15px;padding:13px 16px;
+  }
+  .uitem .row{display:flex;align-items:center;gap:13px}
+  .uitem .av{width:38px;height:38px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:1.05rem;background:linear-gradient(150deg,#4A7FB5,#2F5D8C)}
+  .uitem .nm{flex:1;font-weight:700}
+  .uitem .info{font-size:.74rem;color:var(--ink3);text-align:right;line-height:1.6}
+  .uitem .info .pwok{color:var(--ok);font-weight:700}
+  .uitem .info .pwno{color:var(--no);font-weight:700}
+  .uitem .ops{display:flex;gap:8px;margin-top:10px;justify-content:flex-end;flex-wrap:wrap}
+  .op{font:inherit;font-size:.78rem;padding:8px 14px;border-radius:11px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:var(--ink2);transition:.15s}
+  .op:hover{border-color:var(--gold2);color:var(--gold2)}
+  .op.danger:hover{border-color:var(--no);color:var(--no)}
+  .subform{
+    margin-top:10px;padding:14px;border:1.5px dashed var(--line);border-radius:12px;background:#fff;
+    display:none;
+  }
+  .subform.show{display:block}
+  .subform .fld{margin-bottom:9px}
+  .hint{margin-top:18px;font-size:.78rem;color:var(--ink3);line-height:1.9;border-top:1px dashed var(--line);padding-top:14px}
+  .hint b{color:var(--ink2)}
+  .admrow{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .fldrow{display:flex;gap:12px}
+  .fldrow .fld{flex:1;min-width:0}
+  .uitem .disp{font-size:1rem;font-weight:800}
+  .uitem .acc{font-size:.8rem;color:var(--gold2);font-weight:700;letter-spacing:.03em}
+  .uitem .sc{font-size:.74rem;color:var(--ink3)}
+</style>
+</head>
+<body>
+<div class="box">
+  <a class="back" href="首页.html">← 返回三科入口</a>
+  <div class="k">ADMIN · 家长专区</div>
+  <h1>账号权限管理</h1>
+
+  <!-- 状态一：首次使用，设置管理员密码 -->
+  <div id="setup" style="display:none">
+    <p class="lead">第一次使用。请家长设置一个<b>管理员密码</b>，以后进入本页管理账号都需要它。</p>
+    <div class="fld"><label>管理员密码（至少 4 位）</label><input id="s1" type="password" autocomplete="new-password"></div>
+    <div class="fld"><label>再输一遍</label><input id="s2" type="password" autocomplete="new-password"></div>
+    <button class="go" id="mkadm" type="button">设置管理员密码</button>
+    <div class="err" id="e1"></div>
+  </div>
+
+  <!-- 状态二：需解锁 -->
+  <div id="unlock" style="display:none">
+    <p class="lead">输入<b>管理员密码</b>进入账号管理。</p>
+    <div class="fld"><label>管理员密码</label><input id="up" type="password" autocomplete="current-password"></div>
+    <button class="go" id="dounlock" type="button">解锁</button>
+    <div class="err" id="e2"></div>
+    <div class="hint"><b>忘记管理员密码？</b>清除浏览器中本站点的数据即可重置（注意：所有学习记录也会一起清除，无法恢复）。</div>
+  </div>
+
+  <!-- 状态三：管理面板 -->
+  <div id="panel" style="display:none">
+    <div class="sec">新建使用者</div>
+    <div class="fld"><label>姓名（学习台里显示的名字）</label><input id="nnm" maxlength="12" placeholder="如：小明" autocomplete="off"></div>
+    <div class="fldrow">
+      <div class="fld"><label>学校</label><input id="nsch" maxlength="20" placeholder="如：实验小学" autocomplete="off"></div>
+      <div class="fld"><label>班级</label><input id="ncls" maxlength="12" placeholder="如：三（2）班" autocomplete="off"></div>
+    </div>
+    <div class="fld"><label>登录账号（3–12 位，只能英文字母和数字）</label><input id="nacc" maxlength="12" placeholder="如：xm2026a" autocapitalize="off" autocomplete="off" style="text-transform:lowercase"></div>
+    <div class="fldrow">
+      <div class="fld"><label>登录密码（至少 4 位）</label><input id="npw" type="password" autocomplete="new-password"></div>
+      <div class="fld"><label>再输一遍</label><input id="npw2" type="password" autocomplete="new-password"></div>
+    </div>
+    <button class="go" id="mkuser" type="button">创建使用者</button>
+    <div class="err" id="e3"></div>
+
+    <div class="sec">使用者列表</div>
+    <div class="ulist" id="ulist"></div>
+
+    <div class="admrow">
+      <button class="go sub" id="chadm" type="button">修改管理员密码</button>
+      <button class="go sub" id="relock" type="button">重新锁定本页</button>
+    </div>
+    <div class="subform" id="admsub">
+      <div class="fld"><label>新管理员密码（至少 4 位）</label><input id="ap1" type="password" autocomplete="new-password"></div>
+      <div class="fld"><label>再输一遍</label><input id="ap2" type="password" autocomplete="new-password"></div>
+      <button class="go" id="doadm" type="button">保存新管理密码</button>
+      <div class="err" id="e4"></div><div class="okm" id="m4">已保存。</div>
+    </div>
+
+    <div class="hint">
+      <b>规则：</b>学习台三科页面必须用账号密码登录才能进入；登录页不再提供自行注册，建号只在本页进行。
+      删除使用者会同时清除该使用者的错题本、星星与背单词记录。
+      所有数据只保存在<b>这台设备</b>的浏览器里。
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---- SHA-256（已用标准向量验证） ---- */
+function sha256Raw(ascii){
+  function rightRotate(v,a){ return (v>>>a)|(v<<(32-a)); }
+  var mathPow = Math.pow, maxWord = mathPow(2,32), result = "";
+  var words = [], asciiBitLength = ascii.length*8;
+  var hash = sha256Raw.h = sha256Raw.h || [];
+  var k = sha256Raw.k = sha256Raw.k || [];
+  var primeCounter = k.length;
+  var isComposite = {};
+  for(var candidate=2; primeCounter<64; candidate++){
+    if(!isComposite[candidate]){
+      for(var i=0;i<313;i+=candidate){ isComposite[i]=candidate; }
+      hash[primeCounter]=(mathPow(candidate,.5)*maxWord)|0;
+      k[primeCounter++]=(mathPow(candidate,1/3)*maxWord)|0;
+    }
+  }
+  ascii += "\x80";
+  while(ascii.length%64-56) ascii += "\x00";
+  for(i=0;i<ascii.length;i++){
+    var j=ascii.charCodeAt(i);
+    if(j>>8) return null;
+    words[i>>2] |= j<<((3-i)%4)*8;
+  }
+  words[words.length]=(asciiBitLength/maxWord)|0;
+  words[words.length]=asciiBitLength;
+  for(j=0;j<words.length;){
+    var w=words.slice(j, j+=16);
+    var oldHash=hash;
+    hash=hash.slice(0,8);
+    for(i=16;i<64;i++){
+      var w15=w[i-15], w2=w[i-2];
+      var s0=rightRotate(w15,7)^rightRotate(w15,18)^(w15>>>3);
+      var s1=rightRotate(w2,17)^rightRotate(w2,19)^(w2>>>10);
+      w[i]=(w[i-16]+s0+w[i-7]+s1)|0;
+    }
+    var a=hash[0],b=hash[1],c=hash[2],d=hash[3],e=hash[4],f=hash[5],g=hash[6],h2=hash[7];
+    for(i=0;i<64;i++){
+      var S1=rightRotate(e,6)^rightRotate(e,11)^rightRotate(e,25);
+      var ch=(e&f)^(~e&g);
+      var temp1=(h2+S1+ch+k[i]+w[i])|0;
+      var S0=rightRotate(a,2)^rightRotate(a,13)^rightRotate(a,22);
+      var maj=(a&b)^(a&c)^(b&c);
+      var temp2=(S0+maj)|0;
+      h2=g; g=f; f=e; e=(d+temp1)|0; d=c; c=b; b=a; a=(temp1+temp2)|0;
+    }
+    hash[0]=(hash[0]+a)|0; hash[1]=(hash[1]+b)|0; hash[2]=(hash[2]+c)|0; hash[3]=(hash[3]+d)|0;
+    hash[4]=(hash[4]+e)|0; hash[5]=(hash[5]+f)|0; hash[6]=(hash[6]+g)|0; hash[7]=(hash[7]+h2)|0;
+  }
+  for(i=0;i<8;i++){
+    for(j=3;j+1;j--){
+      var b2=(hash[i]>>(j*8))&255;
+      result += ((b2>>4).toString(16)) + ((b2&15).toString(16));
+    }
+  }
+  return result;
+}
+function sha256(str){ return sha256Raw(unescape(encodeURIComponent(String(str)))) || ""; }
+function randSalt(){ var s=""; for(var i=0;i<16;i++) s+="0123456789abcdef"[Math.floor(Math.random()*16)]; return s; }
+function makePw(p){ var s=randSalt(); return {s:s, h:sha256(s+"|"+p)}; }
+function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h); }
+
+(function(){
+  var A_KEY="studyfree.admin.v1", U_KEY="studyfree.users.v1";
+  var DATA_PREFIX=["math3.","chinese3.","english3."];
+  var unlocked=false;
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function admin(){ try{ return JSON.parse(localStorage.getItem(A_KEY)||"null"); }catch(e){ return null; } }
+  function users(){
+    var raw=null;
+    try{ raw=JSON.parse(localStorage.getItem(U_KEY)||"null"); }catch(e){ raw=null; }
+    /* 兼容旧版数组结构 */
+    if(Array.isArray(raw)){
+      var o={};
+      raw.forEach(function(n){ if(n) o[String(n)]={pw:null, created:0, last:0}; });
+      raw=o; saveUsers(raw);
+    }
+    if(!raw) raw={};
+    return raw;
+  }
+  function saveUsers(u){ try{ localStorage.setItem(U_KEY, JSON.stringify(u)); }catch(e){} }
+  function err(id,msg){ var e=document.getElementById(id); e.textContent=msg; e.className="err show"; }
+  function errOff(id){ document.getElementById(id).className="err"; }
+  function show(id,on){ document.getElementById(id).style.display = on?"":"none"; }
+  function fmt(ts){ return ts ? new Date(ts).toLocaleDateString("zh-CN") : "—"; }
+
+  function renderState(){
+    var a=admin();
+    show("setup", !a);
+    show("unlock", !!a && !unlocked);
+    show("panel", !!a && unlocked);
+    if(a && unlocked) renderList();
+  }
+
+  document.getElementById("mkadm").onclick=function(){
+    errOff("e1");
+    var p1=document.getElementById("s1").value, p2=document.getElementById("s2").value;
+    if(p1.length<4){ err("e1","管理员密码至少 4 位。"); return; }
+    if(p1!==p2){ err("e1","两次输入不一致。"); return; }
+    try{ localStorage.setItem(A_KEY, JSON.stringify(makePw(p1))); }catch(e){}
+    unlocked = true;   /* 设置完直接进入面板，不必再解锁一次 */
+    document.getElementById("s1").value=""; document.getElementById("s2").value="";
+    renderState();
+  };
+  document.getElementById("dounlock").onclick=tryUnlock;
+  document.getElementById("up").addEventListener("keydown", function(e){ if(e.key==="Enter") tryUnlock(); });
+  function tryUnlock(){
+    errOff("e2");
+    var a=admin();
+    if(!checkPw(document.getElementById("up").value, a)){ err("e2","密码不对。"); return; }
+    unlocked=true;
+    document.getElementById("up").value="";
+    renderState();
+  }
+  document.getElementById("relock").onclick=function(){ unlocked=false; renderState(); };
+  document.getElementById("chadm").onclick=function(){
+    var f=document.getElementById("admsub");
+    f.classList.toggle("show");
+    document.getElementById("m4").className="okm";
+  };
+  document.getElementById("doadm").onclick=function(){
+    errOff("e4");
+    var p1=document.getElementById("ap1").value, p2=document.getElementById("ap2").value;
+    if(p1.length<4){ err("e4","至少 4 位。"); return; }
+    if(p1!==p2){ err("e4","两次输入不一致。"); return; }
+    try{ localStorage.setItem(A_KEY, JSON.stringify(makePw(p1))); }catch(e){}
+    document.getElementById("ap1").value=""; document.getElementById("ap2").value="";
+    document.getElementById("m4").className="okm show";
+    setTimeout(function(){ document.getElementById("admsub").classList.remove("show"); }, 900);
+  };
+
+  document.getElementById("mkuser").onclick=function(){
+    errOff("e3");
+    var nm=document.getElementById("nnm").value.trim();
+    var sch=document.getElementById("nsch").value.trim();
+    var cls=document.getElementById("ncls").value.trim();
+    var acc=document.getElementById("nacc").value.trim();
+    var p1=document.getElementById("npw").value, p2=document.getElementById("npw2").value;
+    if(!nm || nm.length<2){ err("e3","请输入姓名（至少 2 个字）。"); return; }
+    if(!sch){ err("e3","请填写学校。"); return; }
+    if(!cls){ err("e3","请填写班级。"); return; }
+    if(!/^[A-Za-z0-9]{3,12}$/.test(acc)){ err("e3","登录账号须为 3–12 位英文字母或数字。"); return; }
+    if(p1.length<4){ err("e3","登录密码至少 4 位。"); return; }
+    if(p1!==p2){ err("e3","两次密码不一致。"); return; }
+    var u=users();
+    if(u[acc]){ err("e3","这个登录账号已存在。"); return; }
+    u[acc]={disp:nm, school:sch, cls:cls, pw:makePw(p1), created:Date.now(), last:0};
+    saveUsers(u);
+    document.getElementById("nnm").value=""; document.getElementById("nsch").value="";
+    document.getElementById("ncls").value=""; document.getElementById("nacc").value="";
+    document.getElementById("npw").value=""; document.getElementById("npw2").value="";
+    renderList();
+  };
+
+  function wipeData(name){
+    var del=[];
+    for(var i=0;i<localStorage.length;i++){
+      var k=localStorage.key(i);
+      if(!k) continue;
+      var hit=DATA_PREFIX.some(function(p){ return k.indexOf(p)===0 && (k==="."+name ? false : k.slice(-(name.length+1))==="."+name); });
+      if(hit) del.push(k);
+    }
+    del.forEach(function(k){ try{ localStorage.removeItem(k); }catch(e){} });
+    return del.length;
+  }
+
+  function renderList(){
+    var u=users(), list=document.getElementById("ulist");
+    list.innerHTML="";
+    var names=Object.keys(u).sort(function(a,b){ return (u[a].created||0)-(u[b].created||0); });
+    if(!names.length){
+      list.innerHTML='<div style="font-size:.85rem;color:#8D93A3">还没有使用者，在上方创建。</div>';
+      return;
+    }
+    var COLORS=["#A8432F","#2F5D8C","#2E7D64","#B08D57","#6B4E8E","#B4762A"];
+    names.forEach(function(name, idx){
+      var rec=u[name];
+      var box=document.createElement("div");
+      box.className="uitem";
+      var color=COLORS[Math.abs(idx)%COLORS.length];
+      box.innerHTML =
+        '<div class="row">'+
+          '<span class="av" style="background:'+color+'">'+ esc((rec.disp||name).charAt(0)) +'</span>'+
+          '<span class="nm">'+
+            '<span class="disp">'+ esc(rec.disp || name) +'</span>'+
+            '<span class="acc">　'+ esc(name) +'</span><br>'+
+            '<span class="sc">'+ esc(rec.school||"—") +' · '+ esc(rec.cls||"—") +'</span>'+
+          '</span>'+
+          '<span class="info">'+ (rec.pw ? '<span class="pwok">已设密码</span>' : '<span class="pwno">未设密码（登录时会要求补设）</span>') +
+            '<br>建号 '+ fmt(rec.created) +' · 上次登录 '+ fmt(rec.last) +'</span>'+
+        '</div>'+
+        '<div class="ops">'+
+          '<button class="op" data-act="pw" type="button">修改登录密码</button>'+
+          '<button class="op danger" data-act="del" type="button">删除使用者</button>'+
+        '</div>'+
+        '<div class="subform" data-sub>'+
+          '<div class="fld"><label>新登录密码（至少 4 位）</label><input type="password" data-p1 autocomplete="new-password"></div>'+
+          '<div class="fld"><label>再输一遍</label><input type="password" data-p2 autocomplete="new-password"></div>'+
+          '<button class="go" data-save type="button">保存新密码</button>'+
+          '<div class="err" data-err></div>'+
+        '</div>';
+      var sub=box.querySelector("[data-sub]");
+      box.querySelector('[data-act="pw"]').onclick=function(){ sub.classList.toggle("show"); };
+      box.querySelector("[data-save]").onclick=function(){
+        var e=box.querySelector("[data-err]");
+        var p1=box.querySelector("[data-p1]").value, p2=box.querySelector("[data-p2]").value;
+        e.className="err";
+        if(p1.length<4){ e.textContent="至少 4 位。"; e.className="err show"; return; }
+        if(p1!==p2){ e.textContent="两次不一致。"; e.className="err show"; return; }
+        var uu=users();
+        if(!uu[name]) return;
+        uu[name].pw=makePw(p1);
+        saveUsers(uu);
+        box.querySelector("[data-p1]").value=""; box.querySelector("[data-p2]").value="";
+        sub.classList.remove("show");
+        renderList();
+      };
+      box.querySelector('[data-act="del"]').onclick=function(){
+        if(!confirm("删除「"+name+"」？\n该使用者的错题本、星星、背单词记录将一并清除。")) return;
+        if(!confirm("再次确认：删除后无法恢复。确定删除「"+name+"」？")) return;
+        var uu=users();
+        delete uu[name];
+        saveUsers(uu);
+        var n=wipeData(name);
+        renderList();
+        if(n>0){ alert("已删除账号并清理 "+n+" 条学习记录。"); }
+      };
+      list.appendChild(box);
+    });
+  }
+
+  renderState();
+})();
+</script>
+</body>
+</html>
