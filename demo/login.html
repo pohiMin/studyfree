@@ -39,6 +39,13 @@
   .lead b{color:var(--ink)}
   .sec{font-size:.78rem;font-weight:700;color:var(--ink3);letter-spacing:.15em;margin:20px 0 10px}
   .fld label{display:block;font-size:.8rem;color:var(--ink2);font-weight:700;margin-bottom:6px}
+  .nexttip{
+    display:none;margin:0 0 18px;padding:11px 14px;border-radius:13px;
+    background:#FBF6E9;border:1.5px solid rgba(176,141,87,.45);
+    color:#7A5E2E;font-size:.84rem;line-height:1.7;
+  }
+  .nexttip.show{display:block}
+  .nexttip b{color:#5C4720}
   .ulist{display:flex;flex-direction:column;gap:9px}
   .uitem{
     display:flex;align-items:center;gap:13px;width:100%;text-align:left;
@@ -86,6 +93,7 @@
   <div class="k">SIGN IN · 账号密码</div>
   <h1>登录学习台</h1>
   <p class="lead">学习台需要<b>账号密码</b>才能进入。每个账号有<b>独立的错题本、星星和背单词进度</b>。账号由家长在「账号管理」中创建。</p>
+  <div class="nexttip" id="nexttip">你打开的页面<b>需要登录后才能查看</b>，请先登录，成功后会自动进入该页面。</div>
 
   <div class="sec">账号登录</div>
   <div class="fld"><label>登录账号</label><input id="acc" maxlength="12" autocapitalize="off" autocomplete="username" placeholder="英文字母 + 数字" style="width:100%;font:inherit;font-size:1.02rem;padding:13px 16px;border-radius:14px;border:1.5px solid #CBD3E1;background:#fff;color:var(--ink);outline:none"></div>
@@ -270,6 +278,17 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
     errOff();
     renderCur();
   };
+
+  /* 带 next 进入（从受锁页跳来）→ 显示需登录提示 */
+  (function(){
+    var q=location.search.match(/[?&]next=([^&]+)/);
+    if(q && q[1]){
+      try{ q[1]=decodeURIComponent(q[1]); }catch(e){}
+      if(q[1].charAt(0)==="/" && q[1].indexOf("://")<0){
+        document.getElementById("nexttip").className="nexttip show";
+      }
+    }
+  })();
 
   renderCur();
 })();</script>

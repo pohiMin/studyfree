@@ -127,6 +127,14 @@ chk("小明账号保留", namesAfter.includes("xm2026a"));
 /* 5. 门禁 + 登录 */
 await nav(BASE + "math-g3up/out/u1.html");
 chk("未登录访问学习页被拦到登录页", (await ev(`location.pathname`)).endsWith("login.html"));
+chk("登录页显示需登录提示", await ev(`document.getElementById("nexttip").className.indexOf("show")>-1`));
+await nav(BASE + "首页.html");
+chk("未登录进首页被拦", decodeURIComponent(await ev(`location.pathname`)).endsWith("login.html"));
+await nav(BASE + "plan.html");
+chk("未登录进规划页被拦", decodeURIComponent(await ev(`location.pathname`)).endsWith("login.html"));
+await nav(BASE + "login.html");
+chk("直接开登录页不显示提示", await ev(`document.getElementById("nexttip").className.indexOf("show")<0`));
+await nav(BASE + "math-g3up/out/u1.html");
 await ev(`document.getElementById("acc").value="xm2026a"`);
 await ev(`document.getElementById("pw").value="0000"`);
 await ev(`document.getElementById("dologin").click()`); await sleep(300);
@@ -137,6 +145,12 @@ chk("登录后回到被拦截的原页", (await ev(`location.pathname`)).include
 chk("session 用登录账号", ((await ev(`localStorage.getItem("studyfree.session.v1")`)) || "").includes("xm2026a"));
 chk("页面内 __USER 为登录账号", await ev(`(typeof __USER==="undefined"?"(none)":__USER)`) === "xm2026a");
 chk("用户条显示姓名（__DISP）", (await ev(`document.getElementById("unametxt").textContent`)) === "小明");
+
+/* 5b. 登录后首页与规划页门禁放行 */
+await nav(BASE + "首页.html");
+chk("登录后首页可见", await ev(`!!document.getElementById("userchip") && document.documentElement.style.visibility!=="hidden"`));
+await nav(BASE + "plan.html");
+chk("登录后规划页可见", await ev(`document.documentElement.style.visibility!=="hidden" && !!document.body`));
 
 /* 6. 旧账号迁移：无密码姓名账号 → 输账号后补设密码 */
 await ev(`localStorage.setItem("studyfree.users.v1", JSON.stringify({"老王":{pw:null,created:0,last:0}}))`);

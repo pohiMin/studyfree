@@ -124,11 +124,12 @@
     .qopts{grid-template-columns:1fr}
   }
 </style>
-<script>/* 登录门禁：未登录一律跳登录页 */
+<script>/* 登录门禁：未登录先隐藏内容再跳登录页（防闪现） */
 (function(){
   var s=null;
   try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
   if(!s || !s.name){
+    document.documentElement.style.visibility="hidden";
     location.replace("../../login.html?next=" + encodeURIComponent(location.pathname));
   }
 })();</script>

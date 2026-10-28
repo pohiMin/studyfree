@@ -80,6 +80,15 @@
   @media(min-width:761px) and (max-width:1120px){ body{font-size:17.5px} }
   @media(print){ .hero{margin:0 0 20px} .card{break-inside:avoid} body{background:#fff;padding:10px} }
 </style>
+<script>/* 登录门禁：未登录先隐藏内容再跳登录页（防闪现） */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    document.documentElement.style.visibility="hidden";
+    location.replace("login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 

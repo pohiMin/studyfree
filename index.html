@@ -170,6 +170,15 @@
     .section,.plan-row,footer{padding-left:18px;padding-right:18px}
   }
 </style>
+<script>/* 登录门禁：未登录先隐藏内容再跳登录页（防闪现） */
+(function(){
+  var s=null;
+  try{ s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); }catch(e){}
+  if(!s || !s.name){
+    document.documentElement.style.visibility="hidden";
+    location.replace("demo/login.html?next=" + encodeURIComponent(location.pathname));
+  }
+})();</script>
 </head>
 <body>
 
