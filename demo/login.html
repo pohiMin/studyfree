@@ -213,6 +213,42 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
     return v;
   }
   function disp(acc){ var u=users(); return (u[acc] && (u[acc].disp||acc)) || acc; }
+
+  /* ── 预置账号表：从站点同目录的 accounts.json 读取，用于跨设备登录 ──
+     文件由家长在 accounts.html 导出后随站点一起发布。
+     合并规则：本机没有的账号直接补进来；同账号以发布版的密码为准（家长改密后重新发布即生效）。
+     只读 users，不涉及管理员密码。file:// 下跳过，避免 fetch 受限。 */
+  var presetReady=false, presetTried=false;
+  function applyPreset(d){
+    if(!d || !d.users) return;
+    var u=users(), changed=false;
+    Object.keys(d.users).forEach(function(k){
+      var p=d.users[k]; if(!p) return;
+      if(!u[k]){ u[k]=p; changed=true; return; }
+      if(p.pw && (!u[k].pw || u[k].pw.h!==p.pw.h)){
+        u[k].pw=p.pw;
+        if(p.disp) u[k].disp=p.disp;
+        if(p.school!==undefined) u[k].school=p.school;
+        if(p.cls!==undefined) u[k].cls=p.cls;
+        changed=true;
+      }
+    });
+    if(changed) saveUsers(u);
+  }
+  function loadPreset(cb){
+    if(presetTried){ if(cb) cb(); return; }
+    presetTried=true;
+    var done=false;
+    function fin(){ if(done) return; done=true; presetReady=true; if(cb) cb(); }
+    if(location.protocol==="file:"){ fin(); return; }
+    try{
+      fetch("accounts.json", {cache:"no-store"})
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){ applyPreset(d); fin(); })
+        .catch(fin);
+    }catch(e){ fin(); }
+    setTimeout(fin, 1500);   /* 兜底：网络慢也不把人卡住 */
+  }
   function err(msg){
     var e=document.getElementById("err");
     e.textContent=msg; e.className="err show";
@@ -232,8 +268,14 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
   function doLogin(){
     errOff();
     var acc=document.getElementById("acc").value.trim();
-    var u=users();
     if(!acc){ err("请输入登录账号。"); return; }
+    /* 预置账号表尚未读完时，先读完再重试一次，避免新设备上「账号不存在」误判 */
+    if(!presetReady && !presetTried){
+      err("正在读取账号表，请稍候…");
+      loadPreset(function(){ doLogin(); });
+      return;
+    }
+    var u=users();
     if(!u[acc]){ err("账号不存在。账号由家长在「账号管理」中创建。"); return; }
     if(!u[acc].pw){
       pendingSet=acc;
@@ -291,6 +333,7 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
   })();
 
   renderCur();
+  loadPreset();   /* 异步读取预置账号表，不阻塞页面 */
 })();</script>
 </body>
 </html>

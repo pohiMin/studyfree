@@ -132,6 +132,16 @@
     <div class="sec">使用者列表</div>
     <div class="ulist" id="ulist"></div>
 
+    <div class="sec">跨设备使用</div>
+    <div class="hint" style="margin-top:0;border-top:none;padding-top:0">
+      导出后浏览器会下载一个 <b>accounts.json</b>。把它放进站点的 <b>demo</b> 目录一起发布，
+      别的设备打开登录页时就会自动读到这些账号，不用在那台设备上重建。
+      文件里只有姓名、学校、班级和加密后的密码，<b>不含明文密码，也不含管理员密码</b>。
+      在家改了密码或增删账号后，需要重新导出并发布一次，别的设备才会更新。
+    </div>
+    <button class="go sub" id="exportjson" type="button">导出账号表（accounts.json）</button>
+    <div class="okm" id="m5">已导出。把下载的文件放进 demo 目录后再发布。</div>
+
     <div class="admrow">
       <button class="go sub" id="chadm" type="button">修改管理员密码</button>
       <button class="go sub" id="relock" type="button">重新锁定本页</button>
@@ -266,6 +276,28 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
     renderState();
   }
   document.getElementById("relock").onclick=function(){ unlocked=false; renderState(); };
+
+  /* 跨设备：导出账号表。只导出 users，绝不包含管理员密码（A_KEY）。 */
+  document.getElementById("exportjson").onclick=function(){
+    var u=users(), out={};
+    Object.keys(u).forEach(function(k){
+      var a=u[k]; if(!a) return;
+      out[k]={ disp:a.disp||k, school:a.school||"", cls:a.cls||"",
+               pw:a.pw||null, created:a.created||0, last:a.last||0 };
+    });
+    var cnt=Object.keys(out).length;
+    var m=document.getElementById("m5");
+    if(!cnt){ m.className="okm"; alert("还没有任何使用者，先建一个再导出。"); return; }
+    var payload={ version:1, exportedAt:new Date().toISOString(), users:out };
+    var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+    var url=URL.createObjectURL(blob);
+    var lnk=document.createElement("a");
+    lnk.href=url; lnk.download="accounts.json";
+    document.body.appendChild(lnk); lnk.click(); document.body.removeChild(lnk);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+    m.textContent="已导出 "+cnt+" 个账号。把下载的 accounts.json 放进 demo 目录后再发布。";
+    m.className="okm show";
+  };
   document.getElementById("chadm").onclick=function(){
     var f=document.getElementById("admsub");
     f.classList.toggle("show");
