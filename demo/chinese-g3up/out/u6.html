@@ -251,6 +251,11 @@
   .btn:hover{background:var(--pri-d);border-color:var(--pri-d)}
   .btn:disabled{background:#E6EAF1;border-color:#E6EAF1;color:#9AA5B8;cursor:default}
 
+  .fixbtn{
+    font: inherit;font-size:.82rem;padding:7px 14px;border-radius:10px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:#7A5E2E;margin-top:8px;
+  }
+  .fixbtn:hover{border-color:#B08D57;color:#8A6A33;background:#FBF6E9}
   .fb{margin:11px 0 0 37px;font-size:.9rem;line-height:1.8;border-radius:10px;padding:11px 15px;display:none}
   .fb.show{display:block}
   .fb.ok{background:var(--ok-l);color:#08694A;border-left:4px solid var(--ok)}
@@ -454,11 +459,46 @@
 <script>const __USER = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); return (s&&s.name)? String(s.name).replace(/[^0-9A-Za-z\u4e00-\u9fff]/g,"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
 <script>const __DISP = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.disp)? String(u.disp).slice(0,12) : ""; }catch(e){ return ""; } })();
 const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfree.session.v1")||"null"); var u=s&&s.name? JSON.parse(localStorage.getItem("studyfree.users.v1")||"{}")[s.name] : null; return (u&&u.school)? String(u.school).slice(0,12)+"·"+String(u.cls||"").slice(0,12) : ""; }catch(e){ return ""; } })();</script>
-<script>const BOOK = {"title": "统编版 · 语文 · 三年级上册", "edition": "2025 年 6 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-107-39754-7", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点讲解，再做题。答错的题会立刻给出解析，错的字要动手写一遍，不要只看。<br><b>顺序建议：</b>第二、七单元（六首古诗）要背熟默对；第三单元是阅读策略单元，练的是“预测要有依据”，不是背故事；第六、七单元的“找关键句、围绕一个意思写”是习作地基；第八单元第一次学文言文，先读通再理解。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "学校生活"}, {"n": 2, "t": "金秋时节"}, {"n": 3, "t": "预测"}, {"n": 4, "t": "童话世界"}, {"n": 5, "t": "留心观察"}, {"n": 6, "t": "祖国山河"}, {"n": 7, "t": "自然之美"}, {"n": 8, "t": "美好品质"}], "totalQ": 664, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 6, "unitTitle": "祖国山河", "sections": ["富饶的西沙群岛", "海滨小城", "美丽的小兴安岭", "香港，璀璨的明珠", "习作：这儿真美", "语文园地六"], "note": "本单元学两样硬功夫：找段落的中心句；围绕一个意思写。", "knowledgePoints": [{"id": "chinese-tongbian-g3up-u6-kp1", "title": "找关键语句（中心句）", "short": "一段话的心脏", "difficulty": 3, "sections": ["富饶的西沙群岛", "海滨小城"], "core_concept": "很多自然段有一句中心句，它概括整段的意思，可能在段首、段中，也可能在段尾。比如《富饶的西沙群岛》里『西沙群岛的海里一半是水，一半是鱼』，就是写鱼的这一段的中心句。找准中心句，一段话就读懂了。", "key_formula": "找中心句三看：看段首（总起）→ 看段尾（总结）→ 看哪一句能概括其他句子", "common_mistakes": ["把细节句当中心句：鱼成群地爬在珊瑚上，那是例子不是中心", "只会在段首找，段中段尾的找不到", "找出来却说不出它为什么能概括整段"], "tips": "拿不准时做个试验：把这句删掉，看这段话还剩几个意思——删掉后散掉的才是中心句。", "questions": [{"type": "choice", "difficulty": 2, "question": "『西沙群岛的海里一半是水，一半是鱼』这句话在文中起什么作用？", "options": ["概括说明西沙群岛海里的鱼非常多", "教我们算术", "说明海水很干净"], "answer": "A", "explanation": "『一半是鱼』是夸张的说法，概括了鱼多——这句就是中心句。"}, {"type": "choice", "difficulty": 2, "question": "下面这段话的中心句最可能在哪里？『小城每一个庭院都栽了很多树。桉树叶子……凤凰树开花……』", "options": ["段首第一句", "段尾", "没有中心句"], "answer": "A", "explanation": "第一句概括了整段（庭院里树多），后面全是例子，这是段首中心句。"}, {"type": "true_false", "difficulty": 1, "question": "每个自然段都一定有中心句。", "answer": "错", "explanation": "中心句常见但不是每段必有，有的段落意思要自己概括。"}, {"type": "choice", "difficulty": 3, "question": "《富饶的西沙群岛》写珊瑚的段落，中心是：", "options": ["珊瑚的样子多种多样，十分美丽", "珊瑚能吃", "潜水员喜欢珊瑚"], "answer": "A", "explanation": "段落列举了各种珊瑚的样子，都是为了说明『多种多样、美丽』。"}, {"type": "input", "difficulty": 2, "question": "概括整段意思的那句话，叫____句。（填两个字）", "answer": "中心", "explanation": "中心句是一段话的心脏。"}, {"type": "true_false", "difficulty": 2, "question": "中心句的位置是固定的，都在段首。", "answer": "错", "explanation": "段首、段中、段尾都可能出现。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "『西沙群岛也是鸟的天下。』这句中心句放在段首，后面的句子应该：", "options": ["都写海鸟的事", "写海水", "写珊瑚"], "answer": "A", "explanation": "中心句定了方向，后面的例子都要围绕它。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "一段话的中心句可能在段首、段中，也可能在段____。（填一个字）", "answer": "尾", "explanation": "中心句的位置灵活，段尾总结也很常见。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "自己给一段话写中心句：写『我的文具盒』这段话的中心句（填一句话）。", "answer": "我的文具盒又漂亮又能装。", "explanation": "答案不唯一。中心句要能统领整段内容。"}]}, {"id": "chinese-tongbian-g3up-u6-kp2", "title": "围绕一个意思写", "short": "句句为一个中心", "difficulty": 3, "sections": ["富饶的西沙群岛", "海滨小城"], "core_concept": "会写的人，一段话只讲一个意思，每个句子都为它服务。写『海滨小城的街道很干净』，就写路面、落叶、扫地的车，不插一句『海边很美』。跑题的句子再美也要删。", "key_formula": "一段话一个意思：中心句 + 几个例子（都围绕中心）+ 没有跑题句", "common_mistakes": ["一段话塞进好几个意思", "例子和中心对不上", "想到哪写到哪，没有中心句带路"], "tips": "写完一段话自己检查：这段话能只用一句话概括吗？哪一句是多余的？", "questions": [{"type": "choice", "difficulty": 2, "question": "写『公园里真热闹』，下面哪句不该出现在这段里？", "options": ["我家的小猫很可爱", "老人们在打太极", "孩子们在追跑"], "answer": "A", "explanation": "小猫和公园的热闹无关，是跑题句。"}, {"type": "choice", "difficulty": 2, "question": "『鱼成群地在珊瑚丛中穿来穿去』『有的全身布满彩色条纹』——这些句子围绕的意思是：", "options": ["西沙群岛的鱼又多又好看", "海水很清", "珊瑚很硬"], "answer": "A", "explanation": "句子都在写鱼的多和美。"}, {"type": "true_false", "difficulty": 1, "question": "围绕一个意思写，就是一段话不许出现别的词。", "answer": "错", "explanation": "是说不跑题，不是限制用词。"}, {"type": "input", "difficulty": 2, "question": "写一段话前，先想好这段话的____。（填两个字）", "answer": "中心", "explanation": "先定中心，再选材料。"}, {"type": "choice", "difficulty": 3, "question": "这段话的中心是『西沙群岛也是鸟的天下』，下面哪句不该出现在这段里？", "options": ["海水五光十色，美丽极了", "树林里栖息着各种海鸟", "遍地都是鸟蛋"], "answer": "A", "explanation": "海水是写海的那段的中心，放进鸟的段落就跑题了。"}, {"type": "true_false", "difficulty": 2, "question": "围绕一个意思写时，可以先写中心句，再举两三个例子。", "answer": "对", "explanation": "这是最常用的总分写法。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "写『海滩真热闹』，下面哪句不该出现在这段里？", "options": ["小城的街道很干净", "贝壳五颜六色", "人们在捡贝壳"], "answer": "A", "explanation": "街道是另一段的内容，塞进来就跑题了。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "写完一段话，用一句话概括它。概括不出来的说明这段话缺少____。（填两个字）", "answer": "中心", "explanation": "概括不出来，说明这段话没有统一的中心。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "围绕『下课了，操场上真热闹』，写两个具体的例子（按「例1和例2」格式简写）。", "answer": "跳绳的和踢毽子的", "explanation": "答案不唯一。例子都要围绕『热闹』。"}]}, {"id": "chinese-tongbian-g3up-u6-kp3", "title": "按顺序写景（总分结构）", "short": "有顺序才不乱", "difficulty": 3, "sections": ["海滨小城", "美丽的小兴安岭"], "core_concept": "写景要有顺序：可以按方位（由远及近、由上到下、由外到内），可以按时间（早中晚、四季），也可以按类别（树、海、街道分开写）。《美丽的小兴安岭》就是按春夏秋冬四季写的。《海滨小城》先写海上、海滩，再写庭院、公园、街道，是由外到内。", "key_formula": "写景三选一：方位顺序 / 时间顺序 / 类别顺序，定了就不要换来换去", "common_mistakes": ["东一句西一句，空间混乱", "四季混着写，春里冒出秋叶", "只写景色不写它的美在哪里"], "tips": "动笔前先列顺序表：先写什么、再写什么、最后写什么。", "questions": [{"type": "choice", "difficulty": 1, "question": "《美丽的小兴安岭》是按什么顺序写的？", "options": ["春夏秋冬四季", "东南西北", "由大到小"], "answer": "A", "explanation": "课文按四季写出小兴安岭不同的美。"}, {"type": "choice", "difficulty": 2, "question": "写『我们的校园』，『由远及近』的写法是：", "options": ["先写校门外的街景，再写校门，最后写教学楼", "先写教学楼再写校门", "想到哪写到哪"], "answer": "A", "explanation": "由远及近：从远处写起，一步步走近。"}, {"type": "true_false", "difficulty": 1, "question": "写景可以一会儿按时间一会儿按方位，混着来没关系。", "answer": "错", "explanation": "顺序要统一，混用会乱。"}, {"type": "input", "difficulty": 2, "question": "先总说后分说的结构叫____分结构。（填一个字）", "answer": "总", "explanation": "总分结构：先概括，再具体写。"}, {"type": "choice", "difficulty": 3, "question": "《海滨小城》先写海上、海滩，再写庭院、公园、街道。这是按什么顺序？", "options": ["由外到内（从海上到城里）", "时间顺序", "颜色顺序"], "answer": "A", "explanation": "从海到城，空间上由外到内。"}, {"type": "true_false", "difficulty": 2, "question": "写景作文里，顺序表列好后，一段写一样，就不会乱。", "answer": "对", "explanation": "一段一景，是写景最稳的办法。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "写『美丽的校园』，先写校门、再写操场、最后写教学楼，这是：", "options": ["方位顺序（由外到内）", "时间顺序", "没有顺序"], "answer": "A", "explanation": "按空间位置移动来写，是方位顺序。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "《美丽的小兴安岭》按____顺序写，一年四季各有各的美。（填两个字）", "answer": "时间", "explanation": "春夏秋冬就是时间顺序。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "写『秋天的校园』按时间顺序，你会选哪三个时间点？（按「时间1、时间2、时间3」格式填）", "answer": "早晨、中午、放学时", "explanation": "答案不唯一。三个时间点连起来就是一天的校园。"}]}, {"id": "chinese-tongbian-g3up-u6-kp4", "title": "字词基础：山河的字词", "short": "读音与形近字", "difficulty": 2, "sections": ["富饶的西沙群岛", "海滨小城", "美丽的小兴安岭"], "core_concept": "本单元重点：『富饶（fù ráo）、瑰丽（guī lì）、海参（shēn）、栖息（qī xī）、五个指头（头）』等读音；形近字『饶/浇、瑰/魁、滨/宾』；『深』『厚』等字的书写。", "key_formula": "难词放进课文记：富饶的西沙群岛（fù ráo）、瑰丽无比（guī lì）", "common_mistakes": ["把『海参』读成 hǎi cān（参加的参）", "『栖息』读成 xī xī", "『富饶』写成『富浇』"], "tips": "『海参』的参是『人参』的参，读 shēn；『参加』才读 cān。", "questions": [{"type": "choice", "difficulty": 2, "question": "『海参』的正确读音是：", "options": ["hǎi shēn", "hǎi cān", "hǎi sēn"], "answer": "A", "explanation": "海参是一种海洋生物，参读 shēn（人参加入读 cān）。"}, {"type": "choice", "difficulty": 2, "question": "『栖息』的正确读音是：", "options": ["qī xī", "xī xī", "qī xí"], "answer": "A", "explanation": "栖读 qī，木字旁，鸟停在树上。"}, {"type": "choice", "difficulty": 1, "question": "『富饶』的『饶』读：", "options": ["ráo", "náo", "rào"], "answer": "A", "explanation": "饶读 ráo，食物丰富叫富饶。"}, {"type": "choice", "difficulty": 2, "question": "『瑰丽无比』中『瑰』的意思接近：", "options": ["珍奇、美丽", "玫瑰这种花", "坚硬"], "answer": "A", "explanation": "瑰丽：异常美丽，像珍宝一样。"}, {"type": "input", "difficulty": 2, "question": "看拼音写词：hǎi bīn（______小城）", "answer": "海滨", "explanation": "海滨：海边。滨有三点水。"}, {"type": "choice", "difficulty": 3, "question": "《美丽的小兴安岭》说小兴安岭是『绿色的海洋』，原因是：", "options": ["树多而密，一眼望不到边", "海是绿色的", "山是青色的石头"], "answer": "A", "explanation": "数百里全是森林，像绿色的海洋，比喻贴切。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "『富饶』的『饶』为什么是食字旁？", "options": ["与食物丰富有关，物产多才叫富饶", "写错了", "随便加的"], "answer": "A", "explanation": "看偏旁理解字义：食物丰富就是富饶。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "『海参』的『参』是多音字：参加读 cān，海参读____。（填拼音）", "answer": "shēn", "explanation": "多音字放进词里记。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "写出三个表示海产或海景的词语（按「词、词、词」格式填）。", "answer": "珊瑚、海滩、贝壳", "explanation": "答案不唯一：珊瑚、海滩、贝壳、海龟、飞鱼都可以。"}]}], "exam": {"title": "第六单元 随堂自测", "duration": 10, "scorePerQuestion": 5, "note": "限时 10 分钟 · 时间到自动交卷", "questions": [{"type": "choice", "question": "概括整段意思的句子叫：", "options": ["中心句", "比喻句", "疑问句"], "answer": "A", "explanation": "中心句是一段话的心脏。"}, {"type": "choice", "question": "『西沙群岛的海里一半是水，一半是鱼』写出了：", "options": ["鱼非常多", "水很深", "鱼很大"], "answer": "A", "explanation": "夸张地写出鱼多。"}, {"type": "true_false", "question": "中心句一定在段首。", "answer": "错", "explanation": "段首、段中、段尾都可能有。"}, {"type": "choice", "question": "《美丽的小兴安岭》按什么顺序写？", "options": ["四季", "方位", "类别"], "answer": "A", "explanation": "春夏秋冬，各有各的美。"}, {"type": "input", "question": "看拼音写词：fù ráo（______的西沙群岛）", "answer": "富饶", "explanation": "富饶：物产丰富。"}, {"type": "choice", "question": "写『这儿真美』，最好按什么来组织？", "options": ["按一定顺序写几处景", "想到哪写到哪", "只写一句话"], "answer": "A", "explanation": "顺序让文章条理清楚。"}, {"type": "true_false", "question": "一段话里可以塞进好几个意思。", "answer": "错", "explanation": "一段话一个意思，句句为中心服务。"}, {"type": "choice", "question": "『海参』的『参』读：", "options": ["shēn", "cān", "sēn"], "answer": "A", "explanation": "海参读 shēn。"}, {"type": "input", "question": "先总说后分说的结构叫____分结构。（填一个字）", "answer": "总", "explanation": "总分结构。"}, {"type": "choice", "question": "『海滨小城』的『滨』意思是：", "options": ["水边", "宾客", "树林"], "answer": "A", "explanation": "滨：水边。海滨就是海边。"}]}, "paper": {"title": "第六单元 检测卷", "subtitle": "祖国山河", "duration": 40, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、选择正确读音", "perScore": 2, "questions": [{"type": "choice", "question": "富饶的『饶』读：", "options": ["ráo", "náo", "rào"], "answer": "A", "explanation": "饶读 ráo。"}, {"type": "choice", "question": "瑰丽的『瑰』读：", "options": ["guī", "guì", "kuí"], "answer": "A", "explanation": "瑰读 guī。"}, {"type": "choice", "question": "海参的『参』读：", "options": ["shēn", "cān", "sēn"], "answer": "A", "explanation": "海参读 shēn。"}, {"type": "choice", "question": "栖息的『栖』读：", "options": ["qī", "xī", "qì"], "answer": "A", "explanation": "栖读 qī。"}, {"type": "choice", "question": "海滨的『滨』读：", "options": ["bīn", "bīng", "pín"], "answer": "A", "explanation": "滨读 bīn。"}]}, {"name": "二、选择正确的字", "perScore": 3, "questions": [{"type": "choice", "question": "西沙群岛一带海水五光十____。", "options": ["色", "澀", "鸣"], "answer": "A", "explanation": "五光十色：颜色又多又亮。"}, {"type": "choice", "question": "各种各样的珊瑚____满海底。", "options": ["铺", "捕", "扑"], "answer": "A", "explanation": "铺：摊开覆盖。"}, {"type": "choice", "question": "成群的海鸟在树林里____息。", "options": ["栖", "妻", "漆"], "answer": "A", "explanation": "栖息：停留休息。"}, {"type": "choice", "question": "海滩上有美丽的____壳。", "options": ["贝", "见", "页"], "answer": "A", "explanation": "贝壳。"}, {"type": "choice", "question": "小兴安岭一年四季____是美丽的。", "options": ["都", "多", "岛"], "answer": "A", "explanation": "都是：全都。"}]}, {"name": "三、把词语补充完整", "perScore": 2, "questions": [{"type": "input", "question": "五____十色", "answer": "光", "explanation": "五光十色。"}, {"type": "input", "question": "成____结队（一群群、一队队）", "answer": "群", "explanation": "成群结队。"}, {"type": "input", "question": "各种各____", "answer": "样", "explanation": "各种各样。"}, {"type": "input", "question": "____丽无比", "answer": "瑰", "explanation": "瑰丽无比。"}, {"type": "input", "question": "物产丰____（东西很多）", "answer": "富", "explanation": "物产丰富。"}]}, {"name": "四、段落与结构", "perScore": 3, "questions": [{"type": "choice", "question": "『西沙群岛也是鸟的天下』这句放在一段开头，它的作用是：", "options": ["总起，概括整段", "举例", "总结全文"], "answer": "A", "explanation": "段首中心句起总起作用。"}, {"type": "choice", "question": "下面哪句不能放进『海边的沙滩真美』这一段？", "options": ["城里的街道很干净", "沙子又细又软", "贝壳五颜六色"], "answer": "A", "explanation": "街道与沙滩无关。"}, {"type": "choice", "question": "写『我们的校园』按『校门→操场→教学楼』写，这是：", "options": ["方位顺序", "时间顺序", "类别顺序"], "answer": "A", "explanation": "按地点移动的方位顺序。"}, {"type": "choice", "question": "《美丽的小兴安岭》写春天 Extract（抽出）新的枝条，『抽出』用得好是因为：", "options": ["把枝条快速长出写活了，像拔出来一样", "抽出是抽打", "没有特别的"], "answer": "A", "explanation": "一个『抽出』写出春天枝条生长的有力。"}, {"type": "choice", "question": "围绕『这里的树真多』写一段话，下面哪句最该保留？", "options": ["一棵挨着一棵，望不到边", "树很值钱", "我喜欢吃苹果"], "answer": "A", "explanation": "只有它围绕『树多』。"}]}, {"name": "五、判断对错", "perScore": 2, "questions": [{"type": "true_false", "question": "《富饶的西沙群岛》写了海面、海底、海滩、海岛。", "answer": "对", "explanation": "课文按这几个地方写物产丰富。"}, {"type": "true_false", "question": "每段话都必须有中心句。", "answer": "错", "explanation": "常见但不是必须。"}, {"type": "true_false", "question": "写景可以按时间顺序，也可以按方位顺序。", "answer": "对", "explanation": "选一种，用到底。"}, {"type": "true_false", "question": "《香港，璀璨的明珠》写的是香港的美丽和繁华。", "answer": "对", "explanation": "香港被称为璀璨的明珠。"}, {"type": "true_false", "question": "『围绕一个意思写』就是不许写例子。", "answer": "错", "explanation": "恰恰要靠例子来支撑中心。"}]}, {"name": "六、按课文内容填空", "perScore": 4, "questions": [{"type": "input", "question": "西沙群岛的海水里，有____的珊瑚，有懒洋洋的海参。（填一个词：颜色多）", "answer": "各种各样", "explanation": "珊瑚各种各样，美不胜收。"}, {"type": "input", "question": "鱼成群地在珊瑚丛中____来穿去。（填一个字）", "answer": "穿", "explanation": "穿来穿去：来回游动。"}, {"type": "input", "question": "西沙群岛的海里一半是水，一半是____。", "answer": "鱼", "explanation": "夸张写鱼多。"}, {"type": "input", "question": "小兴安岭的树海一年四季都是____的。（填颜色）", "answer": "美丽", "explanation": "课文：美丽的大花园、巨大的宝库。填『美丽』即可。"}, {"type": "input", "question": "看拼音写词：hǎi dǎo（美丽的______）", "answer": "海岛", "explanation": "海岛：海中的岛屿。"}]}, {"name": "七、阅读与表达", "perScore": 5, "questions": [{"type": "choice", "question": "《海滨小城》里写『凤凰树开花了，开得那么热闹』，『热闹』用得好在：", "options": ["把花开得又多又盛写活了", "写出了吵闹的声音", "写出了人多"], "answer": "A", "explanation": "花开得热闹，是拟人化的写法。"}, {"type": "choice", "question": "写『这儿真美』，下面哪个开头最好？", "options": ["我家楼下的小公园，一年四季都让人着迷。", "公园是个地方。", "公园里有人。"], "answer": "A", "explanation": "A 点出地方和『美』，引出下文。"}, {"type": "choice", "question": "《香港，璀璨的明珠》里『明珠』比喻：", "options": ["香港", "大海", "灯火"], "answer": "A", "explanation": "香港像一颗明珠，璀璨夺目。"}, {"type": "choice", "question": "『鱼成群地穿来穿去，好像在捉迷藏』，这句话用了什么方法？", "options": ["比喻（把鱼群游动比作捉迷藏）", "只有数字", "说明方法"], "answer": "A", "explanation": "把鱼游的样子比作捉迷藏，生动。"}]}]}};</script>
+<script>const BOOK = {"title": "统编版 · 语文 · 三年级上册", "edition": "2025 年 6 月第 1 版（2026 年 7 月第 2 次印刷）", "isbn": "978-7-107-39754-7", "intro": "<b>怎么用：</b>按单元顺序往下走，每个单元先看知识点讲解，再做题。答错的题会立刻给出解析，错的字要动手写一遍，不要只看。<br><b>顺序建议：</b>第二、七单元（六首古诗）要背熟默对；第三单元是阅读策略单元，练的是“预测要有依据”，不是背故事；第六、七单元的“找关键句、围绕一个意思写”是习作地基；第八单元第一次学文言文，先读通再理解。<br><b>说明：</b>本页所有练习均为自主练习，不计排名、不设考试。", "units": [{"n": 1, "t": "学校生活"}, {"n": 2, "t": "金秋时节"}, {"n": 3, "t": "预测"}, {"n": 4, "t": "童话世界"}, {"n": 5, "t": "留心观察"}, {"n": 6, "t": "祖国山河"}, {"n": 7, "t": "自然之美"}, {"n": 8, "t": "美好品质"}], "totalQ": 664, "hasMidterm": true, "hasFinal": true}; const DATA = {"unitNumber": 6, "unitTitle": "祖国山河", "sections": ["富饶的西沙群岛", "海滨小城", "美丽的小兴安岭", "香港，璀璨的明珠", "习作：这儿真美", "语文园地六"], "note": "本单元学两样硬功夫：找段落的中心句；围绕一个意思写。", "knowledgePoints": [{"id": "chinese-tongbian-g3up-u6-kp1", "title": "找关键语句（中心句）", "short": "一段话的心脏", "difficulty": 3, "sections": ["富饶的西沙群岛", "海滨小城"], "core_concept": "很多自然段有一句中心句，它概括整段的意思，可能在段首、段中，也可能在段尾。比如《富饶的西沙群岛》里『西沙群岛的海里一半是水，一半是鱼』，就是写鱼的这一段的中心句。找准中心句，一段话就读懂了。", "key_formula": "找中心句三看：看段首（总起）→ 看段尾（总结）→ 看哪一句能概括其他句子", "common_mistakes": ["把细节句当中心句：鱼成群地爬在珊瑚上，那是例子不是中心", "只会在段首找，段中段尾的找不到", "找出来却说不出它为什么能概括整段"], "tips": "拿不准时做个试验：把这句删掉，看这段话还剩几个意思——删掉后散掉的才是中心句。", "questions": [{"type": "choice", "difficulty": 2, "question": "『西沙群岛的海里一半是水，一半是鱼』这句话在文中起什么作用？", "options": ["概括说明西沙群岛海里的鱼非常多", "教我们算术", "说明海水很干净"], "answer": "A", "explanation": "『一半是鱼』是夸张的说法，概括了鱼多——这句就是中心句。"}, {"type": "choice", "difficulty": 2, "question": "下面这段话的中心句最可能在哪里？『小城每一个庭院都栽了很多树。桉树叶子……凤凰树开花……』", "options": ["段首第一句", "段尾", "没有中心句"], "answer": "A", "explanation": "第一句概括了整段（庭院里树多），后面全是例子，这是段首中心句。"}, {"type": "true_false", "difficulty": 1, "question": "每个自然段都一定有中心句。", "answer": "错", "explanation": "中心句常见但不是每段必有，有的段落意思要自己概括。"}, {"type": "choice", "difficulty": 3, "question": "《富饶的西沙群岛》写珊瑚的段落，中心是：", "options": ["珊瑚的样子多种多样，十分美丽", "珊瑚能吃", "潜水员喜欢珊瑚"], "answer": "A", "explanation": "段落列举了各种珊瑚的样子，都是为了说明『多种多样、美丽』。"}, {"type": "input", "difficulty": 2, "question": "概括整段意思的那句话，叫____句。（填两个字）", "answer": "中心", "explanation": "中心句是一段话的心脏。"}, {"type": "true_false", "difficulty": 2, "question": "中心句的位置是固定的，都在段首。", "answer": "错", "explanation": "段首、段中、段尾都可能出现。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "『西沙群岛也是鸟的天下。』这句中心句放在段首，后面的句子应该：", "options": ["都写海鸟的事", "写海水", "写珊瑚"], "answer": "A", "explanation": "中心句定了方向，后面的例子都要围绕它。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "一段话的中心句可能在段首、段中，也可能在段____。（填一个字）", "answer": "尾", "explanation": "中心句的位置灵活，段尾总结也很常见。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "自己给一段话写中心句：写『我的文具盒』这段话的中心句（填一句话）。", "answer": "我的文具盒又漂亮又能装。", "explanation": "答案不唯一。中心句要能统领整段内容。"}]}, {"id": "chinese-tongbian-g3up-u6-kp2", "title": "围绕一个意思写", "short": "句句为一个中心", "difficulty": 3, "sections": ["富饶的西沙群岛", "海滨小城"], "core_concept": "会写的人，一段话只讲一个意思，每个句子都为它服务。写『海滨小城的街道很干净』，就写路面、落叶、扫地的车，不插一句『海边很美』。跑题的句子再美也要删。", "key_formula": "一段话一个意思：中心句 + 几个例子（都围绕中心）+ 没有跑题句", "common_mistakes": ["一段话塞进好几个意思", "例子和中心对不上", "想到哪写到哪，没有中心句带路"], "tips": "写完一段话自己检查：这段话能只用一句话概括吗？哪一句是多余的？", "questions": [{"type": "choice", "difficulty": 2, "question": "写『公园里真热闹』，下面哪句不该出现在这段里？", "options": ["我家的小猫很可爱", "老人们在打太极", "孩子们在追跑"], "answer": "A", "explanation": "小猫和公园的热闹无关，是跑题句。"}, {"type": "choice", "difficulty": 2, "question": "『鱼成群地在珊瑚丛中穿来穿去』『有的全身布满彩色条纹』——这些句子围绕的意思是：", "options": ["西沙群岛的鱼又多又好看", "海水很清", "珊瑚很硬"], "answer": "A", "explanation": "句子都在写鱼的多和美。"}, {"type": "true_false", "difficulty": 1, "question": "围绕一个意思写，就是一段话不许出现别的词。", "answer": "错", "explanation": "是说不跑题，不是限制用词。"}, {"type": "input", "difficulty": 2, "question": "写一段话前，先想好这段话的____。（填两个字）", "answer": "中心|中心句|意思|主题", "explanation": "先定中心，再选材料。"}, {"type": "choice", "difficulty": 3, "question": "这段话的中心是『西沙群岛也是鸟的天下』，下面哪句不该出现在这段里？", "options": ["海水五光十色，美丽极了", "树林里栖息着各种海鸟", "遍地都是鸟蛋"], "answer": "A", "explanation": "海水是写海的那段的中心，放进鸟的段落就跑题了。"}, {"type": "true_false", "difficulty": 2, "question": "围绕一个意思写时，可以先写中心句，再举两三个例子。", "answer": "对", "explanation": "这是最常用的总分写法。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "写『海滩真热闹』，下面哪句不该出现在这段里？", "options": ["小城的街道很干净", "贝壳五颜六色", "人们在捡贝壳"], "answer": "A", "explanation": "街道是另一段的内容，塞进来就跑题了。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "写完一段话，用一句话概括它。概括不出来的说明这段话缺少____。（填两个字）", "answer": "中心", "explanation": "概括不出来，说明这段话没有统一的中心。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "围绕『下课了，操场上真热闹』，写两个具体的例子（按「例1和例2」格式简写）。", "answer": "跳绳的和踢毽子的", "explanation": "答案不唯一。例子都要围绕『热闹』。"}]}, {"id": "chinese-tongbian-g3up-u6-kp3", "title": "按顺序写景（总分结构）", "short": "有顺序才不乱", "difficulty": 3, "sections": ["海滨小城", "美丽的小兴安岭"], "core_concept": "写景要有顺序：可以按方位（由远及近、由上到下、由外到内），可以按时间（早中晚、四季），也可以按类别（树、海、街道分开写）。《美丽的小兴安岭》就是按春夏秋冬四季写的。《海滨小城》先写海上、海滩，再写庭院、公园、街道，是由外到内。", "key_formula": "写景三选一：方位顺序 / 时间顺序 / 类别顺序，定了就不要换来换去", "common_mistakes": ["东一句西一句，空间混乱", "四季混着写，春里冒出秋叶", "只写景色不写它的美在哪里"], "tips": "动笔前先列顺序表：先写什么、再写什么、最后写什么。", "questions": [{"type": "choice", "difficulty": 1, "question": "《美丽的小兴安岭》是按什么顺序写的？", "options": ["春夏秋冬四季", "东南西北", "由大到小"], "answer": "A", "explanation": "课文按四季写出小兴安岭不同的美。"}, {"type": "choice", "difficulty": 2, "question": "写『我们的校园』，『由远及近』的写法是：", "options": ["先写校门外的街景，再写校门，最后写教学楼", "先写教学楼再写校门", "想到哪写到哪"], "answer": "A", "explanation": "由远及近：从远处写起，一步步走近。"}, {"type": "true_false", "difficulty": 1, "question": "写景可以一会儿按时间一会儿按方位，混着来没关系。", "answer": "错", "explanation": "顺序要统一，混用会乱。"}, {"type": "input", "difficulty": 2, "question": "先总说后分说的结构叫____分结构。（填一个字）", "answer": "总", "explanation": "总分结构：先概括，再具体写。"}, {"type": "choice", "difficulty": 3, "question": "《海滨小城》先写海上、海滩，再写庭院、公园、街道。这是按什么顺序？", "options": ["由外到内（从海上到城里）", "时间顺序", "颜色顺序"], "answer": "A", "explanation": "从海到城，空间上由外到内。"}, {"type": "true_false", "difficulty": 2, "question": "写景作文里，顺序表列好后，一段写一样，就不会乱。", "answer": "对", "explanation": "一段一景，是写景最稳的办法。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "写『美丽的校园』，先写校门、再写操场、最后写教学楼，这是：", "options": ["方位顺序（由外到内）", "时间顺序", "没有顺序"], "answer": "A", "explanation": "按空间位置移动来写，是方位顺序。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "《美丽的小兴安岭》按____顺序写，一年四季各有各的美。（填两个字）", "answer": "时间", "explanation": "春夏秋冬就是时间顺序。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "写『秋天的校园』按时间顺序，你会选哪三个时间点？（按「时间1、时间2、时间3」格式填）", "answer": "早晨、中午、放学时", "explanation": "答案不唯一。三个时间点连起来就是一天的校园。"}]}, {"id": "chinese-tongbian-g3up-u6-kp4", "title": "字词基础：山河的字词", "short": "读音与形近字", "difficulty": 2, "sections": ["富饶的西沙群岛", "海滨小城", "美丽的小兴安岭"], "core_concept": "本单元重点：『富饶（fù ráo）、瑰丽（guī lì）、海参（shēn）、栖息（qī xī）、五个指头（头）』等读音；形近字『饶/浇、瑰/魁、滨/宾』；『深』『厚』等字的书写。", "key_formula": "难词放进课文记：富饶的西沙群岛（fù ráo）、瑰丽无比（guī lì）", "common_mistakes": ["把『海参』读成 hǎi cān（参加的参）", "『栖息』读成 xī xī", "『富饶』写成『富浇』"], "tips": "『海参』的参是『人参』的参，读 shēn；『参加』才读 cān。", "questions": [{"type": "choice", "difficulty": 2, "question": "『海参』的正确读音是：", "options": ["hǎi shēn", "hǎi cān", "hǎi sēn"], "answer": "A", "explanation": "海参是一种海洋生物，参读 shēn（人参加入读 cān）。"}, {"type": "choice", "difficulty": 2, "question": "『栖息』的正确读音是：", "options": ["qī xī", "xī xī", "qī xí"], "answer": "A", "explanation": "栖读 qī，木字旁，鸟停在树上。"}, {"type": "choice", "difficulty": 1, "question": "『富饶』的『饶』读：", "options": ["ráo", "náo", "rào"], "answer": "A", "explanation": "饶读 ráo，食物丰富叫富饶。"}, {"type": "choice", "difficulty": 2, "question": "『瑰丽无比』中『瑰』的意思接近：", "options": ["珍奇、美丽", "玫瑰这种花", "坚硬"], "answer": "A", "explanation": "瑰丽：异常美丽，像珍宝一样。"}, {"type": "input", "difficulty": 2, "question": "看拼音写词：hǎi bīn（______小城）", "answer": "海滨", "explanation": "海滨：海边。滨有三点水。"}, {"type": "choice", "difficulty": 3, "question": "《美丽的小兴安岭》说小兴安岭是『绿色的海洋』，原因是：", "options": ["树多而密，一眼望不到边", "海是绿色的", "山是青色的石头"], "answer": "A", "explanation": "数百里全是森林，像绿色的海洋，比喻贴切。"}, {"type": "choice", "level": "advance", "difficulty": 3, "question": "『富饶』的『饶』为什么是食字旁？", "options": ["与食物丰富有关，物产多才叫富饶", "写错了", "随便加的"], "answer": "A", "explanation": "看偏旁理解字义：食物丰富就是富饶。"}, {"type": "input", "level": "advance", "difficulty": 3, "question": "『海参』的『参』是多音字：参加读 cān，海参读____。（填拼音）", "answer": "shēn", "explanation": "多音字放进词里记。"}, {"type": "input", "level": "challenge", "difficulty": 4, "question": "写出三个表示海产或海景的词语（按「词、词、词」格式填）。", "answer": "珊瑚、海滩、贝壳", "explanation": "答案不唯一：珊瑚、海滩、贝壳、海龟、飞鱼都可以。"}]}], "exam": {"title": "第六单元 随堂自测", "duration": 10, "scorePerQuestion": 5, "note": "限时 10 分钟 · 时间到自动交卷", "questions": [{"type": "choice", "question": "概括整段意思的句子叫：", "options": ["中心句", "比喻句", "疑问句"], "answer": "A", "explanation": "中心句是一段话的心脏。"}, {"type": "choice", "question": "『西沙群岛的海里一半是水，一半是鱼』写出了：", "options": ["鱼非常多", "水很深", "鱼很大"], "answer": "A", "explanation": "夸张地写出鱼多。"}, {"type": "true_false", "question": "中心句一定在段首。", "answer": "错", "explanation": "段首、段中、段尾都可能有。"}, {"type": "choice", "question": "《美丽的小兴安岭》按什么顺序写？", "options": ["四季", "方位", "类别"], "answer": "A", "explanation": "春夏秋冬，各有各的美。"}, {"type": "input", "question": "看拼音写词：fù ráo（______的西沙群岛）", "answer": "富饶", "explanation": "富饶：物产丰富。"}, {"type": "choice", "question": "写『这儿真美』，最好按什么来组织？", "options": ["按一定顺序写几处景", "想到哪写到哪", "只写一句话"], "answer": "A", "explanation": "顺序让文章条理清楚。"}, {"type": "true_false", "question": "一段话里可以塞进好几个意思。", "answer": "错", "explanation": "一段话一个意思，句句为中心服务。"}, {"type": "choice", "question": "『海参』的『参』读：", "options": ["shēn", "cān", "sēn"], "answer": "A", "explanation": "海参读 shēn。"}, {"type": "input", "question": "先总说后分说的结构叫____分结构。（填一个字）", "answer": "总", "explanation": "总分结构。"}, {"type": "choice", "question": "『海滨小城』的『滨』意思是：", "options": ["水边", "宾客", "树林"], "answer": "A", "explanation": "滨：水边。海滨就是海边。"}]}, "paper": {"title": "第六单元 检测卷", "subtitle": "祖国山河", "duration": 40, "totalScore": 100, "note": "自主检测 · 不计排名 · 不代替学校考试", "sections": [{"name": "一、选择正确读音", "perScore": 2, "questions": [{"type": "choice", "question": "富饶的『饶』读：", "options": ["ráo", "náo", "rào"], "answer": "A", "explanation": "饶读 ráo。"}, {"type": "choice", "question": "瑰丽的『瑰』读：", "options": ["guī", "guì", "kuí"], "answer": "A", "explanation": "瑰读 guī。"}, {"type": "choice", "question": "海参的『参』读：", "options": ["shēn", "cān", "sēn"], "answer": "A", "explanation": "海参读 shēn。"}, {"type": "choice", "question": "栖息的『栖』读：", "options": ["qī", "xī", "qì"], "answer": "A", "explanation": "栖读 qī。"}, {"type": "choice", "question": "海滨的『滨』读：", "options": ["bīn", "bīng", "pín"], "answer": "A", "explanation": "滨读 bīn。"}]}, {"name": "二、选择正确的字", "perScore": 3, "questions": [{"type": "choice", "question": "西沙群岛一带海水五光十____。", "options": ["色", "澀", "鸣"], "answer": "A", "explanation": "五光十色：颜色又多又亮。"}, {"type": "choice", "question": "各种各样的珊瑚____满海底。", "options": ["铺", "捕", "扑"], "answer": "A", "explanation": "铺：摊开覆盖。"}, {"type": "choice", "question": "成群的海鸟在树林里____息。", "options": ["栖", "妻", "漆"], "answer": "A", "explanation": "栖息：停留休息。"}, {"type": "choice", "question": "海滩上有美丽的____壳。", "options": ["贝", "见", "页"], "answer": "A", "explanation": "贝壳。"}, {"type": "choice", "question": "小兴安岭一年四季____是美丽的。", "options": ["都", "多", "岛"], "answer": "A", "explanation": "都是：全都。"}]}, {"name": "三、把词语补充完整", "perScore": 2, "questions": [{"type": "input", "question": "五____十色", "answer": "光", "explanation": "五光十色。"}, {"type": "input", "question": "成____结队（一群群、一队队）", "answer": "群", "explanation": "成群结队。"}, {"type": "input", "question": "各种各____", "answer": "样", "explanation": "各种各样。"}, {"type": "input", "question": "____丽无比", "answer": "瑰", "explanation": "瑰丽无比。"}, {"type": "input", "question": "物产丰____（东西很多）", "answer": "富", "explanation": "物产丰富。"}]}, {"name": "四、段落与结构", "perScore": 3, "questions": [{"type": "choice", "question": "『西沙群岛也是鸟的天下』这句放在一段开头，它的作用是：", "options": ["总起，概括整段", "举例", "总结全文"], "answer": "A", "explanation": "段首中心句起总起作用。"}, {"type": "choice", "question": "下面哪句不能放进『海边的沙滩真美』这一段？", "options": ["城里的街道很干净", "沙子又细又软", "贝壳五颜六色"], "answer": "A", "explanation": "街道与沙滩无关。"}, {"type": "choice", "question": "写『我们的校园』按『校门→操场→教学楼』写，这是：", "options": ["方位顺序", "时间顺序", "类别顺序"], "answer": "A", "explanation": "按地点移动的方位顺序。"}, {"type": "choice", "question": "《美丽的小兴安岭》写春天 Extract（抽出）新的枝条，『抽出』用得好是因为：", "options": ["把枝条快速长出写活了，像拔出来一样", "抽出是抽打", "没有特别的"], "answer": "A", "explanation": "一个『抽出』写出春天枝条生长的有力。"}, {"type": "choice", "question": "围绕『这里的树真多』写一段话，下面哪句最该保留？", "options": ["一棵挨着一棵，望不到边", "树很值钱", "我喜欢吃苹果"], "answer": "A", "explanation": "只有它围绕『树多』。"}]}, {"name": "五、判断对错", "perScore": 2, "questions": [{"type": "true_false", "question": "《富饶的西沙群岛》写了海面、海底、海滩、海岛。", "answer": "对", "explanation": "课文按这几个地方写物产丰富。"}, {"type": "true_false", "question": "每段话都必须有中心句。", "answer": "错", "explanation": "常见但不是必须。"}, {"type": "true_false", "question": "写景可以按时间顺序，也可以按方位顺序。", "answer": "对", "explanation": "选一种，用到底。"}, {"type": "true_false", "question": "《香港，璀璨的明珠》写的是香港的美丽和繁华。", "answer": "对", "explanation": "香港被称为璀璨的明珠。"}, {"type": "true_false", "question": "『围绕一个意思写』就是不许写例子。", "answer": "错", "explanation": "恰恰要靠例子来支撑中心。"}]}, {"name": "六、按课文内容填空", "perScore": 4, "questions": [{"type": "input", "question": "西沙群岛的海水里，有____的珊瑚，有懒洋洋的海参。（填一个词：颜色多）", "answer": "各种各样|各式各样|五颜六色|颜色多|形形色色", "explanation": "珊瑚各种各样，美不胜收。"}, {"type": "input", "question": "鱼成群地在珊瑚丛中____来穿去。（填一个字）", "answer": "穿", "explanation": "穿来穿去：来回游动。"}, {"type": "input", "question": "西沙群岛的海里一半是水，一半是____。", "answer": "鱼", "explanation": "夸张写鱼多。"}, {"type": "input", "question": "小兴安岭的树海一年四季都是____的。（填颜色）", "answer": "美丽", "explanation": "课文：美丽的大花园、巨大的宝库。填『美丽』即可。"}, {"type": "input", "question": "看拼音写词：hǎi dǎo（美丽的______）", "answer": "海岛", "explanation": "海岛：海中的岛屿。"}]}, {"name": "七、阅读与表达", "perScore": 5, "questions": [{"type": "choice", "question": "《海滨小城》里写『凤凰树开花了，开得那么热闹』，『热闹』用得好在：", "options": ["把花开得又多又盛写活了", "写出了吵闹的声音", "写出了人多"], "answer": "A", "explanation": "花开得热闹，是拟人化的写法。"}, {"type": "choice", "question": "写『这儿真美』，下面哪个开头最好？", "options": ["我家楼下的小公园，一年四季都让人着迷。", "公园是个地方。", "公园里有人。"], "answer": "A", "explanation": "A 点出地方和『美』，引出下文。"}, {"type": "choice", "question": "《香港，璀璨的明珠》里『明珠』比喻：", "options": ["香港", "大海", "灯火"], "answer": "A", "explanation": "香港像一颗明珠，璀璨夺目。"}, {"type": "choice", "question": "『鱼成群地穿来穿去，好像在捉迷藏』，这句话用了什么方法？", "options": ["比喻（把鱼群游动比作捉迷藏）", "只有数字", "说明方法"], "answer": "A", "explanation": "把鱼游的样子比作捉迷藏，生动。"}]}]}};</script>
 <script>
 (function(){
   const D = DATA;
   const store = {};
+
+  /* ── 答题记录持久化：按「使用者 + 页面」隔离，刷新/重进后恢复 ──
+     结构：{ "<page>": { "<qid>": {ok:1|0, ua:"孩子的答案", ts} } }
+     page = p<unitNumber>（单元 1-9、期中 0、期末 -1），避免不同单元的 kp0_0 互相覆盖。 */
+  const DONE_KEY = "chinese3.done.v1" + (__USER ? "." + __USER : "");
+  const PAGE_KEY = (function(){
+    try{
+      if(D && typeof D.unitNumber === "number") return "p" + D.unitNumber;
+      return "x_" + String((D && D.unitTitle) || "page").slice(0,10);
+    }catch(e){ return "x"; }
+  })();
+  function doneAll(){
+    try{ return JSON.parse(localStorage.getItem(DONE_KEY) || "{}"); }catch(e){ return {}; }
+  }
+  function donePage(){ const a = doneAll(); return a[PAGE_KEY] || {}; }
+  function doneSavePage(p){
+    const a = doneAll();
+    a[PAGE_KEY] = p;
+    try{ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }catch(e){}
+  }
+  function doneSet(qid, ok, ua){
+    const p = donePage();
+    p[qid] = { ok: ok ? 1 : 0, ua: String(ua == null ? "" : ua).slice(0,200), ts: Date.now() };
+    doneSavePage(p);
+  }
+  function doneClear(){
+    const a = doneAll();
+    delete a[PAGE_KEY];
+    try{ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }catch(e){}
+  }
+  /* 预载进 store，让进度条与「已完成」计数跨会话保留 */
+  (function loadDone(){
+    const p = donePage();
+    Object.keys(p).forEach(function(k){ store[k] = !!p[k].ok; });
+  })();
   const scoreMap = {};
   let TOTAL = 0;
 
@@ -568,6 +608,20 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     wbWrite(all);
     wbBadge();
   }
+
+  /* 「算我对」撤销：刚记入的错题（含其变式题）直接删除；老记录则记一次答对 */
+  function wbCancel(qid, q, meta){
+    const all = wbAll();
+    const rec = all[qid];
+    if(!rec) return;
+    if(!rec.streak && (rec.wrong||0) <= 1 && Date.now() - (rec.ts||0) < 180000){
+      delete all[qid];
+      const vk = qid + "_v";
+      if(all[vk] && all[vk].generated && all[vk].origin === qid) delete all[vk];
+      wbWrite(all); wbBadge(); return;
+    }
+    wbRecord(qid, true, q, meta || (rec.meta || {}));
+  }
   function wbCount(){ return Object.keys(wbAll()).length; }
   function wbBadge(){
     const b = document.getElementById("wbcount");
@@ -660,7 +714,78 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
   function norm(s){
     return String(s).trim()
       .replace(/[\uff10-\uff19]/g, c=>String.fromCharCode(c.charCodeAt(0)-65248))
-      .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"");
+      .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"")
+      .replace(/[\u3002\uff01\uff1f\uff1b\uff1a\u201c\u201d\u2018\u2019\u300a\u300b\u300c\u300d]/g,"");
+  }
+
+  /* 多答案判分：answer 支持 "主答案|备选1|备选2" 或数组 */
+  function ansList(a){
+    return Array.isArray(a) ? a.map(String) : String(a).split("|").map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+  function matchAns(input, a){
+    const t = norm(input);
+    if(!t) return false;
+    return ansList(a).some(function(x){ return norm(x) === t; });
+  }
+  function ansText(a){ return ansList(a).join(" 或 "); }
+  /* ── AI 复核（可选）：家长在本机配置 Key 后，填空判错时异步复核一次 ──
+     原则：只放宽（把错改对），绝不把对的改错；结果缓存，保证同一答案稳定；
+     未配置、断网、超时、返回异常 → 静默跳过，不影响原有判分。 */
+  const AI_CFG_KEY = "studyfree.ai.v1";
+  const AI_CACHE_KEY = "studyfree.aifix.v1";
+  function aiCfg(){
+    try{ return JSON.parse(localStorage.getItem(AI_CFG_KEY) || "null"); }catch(e){ return null; }
+  }
+  function aiOn(){
+    const c = aiCfg();
+    return !!(c && c.on && c.url && c.key);
+  }
+  function aiCache(){
+    try{ return JSON.parse(localStorage.getItem(AI_CACHE_KEY) || "{}"); }catch(e){ return {}; }
+  }
+  function aiCacheSave(o){
+    const ks = Object.keys(o);
+    if(ks.length > 600){ ks.slice(0, ks.length - 500).forEach(function(k){ delete o[k]; }); }
+    try{ localStorage.setItem(AI_CACHE_KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function aiHash(q, ans){
+    const s = String(q.question||"") + "|" + String(ans||"");
+    let h = 5381;
+    for(let i=0;i<s.length;i++){ h = ((h * 33) ^ s.charCodeAt(i)) >>> 0; }
+    return h.toString(36) + "_" + s.length;
+  }
+  function aiReview(q, ans, cb){
+    if(!aiOn()) return;
+    if(!q || q.type !== "input") return;      /* 只复核填空题 */
+    const cfg = aiCfg();
+    const k = aiHash(q, ans);
+    const cache = aiCache();
+    if(cache[k] !== undefined){ cb(cache[k] === 1, "cache"); return; }
+    const sys = "你是小学作业判分助手。请判断学生的答案在语义上是否也算正确。只输出一个字：对 或 错。";
+    const usr = "题目：" + String(q.question||"") + "\n参考答案：" + ansText(q.answer) + "\n学生答案：" + String(ans||"");
+    let ctrl = null;
+    try{ ctrl = new AbortController(); }catch(e){}
+    const to = setTimeout(function(){ try{ ctrl && ctrl.abort(); }catch(e){} }, 6000);
+    fetch(cfg.url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer " + cfg.key},
+      body: JSON.stringify({
+        model: cfg.model || "deepseek-chat",
+        temperature: 0,
+        max_tokens: 8,
+        messages: [{role:"system", content: sys}, {role:"user", content: usr}]
+      }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function(r){ return r.json(); }).then(function(j){
+      clearTimeout(to);
+      let t = "";
+      try{ t = String(j.choices[0].message.content || ""); }catch(e){ t = ""; }
+      if(!t) return;
+      const yes = (t.indexOf("对") > -1) && (t.indexOf("错") < 0);
+      cache[k] = yes ? 1 : 0;
+      aiCacheSave(cache);
+      cb(yes, "ai");
+    }).catch(function(){ clearTimeout(to); });
   }
   function letter(i){ return "ABCDEF"[i]; }
   function diffDots(n){ return "●".repeat(n) + "○".repeat(Math.max(0,4-n)); }
@@ -831,6 +956,14 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
       wrap.appendChild(row);
     }
     wrap.appendChild(fb);
+
+    /* 已答过的题：恢复作答状态（自测/卷子不恢复，保持每次重新开始） */
+    if(mode !== "quiz"){
+      try{
+        const rec = donePage()[qid];
+        if(rec) restoreDone(wrap, q, qid, rec);
+      }catch(e){}
+    }
     return wrap;
   }
 
@@ -840,7 +973,7 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     if(!ok){
       if(q.type==="choice") tip = "正确答案：" + q.answer + "．" + q.options["ABCDEF".indexOf(q.answer)] + "　";
       else if(q.type==="true_false") tip = "正确答案：" + q.answer + "　";
-      else tip = "正确答案：" + q.answer + (q.unit||"") + "　";
+      else tip = "参考答案：" + ansText(q.answer) + (q.unit||"") + "　";
     }
     fb.innerHTML = '<span class="tk">'+(ok?"\u2713 答对了":"\u2717 再想想")+'</span>' + tip + q.explanation;
   }
@@ -855,21 +988,101 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     wrap.classList.add(ok?"done":"fail");
     showFb(fb, ok, q);
     store[qid] = ok;
+    try{ doneSet(qid, ok, val); }catch(e){}
     try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
     updateProgress();
   }
 
   function judgeInput(inp,btn,q,fb,wrap,qid){
     if(!inp.value.trim()){ inp.focus(); return; }
-    const ok = norm(inp.value) === norm(q.answer);
+    const ok = matchAns(inp.value, q.answer);
     inp.disabled = true; btn.disabled = true;
     inp.style.borderColor = ok ? "var(--ok)" : "var(--no)";
     inp.style.color = ok ? "var(--ok)" : "var(--no)";
     wrap.classList.add(ok?"done":"fail");
     showFb(fb, ok, q);
     store[qid] = ok;
+    try{ doneSet(qid, ok, inp.value); }catch(e){}
     try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+    if(!ok){
+      bindFix(fb, wrap, q, qid, inp);
+
+      /* AI 复核：命中则自动改判（异步，不阻塞） */
+      const typed = inp.value;
+      aiReview(q, typed, function(aiOk){
+        if(!aiOk || store[qid] === true) return;
+        store[qid] = true;
+        try{ doneSet(qid, true, typed); }catch(e){}
+        inp.style.borderColor = "var(--ok)";
+        inp.style.color = "var(--ok)";
+        wrap.classList.remove("fail"); wrap.classList.add("done");
+        fb.className = "fb show ok";
+        fb.innerHTML = '<span class="tk">\u2713 AI 复核：这个答案也算对</span>参考答案：' +
+          escapeHtml(ansText(q.answer)) + (q.explanation||"");
+        try{ wbCancel(qid, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+        updateProgress();
+      });
+    }
     updateProgress();
+  }
+
+  /* 「算我对」按钮：判错后、恢复历史作答时共用 */
+  function bindFix(fb, wrap, q, qid, inp){
+    const fix = el("button","fixbtn","我填的也对 · 算我对");
+    fix.type = "button";
+    fix.onclick = function(){
+      if(store[qid] === true) return;
+      store[qid] = true;
+      try{ doneSet(qid, true, inp ? inp.value : ""); }catch(e){}
+      if(inp){
+        inp.style.borderColor = "var(--ok)";
+        inp.style.color = "var(--ok)";
+      }
+      wrap.classList.remove("fail"); wrap.classList.add("done");
+      fb.className = "fb show ok";
+      fb.innerHTML = '<span class="tk">\u2713 已算对</span>参考答案：' + escapeHtml(ansText(q.answer)) + (q.explanation||"");
+      try{ wbCancel(qid, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+      updateProgress();
+    };
+    const row = el("div");
+    row.style.marginTop = "8px";
+    row.appendChild(fix);
+    fb.appendChild(row);
+    return fix;
+  }
+
+  /* 恢复历史作答：把已答过的题还原成答完的样子 */
+  function restoreDone(wrap, q, qid, rec){
+    const fb = wrap.querySelector(".fb");
+    if(!fb) return;
+    const ok = !!rec.ok;
+    wrap.classList.add(ok ? "done" : "fail");
+    if(q.type === "choice" || q.type === "true_false"){
+      const box = wrap.querySelector(".opts");
+      const chosen = String(rec.ua || "");
+      if(box){
+        [...box.children].forEach(function(b){
+          b.disabled = true;
+          if(b.dataset.val === q.answer) b.classList.add("ok");
+          else if(b.dataset.val === chosen && !ok) b.classList.add("no");
+        });
+      }
+    } else {
+      const inp = wrap.querySelector("input");
+      const btn = wrap.querySelector(".btn");
+      if(inp){
+        inp.value = String(rec.ua || "");
+        inp.disabled = true;
+        inp.style.borderColor = ok ? "var(--ok)" : "var(--no)";
+        inp.style.color = ok ? "var(--ok)" : "var(--no)";
+      }
+      if(btn) btn.disabled = true;
+    }
+    showFb(fb, ok, q);          /* 先渲染反馈：它会重写 fb.innerHTML */
+    if(!ok && q.type !== "choice" && q.type !== "true_false"){
+      const inp2 = wrap.querySelector("input");
+      if(inp2) bindFix(fb, wrap, q, qid, inp2);
+    }
   }
 
   function updateProgress(){
@@ -999,12 +1212,17 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
             uaTxt = uaTxt + "．" + (q.options["ABCDEF".indexOf(uaTxt)]||"");
           }
         }
-        let ansTxt = q.answer + (q.unit||"");
+        let ansTxt = (q.type==="choice" || q.type==="true_false")
+          ? (q.answer + (q.unit||""))
+          : (ansText(q.answer) + (q.unit||""));
         if(q.type==="choice") ansTxt = q.answer + "．" + (q.options["ABCDEF".indexOf(q.answer)]||"");
-        html += '<div class="wrow">';
+        html += '<div class="wrow" data-qid="'+escapeHtml(String(w.qid||""))+'">';
         html += '<div class="q">'+escapeHtml(q.question)+'</div>';
-        html += '<div class="ans">你的答案：<span class="bad">'+escapeHtml(uaTxt)+'</span>　正确答案：<span class="good">'+escapeHtml(ansTxt)+'</span></div>';
+        html += '<div class="ans">你的答案：<span class="bad">'+escapeHtml(uaTxt)+'</span>　参考答案：<span class="good">'+escapeHtml(ansTxt)+'</span></div>';
         if(q.explanation) html += '<div class="exp">'+escapeHtml(q.explanation)+'</div>';
+        if(q.type!=="choice" && q.type!=="true_false"){
+          html += '<button class="fixbtn" type="button" data-fix="'+escapeHtml(String(w.qid||""))+'">我答的也对 · 算对这题</button>';
+        }
         html += '</div>';
       });
       html += '</div>';
@@ -1094,11 +1312,12 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
         const k = it.qid;
         const ua = quizAns[k];
         const answered = ua!==undefined && String(ua).trim()!=="";
-        const ok = answered && norm(ua)===norm(it.q.answer);
+        const ok = answered && matchAns(ua, it.q.answer);
         store[k] = ok;
+        try{ doneSet(k, ok, ua); }catch(e){}
         full += (it.score||0);
         if(ok){ right++; got += (it.score||0); }
-        else wrongs.push({q:it.q, ua:ua});
+        else wrongs.push({q:it.q, ua:ua, qid:k, score:(it.score||0)});
         try{ wbRecord(k, ok, it.q, it.meta||{}); }catch(e){}
       });
 
@@ -1121,6 +1340,46 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
         wrongs: wrongs
       };
       rbox.innerHTML = buildResultHtml(res);
+
+      /* 错题逐条改判：点「算对这题」→ 撤销错题、重算分数与星星（星星只升不降） */
+      let fixedN = 0;
+      rbox.onclick = function(e){
+        if(!e.target || !e.target.closest) return;
+        const b = e.target.closest("[data-fix]");
+        if(!b) return;
+        const fq = b.getAttribute("data-fix");
+        let item = null;
+        for(let i=0;i<ITEMS.length;i++){ if(String(ITEMS[i].qid) === fq){ item = ITEMS[i]; break; } }
+        if(!item || store[fq] === true) return;
+        store[fq] = true;
+        right++; got += (item.score||0);
+        try{ wbCancel(fq, item.q, item.meta||{}); }catch(err){}
+        const row = b.closest(".wrow");
+        if(row && row.parentNode) row.parentNode.removeChild(row);
+        fixedN++;
+        const pct2 = cfg.scoreMode==="score"
+          ? Math.round(got/Math.max(1,full)*100)
+          : (QN ? Math.round(right/QN*100) : 0);
+        const stars2 = starsFromPct(pct2);
+        res.main = cfg.scoreMode==="score" ? got : right;
+        res.line = cfg.scoreMode==="score"
+          ? ("得分 "+got+" / "+full+" 分　·　答对 "+right+" / "+QN+" 题　·　正确率 "+pct2+"%")
+          : ("正确率 "+pct2+"%　·　答对 "+right+" 题，答错 "+(wrongs.length-fixedN)+" 题");
+        const scEl = rbox.querySelector(".sc");
+        if(scEl) scEl.innerHTML = res.main + '<small>' + res.sub + '</small>';
+        const lineEl = rbox.querySelector(".top .sub");
+        if(lineEl) lineEl.textContent = res.line;
+        const lvEl = rbox.querySelector(".lv");
+        if(lvEl) lvEl.textContent = stars2===3 ? "优秀" : (stars2===2 ? "良好" : "待加强");
+        const starEls = rbox.querySelectorAll(".stars .star");
+        for(let si=0; si<starEls.length; si++){ starEls[si].className = "star" + (si<stars2 ? " on" : " off"); }
+        const h3 = rbox.querySelector("h3");
+        const leftN = wrongs.length - fixedN;
+        if(h3) h3.textContent = leftN ? ("错题分析（"+leftN+" 道）") : "错题已全部核对完毕";
+        if(cfg.starKey) starUpd(cfg.starKey, stars2);
+        updateProgress();
+      };
+
       rbox.scrollIntoView({behavior:"smooth", block:"start"});
       updateProgress();
     }
@@ -1300,6 +1559,7 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
   document.getElementById("reset").onclick = ()=>{
     if(!confirm("确定清空本页所有作答记录？")) return;
     for(const k in store) delete store[k];
+    try{ doneClear(); }catch(e){}
     document.querySelectorAll(".q").forEach(x=>{
       x.className = "q" + (x.dataset.lvl ? " "+x.dataset.lvl : "");
       const fb=x.querySelector(".fb"); if(fb) fb.className="fb";

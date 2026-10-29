@@ -88,7 +88,7 @@ chk("倒计时启动", tmShown === true, tmText);
 // 5. 全部故意答错，然后交卷
 await ev(`(function(){
   document.querySelectorAll("#pane-exam .q").forEach(function(q){
-    var ans=q.getAttribute("data-ans");
+    var ans=(q.getAttribute("data-ans")||"").split("|")[0];
     var opts=q.querySelectorAll(".opt");
     if(opts.length){
       for(var i=0;i<opts.length;i++){ if(opts[i].getAttribute("data-val")!==ans){ opts[i].click(); return; } }
@@ -135,7 +135,7 @@ await ev(`document.getElementById("examStart").click()`);
 await sleep(600);
 await ev(`(function(){
   document.querySelectorAll("#pane-exam .q").forEach(function(q){
-    var ans=q.getAttribute("data-ans");
+    var ans=(q.getAttribute("data-ans")||"").split("|")[0];
     var opts=q.querySelectorAll(".opt");
     if(opts.length){
       for(var i=0;i<opts.length;i++){ if(opts[i].getAttribute("data-val")===ans){ opts[i].click(); return; } }

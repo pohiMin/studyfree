@@ -251,6 +251,11 @@
   .btn:hover{background:var(--pri-d);border-color:var(--pri-d)}
   .btn:disabled{background:#E6EAF1;border-color:#E6EAF1;color:#9AA5B8;cursor:default}
 
+  .fixbtn{
+    font: inherit;font-size:.82rem;padding:7px 14px;border-radius:10px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:#7A5E2E;margin-top:8px;
+  }
+  .fixbtn:hover{border-color:#B08D57;color:#8A6A33;background:#FBF6E9}
   .fb{margin:11px 0 0 37px;font-size:.9rem;line-height:1.8;border-radius:10px;padding:11px 15px;display:none}
   .fb.show{display:block}
   .fb.ok{background:var(--ok-l);color:#08694A;border-left:4px solid var(--ok)}
@@ -459,6 +464,41 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
 (function(){
   const D = DATA;
   const store = {};
+
+  /* ── 答题记录持久化：按「使用者 + 页面」隔离，刷新/重进后恢复 ──
+     结构：{ "<page>": { "<qid>": {ok:1|0, ua:"孩子的答案", ts} } }
+     page = p<unitNumber>（单元 1-9、期中 0、期末 -1），避免不同单元的 kp0_0 互相覆盖。 */
+  const DONE_KEY = "math3.done.v1" + (__USER ? "." + __USER : "");
+  const PAGE_KEY = (function(){
+    try{
+      if(D && typeof D.unitNumber === "number") return "p" + D.unitNumber;
+      return "x_" + String((D && D.unitTitle) || "page").slice(0,10);
+    }catch(e){ return "x"; }
+  })();
+  function doneAll(){
+    try{ return JSON.parse(localStorage.getItem(DONE_KEY) || "{}"); }catch(e){ return {}; }
+  }
+  function donePage(){ const a = doneAll(); return a[PAGE_KEY] || {}; }
+  function doneSavePage(p){
+    const a = doneAll();
+    a[PAGE_KEY] = p;
+    try{ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }catch(e){}
+  }
+  function doneSet(qid, ok, ua){
+    const p = donePage();
+    p[qid] = { ok: ok ? 1 : 0, ua: String(ua == null ? "" : ua).slice(0,200), ts: Date.now() };
+    doneSavePage(p);
+  }
+  function doneClear(){
+    const a = doneAll();
+    delete a[PAGE_KEY];
+    try{ localStorage.setItem(DONE_KEY, JSON.stringify(a)); }catch(e){}
+  }
+  /* 预载进 store，让进度条与「已完成」计数跨会话保留 */
+  (function loadDone(){
+    const p = donePage();
+    Object.keys(p).forEach(function(k){ store[k] = !!p[k].ok; });
+  })();
   const scoreMap = {};
   let TOTAL = 0;
 
@@ -568,6 +608,20 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     wbWrite(all);
     wbBadge();
   }
+
+  /* 「算我对」撤销：刚记入的错题（含其变式题）直接删除；老记录则记一次答对 */
+  function wbCancel(qid, q, meta){
+    const all = wbAll();
+    const rec = all[qid];
+    if(!rec) return;
+    if(!rec.streak && (rec.wrong||0) <= 1 && Date.now() - (rec.ts||0) < 180000){
+      delete all[qid];
+      const vk = qid + "_v";
+      if(all[vk] && all[vk].generated && all[vk].origin === qid) delete all[vk];
+      wbWrite(all); wbBadge(); return;
+    }
+    wbRecord(qid, true, q, meta || (rec.meta || {}));
+  }
   function wbCount(){ return Object.keys(wbAll()).length; }
   function wbBadge(){
     const b = document.getElementById("wbcount");
@@ -660,7 +714,78 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
   function norm(s){
     return String(s).trim()
       .replace(/[\uff10-\uff19]/g, c=>String.fromCharCode(c.charCodeAt(0)-65248))
-      .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"");
+      .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"")
+      .replace(/[\u3002\uff01\uff1f\uff1b\uff1a\u201c\u201d\u2018\u2019\u300a\u300b\u300c\u300d]/g,"");
+  }
+
+  /* 多答案判分：answer 支持 "主答案|备选1|备选2" 或数组 */
+  function ansList(a){
+    return Array.isArray(a) ? a.map(String) : String(a).split("|").map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+  function matchAns(input, a){
+    const t = norm(input);
+    if(!t) return false;
+    return ansList(a).some(function(x){ return norm(x) === t; });
+  }
+  function ansText(a){ return ansList(a).join(" 或 "); }
+  /* ── AI 复核（可选）：家长在本机配置 Key 后，填空判错时异步复核一次 ──
+     原则：只放宽（把错改对），绝不把对的改错；结果缓存，保证同一答案稳定；
+     未配置、断网、超时、返回异常 → 静默跳过，不影响原有判分。 */
+  const AI_CFG_KEY = "studyfree.ai.v1";
+  const AI_CACHE_KEY = "studyfree.aifix.v1";
+  function aiCfg(){
+    try{ return JSON.parse(localStorage.getItem(AI_CFG_KEY) || "null"); }catch(e){ return null; }
+  }
+  function aiOn(){
+    const c = aiCfg();
+    return !!(c && c.on && c.url && c.key);
+  }
+  function aiCache(){
+    try{ return JSON.parse(localStorage.getItem(AI_CACHE_KEY) || "{}"); }catch(e){ return {}; }
+  }
+  function aiCacheSave(o){
+    const ks = Object.keys(o);
+    if(ks.length > 600){ ks.slice(0, ks.length - 500).forEach(function(k){ delete o[k]; }); }
+    try{ localStorage.setItem(AI_CACHE_KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function aiHash(q, ans){
+    const s = String(q.question||"") + "|" + String(ans||"");
+    let h = 5381;
+    for(let i=0;i<s.length;i++){ h = ((h * 33) ^ s.charCodeAt(i)) >>> 0; }
+    return h.toString(36) + "_" + s.length;
+  }
+  function aiReview(q, ans, cb){
+    if(!aiOn()) return;
+    if(!q || q.type !== "input") return;      /* 只复核填空题 */
+    const cfg = aiCfg();
+    const k = aiHash(q, ans);
+    const cache = aiCache();
+    if(cache[k] !== undefined){ cb(cache[k] === 1, "cache"); return; }
+    const sys = "你是小学作业判分助手。请判断学生的答案在语义上是否也算正确。只输出一个字：对 或 错。";
+    const usr = "题目：" + String(q.question||"") + "\n参考答案：" + ansText(q.answer) + "\n学生答案：" + String(ans||"");
+    let ctrl = null;
+    try{ ctrl = new AbortController(); }catch(e){}
+    const to = setTimeout(function(){ try{ ctrl && ctrl.abort(); }catch(e){} }, 6000);
+    fetch(cfg.url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json", "Authorization": "Bearer " + cfg.key},
+      body: JSON.stringify({
+        model: cfg.model || "deepseek-chat",
+        temperature: 0,
+        max_tokens: 8,
+        messages: [{role:"system", content: sys}, {role:"user", content: usr}]
+      }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function(r){ return r.json(); }).then(function(j){
+      clearTimeout(to);
+      let t = "";
+      try{ t = String(j.choices[0].message.content || ""); }catch(e){ t = ""; }
+      if(!t) return;
+      const yes = (t.indexOf("对") > -1) && (t.indexOf("错") < 0);
+      cache[k] = yes ? 1 : 0;
+      aiCacheSave(cache);
+      cb(yes, "ai");
+    }).catch(function(){ clearTimeout(to); });
   }
   function letter(i){ return "ABCDEF"[i]; }
   function diffDots(n){ return "●".repeat(n) + "○".repeat(Math.max(0,4-n)); }
@@ -831,6 +956,14 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
       wrap.appendChild(row);
     }
     wrap.appendChild(fb);
+
+    /* 已答过的题：恢复作答状态（自测/卷子不恢复，保持每次重新开始） */
+    if(mode !== "quiz"){
+      try{
+        const rec = donePage()[qid];
+        if(rec) restoreDone(wrap, q, qid, rec);
+      }catch(e){}
+    }
     return wrap;
   }
 
@@ -840,7 +973,7 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     if(!ok){
       if(q.type==="choice") tip = "正确答案：" + q.answer + "．" + q.options["ABCDEF".indexOf(q.answer)] + "　";
       else if(q.type==="true_false") tip = "正确答案：" + q.answer + "　";
-      else tip = "正确答案：" + q.answer + (q.unit||"") + "　";
+      else tip = "参考答案：" + ansText(q.answer) + (q.unit||"") + "　";
     }
     fb.innerHTML = '<span class="tk">'+(ok?"\u2713 答对了":"\u2717 再想想")+'</span>' + tip + q.explanation;
   }
@@ -855,21 +988,101 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
     wrap.classList.add(ok?"done":"fail");
     showFb(fb, ok, q);
     store[qid] = ok;
+    try{ doneSet(qid, ok, val); }catch(e){}
     try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
     updateProgress();
   }
 
   function judgeInput(inp,btn,q,fb,wrap,qid){
     if(!inp.value.trim()){ inp.focus(); return; }
-    const ok = norm(inp.value) === norm(q.answer);
+    const ok = matchAns(inp.value, q.answer);
     inp.disabled = true; btn.disabled = true;
     inp.style.borderColor = ok ? "var(--ok)" : "var(--no)";
     inp.style.color = ok ? "var(--ok)" : "var(--no)";
     wrap.classList.add(ok?"done":"fail");
     showFb(fb, ok, q);
     store[qid] = ok;
+    try{ doneSet(qid, ok, inp.value); }catch(e){}
     try{ wbRecord(qid, ok, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+    if(!ok){
+      bindFix(fb, wrap, q, qid, inp);
+
+      /* AI 复核：命中则自动改判（异步，不阻塞） */
+      const typed = inp.value;
+      aiReview(q, typed, function(aiOk){
+        if(!aiOk || store[qid] === true) return;
+        store[qid] = true;
+        try{ doneSet(qid, true, typed); }catch(e){}
+        inp.style.borderColor = "var(--ok)";
+        inp.style.color = "var(--ok)";
+        wrap.classList.remove("fail"); wrap.classList.add("done");
+        fb.className = "fb show ok";
+        fb.innerHTML = '<span class="tk">\u2713 AI 复核：这个答案也算对</span>参考答案：' +
+          escapeHtml(ansText(q.answer)) + (q.explanation||"");
+        try{ wbCancel(qid, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+        updateProgress();
+      });
+    }
     updateProgress();
+  }
+
+  /* 「算我对」按钮：判错后、恢复历史作答时共用 */
+  function bindFix(fb, wrap, q, qid, inp){
+    const fix = el("button","fixbtn","我填的也对 · 算我对");
+    fix.type = "button";
+    fix.onclick = function(){
+      if(store[qid] === true) return;
+      store[qid] = true;
+      try{ doneSet(qid, true, inp ? inp.value : ""); }catch(e){}
+      if(inp){
+        inp.style.borderColor = "var(--ok)";
+        inp.style.color = "var(--ok)";
+      }
+      wrap.classList.remove("fail"); wrap.classList.add("done");
+      fb.className = "fb show ok";
+      fb.innerHTML = '<span class="tk">\u2713 已算对</span>参考答案：' + escapeHtml(ansText(q.answer)) + (q.explanation||"");
+      try{ wbCancel(qid, q, JSON.parse(wrap.dataset.meta||"{}")); }catch(e){}
+      updateProgress();
+    };
+    const row = el("div");
+    row.style.marginTop = "8px";
+    row.appendChild(fix);
+    fb.appendChild(row);
+    return fix;
+  }
+
+  /* 恢复历史作答：把已答过的题还原成答完的样子 */
+  function restoreDone(wrap, q, qid, rec){
+    const fb = wrap.querySelector(".fb");
+    if(!fb) return;
+    const ok = !!rec.ok;
+    wrap.classList.add(ok ? "done" : "fail");
+    if(q.type === "choice" || q.type === "true_false"){
+      const box = wrap.querySelector(".opts");
+      const chosen = String(rec.ua || "");
+      if(box){
+        [...box.children].forEach(function(b){
+          b.disabled = true;
+          if(b.dataset.val === q.answer) b.classList.add("ok");
+          else if(b.dataset.val === chosen && !ok) b.classList.add("no");
+        });
+      }
+    } else {
+      const inp = wrap.querySelector("input");
+      const btn = wrap.querySelector(".btn");
+      if(inp){
+        inp.value = String(rec.ua || "");
+        inp.disabled = true;
+        inp.style.borderColor = ok ? "var(--ok)" : "var(--no)";
+        inp.style.color = ok ? "var(--ok)" : "var(--no)";
+      }
+      if(btn) btn.disabled = true;
+    }
+    showFb(fb, ok, q);          /* 先渲染反馈：它会重写 fb.innerHTML */
+    if(!ok && q.type !== "choice" && q.type !== "true_false"){
+      const inp2 = wrap.querySelector("input");
+      if(inp2) bindFix(fb, wrap, q, qid, inp2);
+    }
   }
 
   function updateProgress(){
@@ -999,12 +1212,17 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
             uaTxt = uaTxt + "．" + (q.options["ABCDEF".indexOf(uaTxt)]||"");
           }
         }
-        let ansTxt = q.answer + (q.unit||"");
+        let ansTxt = (q.type==="choice" || q.type==="true_false")
+          ? (q.answer + (q.unit||""))
+          : (ansText(q.answer) + (q.unit||""));
         if(q.type==="choice") ansTxt = q.answer + "．" + (q.options["ABCDEF".indexOf(q.answer)]||"");
-        html += '<div class="wrow">';
+        html += '<div class="wrow" data-qid="'+escapeHtml(String(w.qid||""))+'">';
         html += '<div class="q">'+escapeHtml(q.question)+'</div>';
-        html += '<div class="ans">你的答案：<span class="bad">'+escapeHtml(uaTxt)+'</span>　正确答案：<span class="good">'+escapeHtml(ansTxt)+'</span></div>';
+        html += '<div class="ans">你的答案：<span class="bad">'+escapeHtml(uaTxt)+'</span>　参考答案：<span class="good">'+escapeHtml(ansTxt)+'</span></div>';
         if(q.explanation) html += '<div class="exp">'+escapeHtml(q.explanation)+'</div>';
+        if(q.type!=="choice" && q.type!=="true_false"){
+          html += '<button class="fixbtn" type="button" data-fix="'+escapeHtml(String(w.qid||""))+'">我答的也对 · 算对这题</button>';
+        }
         html += '</div>';
       });
       html += '</div>';
@@ -1094,11 +1312,12 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
         const k = it.qid;
         const ua = quizAns[k];
         const answered = ua!==undefined && String(ua).trim()!=="";
-        const ok = answered && norm(ua)===norm(it.q.answer);
+        const ok = answered && matchAns(ua, it.q.answer);
         store[k] = ok;
+        try{ doneSet(k, ok, ua); }catch(e){}
         full += (it.score||0);
         if(ok){ right++; got += (it.score||0); }
-        else wrongs.push({q:it.q, ua:ua});
+        else wrongs.push({q:it.q, ua:ua, qid:k, score:(it.score||0)});
         try{ wbRecord(k, ok, it.q, it.meta||{}); }catch(e){}
       });
 
@@ -1121,6 +1340,46 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
         wrongs: wrongs
       };
       rbox.innerHTML = buildResultHtml(res);
+
+      /* 错题逐条改判：点「算对这题」→ 撤销错题、重算分数与星星（星星只升不降） */
+      let fixedN = 0;
+      rbox.onclick = function(e){
+        if(!e.target || !e.target.closest) return;
+        const b = e.target.closest("[data-fix]");
+        if(!b) return;
+        const fq = b.getAttribute("data-fix");
+        let item = null;
+        for(let i=0;i<ITEMS.length;i++){ if(String(ITEMS[i].qid) === fq){ item = ITEMS[i]; break; } }
+        if(!item || store[fq] === true) return;
+        store[fq] = true;
+        right++; got += (item.score||0);
+        try{ wbCancel(fq, item.q, item.meta||{}); }catch(err){}
+        const row = b.closest(".wrow");
+        if(row && row.parentNode) row.parentNode.removeChild(row);
+        fixedN++;
+        const pct2 = cfg.scoreMode==="score"
+          ? Math.round(got/Math.max(1,full)*100)
+          : (QN ? Math.round(right/QN*100) : 0);
+        const stars2 = starsFromPct(pct2);
+        res.main = cfg.scoreMode==="score" ? got : right;
+        res.line = cfg.scoreMode==="score"
+          ? ("得分 "+got+" / "+full+" 分　·　答对 "+right+" / "+QN+" 题　·　正确率 "+pct2+"%")
+          : ("正确率 "+pct2+"%　·　答对 "+right+" 题，答错 "+(wrongs.length-fixedN)+" 题");
+        const scEl = rbox.querySelector(".sc");
+        if(scEl) scEl.innerHTML = res.main + '<small>' + res.sub + '</small>';
+        const lineEl = rbox.querySelector(".top .sub");
+        if(lineEl) lineEl.textContent = res.line;
+        const lvEl = rbox.querySelector(".lv");
+        if(lvEl) lvEl.textContent = stars2===3 ? "优秀" : (stars2===2 ? "良好" : "待加强");
+        const starEls = rbox.querySelectorAll(".stars .star");
+        for(let si=0; si<starEls.length; si++){ starEls[si].className = "star" + (si<stars2 ? " on" : " off"); }
+        const h3 = rbox.querySelector("h3");
+        const leftN = wrongs.length - fixedN;
+        if(h3) h3.textContent = leftN ? ("错题分析（"+leftN+" 道）") : "错题已全部核对完毕";
+        if(cfg.starKey) starUpd(cfg.starKey, stars2);
+        updateProgress();
+      };
+
       rbox.scrollIntoView({behavior:"smooth", block:"start"});
       updateProgress();
     }
@@ -1300,6 +1559,7 @@ const __SCHX = (function(){ try{ var s=JSON.parse(localStorage.getItem("studyfre
   document.getElementById("reset").onclick = ()=>{
     if(!confirm("确定清空本页所有作答记录？")) return;
     for(const k in store) delete store[k];
+    try{ doneClear(); }catch(e){}
     document.querySelectorAll(".q").forEach(x=>{
       x.className = "q" + (x.dataset.lvl ? " "+x.dataset.lvl : "");
       const fb=x.querySelector(".fb"); if(fb) fb.className="fb";

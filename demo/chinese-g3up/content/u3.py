@@ -296,7 +296,7 @@ UNIT = {
                 {"type": "input", "question": "『老屋』每次都说：『____，我到了倒下的时候了！』（填两个字）",
                  "answer": "好了", "explanation": "『好了，我到了倒下的时候了！』是老屋的口头禅。"},
                 {"type": "input", "question": "小猫请求：『再站一个____吧！』（填一个词）",
-                 "answer": "晚上", "explanation": "小猫想找个地方好好睡一晚。"},
+                 "answer": "晚上|一夜|一晚", "explanation": "小猫想找个地方好好睡一晚。"},
                 {"type": "input", "question": "老母鸡想孵小鸡，请求老屋再站____天。（填数字）",
                  "answer": "二十一", "explanation": "老母鸡需要二十一天孵出小鸡。"},
                 {"type": "input", "question": "小狗学叫时先跟____学啼叫。",

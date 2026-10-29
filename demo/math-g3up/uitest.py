@@ -28,7 +28,7 @@ setTimeout(function(){
       out.push("判断:"+(tq.querySelector(".fb").textContent.indexOf("答对了")>-1?"PASS":"FAIL"));
     }
     if(iq){
-      var inp=iq.querySelector("input"), right=iq.getAttribute("data-ans");
+      var inp=iq.querySelector("input"), right=(iq.getAttribute("data-ans")||"").split("|")[0];
       inp.value="__WRONG__"; iq.querySelector(".btn").click();
       var f1=iq.querySelector(".fb").textContent;
       out.push("填空错答:"+(f1.indexOf("再想想")>-1 && f1.indexOf(right)>-1 ?"PASS":"FAIL"));
@@ -40,7 +40,7 @@ setTimeout(function(){
       ps.click();
       var pqs=[].slice.call(document.querySelectorAll("#pane-paper .q"));
       pqs.forEach(function(q){
-        var ans=q.getAttribute("data-ans");
+        var ans=(q.getAttribute("data-ans")||"").split("|")[0];
         var opts=q.querySelectorAll(".opt");
         if(opts.length){
           for(var k=0;k<opts.length;k++){ if(opts[k].getAttribute("data-val")===ans){ opts[k].click(); break; } }

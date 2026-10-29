@@ -342,7 +342,7 @@ _kp_adv = {
     "字词基础：本单元重点字词": [
         {"type": "choice", "level": "advance", "difficulty": 3, "question": "『战斗』的『斗』读 dòu，那么『北斗星』的『斗』读：", "options": ["dǒu", "dòu", "dōu"], "answer": "A", "explanation": "量粮食的斗、北斗星读 dǒu；打架、战斗读 dòu。"},
         {"type": "input", "level": "advance", "difficulty": 3, "question": "『瓮』是口小肚大的____器。（填一个字）", "answer": "陶", "explanation": "瓮是陶制的容器，所以字里有瓦字底。"},
-        {"type": "input", "level": "challenge", "difficulty": 4, "question": "给『弃』组三个词（按「词、词、词」格式填）。", "answer": "放弃、丢弃、嫌弃", "explanation": "答案不唯一：放弃、丢弃、嫌弃、弃权都可以。"},
+        {"type": "input", "level": "challenge", "difficulty": 4, "question": "给『弃』组三个词（按「词、词、词」格式填）。", "answer": "放弃、丢弃、嫌弃|放弃、抛弃、嫌弃|放弃、丢弃、遗弃", "explanation": "答案不唯一：放弃、丢弃、嫌弃、弃权都可以。"},
     ],
 }
 for _kp in UNIT["knowledgePoints"]:

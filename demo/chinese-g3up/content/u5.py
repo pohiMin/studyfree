@@ -320,7 +320,7 @@ _kp_adv = {
     "多感官观察": [
         {"type": "choice", "level": "advance", "difficulty": 3, "question": "观察一种水果，下面四种记录里用到感官最多的是：", "options": ["金黄的皮、摸上去有点粗糙、闻着甜香、咬一口水很多", "是圆的", "很好吃"], "answer": "A", "explanation": "看、摸、闻、尝四样全用上，观察才立体。"},
         {"type": "input", "level": "advance", "difficulty": 3, "question": "『雨点打在船篷上沙啦沙啦响』，这句话用的感官是____。（填两个字）", "answer": "听觉", "explanation": "响声是耳朵听到的。"},
-        {"type": "input", "level": "challenge", "difficulty": 4, "question": "用两种感官写一句话观察『下雨』（填：雨点打在伞上沙啦响，溅到手上____）。", "answer": "凉凉的", "explanation": "答案不唯一：凉凉的（触觉）、像小石子（视觉比喻）都可以——两种感官一起用。"},
+        {"type": "input", "level": "challenge", "difficulty": 4, "question": "用两种感官写一句话观察『下雨』（填：雨点打在伞上沙啦响，溅到手上____）。", "answer": "凉凉的|凉凉|冰凉|凉|湿湿的", "explanation": "答案不唯一：凉凉的（触觉）、像小石子（视觉比喻）都可以——两种感官一起用。"},
     ],
     "连续观察与变化记录": [
         {"type": "choice", "level": "advance", "difficulty": 3, "question": "要观察月亮的变化，合理的记录频率是：", "options": ["每晚同一时间记录一次，连续一个月", "只记一次", "每分钟记一次"], "answer": "A", "explanation": "固定时间、持续记录，才能看到完整的变化过程。"},

@@ -142,6 +142,22 @@
     <button class="go sub" id="exportjson" type="button">导出账号表（accounts.json）</button>
     <div class="okm" id="m5">已导出。把下载的文件放进 demo 目录后再发布。</div>
 
+    <div class="sec">AI 复核（可选）</div>
+    <div class="fld" style="display:flex;align-items:center;gap:9px">
+      <input type="checkbox" id="aion" style="width:auto;transform:scale(1.15)">
+      <label for="aion" style="margin:0">开启 AI 复核（只在填空判错时自动复核一次）</label>
+    </div>
+    <div class="fld"><label>API 地址（OpenAI 兼容的 chat/completions）</label>
+      <input id="aiurl" placeholder="https://api.deepseek.com/v1/chat/completions" autocomplete="off"></div>
+    <div class="fld"><label>模型名称</label><input id="aimodel" placeholder="deepseek-chat" autocomplete="off"></div>
+    <div class="fld"><label>API Key（只存这台设备，不会写进任何文件）</label>
+      <input id="aikey" type="password" placeholder="sk-..." autocomplete="off"></div>
+    <div class="admrow" style="margin-top:0">
+      <button class="go sub" id="aisave" type="button">保存 AI 设置</button>
+      <button class="go sub" id="aitest" type="button">测试连接</button>
+    </div>
+    <div class="okm" id="aimsg"></div>
+
     <div class="admrow">
       <button class="go sub" id="chadm" type="button">修改管理员密码</button>
       <button class="go sub" id="relock" type="button">重新锁定本页</button>
@@ -247,12 +263,39 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
   function show(id,on){ document.getElementById(id).style.display = on?"":"none"; }
   function fmt(ts){ return ts ? new Date(ts).toLocaleDateString("zh-CN") : "—"; }
 
+  /* ---- AI 复核设置 ---- */
+  var AI_KEY = "studyfree.ai.v1";
+  function aiGet(){ try{ return JSON.parse(localStorage.getItem(AI_KEY)||"{}"); }catch(e){ return {}; } }
+  function aiFill(){
+    var c = aiGet();
+    var on=document.getElementById("aion");
+    if(!on) return;
+    on.checked = !!c.on;
+    document.getElementById("aiurl").value = c.url || "";
+    document.getElementById("aimodel").value = c.model || "deepseek-chat";
+    document.getElementById("aikey").value = c.key || "";
+  }
+  function aiMsg(t, ok){
+    var m = document.getElementById("aimsg");
+    m.textContent = t;
+    m.className = "okm show";
+    m.style.color = (ok === false) ? "var(--no)" : "var(--ok)";
+  }
+  function aiBodyFromForm(){
+    return {
+      on: document.getElementById("aion").checked,
+      url: document.getElementById("aiurl").value.trim(),
+      model: document.getElementById("aimodel").value.trim() || "deepseek-chat",
+      key: document.getElementById("aikey").value.trim()
+    };
+  }
+
   function renderState(){
     var a=admin();
     show("setup", !a);
     show("unlock", !!a && !unlocked);
     show("panel", !!a && unlocked);
-    if(a && unlocked) renderList();
+    if(a && unlocked){ renderList(); aiFill(); }
   }
 
   document.getElementById("mkadm").onclick=function(){
@@ -413,6 +456,44 @@ function checkPw(p, rec){ return !!(rec && rec.h && sha256(rec.s+"|"+p)===rec.h)
       list.appendChild(box);
     });
   }
+
+  (function bindAi(){
+    var sv=document.getElementById("aisave"), ts=document.getElementById("aitest");
+    if(!sv || !ts) return;
+    sv.onclick = function(){
+      var c = aiBodyFromForm();
+      if(c.on && (!c.url || !c.key)){ aiMsg("开启 AI 复核需要填写 API 地址和 Key。", false); return; }
+      try{ localStorage.setItem(AI_KEY, JSON.stringify(c)); }catch(e){}
+      aiMsg("已保存到本机浏览器，学习台下次打开生效。", true);
+    };
+    ts.onclick = function(){
+      var c = aiBodyFromForm();
+      if(!c.url || !c.key){ aiMsg("先填写 API 地址和 Key。", false); return; }
+      aiMsg("正在测试…", true);
+      var body = {
+        model: c.model, temperature: 0, max_tokens: 8,
+        messages: [
+          {role:"system", content:"你是小学判分助手。判断学生答案是否也算正确。只输出一个字：对 或 错。"},
+          {role:"user", content:"题目：树枝像一群孩子在做什么？\n参考答案：玩耍 或 嬉戏\n学生答案：嬉戏"}
+        ]
+      };
+      fetch(c.url, {
+        method:"POST",
+        headers:{"Content-Type":"application/json","Authorization":"Bearer " + c.key},
+        body: JSON.stringify(body)
+      }).then(function(r){
+        if(!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      }).then(function(j){
+        var t = "";
+        try{ t = j.choices[0].message.content || ""; }catch(e){}
+        if(!t){ aiMsg("接口通了，但没取到内容——请确认地址是 …/chat/completions。", false); return; }
+        aiMsg("连接成功，模型返回：" + String(t).slice(0,20), true);
+      }).catch(function(e){
+        aiMsg("请求失败：" + (e && e.message ? e.message : "网络或跨域限制"), false);
+      });
+    };
+  })();
 
   renderState();
 })();

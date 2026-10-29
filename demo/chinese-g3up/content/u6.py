@@ -82,7 +82,7 @@ UNIT = {
                  "explanation": "是说不跑题，不是限制用词。"},
                 {"type": "input", "difficulty": 2,
                  "question": "写一段话前，先想好这段话的____。（填两个字）",
-                 "answer": "中心", "explanation": "先定中心，再选材料。"},
+                 "answer": "中心|中心句|意思|主题", "explanation": "先定中心，再选材料。"},
                 {"type": "choice", "difficulty": 3,
                  "question": "这段话的中心是『西沙群岛也是鸟的天下』，下面哪句不该出现在这段里？",
                  "options": ["海水五光十色，美丽极了", "树林里栖息着各种海鸟", "遍地都是鸟蛋"],
@@ -291,7 +291,7 @@ UNIT = {
             ]},
             {"name": "六、按课文内容填空", "perScore": 4, "questions": [
                 {"type": "input", "question": "西沙群岛的海水里，有____的珊瑚，有懒洋洋的海参。（填一个词：颜色多）",
-                 "answer": "各种各样", "explanation": "珊瑚各种各样，美不胜收。"},
+                 "answer": "各种各样|各式各样|五颜六色|颜色多|形形色色", "explanation": "珊瑚各种各样，美不胜收。"},
                 {"type": "input", "question": "鱼成群地在珊瑚丛中____来穿去。（填一个字）",
                  "answer": "穿", "explanation": "穿来穿去：来回游动。"},
                 {"type": "input", "question": "西沙群岛的海里一半是水，一半是____。",

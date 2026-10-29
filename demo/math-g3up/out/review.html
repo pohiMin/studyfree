@@ -96,6 +96,11 @@
   .btn:hover{background:var(--pri-d)}
   .btn:disabled{background:#E6EAF1;border-color:#E6EAF1;color:#9AA5B8;cursor:default}
 
+  .fixbtn{
+    font: inherit;font-size:.82rem;padding:7px 12px;border-radius:10px;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:#7A5E2E;margin-top:8px;
+  }
+  .fixbtn:hover{border-color:#B08D57;background:#FBF6E9}
   .fb{margin:11px 0 0 37px;font-size:.9rem;line-height:1.8;border-radius:10px;padding:11px 15px;display:none}
   .fb.show{display:block}
   .fb.ok{background:var(--ok-l);color:#08694A;border-left:4px solid var(--ok)}
@@ -171,6 +176,21 @@
     return String(s).trim()
       .replace(/[\uff10-\uff19]/g, c=>String.fromCharCode(c.charCodeAt(0)-65248))
       .replace(/[\uff0e\uff0c,\s]/g,"").replace(/[\u3000]/g,"");
+  }
+  /* 多答案判分：answer 支持 "主答案|备选1|备选2" 或数组 */
+  function ansList(a){
+    return Array.isArray(a) ? a.map(String) : String(a).split("|").map(function(s){ return s.trim(); }).filter(Boolean);
+  }
+  function matchAns(input, a){
+    const t = norm(input);
+    if(!t) return false;
+    return ansList(a).some(function(x){ return norm(x) === t; });
+  }
+  function ansText(a){ return ansList(a).join(" 或 "); }
+  function escH(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];
+    });
   }
   function el(t,c,x){ const e=document.createElement(t); if(c)e.className=c; if(x!==undefined)e.textContent=x; return e; }
 
@@ -320,7 +340,7 @@
     const cur = all[qid];
     if(!cur) return;
 
-    const ok = (box ? val === q.answer : norm(val) === norm(q.answer));
+    const ok = (box ? val === q.answer : matchAns(val, q.answer));
     if(!ok){ inp && inp.focus(); if(!val.trim()) return; }
 
     if(box){
@@ -362,9 +382,35 @@
       let tip = "";
       if(q.type==="choice") tip = "正确答案：" + q.answer + "．" + q.options["ABCDEF".indexOf(q.answer)] + "　";
       else if(q.type==="true_false") tip = "正确答案：" + q.answer + "　";
-      else tip = "正确答案：" + q.answer + (q.unit||"") + "　";
+      else tip = "参考答案：" + ansText(q.answer) + (q.unit||"") + "　";
       fb.innerHTML = '<span class="tk">\u2717 又错了一次</span>' + tip + (q.explanation||"") +
         '<br><span style="font-size:.82rem">连对次数已清零，重新开始累计。</span>';
+      if(!box){
+        /* 多解兜底：答的是同义表达时，可一键改判为答对 */
+        const fix = document.createElement("button");
+        fix.type = "button";
+        fix.className = "fixbtn";
+        fix.textContent = "我填的也对 · 算我对";
+        fix.onclick = function(){
+          if(!all[qid]) return;
+          const c2 = all[qid];
+          c2.streak = (c2.streak||0) + 1;
+          c2.wrong = Math.max(0, (c2.wrong||0) - 1);
+          c2.ts = Date.now();
+          fb.className = "fb show ok";
+          fb.innerHTML = '<span class="tk">\u2713 已算对</span>参考答案：' + escH(ansText(q.answer)) + (q.explanation||"");
+          if(c2.streak >= WB_NEED){
+            delete all[qid];
+            wbWrite(all);
+            render();
+            return;
+          }
+          all[qid] = c2;
+          wbWrite(all);
+          paintStreak(wrap.querySelector(".streak"), c2.streak);
+        };
+        fb.appendChild(fix);
+      }
     }
 
     wbWrite(all);

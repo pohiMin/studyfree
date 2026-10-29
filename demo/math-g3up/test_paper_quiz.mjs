@@ -47,7 +47,7 @@ const chk = (n, c, x) => log.push((c ? "PASS " : "FAIL ") + n + (x !== undefined
 const ANSWER_ALL = `(function(correct){
   var qs=document.querySelectorAll("#pane-paper .q");
   qs.forEach(function(q){
-    var ans=q.getAttribute("data-ans");
+    var ans=(q.getAttribute("data-ans")||"").split("|")[0];
     var opts=q.querySelectorAll(".opt");
     if(opts.length){
       for(var i=0;i<opts.length;i++){
